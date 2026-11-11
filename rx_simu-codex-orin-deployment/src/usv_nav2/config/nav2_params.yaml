@@ -1,0 +1,242 @@
+{
+  "bt_navigator": {
+    "ros__parameters": {
+      "use_sim_time": false,
+      "global_frame": "map",
+      "robot_base_frame": "base_link",
+      "odom_topic": "/usv/odom",
+      "bt_loop_duration": 10,
+      "default_server_timeout": 20,
+      "wait_for_service_timeout": 1000,
+      "transform_tolerance": 0.3,
+      "plugin_lib_names": [
+        "nav2_compute_path_to_pose_action_bt_node",
+        "nav2_compute_path_through_poses_action_bt_node",
+        "nav2_follow_path_action_bt_node",
+        "nav2_rate_controller_bt_node",
+        "nav2_pipeline_sequence_bt_node",
+        "nav2_remove_passed_goals_action_bt_node"
+      ]
+    }
+  },
+  "controller_server": {
+    "ros__parameters": {
+      "use_sim_time": false,
+      "controller_frequency": 10.0,
+      "odom_topic": "/usv/odom",
+      "min_x_velocity_threshold": 0.01,
+      "min_y_velocity_threshold": 0.01,
+      "min_theta_velocity_threshold": 0.01,
+      "failure_tolerance": 0.0,
+      "progress_checker_plugin": "progress_checker",
+      "goal_checker_plugins": ["goal_checker"],
+      "controller_plugins": ["FollowPath"],
+      "progress_checker": {
+        "plugin": "nav2_controller::SimpleProgressChecker",
+        "required_movement_radius": 0.25,
+        "movement_time_allowance": 20.0
+      },
+      "goal_checker": {
+        "plugin": "nav2_controller::SimpleGoalChecker",
+        "xy_goal_tolerance": 0.5,
+        "yaw_goal_tolerance": 0.25,
+        "stateful": false
+      },
+      "FollowPath": {
+        "plugin": "dwb_core::DWBLocalPlanner",
+        "trajectory_generator_name": "dwb_plugins::LimitedAccelGenerator",
+        "debug_trajectory_details": false,
+        "min_vel_x": 0.0,
+        "min_vel_y": 0.0,
+        "max_vel_x": 0.4,
+        "max_vel_y": 0.0,
+        "max_vel_theta": 0.4,
+        "min_speed_xy": 0.0,
+        "max_speed_xy": 0.4,
+        "min_speed_theta": 0.0,
+        "acc_lim_x": 0.2,
+        "acc_lim_y": 0.0,
+        "acc_lim_theta": 0.4,
+        "decel_lim_x": -0.2,
+        "decel_lim_y": 0.0,
+        "decel_lim_theta": -0.4,
+        "vx_samples": 15,
+        "vy_samples": 1,
+        "vtheta_samples": 25,
+        "sim_time": 3.0,
+        "sim_period": 0.1,
+        "linear_granularity": 0.05,
+        "angular_granularity": 0.05,
+        "transform_tolerance": 0.3,
+        "xy_goal_tolerance": 0.5,
+        "trans_stopped_velocity": 0.05,
+        "short_circuit_trajectory_evaluation": true,
+        "stateful": true,
+        "critics": ["RotateToGoal", "Oscillation", "ObstacleFootprint", "GoalAlign", "PathAlign", "PathDist", "GoalDist"],
+        "ObstacleFootprint.scale": 0.02,
+        "PathAlign.scale": 16.0,
+        "PathAlign.forward_point_distance": 0.5,
+        "GoalAlign.scale": 12.0,
+        "GoalAlign.forward_point_distance": 0.5,
+        "PathDist.scale": 16.0,
+        "GoalDist.scale": 12.0,
+        "RotateToGoal.scale": 16.0,
+        "RotateToGoal.slowing_factor": 5.0,
+        "RotateToGoal.lookahead_time": -1.0
+      }
+    }
+  },
+  "local_costmap": {
+    "local_costmap": {
+      "ros__parameters": {
+        "use_sim_time": false,
+        "global_frame": "map",
+        "robot_base_frame": "base_link",
+        "update_frequency": 5.0,
+        "publish_frequency": 2.0,
+        "transform_tolerance": 0.3,
+        "initial_transform_timeout": 60.0,
+        "rolling_window": true,
+        "width": 30,
+        "height": 30,
+        "resolution": 0.1,
+        "track_unknown_space": true,
+        "footprint": "[[0.6,0.35],[0.6,-0.35],[-0.6,-0.35],[-0.6,0.35]]",
+        "footprint_padding": 0.1,
+        "plugins": ["static_layer", "obstacle_layer", "inflation_layer"],
+        "static_layer": {
+          "plugin": "nav2_costmap_2d::StaticLayer",
+          "map_topic": "/map",
+          "map_subscribe_transient_local": true,
+          "subscribe_to_updates": false
+        },
+        "obstacle_layer": {
+          "plugin": "nav2_costmap_2d::ObstacleLayer",
+          "enabled": true,
+          "combination_method": 1,
+          "footprint_clearing_enabled": true,
+          "observation_sources": "scan",
+          "scan": {
+            "topic": "/scan",
+            "data_type": "LaserScan",
+            "marking": true,
+            "clearing": true,
+            "inf_is_valid": false,
+            "observation_persistence": 0.0,
+            "expected_update_rate": 0.5,
+            "min_obstacle_height": -2.0,
+            "max_obstacle_height": 3.0,
+            "obstacle_min_range": 0.0,
+            "obstacle_max_range": 15.0,
+            "raytrace_min_range": 0.0,
+            "raytrace_max_range": 20.0
+          }
+        },
+        "inflation_layer": {
+          "plugin": "nav2_costmap_2d::InflationLayer",
+          "inflation_radius": 1.0,
+          "cost_scaling_factor": 3.0
+        },
+        "always_send_full_costmap": true
+      }
+    }
+  },
+  "global_costmap": {
+    "global_costmap": {
+      "ros__parameters": {
+        "use_sim_time": false,
+        "global_frame": "map",
+        "robot_base_frame": "base_link",
+        "update_frequency": 2.0,
+        "publish_frequency": 1.0,
+        "transform_tolerance": 0.3,
+        "initial_transform_timeout": 60.0,
+        "rolling_window": false,
+        "resolution": 0.2,
+        "track_unknown_space": true,
+        "footprint": "[[0.6,0.35],[0.6,-0.35],[-0.6,-0.35],[-0.6,0.35]]",
+        "footprint_padding": 0.1,
+        "plugins": ["static_layer", "obstacle_layer", "inflation_layer"],
+        "static_layer": {
+          "plugin": "nav2_costmap_2d::StaticLayer",
+          "map_topic": "/map",
+          "map_subscribe_transient_local": true,
+          "subscribe_to_updates": false
+        },
+        "obstacle_layer": {
+          "plugin": "nav2_costmap_2d::ObstacleLayer",
+          "enabled": true,
+          "combination_method": 1,
+          "footprint_clearing_enabled": true,
+          "observation_sources": "scan",
+          "scan": {
+            "topic": "/scan",
+            "data_type": "LaserScan",
+            "marking": true,
+            "clearing": true,
+            "inf_is_valid": false,
+            "observation_persistence": 0.0,
+            "expected_update_rate": 0.5,
+            "min_obstacle_height": -2.0,
+            "max_obstacle_height": 3.0,
+            "obstacle_min_range": 0.0,
+            "obstacle_max_range": 15.0,
+            "raytrace_min_range": 0.0,
+            "raytrace_max_range": 20.0
+          }
+        },
+        "inflation_layer": {
+          "plugin": "nav2_costmap_2d::InflationLayer",
+          "inflation_radius": 1.0,
+          "cost_scaling_factor": 3.0
+        },
+        "always_send_full_costmap": true
+      }
+    }
+  },
+  "planner_server": {
+    "ros__parameters": {
+      "use_sim_time": false,
+      "expected_planner_frequency": 1.0,
+      "planner_plugins": ["GridBased"],
+      "GridBased": {
+        "plugin": "nav2_navfn_planner/NavfnPlanner",
+        "tolerance": 0.3,
+        "use_astar": false,
+        "allow_unknown": false
+      }
+    }
+  },
+  "odom_tf": {
+    "ros__parameters": {
+      "use_sim_time": false,
+      "odom_topic": "/mavros/local_position/odom",
+      "output_odom_topic": "/usv/odom",
+      "publish_tf": true,
+      "expected_parent_frame": "map",
+      "body_frame": "base_link",
+      "stabilized_frame": "base_stabilized",
+      "max_message_age": 0.5
+    }
+  },
+  "rover_bridge": {
+    "ros__parameters": {
+      "use_sim_time": false,
+      "enable_control": false,
+      "command_topic": "/usv/cmd_vel",
+      "odom_topic": "/mavros/local_position/odom",
+      "scan_topic": "/scan",
+      "state_topic": "/mavros/state",
+      "setpoint_topic": "/mavros/setpoint_raw/local",
+      "expected_parent_frame": "map",
+      "body_frame": "base_link",
+      "max_speed": 0.4,
+      "max_yaw_rate": 0.4,
+      "command_timeout": 0.5,
+      "odom_timeout": 0.5,
+      "scan_timeout": 0.5,
+      "state_timeout": 2.0,
+      "publish_rate": 20.0
+    }
+  }
+}

@@ -1,0 +1,333 @@
+{
+  "scope": "Harbor layout 1, one semantic light change, the unchanged crossing scenario, calm water. No other scenario or real-vessel completion claim.",
+  "normal_runs": [
+    {
+      "run": "runs/20261102_034656_task1_harbor_s1_c1_cross",
+      "passed": true,
+      "firmware": "d0356316eb0fa34ed1c9f39f7b059b9ae7ba4664",
+      "workspace_commit_at_start": "18d6ab5128eb040445f41532f7f902f62554bc2b",
+      "behavioral_sources_match": true,
+      "behavioral_sources_checked": 27,
+      "collision_contacts": 0,
+      "min_all_clearance_m": 1.4657460546430665,
+      "min_traffic_clearance_m": 5.888653067866329,
+      "endpoint_error": {
+        "position_m": 0.3611272182213295,
+        "yaw_rad": 0.034527772767417586
+      },
+      "duration_sim_s": 817.316,
+      "circles": {
+        "CIRCLE_ENTRY": {
+          "complete": true,
+          "angle_rad": 6.367096888854974,
+          "wrong_way_rad": 0.0041870844307880795
+        },
+        "CIRCLE_EXIT": {
+          "complete": true,
+          "angle_rad": 6.344514224670318,
+          "wrong_way_rad": 0.0
+        }
+      },
+      "post_completion_drift_m": 0.22651284935479088,
+      "planning_failures": 0,
+      "controller_failures": 0,
+      "traffic_stops": [
+        {
+          "reason": "LiDAR traffic: predicted traffic conflict",
+          "start_sim": 331.7,
+          "resume_sim": 385.2,
+          "zero_command_delay_s": 0.09600000000000364,
+          "first_force_below_1N_delay_s": 1.7959999999999923,
+          "force_below_1N_dwell_confirmed_delay_s": 2.7959999999999923,
+          "force_peak_before_resume_N": 30.000000000000004,
+          "stopped_dwell_confirmed_delay_s": 2.5960000000000036,
+          "distance_to_stop_m": 0.3203815955591257,
+          "physics_advancing": true,
+          "passed": true
+        },
+        {
+          "reason": "LiDAR traffic: predicted traffic conflict",
+          "start_sim": 435.0,
+          "resume_sim": 488.8,
+          "zero_command_delay_s": 0.103999999999985,
+          "first_force_below_1N_delay_s": 2.8000000000000114,
+          "force_below_1N_dwell_confirmed_delay_s": 4.0,
+          "force_peak_before_resume_N": 34.80000000000003,
+          "stopped_dwell_confirmed_delay_s": 2.6999999999999886,
+          "distance_to_stop_m": 0.3345091808050492,
+          "physics_advancing": true,
+          "passed": true
+        }
+      ],
+      "map_clear_delay_s": 16.156000000000006,
+      "buoy_maps_checked": 581,
+      "evidence_sha256": {
+        "task1_result.json": "d35357737551cbd68206f66c7b22dfa420a4b8a5cb2d3215a01b305f07a58a78",
+        "dynamic_map_result.json": "70487470223a56659ed8c4be7cf6215b98a8c37f7533a403213a87976469f784",
+        "traffic_avoidance.json": "c54047ef794ba8da45ed112343730a6866e7329d6f45c781576463d6664f9f20",
+        "buoy_map_result.json": "b537d66199bc9b06998c6466fd442a07124a3f50cd0c45252def0c6ca67578dd",
+        "source_snapshot.tar.gz": "659ba85c2497843797ab8b9b336e506570e064d0dc53a9469bc24d3c7510f200",
+        "shutdown_result.json": "36d25465c13641d0d8ad2d6fec6e1c720148a61a463ada85232f0df1afc5d44a"
+      }
+    },
+    {
+      "run": "runs/20261102_040530_task1_harbor_s1_c1_cross",
+      "passed": true,
+      "firmware": "d0356316eb0fa34ed1c9f39f7b059b9ae7ba4664",
+      "workspace_commit_at_start": "63e00b66a82ce9671c313350e08ee42394709786",
+      "behavioral_sources_match": true,
+      "behavioral_sources_checked": 27,
+      "collision_contacts": 0,
+      "min_all_clearance_m": 1.6162860137821438,
+      "min_traffic_clearance_m": 5.220228170927147,
+      "endpoint_error": {
+        "position_m": 0.3646093765707461,
+        "yaw_rad": 0.057545883548392414
+      },
+      "duration_sim_s": 833.572,
+      "circles": {
+        "CIRCLE_ENTRY": {
+          "complete": true,
+          "angle_rad": 6.350095216132996,
+          "wrong_way_rad": 0.004047418216854393
+        },
+        "CIRCLE_EXIT": {
+          "complete": true,
+          "angle_rad": 6.370107999047065,
+          "wrong_way_rad": 0.0
+        }
+      },
+      "post_completion_drift_m": 0.22401556117527713,
+      "planning_failures": 0,
+      "controller_failures": 0,
+      "traffic_stops": [
+        {
+          "reason": "LiDAR traffic: predicted traffic conflict",
+          "start_sim": 331.0,
+          "resume_sim": 384.5,
+          "zero_command_delay_s": 0.06799999999998363,
+          "first_force_below_1N_delay_s": 1.6680000000000064,
+          "force_below_1N_dwell_confirmed_delay_s": 2.6680000000000064,
+          "force_peak_before_resume_N": 36.00000000000002,
+          "stopped_dwell_confirmed_delay_s": 2.5679999999999836,
+          "distance_to_stop_m": 0.3203412893361966,
+          "physics_advancing": true,
+          "passed": true
+        },
+        {
+          "reason": "LiDAR traffic: predicted traffic conflict",
+          "start_sim": 436.3,
+          "resume_sim": 501.2,
+          "zero_command_delay_s": 0.07599999999996498,
+          "first_force_below_1N_delay_s": 5.675999999999988,
+          "force_below_1N_dwell_confirmed_delay_s": 7.575999999999965,
+          "force_peak_before_resume_N": 31.19999999999999,
+          "stopped_dwell_confirmed_delay_s": 2.575999999999965,
+          "distance_to_stop_m": 0.3254039324495044,
+          "physics_advancing": true,
+          "passed": true
+        }
+      ],
+      "map_clear_delay_s": 15.95999999999998,
+      "buoy_maps_checked": 590,
+      "evidence_sha256": {
+        "task1_result.json": "1dddac4436157eb6f4cfa3b76d23bf952fdba52817040e72c23aa24fed9e61cd",
+        "dynamic_map_result.json": "2e2bd3406971b64be575e52b726432479462a33ab0b01a564ecd1345c1c04672",
+        "traffic_avoidance.json": "ec65e01c42f48e41e80f65702908997f098b4d2e7772e065dc884b64284d796e",
+        "buoy_map_result.json": "756f402cf0b8b7be2288d026c102f3dbfe68211ba0d908f602b75eb112d022e6",
+        "source_snapshot.tar.gz": "b77b751048552ee577bf4325a77ce4a2ffd876c36ebb84a8bf7b83ab52dee913",
+        "shutdown_result.json": "3bf127ace59223a52b63255920793e70bda2b3769531ea84d7fa89222003878b"
+      }
+    },
+    {
+      "run": "runs/20261102_042050_task1_harbor_s1_c1_cross",
+      "passed": true,
+      "firmware": "d0356316eb0fa34ed1c9f39f7b059b9ae7ba4664",
+      "workspace_commit_at_start": "cfb8b5c650f117faaf4fb2a0e5e3fb3725a35ffb",
+      "behavioral_sources_match": true,
+      "behavioral_sources_checked": 27,
+      "collision_contacts": 0,
+      "min_all_clearance_m": 1.4708308329840256,
+      "min_traffic_clearance_m": 5.865765333060544,
+      "endpoint_error": {
+        "position_m": 0.36425766455766195,
+        "yaw_rad": 0.013569423618716714
+      },
+      "duration_sim_s": 839.5640000000001,
+      "circles": {
+        "CIRCLE_ENTRY": {
+          "complete": true,
+          "angle_rad": 6.363032499490072,
+          "wrong_way_rad": 0.004351871725083889
+        },
+        "CIRCLE_EXIT": {
+          "complete": true,
+          "angle_rad": 6.335061366416039,
+          "wrong_way_rad": 0.0
+        }
+      },
+      "post_completion_drift_m": 0.21857693813548276,
+      "planning_failures": 0,
+      "controller_failures": 0,
+      "traffic_stops": [
+        {
+          "reason": "LiDAR traffic: predicted traffic conflict",
+          "start_sim": 333.8,
+          "resume_sim": 394.2,
+          "zero_command_delay_s": 0.051999999999964075,
+          "first_force_below_1N_delay_s": 1.551999999999964,
+          "force_below_1N_dwell_confirmed_delay_s": 2.551999999999964,
+          "force_peak_before_resume_N": 31.20000000000003,
+          "stopped_dwell_confirmed_delay_s": 2.451999999999998,
+          "distance_to_stop_m": 0.2915866156464587,
+          "physics_advancing": true,
+          "passed": true
+        },
+        {
+          "reason": "LiDAR traffic: predicted traffic conflict",
+          "start_sim": 445.7,
+          "resume_sim": 508.5,
+          "zero_command_delay_s": 0.05200000000002092,
+          "first_force_below_1N_delay_s": 6.151999999999987,
+          "force_below_1N_dwell_confirmed_delay_s": 7.852000000000032,
+          "force_peak_before_resume_N": 44.39999999999997,
+          "stopped_dwell_confirmed_delay_s": 2.651999999999987,
+          "distance_to_stop_m": 0.3418656935887927,
+          "physics_advancing": true,
+          "passed": true
+        }
+      ],
+      "map_clear_delay_s": 23.27600000000001,
+      "buoy_maps_checked": 596,
+      "evidence_sha256": {
+        "task1_result.json": "5571e01ca6ce55ba696ec15755b599a8d2ccd922b3cf17a909745052c4bfbdaf",
+        "dynamic_map_result.json": "e757b1860eedbb92b37b6cfda26270d8c5f36e347c88832c934b133fa9fabab5",
+        "traffic_avoidance.json": "a2b672fadc709c39e9f4ef35611d16fda6e6443a1b1741b41d39a1a450597881",
+        "buoy_map_result.json": "e521606084467557bba5e034690b28724dd4988678295380e08f495473f39c8e",
+        "source_snapshot.tar.gz": "c218d172e3d109148baedb348f9b7525710c5218a57eed25cae8e31290e54089",
+        "shutdown_result.json": "3bf127ace59223a52b63255920793e70bda2b3769531ea84d7fa89222003878b"
+      }
+    }
+  ],
+  "process_faults": [
+    {
+      "run": "runs/20261102_040257_task1_harbor_s1_c0_none_traffic_gap",
+      "result": {
+        "fault": "traffic_gap",
+        "passed": true,
+        "injection": {
+          "event": "stop_requested",
+          "sim": 49.536,
+          "reason": "traffic_gap"
+        },
+        "stops": [
+          {
+            "reason": "traffic_gap",
+            "start_sim": 49.536,
+            "resume_sim": null,
+            "zero_command_delay_s": 0.46000000000000085,
+            "first_force_below_1N_delay_s": 5.460000000000001,
+            "force_below_1N_dwell_confirmed_delay_s": null,
+            "force_peak_before_resume_N": 113.39999999999996,
+            "stopped_dwell_confirmed_delay_s": 4.960000000000001,
+            "distance_to_stop_m": 0.6659880780561109,
+            "physics_advancing": true,
+            "passed": true
+          }
+        ],
+        "status_after_fault": {
+          "sim": 59.6,
+          "stage": "APPROACH_ENTRY",
+          "motion": "STOPPING",
+          "revision": 1,
+          "target": [
+            3.0,
+            -4.0,
+            1.5707963267948966
+          ],
+          "pose": [
+            0.7928296327590942,
+            0.0026814759362733098,
+            -0.19752065738173918
+          ],
+          "reason": "observation, EKF or LiDAR traffic assessment stale",
+          "passed_colors": 0,
+          "circle_angle": null
+        },
+        "fault_window_displacement_m": 0.7298176952418068,
+        "fcu_alive": true,
+        "collision_messages": 0,
+        "recovered_with_fresh_input": true
+      },
+      "thrust_settling": {
+        "window_sim": [
+          55.536,
+          59.536
+        ],
+        "maximum_absolute_thruster_N": 1.200000000000001,
+        "velocity_commands_all_zero": true,
+        "force_below_1N_sustained_for_1s_within_fault_window": false,
+        "interpretation": "Zero setpoints and low vessel speed passed; opposed ArduRover steering corrections remain up to 1.2 N in this window, so sustained thrust below 1 N is not demonstrated."
+      }
+    },
+    {
+      "run": "runs/20261102_040415_task1_harbor_s1_c0_none_traffic_exit",
+      "result": {
+        "fault": "traffic_exit",
+        "passed": true,
+        "injection": {
+          "event": "stop_requested",
+          "sim": 49.604,
+          "reason": "traffic_exit"
+        },
+        "stops": [
+          {
+            "reason": "traffic_exit",
+            "start_sim": 49.604,
+            "resume_sim": null,
+            "zero_command_delay_s": 0.46000000000000085,
+            "first_force_below_1N_delay_s": 5.872,
+            "force_below_1N_dwell_confirmed_delay_s": null,
+            "force_peak_before_resume_N": 128.4,
+            "stopped_dwell_confirmed_delay_s": 4.9680000000000035,
+            "distance_to_stop_m": 0.6808233163076359,
+            "physics_advancing": true,
+            "passed": true
+          }
+        ],
+        "status_after_fault": {
+          "sim": 59.6,
+          "stage": "APPROACH_ENTRY",
+          "motion": "STOPPING",
+          "revision": 1,
+          "target": [
+            3.0,
+            -4.0,
+            1.5707963267948966
+          ],
+          "pose": [
+            0.7937167286872864,
+            0.004388701508591148,
+            -0.20785669883223976
+          ],
+          "reason": "observation, EKF or LiDAR traffic assessment stale",
+          "passed_colors": 0,
+          "circle_angle": null
+        },
+        "fault_window_displacement_m": 0.7452114571993306,
+        "fcu_alive": true,
+        "collision_messages": 0
+      },
+      "thrust_settling": {
+        "window_sim": [
+          55.604,
+          59.604
+        ],
+        "maximum_absolute_thruster_N": 1.200000000000001,
+        "velocity_commands_all_zero": true,
+        "force_below_1N_sustained_for_1s_within_fault_window": false,
+        "interpretation": "Zero setpoints and low vessel speed passed; opposed ArduRover steering corrections remain up to 1.2 N in this window, so sustained thrust below 1 N is not demonstrated."
+      }
+    }
+  ]
+}

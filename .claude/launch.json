@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "task1-runs",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8766", "--bind", "127.0.0.1", "--directory", "rx_simu-codex-orin-deployment/runs"],
+      "port": 8766
+    }
+  ]
+}

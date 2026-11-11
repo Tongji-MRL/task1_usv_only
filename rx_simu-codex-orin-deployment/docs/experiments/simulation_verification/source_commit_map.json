@@ -1,0 +1,30 @@
+{
+  "note": "GitHub API publication reproduces each source tree exactly; commit envelopes differ. Local run snapshots retain the original local commit references.",
+  "source_commits": [
+    {
+      "local": "8eb8106b52eac5934a48428cf29e2e65a31bf5a8",
+      "remote": "587785cfc89613654b83be92585c748ea8f1a4e2",
+      "tree": "90a592da9f97b5044ffd291627dca66a69630c4e"
+    },
+    {
+      "local": "de3bdbfab36092a5ff0f9e897f1dd7b9f24f719f",
+      "remote": "f2650ecb4d243989bd35b81d2f4fe140e2926b7a",
+      "tree": "63f236a075579845b5477d4eca9931dbc759e3db"
+    },
+    {
+      "local": "9102f431d1e0af4f55c4eabb77722830312c2bb7",
+      "remote": "c826d0d8978696e1ba44c5647ebb6605d14b5f04",
+      "tree": "80f9cbf31e4268bb46ff3a50718ae7ddc06bb6ec"
+    },
+    {
+      "local": "13d8b2d3a0b48a8f789108592e9082beb4e1982b",
+      "remote": "19da6bcd5f124425189302b19914f8f2d74049ad",
+      "tree": "9bf35a044a37ebba7eb60d09ea17a9ee4c4716a8"
+    },
+    {
+      "local": "2778b9b1fa29371837ed67e4810bffe45a783623",
+      "remote": "7c7e118507c920c8058221f439cd849adfaeb10d",
+      "tree": "2d3ccfc6b5bcbc405c2cd3f9d612c708abcec64a"
+    }
+  ]
+}

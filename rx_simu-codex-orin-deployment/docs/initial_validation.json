@@ -1,0 +1,21 @@
+{
+  "stage": "A/B",
+  "firmware_commit": "d0356316eb0fa34ed1c9f39f7b059b9ae7ba4664",
+  "motion_result": "/home/zjy/usv_nav/runs/20261029_041737_motion/motion_direct_result.json",
+  "preview_result": {
+    "status": 4,
+    "path_points": 175,
+    "passed": true,
+    "max_lateral_deviation_m": 4.137751065757129
+  },
+  "frame_counter": {
+    "frames": [
+      78000,
+      78250,
+      78500,
+      78750
+    ],
+    "crossed_65535": true,
+    "controller_reset_messages": 1
+  }
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>robotx_task1_nav</name><version>0.1.0</version>
+  <description>Safe Passage SE2 planner, hard DWB semantic critic and known buoy layer.</description>
+  <maintainer email="admin@example.com">USV navigation</maintainer><license>MIT</license>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>rclcpp</depend><depend>rclcpp_lifecycle</depend><depend>nav2_core</depend>
+  <depend>nav2_costmap_2d</depend><depend>nav2_util</depend><depend>dwb_core</depend>
+  <depend>dwb_critics</depend>
+  <depend>dwb_msgs</depend><depend>nav_2d_msgs</depend><depend>pluginlib</depend>
+  <depend>robotx_task1_interfaces</depend>
+  <depend>ompl</depend>
+  <export><build_type>ament_cmake</build_type></export>
+</package>

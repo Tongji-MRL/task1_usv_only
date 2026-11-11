@@ -1,0 +1,17 @@
+{
+  "platform": {"ubuntu": "22.04", "ros_distro": "humble", "python": "3.10"},
+  "firmware": {"name": "ArduRover", "version": "4.4.0", "commit": "d0356316eb0fa34ed1c9f39f7b059b9ae7ba4664"},
+  "livox_sdk2": {
+    "repository": "https://github.com/Livox-SDK/Livox-SDK2.git",
+    "commit": "c0796f04c143143899c87a773d9f6b7136453c0b"
+  },
+  "livox_ros_driver2": {
+    "repository": "https://github.com/Livox-SDK/livox_ros_driver2.git",
+    "commit": "21445540f0d100dc86a7e6df312dd70bbdb4afdf"
+  },
+  "notes": [
+    "These Livox revisions are a pair; SDK2 v1.3.1 lacks double-echo types required by the driver.",
+    "ROS apt versions depend on the target machine and are recorded during deployment, not asserted installed.",
+    "Server x86_64 build checks do not establish ARM64 or real-sensor acceptance."
+  ]
+}

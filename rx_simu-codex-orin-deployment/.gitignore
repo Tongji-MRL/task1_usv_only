@@ -1,0 +1,33 @@
+# colcon output
+/build/
+/install/
+/log/
+
+# Independent third-party checkouts; record revisions in docs instead.
+/external/
+/vendor/
+
+# Simulation runs, generated recordings and large result artifacts
+/runs/
+/artifacts/
+/recordings/
+/bags/
+
+# Python and local tools
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+*.egg-info/
+.venv/
+venv/
+.coverage
+htmlcov/
+.DS_Store
+*.swp
+*.swo
+
+# Local credentials and environment overrides
+.env
+.env.*
+!.env.example

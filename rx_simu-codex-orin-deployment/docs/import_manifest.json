@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "imported_on": "2026-10-29",
+  "archive": {
+    "name": "usv_nav2_humble.zip",
+    "size_bytes": 29037,
+    "sha256": "559c826089a07f8a9cf86d7c70ebd7db80cb65b8753741febb8e879af6fb07df"
+  },
+  "handoff": {
+    "path": "docs/navigation_handoff.md",
+    "sha256": "b41c9dac98b5bfa504092e44c7814905fc7a82f596e5f3c1dbaf111220204034"
+  },
+  "files": [
+    {
+      "path": "src/usv_nav2/behavior_trees/navigate_through_poses.xml",
+      "sha256": "88757f3cdbb7d967981e48fff8bf45b0023b7949208668b1848b82f96ee582f8"
+    },
+    {
+      "path": "src/usv_nav2/behavior_trees/navigate_to_pose.xml",
+      "sha256": "75303262184e757875d592a644c56034a344330ff646ba762ac057fd0c6c4197"
+    },
+    {
+      "path": "src/usv_nav2/config/nav2_params.yaml",
+      "sha256": "674b075836b082448c50f6f5029613959055f7eb99e4040c0e680cb5a6adb686"
+    },
+    {
+      "path": "src/usv_nav2/launch/cloud_to_scan.launch.py",
+      "sha256": "f041bd129cfd0a1eb3730945aff7b52d1ba6480520eb9eda9cc33c168fa88255"
+    },
+    {
+      "path": "src/usv_nav2/launch/navigation.launch.py",
+      "sha256": "3eacf7e968efc249ff34dc94190d235025d21defabaa344a2b4da5d6d19df2e7"
+    },
+    {
+      "path": "src/usv_nav2/launch/sensor_tf.launch.py",
+      "sha256": "18b914b8838fda08e517a51fddd11e27280ae3a3cc780a780079d5d22838ef78"
+    },
+    {
+      "path": "src/usv_nav2/LICENSE",
+      "sha256": "dab3d4712c37be4864053bda804f4ac1a30107606332e4453971c2c43ac8b7e8"
+    },
+    {
+      "path": "src/usv_nav2/maps/demo_area.json",
+      "sha256": "0f44856723a2142aba1f3b2045eca28c00f3a82582e9cb7cbf35c73d3dcbfc2b"
+    },
+    {
+      "path": "src/usv_nav2/maps/demo_water.pgm",
+      "sha256": "80504b6af0e1d6732374fa98fdbc84d10a93eb55569eafa58313f5712f716649"
+    },
+    {
+      "path": "src/usv_nav2/maps/demo_water.yaml",
+      "sha256": "2188a1b209fa8ebc9d752b290aff2f17e573d10634a37ba60a1189f1f67322b6"
+    },
+    {
+      "path": "src/usv_nav2/package.xml",
+      "sha256": "99efb6481310a34ab758c8d2e2300374ead359ff80cb597951d86919493b7567"
+    },
+    {
+      "path": "src/usv_nav2/README.md",
+      "sha256": "175e17dbd0bedeb954b27cea797c98fc860e7e06b16af53e87002426d4fae028"
+    },
+    {
+      "path": "src/usv_nav2/resource/usv_nav2",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "src/usv_nav2/rviz/navigation.rviz",
+      "sha256": "a33dcadcb6bb28c413fc1810d7450adafa19a728c53541ed57d1773b6294d3d5"
+    },
+    {
+      "path": "src/usv_nav2/setup.cfg",
+      "sha256": "0b7676735ac5c81ad422af73aa48336cd32f2a40a2fbd2c578f866abf8a32e0b"
+    },
+    {
+      "path": "src/usv_nav2/setup.py",
+      "sha256": "6197cb47ef63fa78b55931b0552519b1f950dcce3f8f5c76d97ac00a86727723"
+    },
+    {
+      "path": "src/usv_nav2/test/test_core.py",
+      "sha256": "ca276bd98580732a275a452cf7dc4390884af0a7359bc30e231df8e3139119af"
+    },
+    {
+      "path": "src/usv_nav2/test/test_maps_and_config.py",
+      "sha256": "8f218278dde258143fc663599df317dc368dd2b9d40a99e7a45543627f4daae0"
+    },
+    {
+      "path": "src/usv_nav2/test/test_odom_callback.py",
+      "sha256": "fb8efc6ffec3d0e8f4ec3a43b7eaccd0117fbbaf65b5ea49bc9b7d9f2c004711"
+    },
+    {
+      "path": "src/usv_nav2/usv_nav2/__init__.py",
+      "sha256": "6e8417faf278c52dcce7ea97769d17fae8cb99b750d423ed9aa3ba0c1641a574"
+    },
+    {
+      "path": "src/usv_nav2/usv_nav2/core.py",
+      "sha256": "f68751bef2c6698a1002f2ceb14b931cb7df56a7f6794bbc7a0769f4d5908213"
+    },
+    {
+      "path": "src/usv_nav2/usv_nav2/make_water_map.py",
+      "sha256": "b485456b735819403e312d57be9e4fe8c6670fe767a725a3c582e84eb7b4873d"
+    },
+    {
+      "path": "src/usv_nav2/usv_nav2/odom_tf.py",
+      "sha256": "d72b40d9b1ea0baaead4e3f8dbb49ee6dd1273d12f7771720eec2dd5d4846522"
+    },
+    {
+      "path": "src/usv_nav2/usv_nav2/rover_bridge.py",
+      "sha256": "8c2966d59729993e8b69b1e4029556b21bcfe6f75ec500ad00e368b8c56b1925"
+    }
+  ],
+  "notes": "Import baseline only. These hashes describe the original attachments, not future edited versions."
+}

@@ -1,0 +1,99 @@
+{
+  "ardupilot": "d0356316eb0fa34ed1c9f39f7b059b9ae7ba4664",
+  "ardupilot_gazebo": "80dc9664dda7efd6c5d1a71a79198d1d6b708c0e",
+  "vrx": "fd6a6d36f3fa25a3c34b3ee3e89987f24d31b7fe",
+  "debs": [
+    {
+      "package": "geographiclib-tools",
+      "version": "1.52-1",
+      "sha256": "eddaa48936a98db6e200156773a59bcad1e0429b8c525d164f935ebccd466981",
+      "file": "geographiclib-tools_1.52-1_amd64.deb"
+    },
+    {
+      "package": "libasio-dev",
+      "version": "1:1.18.1-1",
+      "sha256": "765fe7bff62134db942c00953544f62f483cebc6ccf2b9153fb6fd40570e6b9c",
+      "file": "libasio-dev_1%3a1.18.1-1_all.deb"
+    },
+    {
+      "package": "libgeographic-dev",
+      "version": "1.52-1",
+      "sha256": "33130034ffdf72478b89c996830a7411de7942027efc29e4b8ba76a6e6cedb12",
+      "file": "libgeographic-dev_1.52-1_amd64.deb"
+    },
+    {
+      "package": "libgeographic19",
+      "version": "1.52-1",
+      "sha256": "143c1b80105e2b72ad492de6e91abc5f26dbe0197e5e4f4ecedf4392d201ab83",
+      "file": "libgeographic19_1.52-1_amd64.deb"
+    },
+    {
+      "package": "python3-venv",
+      "version": "3.10.6-1~22.04.1",
+      "sha256": "ee8d678c61b0721aff196ab1320e41cf4f5ebe3fcd22363b82e22c733b105866",
+      "file": "python3-venv_3.10.6-1~22.04.1_amd64.deb"
+    },
+    {
+      "package": "rapidjson-dev",
+      "version": "1.1.0+dfsg2-7",
+      "sha256": "2213ce467305f09414007d345592a2b1a444d92ecfe2d1715aa522a34b67a8ca",
+      "file": "rapidjson-dev_1.1.0+dfsg2-7_all.deb"
+    },
+    {
+      "package": "ros-humble-diagnostic-updater",
+      "version": "4.0.7-1jammy.20260907.223805",
+      "sha256": "8687b9e56d001d02e622a8c62100e06ae277fe4209f0c32919cc9d3af3ea9ae0",
+      "file": "ros-humble-diagnostic-updater_4.0.7-1jammy.20260907.223805_amd64.deb"
+    },
+    {
+      "package": "ros-humble-eigen-stl-containers",
+      "version": "1.1.0-1jammy.20260304.090336",
+      "sha256": "77952df0a498a053bc848566e54f097f2aab3f4db884cf83bd04f90ab051ca10",
+      "file": "ros-humble-eigen-stl-containers_1.1.0-1jammy.20260304.090336_amd64.deb"
+    },
+    {
+      "package": "ros-humble-geographic-msgs",
+      "version": "1.0.6-1jammy.20260907.212142",
+      "sha256": "21ce6a2516aca5e21d1dbf02c20d02e95d6b675d59daa5264f4a0b290c5541fc",
+      "file": "ros-humble-geographic-msgs_1.0.6-1jammy.20260907.212142_amd64.deb"
+    },
+    {
+      "package": "ros-humble-libmavconn",
+      "version": "2.16.0-1jammy.20260927.163953",
+      "sha256": "9c259271f4566aeae16096dccd0dc33acd243e4d3b04c18da03abd14116fd498",
+      "file": "ros-humble-libmavconn_2.16.0-1jammy.20260927.163953_amd64.deb"
+    },
+    {
+      "package": "ros-humble-mavlink",
+      "version": "2026.9.9-1jammy.20260915.172642",
+      "sha256": "f71af99cc9df26673802a106a5c129b187b2da259b98e738b156d0278377958b",
+      "file": "ros-humble-mavlink_2026.9.9-1jammy.20260915.172642_amd64.deb"
+    },
+    {
+      "package": "ros-humble-mavros-extras",
+      "version": "2.16.0-1jammy.20260927.182157",
+      "sha256": "39da2de1a6ed0390e75d5ef794864364991fbc5e218293dad8845d2e1adc0723",
+      "file": "ros-humble-mavros-extras_2.16.0-1jammy.20260927.182157_amd64.deb"
+    },
+    {
+      "package": "ros-humble-mavros-msgs",
+      "version": "2.16.0-1jammy.20260927.164006",
+      "sha256": "11fa78ede130b27854bde12c3d662492328301a97c8e59892bb1af3ad794d5a3",
+      "file": "ros-humble-mavros-msgs_2.16.0-1jammy.20260927.164006_amd64.deb"
+    },
+    {
+      "package": "ros-humble-mavros",
+      "version": "2.16.0-1jammy.20260927.165913",
+      "sha256": "fa9d7b218e30bd21b93b05bb5fb50ec799f3c543a9a8f07d50e5cfbacb4c51e2",
+      "file": "ros-humble-mavros_2.16.0-1jammy.20260927.165913_amd64.deb"
+    },
+    {
+      "package": "ros-humble-pointcloud-to-laserscan",
+      "version": "2.0.1-3jammy.20260915.221044",
+      "sha256": "8fdf042150c2b35630476efffca7c96a430b1dbb9f99683a00f761d47d34fced",
+      "file": "ros-humble-pointcloud-to-laserscan_2.0.1-3jammy.20260915.221044_amd64.deb"
+    }
+  ],
+  "geoid_sha256": "c46224f8f723dc915d97179f4e1580a98d6c742fe2b82cd8fef0ecaaad13e614",
+  "livox_gz_sim": "4ca09c3876c2ae60c63f7507578ced57f638e236"
+}

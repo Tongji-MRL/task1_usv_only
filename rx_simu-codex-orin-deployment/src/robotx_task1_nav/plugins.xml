@@ -1,0 +1,12 @@
+<class_libraries>
+<library path="task1_nav">
+  <class name="robotx_task1_nav/RulePlanner" type="robotx_task1_nav::RulePlanner" base_class_type="nav2_core::GlobalPlanner"><description>Heading-aware Safe Passage planner.</description></class>
+  <class name="robotx_task1_nav::RuleCritic" type="robotx_task1_nav::RuleCritic" base_class_type="dwb_core::TrajectoryCritic"><description>Reject stale context and illegal passage sides.</description></class>
+  <class name="robotx_task1_nav::FullHullCritic" type="robotx_task1_nav::FullHullCritic" base_class_type="dwb_core::TrajectoryCritic"><description>Reject occupied cells inside the complete convex hull, including its interior.</description></class>
+  <class name="robotx_task1_nav/KnownBuoys" type="robotx_task1_nav::KnownBuoys" base_class_type="nav2_costmap_2d::Layer"><description>All observed buoy bodies, including OFF lights.</description></class>
+  <class name="robotx_task1_nav/TrafficLayer" type="robotx_task1_nav::TrafficLayer" base_class_type="nav2_costmap_2d::Layer"><description>Add inferred lethal traffic cells; preserve all preceding costs and unknown cells.</description></class>
+</library>
+<library path="task1_rotate">
+  <class name="robotx_task1_nav::RecoverableRotateCritic" type="robotx_task1_nav::RecoverableRotateCritic" base_class_type="dwb_core::TrajectoryCritic"><description>Reacquire position after drift outside the strict goal window.</description></class>
+</library>
+</class_libraries>

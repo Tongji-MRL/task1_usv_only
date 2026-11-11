@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Task 1 现场回放</title>
+<style>
+:root {
+  --bg: #f4f6f8; --panel: #ffffff; --ink: #1d2733; --muted: #66727f; --line: #d9dee4;
+  --water: #dfe9ee; --water-deep: #cfdde5; --grid: rgba(40,70,90,.07);
+  --buoy: #fbfbfa; --buoy-edge: #4a5560; --boat: #e8742a; --boat-edge: #8a3a0c;
+  --bad: #c23a2b; --good: #2c8a4b; --warn: #b7791f; --accent: #2b6cb0;
+  --red: #e0362c; --green: #1fae4b; --blue: #2f6fe8; --off: #7b858f;
+  --route: #2b6cb0; --sensor: rgba(43,108,176,.07); --fov: rgba(232,180,40,.18);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11161c; --panel: #192129; --ink: #e5eaef; --muted: #93a0ad; --line: #2b3640;
+    --water: #142530; --water-deep: #10202a; --grid: rgba(160,200,220,.06);
+    --buoy: #e9ecee; --buoy-edge: #9aa6b1; --route: #6aa6f0; --sensor: rgba(106,166,240,.08);
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink);
+  font: 14px/1.5 -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; }
+header { padding: 18px 24px 8px; }
+h1 { font-size: 20px; margin: 0 0 4px; }
+.sub { color: var(--muted); font-size: 13px; max-width: 1100px; }
+main { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 16px; padding: 12px 24px 24px; }
+@media (max-width: 960px) { main { grid-template-columns: minmax(0, 1fr); padding: 12px 16px; } header { padding: 16px; } }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+.stage { padding: 0; overflow: hidden; position: relative; }
+canvas { display: block; width: 100%; max-width: 100%; height: auto; touch-action: none; }
+.side { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+label.f { display: block; font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+select, button { font: inherit; color: var(--ink); background: var(--bg); border: 1px solid var(--line);
+  border-radius: 7px; padding: 6px 9px; }
+select { width: 100%; }
+button { cursor: pointer; }
+button.primary { background: var(--accent); color: #fff; border-color: transparent; min-width: 64px; }
+.controls { display: flex; gap: 8px; align-items: center; padding: 10px 14px; border-top: 1px solid var(--line); flex-wrap: wrap; }
+input[type=range] { flex: 1; min-width: 160px; accent-color: var(--accent); }
+.time { font-variant-numeric: tabular-nums; color: var(--muted); min-width: 92px; text-align: right; }
+.state { font-size: 18px; font-weight: 600; }
+.detail { color: var(--muted); font-size: 12px; word-break: break-word; min-height: 18px; }
+.kv { display: grid; grid-template-columns: auto 1fr; gap: 3px 12px; font-size: 13px; }
+.kv dt { color: var(--muted); } .kv dd { margin: 0; font-variant-numeric: tabular-nums; }
+.ok { color: var(--good); font-weight: 600; } .bad { color: var(--bad); font-weight: 600; } .warn { color: var(--warn); font-weight: 600; }
+.events { max-height: 230px; overflow: auto; font-size: 12.5px; margin: 0; padding: 0; list-style: none; }
+.events li { padding: 3px 4px; border-radius: 5px; cursor: pointer; display: flex; gap: 8px; }
+.events li:hover { background: var(--bg); }
+.events li.future { opacity: .38; }
+.events .t { color: var(--muted); font-variant-numeric: tabular-nums; min-width: 46px; }
+table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+td, th { padding: 2px 4px; text-align: left; border-bottom: 1px solid var(--line); }
+th { color: var(--muted); font-weight: 500; }
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; vertical-align: -1px; margin-right: 5px; border: 1px solid rgba(0,0,0,.25); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12px; color: var(--muted); padding: 10px 14px; border-top: 1px solid var(--line); }
+.legend span { white-space: nowrap; }
+h2 { font-size: 13px; margin: 0 0 8px; color: var(--muted); font-weight: 600; }
+.note { font-size: 12px; color: var(--muted); }
+.note li { margin: 2px 0; }
+</style>
+</head>
+<body>
+<header>
+  <h1 id="title"></h1>
+  <div class="sub" id="subtitle"></div>
+</header>
+<main>
+  <section class="card stage">
+    <canvas id="map" width="1200" height="900"></canvas>
+    <div class="controls">
+      <button class="primary" id="play">播放</button>
+      <select id="speed" style="width:auto"><option value="2">2×</option><option value="5" selected>5×</option><option value="15">15×</option><option value="40">40×</option></select>
+      <input type="range" id="scrub" min="0" max="1000" value="0">
+      <span class="time" id="clock">0.0 s</span>
+    </div>
+    <div class="legend" id="legend"></div>
+  </section>
+  <aside class="side">
+    <div class="card">
+      <label class="f" for="scenario">灯态组合与起点</label>
+      <select id="scenario"></select>
+    </div>
+    <div class="card">
+      <div class="state" id="state">—</div>
+      <div class="detail" id="detail"></div>
+      <dl class="kv" style="margin-top:8px">
+        <dt>指令</dt><dd id="cmd">—</dd>
+        <dt>已建路标</dt><dd id="seen">—</dd>
+      </dl>
+    </div>
+    <div class="card">
+      <h2>本场景判定（独立裁判）</h2>
+      <dl class="kv" id="verdict"></dl>
+    </div>
+    <div class="card">
+      <h2>事件</h2>
+      <ul class="events" id="events"></ul>
+    </div>
+    <div class="card">
+      <h2>船上地图 vs 真值</h2>
+      <table id="lm"><thead><tr><th>路标</th><th>浮标</th><th>船上判定</th><th>真值</th></tr></thead><tbody></tbody></table>
+    </div>
+    <div class="card note">
+      <h2>地图说明</h2>
+      <ul style="margin:0;padding-left:18px">
+        <span id="notes"></span>
+        <li>最窄的净空：<span id="nearest"></span></li>
+      </ul>
+    </div>
+  </aside>
+</main>
+<script>
+const DATA=/*DATA*/null;
+const STATE_CN = {WAIT_START:'等待开始', SEARCH_ENTRY:'寻找入口', SEARCH_EXIT:'寻找出口', PLAN:'规划', LOOK:'停船识色',
+  ALIGN:'对准缝隙', THREAD:'穿越缝隙', TRANSIT:'航行', APPROACH_ENTRY:'驶向入口', APPROACH_EXIT:'驶向出口',
+  CIRCLE_ENTRY:'顺时针绕入口', CIRCLE_EXIT:'逆时针绕出口', HOLD:'暂停', COMPLETE:'完成', ABORT:'中止'};
+const PHASE_COLOR = {SEARCH_ENTRY:'#8a96a3', SEARCH_EXIT:'#8a96a3', PLAN:'#8a96a3', LOOK:'#8b5cf6', ALIGN:'#d69e2e',
+  THREAD:'#dd6b20', TRANSIT:'#319795', APPROACH_ENTRY:'#319795', APPROACH_EXIT:'#319795', CIRCLE_ENTRY:'#3182ce',
+  CIRCLE_EXIT:'#3182ce', HOLD:'#c23a2b', COMPLETE:'#2c8a4b', ABORT:'#c23a2b'};
+const LAMP = ['off','red','green','blue','blue'];
+const STATE_NAME = ['灭','闪红','闪绿','闪蓝(入口)','常蓝(出口)','未识别'];
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const $ = id => document.getElementById(id);
+const canvas = $('map'), ctx = canvas.getContext('2d');
+let run = null, idx = 0, playing = false, last = 0, view = null;
+
+function bounds() {
+  const pts = Object.values(DATA.field.corners);
+  run.frames.forEach(f => pts.push([f[1], f[2]]));
+  const xs = pts.map(p => p[0]), ys = pts.map(p => p[1]);
+  return [Math.min(...xs)-1.5, Math.max(...xs)+1.5, Math.min(...ys)-2.0, Math.max(...ys)+1.5];
+}
+function fit() {
+  const rect = canvas.getBoundingClientRect(), dpr = window.devicePixelRatio || 1;
+  const [x0, x1, y0, y1] = bounds();
+  const w = rect.width, h = Math.min(w*(y1-y0)/(x1-x0), window.innerHeight*0.78);
+  canvas.style.height = h+'px';
+  canvas.width = Math.round(w*dpr); canvas.height = Math.round(h*dpr);
+  const s = Math.min(w/(x1-x0), h/(y1-y0));
+  view = {s: s*dpr, ox: (w-(x1-x0)*s)/2*dpr - x0*s*dpr, oy: (h-(y1-y0)*s)/2*dpr + y1*s*dpr, dpr};
+}
+const X = x => view.ox + x*view.s, Y = y => view.oy - y*view.s, M = m => m*view.s;
+
+function frameAt(t) { let lo = 0, hi = run.frames.length-1; while (lo < hi) { const m = (lo+hi+1)>>1; if (run.frames[m][0] <= t) lo = m; else hi = m-1; } return lo; }
+function latest(list, t) { let found = null; for (const item of list) { if (item[0] <= t) found = item; else break; } return found; }
+function lit(state, t) { return state === 4 || (state >= 1 && state <= 3 && Math.floor(t) % 2 === 0); }
+
+function drawBuoy(x, y, label, lampState, t, scale=1, hollow=false) {
+  const r = M(0.26*scale);
+  ctx.save(); ctx.translate(X(x), Y(y));
+  ctx.fillStyle = css('--buoy'); ctx.strokeStyle = css('--buoy-edge'); ctx.lineWidth = 1.2*view.dpr;
+  ctx.beginPath(); ctx.moveTo(0, -r*1.25); ctx.lineTo(r*1.1, r*0.8); ctx.lineTo(-r*1.1, r*0.8); ctx.closePath();
+  ctx.fill(); ctx.stroke();
+  if (lampState !== null) {
+    const on = lit(lampState, t), color = css('--'+LAMP[lampState]);
+    if (on) { ctx.shadowColor = color; ctx.shadowBlur = 14*view.dpr; }
+    ctx.fillStyle = on ? color : (lampState === 0 ? css('--off') : '#555c63');
+    ctx.beginPath(); ctx.arc(0, -r*1.25, Math.max(M(0.11), 3*view.dpr), 0, Math.PI*2); ctx.fill();
+    ctx.shadowBlur = 0;
+  }
+  ctx.fillStyle = '#1d2733'; ctx.font = `600 ${Math.max(10, M(0.3*scale))}px sans-serif`;
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(label, 0, r*0.25);
+  ctx.restore();
+}
+
+function draw() {
+  const t = run.frames[idx][0], f = run.frames[idx];
+  ctx.fillStyle = css('--water'); ctx.fillRect(0, 0, canvas.width, canvas.height);
+  // 1 m grid
+  ctx.strokeStyle = css('--grid'); ctx.lineWidth = 1;
+  const [x0, x1, y0, y1] = bounds();
+  for (let gx = Math.ceil(x0); gx <= x1; gx++) { ctx.beginPath(); ctx.moveTo(X(gx), Y(y0)); ctx.lineTo(X(gx), Y(y1)); ctx.stroke(); }
+  for (let gy = Math.ceil(y0); gy <= y1; gy++) { ctx.beginPath(); ctx.moveTo(X(x0), Y(gy)); ctx.lineTo(X(x1), Y(gy)); ctx.stroke(); }
+  // boundary
+  const c = DATA.field.corners, order = ['A','D','C','B'];
+  ctx.setLineDash([8*view.dpr, 6*view.dpr]); ctx.strokeStyle = css('--muted'); ctx.lineWidth = 1.5*view.dpr;
+  ctx.beginPath(); order.forEach((k, i) => i ? ctx.lineTo(X(c[k][0]), Y(c[k][1])) : ctx.moveTo(X(c[k][0]), Y(c[k][1]))); ctx.closePath(); ctx.stroke();
+  ctx.setLineDash([2*view.dpr, 5*view.dpr]); ctx.globalAlpha = .6;
+  ctx.beginPath(); DATA.field.boundary.forEach((p, i) => i ? ctx.lineTo(X(p[0]), Y(p[1])) : ctx.moveTo(X(p[0]), Y(p[1]))); ctx.closePath(); ctx.stroke();
+  ctx.setLineDash([]); ctx.globalAlpha = 1;
+  // structures (Task 3 platform or dock)
+  DATA.field.structures.forEach(poly => {
+    ctx.fillStyle = '#2a3036'; ctx.beginPath();
+    poly.forEach(([x, y], i) => i ? ctx.lineTo(X(x), Y(y)) : ctx.moveTo(X(x), Y(y))); ctx.closePath(); ctx.fill();
+  });
+  const allPts = DATA.field.structures.flat();
+  if (allPts.length) {
+    const sx = allPts.reduce((s, p) => s+p[0], 0)/allPts.length, sy = Math.min(...allPts.map(p => p[1]));
+    ctx.fillStyle = css('--muted'); ctx.font = `${11*view.dpr}px sans-serif`; ctx.textAlign = 'center';
+    ctx.fillText(DATA.meta.structure, X(sx), Y(sy)+14*view.dpr);
+  }
+  // obstacle cells the vessel has confirmed from its LiDAR
+  const cellSnap = latest(run.cells || [], t);
+  ctx.strokeStyle = css('--boat'); ctx.lineWidth = 1.2*view.dpr;
+  (cellSnap ? cellSnap[1] : []).forEach(([cx, cy]) => ctx.strokeRect(X(cx-0.22), Y(cy+0.22), M(0.44), M(0.44)));
+  // shore hint
+  if (DATA.meta.structure === 'Task 3 平台') ctx.fillText('↓ 岸边 / 拍摄位置', X((x0+x1)/2), canvas.height-8*view.dpr);
+  // trail coloured by phase
+  ctx.lineWidth = 2.4*view.dpr; ctx.lineCap = 'round';
+  for (let i = 1; i <= idx; i++) {
+    const a = run.frames[i-1], b = run.frames[i];
+    ctx.strokeStyle = PHASE_COLOR[b[6]] || '#888';
+    ctx.beginPath(); ctx.moveTo(X(a[1]), Y(a[2])); ctx.lineTo(X(b[1]), Y(b[2])); ctx.stroke();
+  }
+  // sensors
+  const [bx, by, yaw] = [f[1], f[2], f[3]];
+  ctx.fillStyle = css('--sensor'); ctx.beginPath(); ctx.arc(X(bx), Y(by), M(DATA.params.lidar_range), 0, Math.PI*2); ctx.fill();
+  const fov = DATA.params.half_fov*Math.PI/180;
+  ctx.fillStyle = css('--fov'); ctx.beginPath(); ctx.moveTo(X(bx), Y(by));
+  ctx.arc(X(bx), Y(by), M(DATA.params.color_range), -(yaw+fov), -(yaw-fov)); ctx.closePath(); ctx.fill();
+  // planned route
+  const route = latest(run.routes, t);
+  if (route && t - route[0] < 60) {
+    ctx.strokeStyle = css('--route'); ctx.setLineDash([3*view.dpr, 5*view.dpr]); ctx.lineWidth = 1.6*view.dpr;
+    ctx.beginPath(); ctx.moveTo(X(bx), Y(by)); route[1].forEach(w => ctx.lineTo(X(w[0]), Y(w[1]))); ctx.stroke(); ctx.setLineDash([]);
+    route[1].forEach(w => { ctx.fillStyle = css('--route'); ctx.beginPath(); ctx.arc(X(w[0]), Y(w[1]), w[2] === 'mid' ? 3.5*view.dpr : 2.5*view.dpr, 0, Math.PI*2); ctx.fill(); });
+  }
+  if (f[8]) { ctx.strokeStyle = css('--boat'); ctx.lineWidth = 1.5*view.dpr; const [tx, ty] = f[8];
+    ctx.beginPath(); ctx.moveTo(X(tx)-6*view.dpr, Y(ty)); ctx.lineTo(X(tx)+6*view.dpr, Y(ty)); ctx.moveTo(X(tx), Y(ty)-6*view.dpr); ctx.lineTo(X(tx), Y(ty)+6*view.dpr); ctx.stroke(); }
+  // corners and task buoys (truth)
+  for (const [k, p] of Object.entries(c)) drawBuoy(p[0], p[1], k, null, t, 1.1);
+  for (const [k, p] of Object.entries(DATA.field.markers || {})) drawBuoy(p[0], p[1], k, null, t, 1.0);
+  run.truth.forEach(b => drawBuoy(b.x, b.y, b.id, b.state, t));
+  // the vessel's own map
+  const snap = latest(run.maps, t);
+  (snap ? snap[1] : []).forEach(([id, x, y, st]) => {
+    ctx.lineWidth = 2*view.dpr;
+    if (st === 5) { ctx.setLineDash([4*view.dpr, 4*view.dpr]); ctx.strokeStyle = css('--muted'); }
+    else ctx.strokeStyle = st === 0 ? css('--off') : css('--'+LAMP[st]);
+    ctx.beginPath(); ctx.arc(X(x), Y(y), M(0.62), 0, Math.PI*2); ctx.stroke(); ctx.setLineDash([]);
+  });
+  // boat
+  ctx.save(); ctx.translate(X(bx), Y(by)); ctx.rotate(-yaw);
+  const L = M(1.2), B = M(0.7);
+  ctx.fillStyle = css('--boat'); ctx.strokeStyle = css('--boat-edge'); ctx.lineWidth = 1.2*view.dpr;
+  ctx.beginPath(); ctx.moveTo(L*0.55, 0); ctx.lineTo(L*0.25, -B/2); ctx.lineTo(-L*0.45, -B/2); ctx.lineTo(-L*0.45, B/2); ctx.lineTo(L*0.25, B/2); ctx.closePath();
+  ctx.fill(); ctx.stroke(); ctx.restore();
+}
+
+function panel() {
+  const f = run.frames[idx], t = f[0];
+  $('clock').textContent = `${t.toFixed(1)} / ${run.time.toFixed(0)} s`;
+  $('state').textContent = STATE_CN[f[6]] || f[6];
+  $('state').style.color = PHASE_COLOR[f[6]] || '';
+  $('detail').textContent = run.details[f[7]];
+  $('cmd').textContent = `前进 ${f[4].toFixed(2)} m/s，转向 ${f[5].toFixed(2)} rad/s`;
+  const snap = latest(run.maps, t), list = snap ? snap[1] : [];
+  $('seen').textContent = `${list.length} 个，已识别 ${list.filter(m => m[3] !== 5).length} 个`;
+  const truth = Object.fromEntries(run.truth.map(b => [b.id, b.state]));
+  $('lm').tBodies[0].innerHTML = list.map(([id, , , st]) => {
+    const real = run.names[id], tst = truth[real], same = st === 5 ? '' : (st === tst ? 'ok' : 'bad');
+    const dot = s => s === 5 ? '<span class="dot" style="background:transparent;border-style:dashed"></span>' :
+      `<span class="dot" style="background:${s === 0 ? css('--off') : css('--'+LAMP[s])}"></span>`;
+    return `<tr><td>${id}</td><td>${real}</td><td class="${same}">${dot(st)}${STATE_NAME[st]}</td><td>${dot(tst)}${STATE_NAME[tst]}</td></tr>`;
+  }).join('');
+  [...$('events').children].forEach(li => li.classList.toggle('future', +li.dataset.t > t));
+  $('scrub').value = Math.round(1000*idx/(run.frames.length-1));
+}
+
+function eventText(e) {
+  const n = id => run.names[id] ?? id;
+  return ({started:'开始任务', entry_found:`发现入口 ${n(e.id)}`, exit_found:`发现出口 ${n(e.id)}`,
+    circle_entry_done:`入口 ${n(e.id)} 顺时针绕圈完成`, circle_exit_done:`出口 ${n(e.id)} 逆时针绕圈完成`,
+    gap_passed:`穿过缝隙：左舷 ${n(e.port)} | 右舷 ${n(e.starboard)}`,
+    credit:`计分：${e.item === 'green_to_port' ? '绿灯在左舷' : '红灯在右舷'}（${n(e.id)}）`,
+    wrong_side:`错侧：${n(e.id)} 在${e.side === 'port' ? '左' : '右'}舷`, no_scoring_gate:'当前地图没有可用的红绿门',
+    gate_unreachable:'这个红绿门暂时到不了，换下一个', field_entered_before_entry:'入口在浮标区内，绕圈前不得不进入',
+    look_too_far:`${n(e.id)} 暂时够不着，稍后再看`, entry_not_found:'附近没有入口，继续巡查', exit_not_found:'附近没有出口，继续搜索', assumed_off:`${n(e.id)} 多次看不到亮灯，按灭灯处理`,
+    look_from_afar:`远距观察 ${n(e.id)}`, complete:'任务完成', abort:`中止：${e.reason}`, hold:'输入过期，暂停',
+    resumed:'恢复', no_route:'暂时没有合法路线', blocked:'前方停车框被占', recrossing_allowed:'允许回穿已过缝隙',
+    circle_not_clear:`${n(e.id)} 周围净空不足`})[e.type] || e.type;
+}
+
+function verdict() {
+  const v = run.verdict, cls = (ok, warnOnly) => ok ? 'ok' : (warnOnly ? 'warn' : 'bad');
+  const circleBad = v.circle_abeam.filter(e => !e[2]);
+  const sc = v.score, it = sc.items;
+  const rows = [
+    ['结果', `<span class="${cls(run.final === 'COMPLETE')}">${STATE_CN[run.final]}</span>，${run.time.toFixed(0)} s`],
+    ['Core 估分', `<span class="${cls(sc.total === sc.possible, sc.total >= sc.possible-100)}">${sc.total} / ${sc.possible}</span>（心跳按已得计）`],
+    ['· 上报入口/出口', `${it.report_entry+it.report_exit} / 20`],
+    ['· 上报绿/红位置', `${it.report_green} + ${it.report_red}`],
+    ['· 顺时针绕入口 / 逆时针绕出口', `${it.circle_entry} / ${it.circle_exit}`],
+    ['· 只左舷过绿 / 只右舷过红', `${it.green_only_port} / ${it.red_only_starboard}`],
+    ['· 全成奖励', `${it.bonus}`],
+    ['绕入口前在浮标区内', sc.field_before_entry_s ? `<span class="warn">${sc.field_before_entry_s} s</span>` : '<span class="ok">0 s</span>'],
+    ['错侧通过（计分段）', v.wrong.length ? `<span class="bad">${v.wrong.map(w => w[0]+(w[1]==='port'?' 在左舷':' 在右舷')).join('，')}</span>` : '<span class="ok">0</span>'],
+    ['正确通过（含绕圈前）', v.legal.length ? [...new Set(v.legal.map(w => w[0]+(w[1]==='port'?'左':'右')))].join('、') : '—'],
+    ['未识别就到正横（计分段）', v.blind.length ? `<span class="bad">${v.blind.join('、')}</span>` : '<span class="ok">无</span>'],
+    ['离浮标最近（船体边缘）', `<span class="${cls(v.clearance > 0.15, v.clearance > 0)}">${v.clearance.toFixed(2)} m</span>`],
+    [`离${DATA.meta.structure.slice(7)}最近（船体边缘）`, `<span class="${cls(v.platform_gap > 0.3, false)}">${v.platform_gap < 0 ? '碰撞' : v.platform_gap.toFixed(2)+' m'}</span>`],
+    ['驶出边界', v.outside_boundary_s ? `<span class="bad">${v.outside_boundary_s} s</span>` : '<span class="ok">否</span>'],
+    ['绕圈时红绿在错侧正横', circleBad.length ? `<span class="warn">${circleBad.map(e => e[0]).join('、')}</span>（规则待裁判确认）` : '无'],
+  ];
+  $('verdict').innerHTML = rows.map(([k, val]) => `<dt>${k}</dt><dd>${val}</dd>`).join('');
+}
+
+function load(i) {
+  run = DATA.runs[i]; idx = 0; playing = false; $('play').textContent = '播放';
+  $('events').innerHTML = run.events.map(e => `<li data-t="${e.time}"><span class="t">${e.time.toFixed(1)}s</span><span>${eventText(e)}</span></li>`).join('');
+  [...$('events').children].forEach(li => li.onclick = () => { idx = frameAt(+li.dataset.t); render(); });
+  fit(); verdict(); render();
+}
+function render() { draw(); panel(); }
+
+function tick(now) {
+  if (playing) {
+    const dt = (now - last)/1000*+$('speed').value, target = run.frames[idx][0] + dt;
+    idx = frameAt(target);
+    if (idx >= run.frames.length-1) { playing = false; $('play').textContent = '播放'; }
+    render();
+  }
+  last = now; requestAnimationFrame(tick);
+}
+
+$('scenario').innerHTML = DATA.runs.map((r, i) => {
+  const v = r.verdict, flags = [r.final !== 'COMPLETE' ? '未完成' : '', v.wrong.length ? '错侧' : '', v.score.total < v.score.possible ? `${v.score.total}分` : '', v.platform_gap < 0 ? '碰'+DATA.meta.structure.slice(7) : ''].filter(Boolean);
+  return `<option value="${i}">${r.name}${flags.length ? '  ⚠ '+flags.join('/') : ''}</option>`;
+}).join('');
+$('scenario').onchange = e => load(+e.target.value);
+$('play').onclick = () => { if (idx >= run.frames.length-1) idx = 0; playing = !playing; $('play').textContent = playing ? '暂停' : '播放'; };
+$('scrub').oninput = e => { idx = Math.round(+e.target.value/1000*(run.frames.length-1)); render(); };
+document.addEventListener('keydown', e => { if (e.code === 'Space' && e.target.tagName !== 'SELECT') { e.preventDefault(); $('play').click(); } });
+window.addEventListener('resize', () => { fit(); render(); });
+$('title').textContent = DATA.meta.title; document.title = DATA.meta.title.split(' · ').pop();
+$('subtitle').innerHTML = DATA.meta.subtitle + ' 船、雷达和相机都是简化模型，回放的是<b>任务代码的决策</b>，不是控制或识别效果。';
+$('notes').outerHTML = DATA.meta.notes.map(n => `<li>${n}</li>`).join('') +
+  '<li>四个字母浮标是边界；建图节点只接受边界内、离角浮标 1 m 以外的聚类，所以它们不占 10 个路标名额。</li>' +
+  `<li>${DATA.meta.structure}在雷达里是大于 1 m 的目标，不当作浮标，而是记成 0.5 m 障碍格交给规划器（橙色方格）。</li>`;
+$('nearest').textContent = DATA.field.nearest.map(([a, b, d]) => `${a}–${b} ${d.toFixed(2)} m`).join('，');
+$('legend').innerHTML = [['#8a96a3','搜索/规划'],['#8b5cf6','停船识色'],['#d69e2e','对准'],['#dd6b20','穿缝'],['#319795','航行'],['#3182ce','绕圈']]
+  .map(([c, t]) => `<span><span class="dot" style="background:${c}"></span>${t}</span>`).join('') +
+  '<span>橙色方格：船建出的障碍栅格</span><span>虚线圈：船上地图（灰=未识别）</span><span>蓝点虚线：当前规划路线</span><span>浅蓝圆：雷达 '+DATA.params.lidar_range+' m</span><span>黄扇形：相机识色 '+DATA.params.color_range+' m</span>';
+load(0);
+requestAnimationFrame(tick);
+</script>
+</body>
+</html>

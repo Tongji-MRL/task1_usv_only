@@ -1,0 +1,137 @@
+diff --git a/src/ArduPilotPlugin.cc b/src/ArduPilotPlugin.cc
+index 78c0e20..e73960e 100755
+--- a/src/ArduPilotPlugin.cc
++++ b/src/ArduPilotPlugin.cc
+@@ -21,6 +21,7 @@
+ 
+ #include <gz/msgs/imu.pb.h>
+ #include <gz/msgs/laserscan.pb.h>
++#include <gz/msgs/uint32.pb.h>
+ 
+ #include <algorithm>
+ #include <chrono>
+@@ -198,6 +199,7 @@ class gz::sim::systems::ArduPilotPluginPrivate
+ {
+   /// \brief The model
+   public: gz::sim::Model model{gz::sim::kNullEntity};
++  public: gz::transport::Node::Publisher framePublisher;
+ 
+   /// \brief The entity representing the link containing the imu sensor.
+   public: gz::sim::Entity imuLink{gz::sim::kNullEntity};
+@@ -504,6 +506,11 @@ void gz::sim::systems::ArduPilotPlugin::Configure(
+   {
+     return;
+   }
++  if (sdfClone->HasElement("servo_frame_topic"))
++  {
++    this->dataPtr->framePublisher = this->dataPtr->node.Advertise<msgs::UInt32>(
++      sdfClone->Get<std::string>("servo_frame_topic"));
++  }
+ 
+   // Missed update count before we declare arduPilotOnline status false
+   this->dataPtr->connectionTimeoutMaxCount =
+@@ -1258,6 +1265,12 @@ void gz::sim::systems::ArduPilotPlugin::ResetPIDs()
+   for (size_t i = 0; i < this->dataPtr->controls.size(); ++i)
+   {
+     this->dataPtr->controls[i].cmd = 0;
++    if (this->dataPtr->controls[i].type == "COMMAND")
++    {
++      msgs::Double stop;
++      stop.set_data(0.0);
++      this->dataPtr->controls[i].pub.Publish(stop);
++    }
+     // this->dataPtr->controls[i].pid.Reset();
+   }
+ }
+@@ -1487,12 +1500,12 @@ bool gz::sim::systems::ArduPilotPlugin::ReceiveServoPacket()
+     // 16 / 32 channel compatibility
+     uint16_t pkt_magic{0};
+     uint16_t pkt_frame_rate{0};
+-    uint16_t pkt_frame_count{0};
+-    std::array<uint16_t, 32> pkt_pwm;
++    uint32_t pkt_frame_count{0};
++    std::array<uint16_t, 32> pkt_pwm{};
+     ssize_t recvSize{-1};
+     if (this->dataPtr->have32Channels)
+     {
+-      servo_packet_32 pkt;
++      servo_packet_32 pkt{};
+       recvSize = getServoPacket(
+           this->dataPtr->sock,
+           this->dataPtr->fcu_address,
+@@ -1507,7 +1520,7 @@ bool gz::sim::systems::ArduPilotPlugin::ReceiveServoPacket()
+     }
+     else
+     {
+-      servo_packet_16 pkt;
++      servo_packet_16 pkt{};
+       recvSize = getServoPacket(
+           this->dataPtr->sock,
+           this->dataPtr->fcu_address,
+@@ -1568,12 +1581,22 @@ bool gz::sim::systems::ArduPilotPlugin::ReceiveServoPacket()
+     gzdbg << "\n" << oss.str();
+ #endif
+ 
++    // Reject truncated datagrams before using their PWM values.
++    const auto expectedSize = this->dataPtr->have32Channels ?
++      sizeof(servo_packet_32) : sizeof(servo_packet_16);
++    if (recvSize != static_cast<ssize_t>(expectedSize))
++    {
++      this->ResetPIDs();
++      return false;
++    }
++
+     // check magic, return if invalid
+     constexpr uint16_t magic_16 = 18458;
+     constexpr uint16_t magic_32 = 29569;
+     uint16_t magic = this->dataPtr->have32Channels ? magic_32 : magic_16;
+     if (magic != pkt_magic)
+     {
++        this->ResetPIDs();
+         gzwarn << "Incorrect protocol magic "
+             << pkt_magic << " should be "
+             << magic << "\n";
+@@ -1626,6 +1649,12 @@ bool gz::sim::systems::ArduPilotPlugin::ReceiveServoPacket()
+ 
+     // update frame count
+     this->dataPtr->fcu_frame_count = pkt_frame_count;
++    if (this->dataPtr->framePublisher && pkt_frame_count % 250U == 0)
++    {
++      msgs::UInt32 frame;
++      frame.set_data(pkt_frame_count);
++      this->dataPtr->framePublisher.Publish(frame);
++    }
+ 
+     // reset the connection timeout so we don't accumulate
+     this->dataPtr->connectionTimeoutCount = 0;
+@@ -1657,10 +1686,12 @@ void gz::sim::systems::ArduPilotPlugin::UpdateMotorCommands(
+                 const double multiplier = this->dataPtr->controls[i].multiplier;
+                 const double offset = this->dataPtr->controls[i].offset;
+ 
+-                // pwm = 0 => no servo output.
+-                if (_pwm[this->dataPtr->controls[i].channel] == 0)
++                // Disabled or out-of-range PWM must not retain/saturate thrust.
++                if (pwm == 0 || pwm < pwm_min || pwm > pwm_max || pwm_max <= pwm_min)
+                 {
+-                  this->dataPtr->controls[i].outputReady = false;
++                  // COMMAND consumers retain their last message, so send zero.
++                  this->dataPtr->controls[i].outputReady =
++                    this->dataPtr->controls[i].type == "COMMAND";
+                   this->dataPtr->controls[i].cmd = 0.0;
+ #if 0
+                   gzdbg << "apply input chan["
+@@ -2011,11 +2042,12 @@ void gz::sim::systems::ArduPilotPlugin::CreateStateJSON(
+ 
+     // Set no time sync
+     writer.Key("no_time_sync");
+-    writer.Bool(this->dataPtr->isNoTimeSync);
++    // ArduRover 4.4 parses DATA_BOOLEAN with strtoull, requiring 0/1.
++    writer.Int(this->dataPtr->isNoTimeSync ? 1 : 0);
+ 
+     // Set no lockstep
+     writer.Key("no_lockstep");
+-    writer.Bool(!this->dataPtr->isLockStep);
++    writer.Int(this->dataPtr->isLockStep ? 0 : 1);
+ 
+     writer.EndObject();
+ 

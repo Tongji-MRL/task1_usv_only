@@ -1,0 +1,189 @@
+{
+  "root": "/home/zjy/vrx_docking",
+  "files": {
+    "install/vrx_gz/lib/libPublisherPlugin.so": {
+      "bytes": 868208,
+      "sha256": "a0bd4692f003dd6a9a0983cc52fe5d7a46938555f2bfd7a2f6d2fcc676f6176c"
+    },
+    "install/vrx_gz/lib/libSimpleHydrodynamics.so": {
+      "bytes": 1090432,
+      "sha256": "c66e1a498dd220f19ffd7dfc1c88415f31010dadc2e90508458aba751c8685b3"
+    },
+    "install/vrx_gz/lib/libSurface.so": {
+      "bytes": 1497192,
+      "sha256": "30dcbb109c88de2509b386a4e97d416204e0f2b6e6b00a5890ee1054f31e9337"
+    },
+    "install/vrx_gz/lib/libUSVWind.so": {
+      "bytes": 1523352,
+      "sha256": "bf7c80c787c911d8fffae9e35cc515b6d3cd44d95f7cb8902701f77c998b4f76"
+    },
+    "vrx_gz/models/coast_waves/materials/programs/GerstnerWaves_fs_330.glsl": {
+      "bytes": 2159,
+      "sha256": "83efd5e8b858773f0248512460a5910467abf729983536a1db2f5628cfd56cbd"
+    },
+    "vrx_gz/models/coast_waves/materials/programs/GerstnerWaves_vs_330.glsl": {
+      "bytes": 4097,
+      "sha256": "2b9be7918f3793c0453a9627ff8605c7d030c0157dbfde608905f9ccbd36ad7c"
+    },
+    "vrx_gz/models/coast_waves/materials/textures/skybox_lowres.dds": {
+      "bytes": 786560,
+      "sha256": "62cbed0ceaa102620bd0857ec8e17b72ca1c7f364870c407cacdbe99c470fc0c"
+    },
+    "vrx_gz/models/coast_waves/materials/textures/wave_normals.dds": {
+      "bytes": 262271,
+      "sha256": "943b5d189997f460ff8d4a35f5259d36809a5c6669a440d99b4f8b5abe0d8e4b"
+    },
+    "vrx_gz/models/coast_waves/meshes/waterlow.dae": {
+      "bytes": 13323357,
+      "sha256": "91e96edd71fde67753adedf6d103b6c803c74011be6ec3cf41202cf963db99b5"
+    },
+    "vrx_gz/models/coast_waves/model.config": {
+      "bytes": 254,
+      "sha256": "3f1eebbfaa2977e506fa7adc3e8f522414380f208e07b8c15ce91113de3a8725"
+    },
+    "vrx_gz/models/coast_waves/model.sdf": {
+      "bytes": 1118,
+      "sha256": "7548cc7b6da125951e64d1ded5a3c3e5b26b5cdbd8c963fddbcce2482b8621e4"
+    },
+    "vrx_gz/models/dock_2026_safe/model.config": {
+      "bytes": 362,
+      "sha256": "cf16f9ce393a5f7e772341d2e19de9de75f19016adbbe119b352baa0b9736d0b"
+    },
+    "vrx_gz/models/dock_2026_safe/model.sdf": {
+      "bytes": 5016,
+      "sha256": "0f1f014914fd52e3db4d636dbdedc13ed34dfff544b808e37555d20c8ebf2ae1"
+    },
+    "vrx_gz/worlds/safe_docking_task.sdf": {
+      "bytes": 17298,
+      "sha256": "c1ee147d78d9a69a9d6c0404d061b8f6b318ef36599679b22cb1b28b97bde51b"
+    },
+    "vrx_urdf/wamv_description/models/propeller/model.config": {
+      "bytes": 299,
+      "sha256": "dce74ea700bb90297d45197b08f00b876a5cc5fcf6645f443db4aab16f0be556"
+    },
+    "vrx_urdf/wamv_description/models/propeller/mesh/propeller.dae": {
+      "bytes": 26446,
+      "sha256": "4b6e1e4f1be65d918e44b03ad3604d7c02897b3b932939a8e982eee98ae0681b"
+    },
+    "vrx_urdf/wamv_description/models/WAM-V-Base/model.config": {
+      "bytes": 299,
+      "sha256": "dce74ea700bb90297d45197b08f00b876a5cc5fcf6645f443db4aab16f0be556"
+    },
+    "vrx_urdf/wamv_description/models/WAM-V-Base/mesh/WamV.png": {
+      "bytes": 1959532,
+      "sha256": "86d4559a75f41e35b7f0c6c6e86f014742ee96cd8d5a742051a711d466cad477"
+    },
+    "vrx_urdf/wamv_description/models/WAM-V-Base/mesh/WAM-V_Albedo.png": {
+      "bytes": 6636672,
+      "sha256": "125c882f7575e983f81f8d59b469a1f62fc691d5923d5eee976aaed2a14d6126"
+    },
+    "vrx_urdf/wamv_description/models/WAM-V-Base/mesh/WAM-V-Base.dae": {
+      "bytes": 911707,
+      "sha256": "be985f3bbf9d178ab9e6ab627c2a41cf16c00b18528840fb1f133d9aa7c9ff1d"
+    },
+    "vrx_urdf/wamv_description/models/WAM-V-Base/mesh/WAM-V_Roughness.png": {
+      "bytes": 3134399,
+      "sha256": "0234c9b48e76c46ceec977934974e880c2b99e6886e5df14b9ead5bb84e16500"
+    },
+    "vrx_urdf/wamv_description/models/WAM-V-Base/mesh/WAM-V_Normal.png": {
+      "bytes": 5036763,
+      "sha256": "e95d4f8b5b00772215868e1e7f8d09bced6522ca2409b23142863ac036a45e99"
+    },
+    "vrx_urdf/wamv_description/models/WAM-V-Base/mesh/WAM-V_Metalness.png": {
+      "bytes": 240962,
+      "sha256": "2b898b4a75b620359f5903deef8e1bc6b7d91b9f513adc531df40bed8e48a6dd"
+    },
+    "vrx_urdf/wamv_description/models/engine/model.config": {
+      "bytes": 299,
+      "sha256": "dce74ea700bb90297d45197b08f00b876a5cc5fcf6645f443db4aab16f0be556"
+    },
+    "vrx_urdf/wamv_description/models/engine/mesh/engine.dae": {
+      "bytes": 39419,
+      "sha256": "210cb1473844403f6289163f30c42295d77d399968ef8529e2fcd33855adfd01"
+    },
+    "vrx_urdf/vrx_gazebo/models/3d_lidar/model.sdf": {
+      "bytes": 825,
+      "sha256": "d4e095058efb4611f0b197e012a389872b78ff9e8fafd0c6c9004f138baf1b94"
+    },
+    "vrx_urdf/vrx_gazebo/models/3d_lidar/model.config": {
+      "bytes": 270,
+      "sha256": "b711a4b3b83257ee56887677809b8889b0a9bb50f05b471df5c0c5b0ccfd46fb"
+    },
+    "vrx_urdf/vrx_gazebo/models/3d_lidar/mesh/3d_Lidar_Metalness.png": {
+      "bytes": 3462,
+      "sha256": "d7149ecf0c943d5fd87ee1fdc260095d05a3351fc4ba357f3cdfbd1b37b26d5a"
+    },
+    "vrx_urdf/vrx_gazebo/models/3d_lidar/mesh/3d_Lidar_Roughness.png": {
+      "bytes": 275993,
+      "sha256": "05f03dbb9549a2ad5ea0c2d578e786f1d6a4e7b650f3d624d12d98a3bd3f99c1"
+    },
+    "vrx_urdf/vrx_gazebo/models/3d_lidar/mesh/3d_lidar.png": {
+      "bytes": 194987,
+      "sha256": "3ac3f296f07f92fc8d52459568cfac0beb885f928719b5026916975ae9c95af9"
+    },
+    "vrx_urdf/vrx_gazebo/models/3d_lidar/mesh/3d_Lidar_Albedo.png": {
+      "bytes": 579280,
+      "sha256": "3d397377134c97a36348b8be5ebdd4cb8614fc94d5bc2309acd825e18be63080"
+    },
+    "vrx_urdf/vrx_gazebo/models/3d_lidar/mesh/3d_lidar.dae": {
+      "bytes": 20357,
+      "sha256": "21a0a3cd0893c65fed477d371d8596c3bcfc2371dfe6b2978f4c94e7cfe5da17"
+    },
+    "vrx_urdf/vrx_gazebo/models/3d_lidar/mesh/3d_Lidar_Normal.png": {
+      "bytes": 90995,
+      "sha256": "efa646a6e2edfc92f1a39b97e85616149997081619b55806d7f90fb1b5367830"
+    },
+    "vrx_urdf/vrx_gazebo/models/battery/model.sdf": {
+      "bytes": 855,
+      "sha256": "2e9c54e7e37a3c5c409f8e78991f550fb9bf279a70f62a4ae5bd5efe0fd23e0c"
+    },
+    "vrx_urdf/vrx_gazebo/models/battery/model.config": {
+      "bytes": 388,
+      "sha256": "e084583330dc6cc279299bef5c75b780f10ae46db58d816b360a317a572b8377"
+    },
+    "vrx_urdf/vrx_gazebo/models/battery/mesh/battery.png": {
+      "bytes": 5327434,
+      "sha256": "2ef7f7726d9528564898b7183d68d5e8f9a66dbce2ec45b2e2d58a40cf0af7fc"
+    },
+    "vrx_urdf/vrx_gazebo/models/battery/mesh/battery_Roughness.png": {
+      "bytes": 2182141,
+      "sha256": "d0500e4c00ff80e494a472e6784e05c4d127c46feac1b02759e0a6864afae6e2"
+    },
+    "vrx_urdf/vrx_gazebo/models/battery/mesh/battery_Albedo.png": {
+      "bytes": 4302476,
+      "sha256": "b88e3564a85b53bfb2181492244be4efe9b925296cb2d2037af953c70699fb7f"
+    },
+    "vrx_urdf/vrx_gazebo/models/battery/mesh/battery_Normal.png": {
+      "bytes": 4589094,
+      "sha256": "43b270e77ba84ec50d09f5c5978f77721029bbda536347e878c9c69293c7b2af"
+    },
+    "vrx_urdf/vrx_gazebo/models/battery/mesh/battery.dae": {
+      "bytes": 59043,
+      "sha256": "42e391ebe65d6cf2b62d804b900e05199428d6984cef21e7076ef35a71e8c6a4"
+    },
+    "vrx_urdf/vrx_gazebo/models/battery/mesh/battery_Metalness.png": {
+      "bytes": 37800,
+      "sha256": "d3cd747a1902399c9d7a22fd03b93d631e9a5c4e4e9b7d1d3eeed7e2ae065850"
+    },
+    "vrx_urdf/vrx_gazebo/models/sensor_post/model.sdf": {
+      "bytes": 2062,
+      "sha256": "35cda80d3d6307806410c2e45c35ffdb70895568c63818b8700e029d4c60594a"
+    },
+    "vrx_urdf/vrx_gazebo/models/sensor_post/model.config": {
+      "bytes": 310,
+      "sha256": "67dd7c7e374140281a3d65547654e85b39a74e3af2d6977f63e2fe686a7c676d"
+    },
+    "vrx_urdf/vrx_gazebo/models/sensor_post/mesh/sensor_post_arm.dae": {
+      "bytes": 13468,
+      "sha256": "f8082b51fc8a22023911390da2c66b194752c393bf0c2be088b541700635f494"
+    },
+    "vrx_urdf/vrx_gazebo/models/sensor_post/mesh/sensor_post.dae": {
+      "bytes": 23686,
+      "sha256": "35ce29f55d325e1f4312ea9c296455855246f9e70fba8c813bd58f5176fe6e1d"
+    },
+    "vrx_urdf/vrx_gazebo/models/sensor_post/mesh/sensor_post.png": {
+      "bytes": 326281,
+      "sha256": "b8dc0fdbcc0d185fcb4667c12a4a2f94ee8f3d5f53928813edc429a2c810a311"
+    }
+  }
+}

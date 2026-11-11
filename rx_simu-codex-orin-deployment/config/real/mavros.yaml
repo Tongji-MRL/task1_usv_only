@@ -1,0 +1,35 @@
+# Real-vessel ROS clock / FCU odometry profile. Supply the measured fcu_url
+# and target_system_id explicitly on the command line; this file never arms.
+/**:
+  ros__parameters:
+    use_sim_time: false
+    plugin_allowlist: [sys_status, sys_time, command, param, local_position, global_position, imu, setpoint_raw, rc_io]
+/mavros:
+  ros__parameters:
+    system_id: 255
+    component_id: 191
+    target_component_id: 1
+/**/sys:
+  ros__parameters:
+    heartbeat_rate: 1.0
+    heartbeat_mav_type: ONBOARD_CONTROLLER
+    conn_timeout: 2.0
+/**/time:
+  ros__parameters:
+    timesync_mode: MAVLINK
+    timesync_rate: 10.0
+    system_time_rate: 0.0
+    max_rtt_sample: 50
+/**/local_position:
+  ros__parameters:
+    frame_id: odom
+    tf.send: false
+    tf.child_frame_id: base_link
+/**/global_position:
+  ros__parameters:
+    frame_id: map
+    child_frame_id: base_link
+    tf.send: false
+/**/imu:
+  ros__parameters:
+    frame_id: base_link

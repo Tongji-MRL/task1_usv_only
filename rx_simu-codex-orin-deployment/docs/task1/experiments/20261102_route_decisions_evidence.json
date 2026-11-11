@@ -1,0 +1,940 @@
+{
+  "behavior_commit": "1847a40fb50d663f1c52231f4ee9b89287f30132",
+  "firmware_revision": "d0356316eb0fa34ed1c9f39f7b059b9ae7ba4664",
+  "metrics": {
+    "method": "VRX truth for distance only. Reverse progress is cumulative negative displacement along the transit start-to-goal axis, not reverse thrust. Whole-task duration includes entry/exit circles and waits. ETA errors include only routes completed without cancellation. Geometric switches compare successive accepted same-revision transit paths with compatible references, using FCU pose and a 0.75 m mean-deviation threshold; semantic changes are excluded. Missing or incompatible evidence makes that count unknown.",
+    "runs": [
+      {
+        "run": "/home/zjy/usv_nav/runs/20261102_034656_task1_harbor_s1_c1_cross",
+        "workspace_commit": "18d6ab5128eb040445f41532f7f902f62554bc2b",
+        "passed": true,
+        "complete": true,
+        "duration_s": 817.2760000000001,
+        "transit_duration_s": 473.09999999999997,
+        "actual_distance_m": 188.375461802602,
+        "transit_distance_m": 105.54530885032825,
+        "transit_reverse_progress_m": 13.83555817699185,
+        "accepted_transit_paths": 4,
+        "traffic_yields": 2,
+        "geometric_transit_switches": 2,
+        "geometric_switch_details": [
+          {
+            "sim": 385.1,
+            "assessable": true,
+            "mean_deviation_m": 8.117566419693148,
+            "corridor_switch": true
+          },
+          {
+            "sim": 488.7,
+            "assessable": true,
+            "mean_deviation_m": 7.568370457683936,
+            "corridor_switch": true
+          }
+        ],
+        "route_wait_decisions": 0,
+        "observation_wait_decisions": 0,
+        "observation_steps": 0,
+        "observation_attempts": 0,
+        "planning_failures": 0,
+        "controller_failures": 0,
+        "stale_stops": 0,
+        "transit_stale_stops": 0,
+        "collision_contacts": 0,
+        "min_clearance_m": 1.4657460546430665,
+        "min_traffic_clearance_m": 5.888653067866329,
+        "endpoint_error": {
+          "position_m": 0.3611272182213295,
+          "yaw_rad": 0.034527772767417586
+        },
+        "completed_route_eta_errors": [],
+        "terminal_speed_limit": null,
+        "advisory_compute_max_s": null,
+        "advisory_compute_p95_s": null,
+        "evidence_sha256": {
+          "task1_result.json": "d35357737551cbd68206f66c7b22dfa420a4b8a5cb2d3215a01b305f07a58a78",
+          "task1_mission.jsonl": "f9217f790dc4526cf8a287abbe09f140951be01d84318f010109b9d0af4f3465",
+          "task1.jsonl": "e9aa852e20573e4c56be214f0be28c43fcc564aedf83db6bd0f18a081d8d4396",
+          "task1_judge.jsonl": "e2650a0b279cfb6297082be4f319e78f37d0c9d0ba292d5b5e6128a0a3c72306"
+        }
+      },
+      {
+        "run": "/home/zjy/usv_nav/runs/20261102_040530_task1_harbor_s1_c1_cross",
+        "workspace_commit": "63e00b66a82ce9671c313350e08ee42394709786",
+        "passed": true,
+        "complete": true,
+        "duration_s": 833.5519999999999,
+        "transit_duration_s": 487.19999999999993,
+        "actual_distance_m": 190.8670905496166,
+        "transit_distance_m": 108.17022400520499,
+        "transit_reverse_progress_m": 14.921655588576359,
+        "accepted_transit_paths": 4,
+        "traffic_yields": 2,
+        "geometric_transit_switches": 2,
+        "geometric_switch_details": [
+          {
+            "sim": 384.4,
+            "assessable": true,
+            "mean_deviation_m": 8.233914553701634,
+            "corridor_switch": true
+          },
+          {
+            "sim": 501.1,
+            "assessable": true,
+            "mean_deviation_m": 7.731382826570129,
+            "corridor_switch": true
+          }
+        ],
+        "route_wait_decisions": 0,
+        "observation_wait_decisions": 0,
+        "observation_steps": 0,
+        "observation_attempts": 0,
+        "planning_failures": 0,
+        "controller_failures": 0,
+        "stale_stops": 0,
+        "transit_stale_stops": 0,
+        "collision_contacts": 0,
+        "min_clearance_m": 1.6162860137821438,
+        "min_traffic_clearance_m": 5.220228170927147,
+        "endpoint_error": {
+          "position_m": 0.3646093765707461,
+          "yaw_rad": 0.057545883548392414
+        },
+        "completed_route_eta_errors": [],
+        "terminal_speed_limit": null,
+        "advisory_compute_max_s": null,
+        "advisory_compute_p95_s": null,
+        "evidence_sha256": {
+          "task1_result.json": "1dddac4436157eb6f4cfa3b76d23bf952fdba52817040e72c23aa24fed9e61cd",
+          "task1_mission.jsonl": "9179754a8a1ff0aa12e4d830241ef1ce66170af6de92fd9afe0286e536a728cb",
+          "task1.jsonl": "fdcbc21fd09da265fdf92dc482c2c540be6b191e5a01b5fca5f55c1bd8bd7dfe",
+          "task1_judge.jsonl": "4ad577c238f4b03db88fca5185ce544f23b925c5a846e7a62dfcf4dce55f6505"
+        }
+      },
+      {
+        "run": "/home/zjy/usv_nav/runs/20261102_042050_task1_harbor_s1_c1_cross",
+        "workspace_commit": "cfb8b5c650f117faaf4fb2a0e5e3fb3725a35ffb",
+        "passed": true,
+        "complete": true,
+        "duration_s": 839.5440000000001,
+        "transit_duration_s": 492.0,
+        "actual_distance_m": 189.26832604543185,
+        "transit_distance_m": 106.46263566716519,
+        "transit_reverse_progress_m": 14.530033187070527,
+        "accepted_transit_paths": 4,
+        "traffic_yields": 2,
+        "geometric_transit_switches": 2,
+        "geometric_switch_details": [
+          {
+            "sim": 394.1,
+            "assessable": true,
+            "mean_deviation_m": 8.42157485708827,
+            "corridor_switch": true
+          },
+          {
+            "sim": 508.4,
+            "assessable": true,
+            "mean_deviation_m": 7.657491080375118,
+            "corridor_switch": true
+          }
+        ],
+        "route_wait_decisions": 0,
+        "observation_wait_decisions": 0,
+        "observation_steps": 0,
+        "observation_attempts": 0,
+        "planning_failures": 0,
+        "controller_failures": 0,
+        "stale_stops": 0,
+        "transit_stale_stops": 0,
+        "collision_contacts": 0,
+        "min_clearance_m": 1.4708308329840256,
+        "min_traffic_clearance_m": 5.865765333060544,
+        "endpoint_error": {
+          "position_m": 0.36425766455766195,
+          "yaw_rad": 0.013569423618716714
+        },
+        "completed_route_eta_errors": [],
+        "terminal_speed_limit": null,
+        "advisory_compute_max_s": null,
+        "advisory_compute_p95_s": null,
+        "evidence_sha256": {
+          "task1_result.json": "5571e01ca6ce55ba696ec15755b599a8d2ccd922b3cf17a909745052c4bfbdaf",
+          "task1_mission.jsonl": "b4f6e13ce6b3320e6b3b49a208f15222713a22278cbad61b0e3ab5c42c48c404",
+          "task1.jsonl": "b923ff07cd4ce067fa4b5283305864304c54db6ca5328bf490695e164406cdcf",
+          "task1_judge.jsonl": "2414ee08928eef9651e7a42072cd67218cc151858425a409e7d5d6c6902706eb"
+        }
+      },
+      {
+        "run": "/home/zjy/usv_nav/runs/20261102_170326_task1_harbor_s1_c1_block",
+        "workspace_commit": "1847a40fb50d663f1c52231f4ee9b89287f30132",
+        "passed": true,
+        "complete": true,
+        "duration_s": 754.9879999999999,
+        "transit_duration_s": 406.5,
+        "actual_distance_m": 142.21193042407936,
+        "transit_distance_m": 58.99947542101573,
+        "transit_reverse_progress_m": 0.027430517970973328,
+        "accepted_transit_paths": 5,
+        "traffic_yields": 1,
+        "geometric_transit_switches": 0,
+        "geometric_switch_details": [
+          {
+            "sim": 535.6,
+            "assessable": true,
+            "mean_deviation_m": 0.13054041586036383,
+            "corridor_switch": false
+          }
+        ],
+        "route_wait_decisions": 6,
+        "observation_wait_decisions": 1,
+        "observation_steps": 1,
+        "observation_attempts": 2,
+        "planning_failures": 2,
+        "controller_failures": 1,
+        "stale_stops": 0,
+        "transit_stale_stops": 0,
+        "collision_contacts": 0,
+        "min_clearance_m": 1.2724651654461299,
+        "min_traffic_clearance_m": 6.196757469367542,
+        "endpoint_error": {
+          "position_m": 0.3713516817350208,
+          "yaw_rad": 0.044473599055868895
+        },
+        "completed_route_eta_errors": [
+          {
+            "path_stamp": 510.112,
+            "purpose": "observation",
+            "predicted_s": 22.928815325898587,
+            "actual_s": 20.5,
+            "error_s": -2.4288153258985865
+          },
+          {
+            "path_stamp": 534.344,
+            "purpose": "mission",
+            "predicted_s": 112.89700183928673,
+            "actual_s": 111.19999999999993,
+            "error_s": -1.6970018392867985
+          }
+        ],
+        "terminal_speed_limit": {
+          "expected_linear_cap_mps": 0.15,
+          "expected_yaw_cap_rps": 0.2,
+          "by_purpose": {
+            "observation": {
+              "samples": 601,
+              "nonzero_commands": 600,
+              "max_command_linear_mps": 0.15,
+              "max_command_yaw_rps": 0.08333333333333327,
+              "max_actual_forward_mps": 0.17978531200503467,
+              "max_actual_lateral_mps": 0.019392391905553613,
+              "command_cap_passed": true
+            },
+            "mission": {
+              "samples": 371,
+              "nonzero_commands": 370,
+              "max_command_linear_mps": 0.15,
+              "max_command_yaw_rps": 0.2,
+              "max_actual_forward_mps": 0.18509648585360833,
+              "max_actual_lateral_mps": 0.04742722155535263,
+              "command_cap_passed": true
+            }
+          },
+          "restored_to_100_after_terminal": true,
+          "method": "Source-timed status, command samples after 1s at 50%. Actual vessel velocity is measured separately; a command cap does not imply an instantaneous physical speed cap."
+        },
+        "advisory_compute_max_s": 0.026150570949539542,
+        "advisory_compute_p95_s": 0.019928410067222995,
+        "evidence_sha256": {
+          "task1_result.json": "dbf16e7a2971fbe8bdfdf71f08da1fff2c598b474ef1b2f1186c438f6bf9053c",
+          "task1_mission.jsonl": "eeea66fa3ff65fc89a1d1768943176ff75e93588a88e09ab451071541e83fbfe",
+          "task1.jsonl": "1719b11c49c4be3e4629e868345cb93682a93b540dd4fe3946b59f8ade75e083",
+          "task1_judge.jsonl": "a6b14d23a4c11888d48b4e07b65a2bbc6df57437ba18303f80c4c6b02855c814",
+          "route_decisions.jsonl": "0870b57555061ed4ca0c825d65c63a054f8e2a47b63f3e25bf52675676a1b80e"
+        }
+      },
+      {
+        "run": "/home/zjy/usv_nav/runs/20261102_171813_task1_harbor_s1_c1_cross",
+        "workspace_commit": "4b407f6f32479a953e95c74f2d61949a29374d7d",
+        "passed": true,
+        "complete": true,
+        "duration_s": 752.76,
+        "transit_duration_s": 323.3,
+        "actual_distance_m": 142.82633005916227,
+        "transit_distance_m": 58.604882986571944,
+        "transit_reverse_progress_m": 5.178155397186064e-05,
+        "accepted_transit_paths": 4,
+        "traffic_yields": 1,
+        "geometric_transit_switches": 0,
+        "geometric_switch_details": [
+          {
+            "sim": 443.8,
+            "assessable": true,
+            "mean_deviation_m": 0.17256792391697062,
+            "corridor_switch": false
+          }
+        ],
+        "route_wait_decisions": 3,
+        "observation_wait_decisions": 0,
+        "observation_steps": 1,
+        "observation_attempts": 1,
+        "planning_failures": 2,
+        "controller_failures": 0,
+        "stale_stops": 14,
+        "transit_stale_stops": 0,
+        "collision_contacts": 0,
+        "min_clearance_m": 1.3072456736565699,
+        "min_traffic_clearance_m": 6.2826637639045835,
+        "endpoint_error": {
+          "position_m": 0.24522121821802675,
+          "yaw_rad": 0.15507754392812534
+        },
+        "completed_route_eta_errors": [
+          {
+            "path_stamp": 409.712,
+            "purpose": "observation",
+            "predicted_s": 24.313512402686754,
+            "actual_s": 27.5,
+            "error_s": 3.1864875973132456
+          },
+          {
+            "path_stamp": 442.592,
+            "purpose": "mission",
+            "predicted_s": 119.40153450753148,
+            "actual_s": 121.70000000000005,
+            "error_s": 2.2984654924685657
+          }
+        ],
+        "terminal_speed_limit": {
+          "expected_linear_cap_mps": 0.15,
+          "expected_yaw_cap_rps": 0.2,
+          "by_purpose": {
+            "observation": {
+              "samples": 276,
+              "nonzero_commands": 276,
+              "max_command_linear_mps": 0.15,
+              "max_command_yaw_rps": 0.08333333333333327,
+              "max_actual_forward_mps": 0.17905861823824823,
+              "max_actual_lateral_mps": 0.01743191657329355,
+              "command_cap_passed": true
+            },
+            "mission": {
+              "samples": 382,
+              "nonzero_commands": 382,
+              "max_command_linear_mps": 0.15,
+              "max_command_yaw_rps": 0.18333333333333335,
+              "max_actual_forward_mps": 0.1818237470168202,
+              "max_actual_lateral_mps": 0.03455106781651159,
+              "command_cap_passed": true
+            }
+          },
+          "restored_to_100_after_terminal": true,
+          "method": "Source-timed status, command samples after 1s at 50%. Actual vessel velocity is measured separately; a command cap does not imply an instantaneous physical speed cap."
+        },
+        "advisory_compute_max_s": 0.03259178402367979,
+        "advisory_compute_p95_s": 0.019328620587475587,
+        "evidence_sha256": {
+          "task1_result.json": "ed34ae83f0aca0dd905dca79eda8ea88ff78ddb5704d8c2d288f5922a888701e",
+          "task1_mission.jsonl": "b2750f4830bdbf62b6626fe94edf617c98f73391a568601edee377f5c9cfd532",
+          "task1.jsonl": "48830a08de6d7795ef11575f44fdb54f2ecca519db4cfef6a790be84101291b4",
+          "task1_judge.jsonl": "ee94d82d7825b9b0db2b83547213c8270bbb20fdb2ec615078f69ee9509927cf",
+          "route_decisions.jsonl": "0dc3d4f200fb585282d10fcadd9229e6d460c44c9fb9959b200c7d5cdc587d44"
+        }
+      }
+    ]
+  },
+  "checks": {
+    "core_commit": "1847a40",
+    "task1_python": 85,
+    "nav_python": 24,
+    "simulation_python": 12,
+    "real_ros_checks": 5,
+    "cpp_groups": 3,
+    "evidence": [
+      {
+        "path": "runs/diagnostics/20261102_route_decisions/nav_unit.log",
+        "sha256": "4d05e30b9649985b072c77023443b234af39b1f96a53bd04eb222bf1e71b90ce"
+      },
+      {
+        "path": "runs/diagnostics/20261102_route_decisions/sim_unit.log",
+        "sha256": "854896653464f6265890159f164184c557267a7443f9900b96ae7463be71e09c"
+      },
+      {
+        "path": "runs/diagnostics/20261102_route_decisions/final_cpp_rules.log",
+        "sha256": "fea89b175684752972bcd7b5834db72711fb406f6c78f2a930f3f83ef9dff90d"
+      },
+      {
+        "path": "runs/diagnostics/20261102_route_decisions/final_cpp_hull.log",
+        "sha256": "3062eee4e699bbb81f83817bbc60c7775443a845c649a0f3a86e16708972ebe1"
+      },
+      {
+        "path": "runs/diagnostics/20261102_route_decisions/final_cpp_layer.log",
+        "sha256": "daed418264d180728f9135d63f3148916b0af583f973d49ba4449c6045f62af7"
+      },
+      {
+        "path": "runs/diagnostics/20261102_route_decisions/observation_budget_build.log",
+        "sha256": "0865f4e31a99e85b0be4692d182a0997aaf978af05825e58c6c9a50935111f47"
+      },
+      {
+        "path": "runs/diagnostics/20261102_route_decisions/stopped_target_replay.json",
+        "sha256": "fa46766de116286ba821851ef55c525a32e515060615ea73a08d215057b69d53"
+      },
+      {
+        "path": "runs/diagnostics/20261102_route_decisions/terminal_unit.log",
+        "sha256": "634a28d6aa766e21e5810d918603962904fc14bfc1c932949b578824e371086c"
+      },
+      {
+        "path": "runs/diagnostics/20261102_route_decisions/terminal_ros.log",
+        "sha256": "95f4b904a8a56e6870ab5ad42b6cb223eb323d17c5549e92558d3ccf7a495d48"
+      },
+      {
+        "path": "runs/diagnostics/20261102_route_decisions/terminal_speed_topic.log",
+        "sha256": "ef86dc429d2eda83f01826e0f9757691ae0f2dfd3c25bbf82e73747f33f33105"
+      },
+      {
+        "path": "runs/diagnostics/20261102_route_decisions/block_endpoint_replay.log",
+        "sha256": "718a546941cde6a40c050219f233245b7b88506ac40552dd2406bc17cc59fa68"
+      }
+    ]
+  },
+  "eta": {
+    "checkpoint_method": "Compare recorded transit paths and evaluate along-route ETA checkpoints.\n\nNo truth reaches navigation. Actual arrival is the first forward crossing of a\ncheckpoint's normal, within 1.5 m laterally and 1.2 rad of its path heading.\nOnly uninterrupted execution is evaluated; cancelled future arrivals are not\ninvented. Checkpoints are 5 m apart, starting 2 m from the assessed pose.\n",
+    "checkpoint_count": 13,
+    "mean_absolute_eta_error_s": 1.3883992665862477,
+    "interval_coverage": 1.0,
+    "source_sha256": {
+      "route_decisions.jsonl": "0dc3d4f200fb585282d10fcadd9229e6d460c44c9fb9959b200c7d5cdc587d44",
+      "task1_mission.jsonl": "b2750f4830bdbf62b6626fe94edf617c98f73391a568601edee377f5c9cfd532",
+      "task1.jsonl": "48830a08de6d7795ef11575f44fdb54f2ecca519db4cfef6a790be84101291b4",
+      "visualization/raw/events.jsonl": "447d83685f3e14e5b859aa273cf4067b3181b1c2467a5b97f5f1312aa63afc05"
+    }
+  },
+  "final_runs": {
+    "20261102_170326_task1_harbor_s1_c1_block": {
+      "route_evidence_audit": {
+        "firmware_revision": "d0356316eb0fa34ed1c9f39f7b059b9ae7ba4664",
+        "runtime_files": 31,
+        "changed_runtime_sources": [],
+        "source_snapshot_sha256": "779f435038eedc8f4a6e36e7decebf7ab5e74bf9bb5c5218747f47718b26ec2b",
+        "recorded_topic_counts": {
+          "/task1/context": 8144,
+          "/task1/motion_permission": 8109,
+          "/task1/reference_path": 16,
+          "/task1/speed_limit": 8104,
+          "/tf_static": 3,
+          "/usv/lidar/marking": 8002,
+          "/usv/lidar/filtered": 8104,
+          "/task1/observations": 8105,
+          "/usv/odom": 15575,
+          "/task1/traffic_costmap": 3829,
+          "/tf": 15575,
+          "/task1/traffic_safety": 7609,
+          "/task1/route_assessment": 1536,
+          "/clock": 202613,
+          "/map": 1,
+          "/scan": 8002,
+          "/task1/candidate_path": 22,
+          "/usv/cmd_vel": 5773,
+          "/usv/lidar/clearing": 8104,
+          "/usv/lidar/points": 8105
+        },
+        "sitl_frame_max": 202250,
+        "sitl_frames_nondecreasing": true
+      },
+      "shutdown_result": {
+        "session_removed": true,
+        "owned_groups_alive": [],
+        "passed": true
+      },
+      "buoy_map_result": {
+        "passed": true,
+        "buoys": {
+          "entry": {
+            "observed": 491,
+            "missing": 0
+          },
+          "exit": {
+            "observed": 491,
+            "missing": 0
+          },
+          "buoy_01": {
+            "observed": 491,
+            "missing": 0
+          },
+          "buoy_02": {
+            "observed": 491,
+            "missing": 0
+          },
+          "buoy_03": {
+            "observed": 491,
+            "missing": 0
+          },
+          "buoy_04": {
+            "observed": 491,
+            "missing": 0
+          },
+          "buoy_05": {
+            "observed": 491,
+            "missing": 0
+          },
+          "buoy_06": {
+            "observed": 491,
+            "missing": 0
+          },
+          "buoy_07": {
+            "observed": 491,
+            "missing": 0
+          },
+          "buoy_08": {
+            "observed": 491,
+            "missing": 0
+          }
+        },
+        "initially_off": [
+          "buoy_05"
+        ],
+        "first_missing": [],
+        "criterion": "Every known physical buoy remains lethal in every recorded global map after task start, independently of its light phase."
+      },
+      "scope_result": {
+        "passed": true,
+        "scope": "Disruptive boat behavior; UAV observations and RoboCommand reporting are substitutes",
+        "circles": {
+          "CIRCLE_ENTRY": {
+            "complete": true,
+            "angle_rad": 6.37342413451692,
+            "wrong_way_rad": 0.003956039293556035
+          },
+          "CIRCLE_EXIT": {
+            "complete": true,
+            "angle_rad": 6.399748756889611,
+            "wrong_way_rad": 0.0
+          }
+        },
+        "collision_contacts": 0,
+        "min_clearance_m": 1.2724651654461299,
+        "endpoint_error": {
+          "position_m": 0.3713516817350208,
+          "yaw_rad": 0.044473599055868895
+        },
+        "post_completion_drift_m": 0.22094393961257666,
+        "post_completion_record_s": 11.299999999999955
+      },
+      "video_validation": [
+        {
+          "file": "task1_annotated.mp4",
+          "probe": {
+            "programs": [],
+            "streams": [
+              {
+                "codec_name": "h264",
+                "width": 1920,
+                "height": 1080,
+                "r_frame_rate": "5/1",
+                "nb_frames": "1531"
+              }
+            ],
+            "format": {
+              "duration": "306.200000",
+              "size": "36883964"
+            }
+          },
+          "full_decode_returncode": 0,
+          "full_decode_stderr": "",
+          "sha256": "fdf159053b38fce5f2379fd30422eea1fdb3ba545ce36775f7b258bf13232732"
+        },
+        {
+          "file": "task1_transit.mp4",
+          "probe": {
+            "programs": [],
+            "streams": [
+              {
+                "codec_name": "h264",
+                "width": 1920,
+                "height": 1080,
+                "r_frame_rate": "5/1",
+                "nb_frames": "822"
+              }
+            ],
+            "format": {
+              "duration": "164.600000",
+              "size": "20688145"
+            }
+          },
+          "full_decode_returncode": 0,
+          "full_decode_stderr": "",
+          "sha256": "b65a397850e63b3faea43b02d3136b8615a83fd8e672e28d104453edc7747f6b"
+        }
+      ],
+      "analysis_provenance": {
+        "workspace_commit": "4b407f6f32479a953e95c74f2d61949a29374d7d",
+        "files": {
+          "scripts/analyze_route_efficiency.py": "55c7ee59aa945f007e06d5119f8d33407642b6ed835bd40767a92316ee75f711",
+          "scripts/analyze_task1_maps.py": "b3f305fc44d509dfef80fcb093c4569bf920bf5694e19d097dbc204a70d2194f",
+          "scripts/analyze_task1_traffic.py": "9d15f8d25023df3e8bb7e63dd68050dc3abe841462ac106a3e2401f2b892c6a0",
+          "scripts/plot_route_decisions.py": "6eb0647fe7cdc6763f8b26e9ec2d973a4b6f52a6cf1f54c8c9073b9ae7806594",
+          "scripts/plot_task1.py": "fd760a824bd4bdb15aac2714ff27636cce119e4720439bbf0b3e96f3aba76866",
+          "scripts/annotate_task1.py": "91edd018c43feacb312f35a1156ed8ffc4b0e50ffd13ae77471ba768fd5a7ecf",
+          "scripts/export_task1_record.py": "298505bb5c5e657a4eaccb740e463337d021bac34c54e8432e47e1ed3d35b538",
+          "scripts/replay_task1_search.py": "2aca589ed7da2b5ef494627e08aef8b473302359eb5b8080f0535b686640c0f2",
+          "tools/task1_search/replay.cpp": "48a80d04374e2613316949e6e5c8dd71d7ac40fa12f7281c6ff8ab99b87afd59"
+        },
+        "snapshot_sha256": "daf0a5a5098d6a67e2efd0e93574a69823df7ab195826e7a582dc93b8fe350a3",
+        "note": "Postprocessing source snapshot. The control runtime provenance and original source_snapshot.tar.gz remain unchanged."
+      },
+      "task_result_sha256": "dbf16e7a2971fbe8bdfdf71f08da1fff2c598b474ef1b2f1186c438f6bf9053c"
+    },
+    "20261102_171813_task1_harbor_s1_c1_cross": {
+      "route_evidence_audit": {
+        "firmware_revision": "d0356316eb0fa34ed1c9f39f7b059b9ae7ba4664",
+        "runtime_files": 31,
+        "changed_runtime_sources": [],
+        "source_snapshot_sha256": "b1b6c97540b6696d16d65fa6f6df785fd66f871f4621aa6b4b5ac1cc223d59bc",
+        "recorded_topic_counts": {
+          "/task1/speed_limit": 8096,
+          "/task1/reference_path": 27,
+          "/task1/route_assessment": 1509,
+          "/task1/traffic_safety": 6788,
+          "/clock": 202391,
+          "/task1/observations": 8096,
+          "/task1/motion_permission": 8114,
+          "/usv/lidar/marking": 7667,
+          "/usv/lidar/filtered": 8095,
+          "/tf_static": 3,
+          "/task1/context": 8157,
+          "/usv/odom": 15555,
+          "/task1/traffic_costmap": 3635,
+          "/tf": 15555,
+          "/map": 1,
+          "/scan": 7667,
+          "/usv/cmd_vel": 5471,
+          "/usv/lidar/clearing": 8095,
+          "/task1/candidate_path": 32,
+          "/usv/lidar/points": 8095
+        },
+        "sitl_frame_max": 202000,
+        "sitl_frames_nondecreasing": true
+      },
+      "shutdown_result": {
+        "session_removed": true,
+        "owned_groups_alive": [],
+        "passed": true
+      },
+      "buoy_map_result": {
+        "passed": true,
+        "buoys": {
+          "entry": {
+            "observed": 512,
+            "missing": 0
+          },
+          "exit": {
+            "observed": 512,
+            "missing": 0
+          },
+          "buoy_01": {
+            "observed": 512,
+            "missing": 0
+          },
+          "buoy_02": {
+            "observed": 512,
+            "missing": 0
+          },
+          "buoy_03": {
+            "observed": 512,
+            "missing": 0
+          },
+          "buoy_04": {
+            "observed": 512,
+            "missing": 0
+          },
+          "buoy_05": {
+            "observed": 512,
+            "missing": 0
+          },
+          "buoy_06": {
+            "observed": 512,
+            "missing": 0
+          },
+          "buoy_07": {
+            "observed": 512,
+            "missing": 0
+          },
+          "buoy_08": {
+            "observed": 512,
+            "missing": 0
+          }
+        },
+        "initially_off": [
+          "buoy_05"
+        ],
+        "first_missing": [],
+        "criterion": "Every known physical buoy remains lethal in every recorded global map after task start, independently of its light phase."
+      },
+      "scope_result": {
+        "passed": true,
+        "scope": "Disruptive boat behavior; UAV observations and RoboCommand reporting are substitutes",
+        "circles": {
+          "CIRCLE_ENTRY": {
+            "complete": true,
+            "angle_rad": 6.367546985652613,
+            "wrong_way_rad": 0.004302308678691968
+          },
+          "CIRCLE_EXIT": {
+            "complete": true,
+            "angle_rad": 6.430659204276743,
+            "wrong_way_rad": 0.0
+          }
+        },
+        "collision_contacts": 0,
+        "min_clearance_m": 1.3072456736565699,
+        "endpoint_error": {
+          "position_m": 0.24522121821802675,
+          "yaw_rad": 0.15507754392812534
+        },
+        "post_completion_drift_m": 0.03210244346787204,
+        "post_completion_record_s": 11.799999999999955
+      },
+      "video_validation": {
+        "file": "/home/zjy/usv_nav/runs/20261102_171813_task1_harbor_s1_c1_cross/visualization/task1_annotated.mp4",
+        "sha256": "43fdbeec2d3754fe4065a5821503a255bdbea7b3ea4ef906a11e56577852092f",
+        "probe": {
+          "programs": [],
+          "streams": [
+            {
+              "codec_name": "h264",
+              "width": 1920,
+              "height": 1080,
+              "r_frame_rate": "5/1",
+              "nb_frames": "1527"
+            }
+          ],
+          "format": {
+            "duration": "305.400000"
+          }
+        },
+        "full_decode_exit_code": 0,
+        "full_decode_stderr": "",
+        "rendered_frames": 1527,
+        "passed": true
+      },
+      "analysis_provenance": {
+        "workspace_commit": "d2b94a62465b121d3bfdaab07b347be360afb51e",
+        "files": {
+          "scripts/analyze_route_efficiency.py": "dcaa3ffc151cf38e6f851300c9e91f3bcfffd458c095db3b1059866dad676eea",
+          "scripts/analyze_task1_maps.py": "b3f305fc44d509dfef80fcb093c4569bf920bf5694e19d097dbc204a70d2194f",
+          "scripts/analyze_task1_traffic.py": "9d15f8d25023df3e8bb7e63dd68050dc3abe841462ac106a3e2401f2b892c6a0",
+          "scripts/plot_route_decisions.py": "6eb0647fe7cdc6763f8b26e9ec2d973a4b6f52a6cf1f54c8c9073b9ae7806594",
+          "scripts/plot_task1.py": "fd760a824bd4bdb15aac2714ff27636cce119e4720439bbf0b3e96f3aba76866",
+          "scripts/annotate_task1.py": "91edd018c43feacb312f35a1156ed8ffc4b0e50ffd13ae77471ba768fd5a7ecf",
+          "scripts/export_task1_record.py": "298505bb5c5e657a4eaccb740e463337d021bac34c54e8432e47e1ed3d35b538",
+          "scripts/replay_task1_search.py": "2aca589ed7da2b5ef494627e08aef8b473302359eb5b8080f0535b686640c0f2",
+          "tools/task1_search/replay.cpp": "48a80d04374e2613316949e6e5c8dd71d7ac40fa12f7281c6ff8ab99b87afd59"
+        },
+        "snapshot_sha256": "266d75509456e00f5968f786e60c00d04e1df5297d3a3daa86f62ea3eb33b5d1",
+        "note": "Postprocessing source snapshot. Control runtime provenance and original source_snapshot.tar.gz remain unchanged."
+      },
+      "task_result_sha256": "ed34ae83f0aca0dd905dca79eda8ea88ff78ddb5704d8c2d288f5922a888701e"
+    }
+  },
+  "faults": {
+    "20261102_173517_task1_harbor_s1_c0_none_traffic_gap": {
+      "task1_fault_result": {
+        "fault": "traffic_gap",
+        "passed": true,
+        "injection": {
+          "event": "stop_requested",
+          "sim": 48.02,
+          "reason": "traffic_gap"
+        },
+        "stops": [
+          {
+            "reason": "traffic_gap",
+            "start_sim": 48.02,
+            "resume_sim": null,
+            "zero_command_delay_s": 0.27999999999999403,
+            "first_force_below_1N_delay_s": 4.951999999999998,
+            "force_below_1N_dwell_confirmed_delay_s": null,
+            "force_peak_before_resume_N": 109.80000000000001,
+            "stopped_dwell_confirmed_delay_s": 4.663999999999994,
+            "distance_to_stop_m": 0.5612094041930838,
+            "physics_advancing": true,
+            "passed": true
+          }
+        ],
+        "status_after_fault": {
+          "sim": 58.0,
+          "stage": "APPROACH_ENTRY",
+          "motion": "STOPPING",
+          "revision": 1,
+          "speed_limit_percent": 100.0,
+          "target": [
+            3.0,
+            -4.0,
+            1.5707963267948966
+          ],
+          "pose": [
+            0.68384850025177,
+            -0.00779101917256954,
+            -0.17931727965804536
+          ],
+          "reason": "observation, EKF or LiDAR traffic assessment stale",
+          "passed_colors": 0,
+          "route_purpose": "mission",
+          "circle_angle": null
+        },
+        "fault_window_displacement_m": 0.6263855076204826,
+        "fcu_alive": true,
+        "collision_messages": 0,
+        "recovered_with_fresh_input": true
+      },
+      "thrust_settling_diagnostic": {
+        "fault": "traffic_gap",
+        "window_sim_s": [
+          56.02,
+          58.02
+        ],
+        "samples": 21,
+        "max_abs_force_N": 1.200000000000001,
+        "max_speed_mps": 0.00838664426353167,
+        "max_yaw_rate_rps": 0.0020416545567059075,
+        "max_abs_command": 0.0,
+        "source_sha256": "c1a6d0d243f7c0c316730223871bc073cd109dc0bf93699a082cc4ea8e3809bb"
+      },
+      "shutdown_result": {
+        "session_removed": true,
+        "owned_groups_alive": [],
+        "passed": true
+      },
+      "source_sha256": {
+        "task1_fault_result.json": "19d2c92000962b9d6bd8cfeb6b7274dc76adb58b37d0503e95ff176f13996925",
+        "provenance.json": "b6783139a408040eac52d2ee107659e66ff240e169e3fb04ecf68fe86478109f",
+        "source_snapshot.tar.gz": "d4ad7b588ff83f321ff0d3afd2b9a5ea5bb017eef2ecdd8ed96ad6db5edf37ca",
+        "thrust_settling_diagnostic.json": "3b92d54bdc3bb342685e696b8634d11a357ba57da7f62be574af0c980fd7b564",
+        "shutdown_result.json": "3bf127ace59223a52b63255920793e70bda2b3769531ea84d7fa89222003878b"
+      }
+    },
+    "20261102_173704_task1_harbor_s1_c0_none_traffic_exit": {
+      "task1_fault_result": {
+        "fault": "traffic_exit",
+        "passed": true,
+        "injection": {
+          "event": "stop_requested",
+          "sim": 49.28,
+          "reason": "traffic_exit"
+        },
+        "stops": [
+          {
+            "reason": "traffic_exit",
+            "start_sim": 49.28,
+            "resume_sim": null,
+            "zero_command_delay_s": 0.38400000000000034,
+            "first_force_below_1N_delay_s": 5.375999999999998,
+            "force_below_1N_dwell_confirmed_delay_s": null,
+            "force_peak_before_resume_N": 111.60000000000004,
+            "stopped_dwell_confirmed_delay_s": 4.896000000000001,
+            "distance_to_stop_m": 0.6223106145623502,
+            "physics_advancing": true,
+            "passed": true
+          }
+        ],
+        "status_after_fault": {
+          "sim": 59.3,
+          "stage": "APPROACH_ENTRY",
+          "motion": "STOPPING",
+          "revision": 1,
+          "speed_limit_percent": 100.0,
+          "target": [
+            3.0,
+            -4.0,
+            1.5707963267948966
+          ],
+          "pose": [
+            0.7420518398284912,
+            0.0037635894146060677,
+            -0.17598740657302345
+          ],
+          "reason": "observation, EKF or LiDAR traffic assessment stale",
+          "passed_colors": 0,
+          "route_purpose": "mission",
+          "circle_angle": null
+        },
+        "fault_window_displacement_m": 0.6883505355912464,
+        "fcu_alive": true,
+        "collision_messages": 0
+      },
+      "thrust_settling_diagnostic": {
+        "fault": "traffic_exit",
+        "window_sim_s": [
+          57.28,
+          59.28
+        ],
+        "samples": 21,
+        "max_abs_force_N": 1.200000000000001,
+        "max_speed_mps": 0.009203905153235983,
+        "max_yaw_rate_rps": 0.0020666466298280284,
+        "max_abs_command": 0.0,
+        "source_sha256": "f33ffbe0b745e74cb348ddcade2f664bb6466d4becc3a6c29e03481da9b6c0e5"
+      },
+      "shutdown_result": {
+        "session_removed": true,
+        "owned_groups_alive": [],
+        "passed": true
+      },
+      "source_sha256": {
+        "task1_fault_result.json": "585cf6a4e43ea6bcd43bae18bdb7a925774304042dc68021a6b2dd95de064af5",
+        "provenance.json": "c494d82faa3104ebe4eb330151cca9b0e941a1caac94474c58b8279b696286da",
+        "source_snapshot.tar.gz": "cdaae8d9d948e4df85efd050aaf7966f480e828a2473b3be9ce00e87f0b4683d",
+        "thrust_settling_diagnostic.json": "cbcd0c92966d9d86eb851390ca7aa9b798d904479e1077caf19b7c72b9eb5423",
+        "shutdown_result.json": "3bf127ace59223a52b63255920793e70bda2b3769531ea84d7fa89222003878b"
+      }
+    }
+  },
+  "exports": {
+    "20261102_170326_task1_harbor_s1_c1_block": {
+      "manifest": {
+        "bundle": "/home/zjy/usv_nav/runs/exports/20261102_170326_task1_harbor_s1_c1_block.zip",
+        "bytes": 175816446,
+        "sha256": "791ced4bd2f62232499020ab520353416b0d41bb68386268fa2d9004510456b5",
+        "files": 1928,
+        "external_rosbags": [
+          {
+            "path": "sensors/sensors_0.db3",
+            "bytes": 9525141504,
+            "sha256": "e7ae8d249a4bf74f358ee43ca8628102e763397564b74f496d3973d299b95df8",
+            "absolute_path": "/home/zjy/usv_nav/runs/20261102_170326_task1_harbor_s1_c1_block/sensors/sensors_0.db3"
+          }
+        ]
+      },
+      "verification": {
+        "bundle": "/home/zjy/usv_nav/runs/exports/20261102_170326_task1_harbor_s1_c1_block.zip",
+        "checked_manifest_files": 1927,
+        "zip_entries": 1928,
+        "crc_error": null,
+        "sha256_failures": [],
+        "passed": true
+      }
+    },
+    "20261102_171813_task1_harbor_s1_c1_cross": {
+      "manifest": {
+        "bundle": "/home/zjy/usv_nav/runs/exports/20261102_171813_task1_harbor_s1_c1_cross.zip",
+        "bytes": 152211148,
+        "sha256": "7082f655465bf3e86d045b2f7f7d206513f21600ffd50141add0eb3b9a8a800d",
+        "files": 1968,
+        "external_rosbags": [
+          {
+            "path": "sensors/sensors_0.db3",
+            "bytes": 9487069184,
+            "sha256": "03ff2f5c6392007e25e4c2afac54cc08f8da6bbd669c029aa986589d55bc9be3",
+            "absolute_path": "/home/zjy/usv_nav/runs/20261102_171813_task1_harbor_s1_c1_cross/sensors/sensors_0.db3"
+          }
+        ]
+      },
+      "verification": {
+        "bundle": "/home/zjy/usv_nav/runs/exports/20261102_171813_task1_harbor_s1_c1_cross.zip",
+        "checked_manifest_files": 1967,
+        "zip_entries": 1968,
+        "crc_error": null,
+        "sha256_failures": [],
+        "passed": true
+      }
+    }
+  }
+}

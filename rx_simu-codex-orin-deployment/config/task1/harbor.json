@@ -1,0 +1,28 @@
+{
+  "description": "Representative harbor tests, not an exact survey of the 2026 competition field. Fixed moorings and prescribed traffic; known UAV observations remain substitutes.",
+  "boundary": [[-12, -23], [76, -23], [76, 24], [-12, 24]],
+  "infrastructure": [
+    {"name": "south_quay", "x": 35, "y": -19, "size": [28, 3], "height": 1.2},
+    {"name": "north_pontoon", "x": 57, "y": 21, "size": [22, 3], "height": 0.8}
+  ],
+  "layouts": {
+    "1": {
+      "entry": [9, -4], "exit": [61, 5],
+      "markers": [[22, 4.5, 2], [25, -8.5, 1], [31, 10.5, 2], [35, -2.5, 1], [40, 4, 0], [43, -8.5, 1], [48, 11, 2], [52, -1.5, 1]],
+      "change": {"after_s": 45, "id": "buoy_03", "state": 1},
+      "traffic": {"x": 37, "y_min": -15, "y_max": 16, "speed_mps": 0.25, "depart_after_s": 60, "hold_y": 0, "hold_s": 40}
+    },
+    "2": {
+      "entry": [9, 3], "exit": [62, -4],
+      "markers": [[21, 10, 2], [25, -3, 1], [29, 5, 2], [34, -10, 1], [40, -3, 0], [44, -12, 1], [49, 5.5, 2], [53, -12, 1]],
+      "change": {"after_s": 70, "id": "buoy_04", "state": 2},
+      "traffic": {"x": 37, "y_min": -15, "y_max": 16, "speed_mps": 0.3, "depart_after_s": 30, "hold_y": 0, "hold_s": 40}
+    },
+    "3": {
+      "entry": [8, -2], "exit": [62, 4],
+      "markers": [[21, 6, 2], [24, -8, 1], [29, 12, 2], [33, 0, 1], [39, 7, 0], [43, -4, 1], [48, 12, 2], [53, -5, 1]],
+      "change": {"after_s": 100, "id": "buoy_07", "state": 0},
+      "traffic": {"x": 36, "y_min": -15, "y_max": 16, "speed_mps": 0.25, "depart_after_s": 20, "hold_y": 0, "hold_s": 50}
+    }
+  }
+}

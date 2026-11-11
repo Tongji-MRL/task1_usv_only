@@ -1,0 +1,80 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+  - Class: nav2_rviz_plugins/Navigation 2
+    Name: Navigation 2
+Visualization Manager:
+  Class: ""
+  Global Options:
+    Fixed Frame: map
+    Background Color: 32; 32; 32
+  Displays:
+    - Class: rviz_default_plugins/Grid
+      Name: Grid
+      Enabled: true
+      Cell Size: 1
+      Plane Cell Count: 60
+    - Class: rviz_default_plugins/TF
+      Name: TF
+      Enabled: true
+      Show Arrows: true
+      Show Axes: true
+      Show Names: true
+    - Class: rviz_default_plugins/Map
+      Name: Water area
+      Enabled: true
+      Topic:
+        Value: /map
+        Reliability Policy: Reliable
+        Durability Policy: Transient Local
+      Alpha: 0.7
+    - Class: rviz_default_plugins/Map
+      Name: Local costmap
+      Enabled: true
+      Topic:
+        Value: /local_costmap/costmap
+        Reliability Policy: Reliable
+        Durability Policy: Transient Local
+      Color Scheme: costmap
+      Alpha: 0.5
+    - Class: rviz_default_plugins/LaserScan
+      Name: Scan
+      Enabled: true
+      Topic:
+        Value: /scan
+        Reliability Policy: Best Effort
+        Durability Policy: Volatile
+      Size (m): 0.08
+      Style: Spheres
+    - Class: rviz_default_plugins/Path
+      Name: Global path
+      Enabled: true
+      Topic:
+        Value: /plan
+        Reliability Policy: Reliable
+        Durability Policy: Volatile
+      Line Style: Lines
+      Color: 0; 255; 0
+    - Class: rviz_default_plugins/Polygon
+      Name: Vessel footprint
+      Enabled: true
+      Topic:
+        Value: /local_costmap/published_footprint
+        Reliability Policy: Reliable
+        Durability Policy: Volatile
+  Tools:
+    - Class: rviz_default_plugins/Interact
+    - Class: rviz_default_plugins/MoveCamera
+    - Class: rviz_default_plugins/Select
+    - Class: nav2_rviz_plugins/GoalTool
+  Views:
+    Current:
+      Class: rviz_default_plugins/TopDownOrtho
+      Name: Current View
+      Scale: 15
+      Target Frame: map
+      X: 0
+      Y: 0
+Window Geometry:
+  Width: 1200
+  Height: 850

@@ -1,0 +1,3 @@
+# Use only inside the hardware venv, with PYTHONNOUSERSITE=1.
+# NumPy / SciPy come from Ubuntu 22.04's compatible system packages.
+pymavlink==2.4.49

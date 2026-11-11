@@ -1,0 +1,209 @@
+<?xml version='1.0' encoding='utf-8'?>
+<sdf version="1.9">
+  <model name="robotx_2026_robobuoy">
+    <static>true</static>
+    <link name="body">
+      <visual name="panels">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robotx_2026_robobuoy/meshes/panels.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>.95 .95 .95 1</ambient>
+          <diffuse>.95 .95 .95 1</diffuse>
+        </material>
+      </visual>
+      <visual name="diamonds">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robotx_2026_robobuoy/meshes/diamonds.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>.015 .015 .015 1</ambient>
+          <diffuse>.015 .015 .015 1</diffuse>
+        </material>
+      </visual>
+      <visual name="beacon_pipe">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robotx_2026_robobuoy/meshes/beacon_pipe.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>.95 .95 .95 1</ambient>
+          <diffuse>.95 .95 .95 1</diffuse>
+        </material>
+      </visual>
+      <visual name="sunhat">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robotx_2026_robobuoy/meshes/sunhat.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>.01 .01 .01 1</ambient>
+          <diffuse>.01 .01 .01 1</diffuse>
+        </material>
+      </visual>
+      <visual name="float_0">
+        <pose>0.2159 0.0 0 1.57079632679 0 0.0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.0381</radius>
+            <length>0.4318</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>.45 .12 .65 1</ambient>
+          <diffuse>.45 .12 .65 1</diffuse>
+        </material>
+      </visual>
+      <collision name="float_0_collision">
+        <pose>0.2159 0.0 0 1.57079632679 0 0.0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.0381</radius>
+            <length>0.4318</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="float_1">
+        <pose>1.3220062196795678e-17 0.2159 0 1.57079632679 0 1.5707963267948966</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.0381</radius>
+            <length>0.4318</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>.45 .12 .65 1</ambient>
+          <diffuse>.45 .12 .65 1</diffuse>
+        </material>
+      </visual>
+      <collision name="float_1_collision">
+        <pose>1.3220062196795678e-17 0.2159 0 1.57079632679 0 1.5707963267948966</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.0381</radius>
+            <length>0.4318</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="float_2">
+        <pose>-0.2159 2.6440124393591356e-17 0 1.57079632679 0 3.141592653589793</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.0381</radius>
+            <length>0.4318</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>.45 .12 .65 1</ambient>
+          <diffuse>.45 .12 .65 1</diffuse>
+        </material>
+      </visual>
+      <collision name="float_2_collision">
+        <pose>-0.2159 2.6440124393591356e-17 0 1.57079632679 0 3.141592653589793</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.0381</radius>
+            <length>0.4318</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="float_3">
+        <pose>-3.966018659038703e-17 -0.2159 0 1.57079632679 0 4.71238898038469</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.0381</radius>
+            <length>0.4318</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>.45 .12 .65 1</ambient>
+          <diffuse>.45 .12 .65 1</diffuse>
+        </material>
+      </visual>
+      <collision name="float_3_collision">
+        <pose>-3.966018659038703e-17 -0.2159 0 1.57079632679 0 4.71238898038469</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.0381</radius>
+            <length>0.4318</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="top_mount">
+        <pose>0 0 0.39351464840291617 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>.18 .18 .03</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>.95 .95 .95 1</ambient>
+          <diffuse>.95 .95 .95 1</diffuse>
+        </material>
+      </visual>
+      <collision name="top_mount_collision">
+        <pose>0 0 0.39351464840291617 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>.18 .18 .03</size>
+          </box>
+        </geometry>
+      </collision>
+      <collision name="panel_0">
+        <pose>0 0 0.2392573242014581 0 0 0.0</pose>
+        <geometry>
+          <box>
+            <size>.4318 .4318 0.2785146484029162</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="light_top">
+        <pose>0 0 0.5315146484029162 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.039</radius>
+            <length>0.003</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0 0 0 1</ambient>
+          <diffuse>0 0 0 1</diffuse>
+          <emissive>0 0 0 1</emissive>
+        </material>
+      </visual>
+      <visual name="light_side">
+        <pose>0 0 0.4635146484029162 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.045</radius>
+            <length>0.036</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0 0 0 1</ambient>
+          <diffuse>0 0 0 1</diffuse>
+          <emissive>0 0 0 1</emissive>
+        </material>
+      </visual>
+      <collision name="beacon_collision_collision">
+        <pose>0 0 0.47518964840291616 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.04445</radius>
+            <length>0.13335</length>
+          </cylinder>
+        </geometry>
+      </collision>
+    </link>
+  </model>
+</sdf>

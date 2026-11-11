@@ -1,0 +1,5375 @@
+{
+  "attempts": [
+    {
+      "case": {
+        "name": "single_1",
+        "goals": [
+          [
+            5,
+            0,
+            0
+          ]
+        ]
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_043743_single_1",
+      "exit_code": 0,
+      "result": {
+        "status": 6,
+        "elapsed_wall_s": 20.262406694993842,
+        "true_position_error_m": 4.952363478793936,
+        "true_yaw_error_rad": 0.0582874779692028,
+        "at_goal": [
+          0.047636721275531084,
+          0.0014077050133948863,
+          0.0582874779692028
+        ],
+        "drift_10s_m": 0.0011099157796136227,
+        "zero_command_delay_s": 0.050188310036901385,
+        "min_planar_clearance_m": 6.338022535854705,
+        "expected_status": 4,
+        "passed": false
+      }
+    },
+    {
+      "case": {
+        "name": "single_2",
+        "goals": [
+          [
+            5,
+            0,
+            0
+          ]
+        ]
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_043912_single_2",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 16.370260583993513,
+        "true_position_error_m": 0.35081893809671916,
+        "true_yaw_error_rad": 0.0246155056775341,
+        "at_goal": [
+          4.669284117797017,
+          0.11705098284940715,
+          -0.0246155056775341
+        ],
+        "drift_10s_m": 0.5976070343686335,
+        "zero_command_delay_s": 0.05016708403127268,
+        "min_planar_clearance_m": 1.1689415002616206,
+        "expected_status": 4,
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "single_3",
+        "goals": [
+          [
+            5,
+            0,
+            0
+          ]
+        ]
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_044036_single_3",
+      "exit_code": 0,
+      "result": {
+        "status": 6,
+        "elapsed_wall_s": 20.292475473019294,
+        "true_position_error_m": 4.9569683961551885,
+        "true_yaw_error_rad": 0.05848335318228208,
+        "at_goal": [
+          0.04303178465463729,
+          0.0013388566598766696,
+          0.05848335318228208
+        ],
+        "drift_10s_m": 0.0009571641373495534,
+        "zero_command_delay_s": 0.050233375979587436,
+        "min_planar_clearance_m": 6.342023024447597,
+        "expected_status": 4,
+        "passed": false
+      }
+    },
+    {
+      "case": {
+        "name": "multi_1",
+        "goals": [
+          [
+            3,
+            -3,
+            -0.6
+          ],
+          [
+            6,
+            -4,
+            0
+          ]
+        ]
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_044205_multi_1",
+      "exit_code": 1,
+      "result": null
+    },
+    {
+      "case": {
+        "name": "multi_2",
+        "goals": [
+          [
+            3,
+            -3,
+            -0.6
+          ],
+          [
+            6,
+            -4,
+            0
+          ]
+        ]
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_044702_multi_2",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 18.624793019960634,
+        "true_position_error_m": 0.3304829958616035,
+        "true_yaw_error_rad": 0.2626308851751246,
+        "at_goal": [
+          5.677862904639135,
+          -3.9261982226086265,
+          0.2626308851751246
+        ],
+        "drift_10s_m": 0.17786438792226908,
+        "zero_command_delay_s": 0.05028327804757282,
+        "min_planar_clearance_m": 1.6111508459543873,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "passed": false
+      }
+    },
+    {
+      "case": {
+        "name": "multi_3",
+        "goals": [
+          [
+            3,
+            -3,
+            -0.6
+          ],
+          [
+            6,
+            -4,
+            0
+          ]
+        ]
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_044830_multi_3",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 18.32418213400524,
+        "true_position_error_m": 0.3684199699858438,
+        "true_yaw_error_rad": 0.2619707871194091,
+        "at_goal": [
+          5.641167803030808,
+          -3.916497133566366,
+          0.2619707871194091
+        ],
+        "drift_10s_m": 0.2077989825592016,
+        "zero_command_delay_s": 0.050313012034166604,
+        "min_planar_clearance_m": 1.623539493238084,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "passed": false
+      }
+    },
+    {
+      "case": {
+        "name": "static_obstacle",
+        "goals": [
+          [
+            18,
+            0,
+            0
+          ]
+        ]
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_044956_static_obstacle",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 53.78367562300991,
+        "true_position_error_m": 0.3774606823426236,
+        "true_yaw_error_rad": 0.16548472495301206,
+        "at_goal": [
+          18.008035824407727,
+          0.3773751346348182,
+          -0.16548472495301206
+        ],
+        "drift_10s_m": 0.07614446867702829,
+        "zero_command_delay_s": 0.05053528503049165,
+        "min_planar_clearance_m": 1.7247786286089875,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "cancel",
+        "goals": [
+          [
+            5,
+            0,
+            0
+          ]
+        ],
+        "cancel_after": 5,
+        "expected_status": 5
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_045158_cancel",
+      "exit_code": 0,
+      "result": {
+        "status": 5,
+        "elapsed_wall_s": 5.09861310996348,
+        "true_position_error_m": 3.360827011571482,
+        "true_yaw_error_rad": 8.766965425592135e-05,
+        "at_goal": [
+          1.6404006812672396,
+          0.09083291957693128,
+          -8.766965425592133e-05
+        ],
+        "drift_10s_m": 0.8580871434631744,
+        "zero_command_delay_s": 0.05024668900296092,
+        "min_planar_clearance_m": 3.947907690451706,
+        "expected_status": 5,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "unreachable",
+        "goals": [
+          [
+            60,
+            0,
+            0
+          ]
+        ],
+        "expected_status": 6
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_045311_unreachable",
+      "exit_code": 0,
+      "result": {
+        "status": 6,
+        "elapsed_wall_s": 0.06288679502904415,
+        "true_position_error_m": 59.9990560599599,
+        "true_yaw_error_rad": 0.0581258246727139,
+        "at_goal": [
+          0.0009447560354815692,
+          0.009895347624270589,
+          0.0581258246727139
+        ],
+        "drift_10s_m": 0.009214546013072943,
+        "zero_command_delay_s": 0.050149134011007845,
+        "min_planar_clearance_m": 6.382456345393004,
+        "expected_status": 6,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "single_1",
+        "goals": [
+          [
+            5,
+            0,
+            0
+          ]
+        ]
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_045547_single_1",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 12.607634253974538,
+        "true_position_error_m": 0.3635198039326534,
+        "true_yaw_error_rad": 0.03487918518382757,
+        "at_goal": [
+          4.647338054761196,
+          0.08818276606921306,
+          -0.03487918518382757
+        ],
+        "drift_10s_m": 0.17126123493338619,
+        "zero_command_delay_s": 0.05491718399571255,
+        "min_planar_clearance_m": 1.5896953235162308,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "single_2",
+        "goals": [
+          [
+            5,
+            0,
+            0
+          ]
+        ]
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_045707_single_2",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 12.690985215012915,
+        "true_position_error_m": 0.3534038489674738,
+        "true_yaw_error_rad": 0.034813375912324265,
+        "at_goal": [
+          4.65803695131534,
+          0.08919391122334586,
+          -0.034813375912324265
+        ],
+        "drift_10s_m": 0.16864525438493014,
+        "zero_command_delay_s": 0.05019810202065855,
+        "min_planar_clearance_m": 1.5782530469898766,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "single_3",
+        "goals": [
+          [
+            5,
+            0,
+            0
+          ]
+        ]
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_045828_single_3",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 12.58591012499528,
+        "true_position_error_m": 0.3630138269118655,
+        "true_yaw_error_rad": 0.01658624732437843,
+        "at_goal": [
+          4.64502494761258,
+          0.07597203901269273,
+          -0.01658624732437843
+        ],
+        "drift_10s_m": 0.1994354373565181,
+        "zero_command_delay_s": 0.05009646702092141,
+        "min_planar_clearance_m": 1.5820978574570537,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "multi_1",
+        "goals": [
+          [
+            3,
+            -3,
+            -0.6
+          ],
+          [
+            6,
+            -4,
+            0
+          ]
+        ]
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_045948_multi_1",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 18.928266699018423,
+        "true_position_error_m": 0.28689706081013794,
+        "true_yaw_error_rad": 0.21450717268757924,
+        "at_goal": [
+          5.721331472129992,
+          -3.9317814169286796,
+          0.21450717268757924
+        ],
+        "drift_10s_m": 0.127653793919165,
+        "zero_command_delay_s": 0.051136800029780716,
+        "min_planar_clearance_m": 1.6473497854898749,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [
+          {
+            "target": [
+              3,
+              -3,
+              -0.6
+            ],
+            "closest_position_error_m": 0.12722351961392117,
+            "yaw_error_at_closest_rad": 0.0331406881431735
+          }
+        ],
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "multi_2",
+        "goals": [
+          [
+            3,
+            -3,
+            -0.6
+          ],
+          [
+            6,
+            -4,
+            0
+          ]
+        ]
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_050115_multi_2",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 19.203902475012,
+        "true_position_error_m": 0.2635144022582212,
+        "true_yaw_error_rad": 0.2138647987764247,
+        "at_goal": [
+          5.743481510094727,
+          -3.9396832980491623,
+          0.2138647987764247
+        ],
+        "drift_10s_m": 0.10320829908058123,
+        "zero_command_delay_s": 0.05020238598808646,
+        "min_planar_clearance_m": 1.642308501002034,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [
+          {
+            "target": [
+              3,
+              -3,
+              -0.6
+            ],
+            "closest_position_error_m": 0.12400445720841731,
+            "yaw_error_at_closest_rad": 0.04677011094541117
+          }
+        ],
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "multi_3",
+        "goals": [
+          [
+            3,
+            -3,
+            -0.6
+          ],
+          [
+            6,
+            -4,
+            0
+          ]
+        ]
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_050242_multi_3",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 18.999074742023367,
+        "true_position_error_m": 0.282522560714023,
+        "true_yaw_error_rad": 0.21347536128000513,
+        "at_goal": [
+          5.725243813496324,
+          -3.934212194972273,
+          0.21347536128000513
+        ],
+        "drift_10s_m": 0.12751626825954673,
+        "zero_command_delay_s": 0.05041032296139747,
+        "min_planar_clearance_m": 1.6434037466515972,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [
+          {
+            "target": [
+              3,
+              -3,
+              -0.6
+            ],
+            "closest_position_error_m": 0.11575659675954021,
+            "yaw_error_at_closest_rad": 0.029356490623406395
+          }
+        ],
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "static_obstacle",
+        "goals": [
+          [
+            18,
+            0,
+            0
+          ]
+        ]
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_050410_static_obstacle",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 53.890729134960566,
+        "true_position_error_m": 0.37425067894405034,
+        "true_yaw_error_rad": 0.16507872020604616,
+        "at_goal": [
+          17.979229821628167,
+          0.37367388239009275,
+          -0.16507872020604616
+        ],
+        "drift_10s_m": 0.07013522229523812,
+        "zero_command_delay_s": 0.05010098998900503,
+        "min_planar_clearance_m": 1.722752533762161,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "cancel",
+        "goals": [
+          [
+            5,
+            0,
+            0
+          ]
+        ],
+        "cancel_after": 5,
+        "expected_status": 5
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_050612_cancel",
+      "exit_code": 0,
+      "result": {
+        "status": 5,
+        "elapsed_wall_s": 5.082634899998084,
+        "true_position_error_m": 3.320784781569007,
+        "true_yaw_error_rad": 0.02229569278320227,
+        "at_goal": [
+          1.6799945938552405,
+          0.07194212027655722,
+          0.022295692783202273
+        ],
+        "drift_10s_m": 0.8594253307658026,
+        "zero_command_delay_s": 0.05012854002416134,
+        "min_planar_clearance_m": 3.8901976526044226,
+        "expected_status": 5,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "unreachable",
+        "goals": [
+          [
+            60,
+            0,
+            0
+          ]
+        ],
+        "expected_status": 6
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_050725_unreachable",
+      "exit_code": 0,
+      "result": {
+        "status": 6,
+        "elapsed_wall_s": 0.08155750494915992,
+        "true_position_error_m": 59.99885533894042,
+        "true_yaw_error_rad": 0.03979434793123762,
+        "at_goal": [
+          0.001145008443107568,
+          0.00645640986585739,
+          0.03979434793123762
+        ],
+        "drift_10s_m": 0.0057527810890023665,
+        "zero_command_delay_s": 0.050140725972596556,
+        "min_planar_clearance_m": 6.39920160435691,
+        "expected_status": 6,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "unreachable_obstacle",
+        "goals": [
+          [
+            10,
+            0,
+            0
+          ]
+        ],
+        "expected_status": 6
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_050834_unreachable_obstacle",
+      "exit_code": 0,
+      "result": {
+        "status": 6,
+        "elapsed_wall_s": 0.06395161803811789,
+        "true_position_error_m": 9.99871136359533,
+        "true_yaw_error_rad": 0.01785833352681167,
+        "at_goal": [
+          0.001288972898363097,
+          0.0025940328674826435,
+          0.01785833352681167
+        ],
+        "drift_10s_m": 0.001846134415345676,
+        "zero_command_delay_s": 0.05054748401744291,
+        "min_planar_clearance_m": 6.4191846981013825,
+        "expected_status": 6,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "wind",
+        "goals": [
+          [
+            5,
+            0,
+            0
+          ]
+        ],
+        "wind": 3
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_050941_wind",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 43.80184831505176,
+        "true_position_error_m": 0.43612122099470924,
+        "true_yaw_error_rad": 0.16486435894175971,
+        "at_goal": [
+          4.622376007773645,
+          -0.21817845882888098,
+          -0.16486435894175971
+        ],
+        "drift_10s_m": 0.44400303262761937,
+        "zero_command_delay_s": 0.05024683702504262,
+        "min_planar_clearance_m": 0.7623765072938085,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "waves",
+        "goals": [
+          [
+            5,
+            0,
+            0
+          ]
+        ],
+        "wave_gain": 0.3
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_051134_waves",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 12.704671973013319,
+        "true_position_error_m": 0.38579890115114973,
+        "true_yaw_error_rad": 0.03760866236872241,
+        "at_goal": [
+          4.623890018647386,
+          0.08591899706334492,
+          -0.03760866236872241
+        ],
+        "drift_10s_m": 0.1816910682279841,
+        "zero_command_delay_s": 0.0502110929810442,
+        "min_planar_clearance_m": 1.6047520268004534,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "wind_waves",
+        "goals": [
+          [
+            5,
+            0,
+            0
+          ]
+        ],
+        "wind": 3,
+        "wave_gain": 0.3
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_051254_wind_waves",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 44.7255732389749,
+        "true_position_error_m": 0.43793593362810207,
+        "true_yaw_error_rad": 0.15447731877489376,
+        "at_goal": [
+          4.629168091710561,
+          -0.23296261021273443,
+          -0.15447731877489376
+        ],
+        "drift_10s_m": 0.4478100396881798,
+        "zero_command_delay_s": 0.05062628805171698,
+        "min_planar_clearance_m": 0.7786447331196236,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "gps_input_fixed",
+        "goals": [
+          [
+            5,
+            0,
+            0
+          ]
+        ],
+        "gps_input": true
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_051447_gps_input_fixed",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 12.503812377981376,
+        "true_position_error_m": 0.37240657743943806,
+        "true_yaw_error_rad": 0.029266764547813136,
+        "at_goal": [
+          4.64233848879004,
+          0.10375404724233121,
+          0.029266764547813136
+        ],
+        "drift_10s_m": 0.2249833654184719,
+        "zero_command_delay_s": 0.05043191701406613,
+        "min_planar_clearance_m": 1.5591466239524197,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "dynamic_map",
+        "environment_case": "dynamic_map"
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_051609_dynamic_map",
+      "exit_code": 0,
+      "result": {
+        "baseline_lethal_cells": 0,
+        "marked_lethal_cells": 157,
+        "mark_delay_s": 5.692137212026864,
+        "clear_delay_s": 1.2105132319848053,
+        "remaining_lethal_cells": 0,
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "dynamic_navigation",
+        "environment_case": "dynamic_navigation"
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_051647_dynamic_navigation",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 51.582058486994356,
+        "true_position_error_m": 0.3067776239260521,
+        "true_yaw_error_rad": 0.20491294886659084,
+        "at_goal": [
+          12.040116034633295,
+          7.695856589242814,
+          0.20491294886659084
+        ],
+        "drift_10s_m": 0.10295271459695476,
+        "zero_command_delay_s": 0.05010965297697112,
+        "min_planar_clearance_m": 0.0,
+        "expected_status": 4,
+        "contact_messages": 1896,
+        "collision_messages": 1896,
+        "via_points": [],
+        "passed": false,
+        "obstacle_inserted": true,
+        "obstacle_removed": true
+      }
+    },
+    {
+      "case": {
+        "name": "pause",
+        "environment_case": "pause"
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_051846_pause",
+      "exit_code": 0,
+      "result": {
+        "zero_output_wall_s": 0.22366174298804253,
+        "paused_sim_delta_s": 0.2680000000000007,
+        "resumed_sim_delta_s": 3.907999999999994,
+        "replayed_old_command": false,
+        "passed": true,
+        "note": "Paused physics is not evidence of physical stopping."
+      }
+    },
+    {
+      "case": {
+        "name": "motors",
+        "environment_case": "motors"
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_052009_motors",
+      "exit_code": 0,
+      "result": [
+        {
+          "side": "left",
+          "pwm": 1600,
+          "expected_n": 60.0,
+          "actual_n": 59.999999999999986,
+          "other_n": 0.0,
+          "truth_yaw_rate": -0.06491006643045694,
+          "passed": true
+        },
+        {
+          "side": "left",
+          "pwm": 1400,
+          "expected_n": -60.0,
+          "actual_n": -59.999999999999986,
+          "other_n": 0.0,
+          "truth_yaw_rate": 0.06388659749063663,
+          "passed": true
+        },
+        {
+          "side": "left",
+          "pwm": 1500,
+          "expected_n": 0.0,
+          "actual_n": 0.0,
+          "other_n": 0.0,
+          "truth_yaw_rate": 0.00036115703494488116,
+          "passed": true
+        },
+        {
+          "side": "left",
+          "pwm": 900,
+          "expected_n": 0,
+          "actual_n": -300.0,
+          "other_n": 0.0,
+          "truth_yaw_rate": 0.28008044755551964,
+          "passed": false
+        },
+        {
+          "side": "left",
+          "pwm": 2100,
+          "expected_n": 0,
+          "actual_n": 300.0,
+          "other_n": 0.0,
+          "truth_yaw_rate": -0.2901744417613372,
+          "passed": false
+        },
+        {
+          "side": "right",
+          "pwm": 1600,
+          "expected_n": 60.0,
+          "actual_n": 59.999999999999986,
+          "other_n": 0.0,
+          "truth_yaw_rate": 0.05621012569463346,
+          "passed": true
+        },
+        {
+          "side": "right",
+          "pwm": 1400,
+          "expected_n": -60.0,
+          "actual_n": -59.999999999999986,
+          "other_n": 0.0,
+          "truth_yaw_rate": -0.06449275169870816,
+          "passed": true
+        },
+        {
+          "side": "right",
+          "pwm": 1500,
+          "expected_n": 0.0,
+          "actual_n": 0.0,
+          "other_n": 0.0,
+          "truth_yaw_rate": -0.0005037465825807885,
+          "passed": true
+        },
+        {
+          "side": "right",
+          "pwm": 900,
+          "expected_n": 0,
+          "actual_n": -300.0,
+          "other_n": 0.0,
+          "truth_yaw_rate": -0.2798467903630808,
+          "passed": false
+        },
+        {
+          "side": "right",
+          "pwm": 2100,
+          "expected_n": 0,
+          "actual_n": 300.0,
+          "other_n": 0.0,
+          "truth_yaw_rate": 0.28987100231461227,
+          "passed": false
+        },
+        {
+          "side": "both",
+          "rc_throttle_pwm": 1600,
+          "actual_n": [
+            0.0,
+            0.0
+          ],
+          "forward_velocity": 0.017777097285117675,
+          "servo_pwm": {
+            "mavpackettype": "SERVO_OUTPUT_RAW",
+            "time_usec": 99067164,
+            "port": 0,
+            "servo1_raw": 1500,
+            "servo2_raw": 0,
+            "servo3_raw": 1500,
+            "servo4_raw": 0,
+            "servo5_raw": 0,
+            "servo6_raw": 0,
+            "servo7_raw": 0,
+            "servo8_raw": 0,
+            "servo9_raw": 0,
+            "servo10_raw": 0,
+            "servo11_raw": 0,
+            "servo12_raw": 0,
+            "servo13_raw": 0,
+            "servo14_raw": 0,
+            "servo15_raw": 0,
+            "servo16_raw": 0
+          },
+          "passed": false
+        },
+        {
+          "side": "both",
+          "rc_throttle_pwm": 1400,
+          "actual_n": [
+            0.0,
+            0.0
+          ],
+          "forward_velocity": 0.005469829923436559,
+          "servo_pwm": {
+            "mavpackettype": "SERVO_OUTPUT_RAW",
+            "time_usec": 102066906,
+            "port": 0,
+            "servo1_raw": 1500,
+            "servo2_raw": 0,
+            "servo3_raw": 1500,
+            "servo4_raw": 0,
+            "servo5_raw": 0,
+            "servo6_raw": 0,
+            "servo7_raw": 0,
+            "servo8_raw": 0,
+            "servo9_raw": 0,
+            "servo10_raw": 0,
+            "servo11_raw": 0,
+            "servo12_raw": 0,
+            "servo13_raw": 0,
+            "servo14_raw": 0,
+            "servo15_raw": 0,
+            "servo16_raw": 0
+          },
+          "passed": false
+        },
+        {
+          "side": "both",
+          "rc_throttle_pwm": 1500,
+          "actual_n": [
+            0.0,
+            0.0
+          ],
+          "forward_velocity": 0.0017083608219796438,
+          "servo_pwm": {
+            "mavpackettype": "SERVO_OUTPUT_RAW",
+            "time_usec": 105066648,
+            "port": 0,
+            "servo1_raw": 1500,
+            "servo2_raw": 0,
+            "servo3_raw": 1500,
+            "servo4_raw": 0,
+            "servo5_raw": 0,
+            "servo6_raw": 0,
+            "servo7_raw": 0,
+            "servo8_raw": 0,
+            "servo9_raw": 0,
+            "servo10_raw": 0,
+            "servo11_raw": 0,
+            "servo12_raw": 0,
+            "servo13_raw": 0,
+            "servo14_raw": 0,
+            "servo15_raw": 0,
+            "servo16_raw": 0
+          },
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case": {
+        "name": "collision_sensor",
+        "environment_case": "collision_sensor"
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_052209_collision_sensor",
+      "exit_code": 0,
+      "result": {
+        "collision_messages": 742,
+        "contact_messages": 742,
+        "passed": true,
+        "note": "Intentional overlap in an isolated disarmed scene validates contact detection."
+      }
+    },
+    {
+      "case": {
+        "name": "reset",
+        "environment_case": "reset"
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_052248_reset",
+      "exit_code": 0,
+      "result": {
+        "before_sim_s": 23.18,
+        "minimum_sim_after_reset_s": 0.0,
+        "final_sim_s": 11.772,
+        "final_odom_age_s": -11.572,
+        "final_scan_age_s": -11.528,
+        "final_gate": "CONTROL: FCU must be connected, armed and in GUIDED",
+        "nonzero_preview_samples": 0,
+        "passed": false
+      }
+    },
+    {
+      "case": {
+        "name": "mavros_exit",
+        "environment_case": "mavros_exit"
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_052337_mavros_exit",
+      "exit_code": 0,
+      "result": {
+        "thrust_zero_wall_s": 3.366166357009206,
+        "speed_below_002_wall_s": 7.795907174004242,
+        "displacement_m": 1.1145053144254629,
+        "sim_advanced_s": 11.896,
+        "final_thrust_n": [
+          0.6000000000000005,
+          -0.6000000000000005
+        ],
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "gnss",
+        "environment_case": "gnss",
+        "gps_input": true
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_052453_gnss",
+      "exit_code": 0,
+      "result": {
+        "profiles": [
+          {
+            "profile": "fixed",
+            "settings": {
+              "fix_type": 6,
+              "horizontal_sigma": 0.02,
+              "reported_accuracy": 0.02,
+              "delay_s": 0.1,
+              "drop": false
+            },
+            "position_rmse_m": 0.024545076042160587,
+            "position_error_max_m": 0.0343321950569205,
+            "last_gate": "CONTROL: ready",
+            "nonzero_preview_samples": 72,
+            "samples": 80,
+            "reported_fix_types": [
+              6
+            ],
+            "last_ekf_status": {
+              "mavpackettype": "EKF_STATUS_REPORT",
+              "flags": 831,
+              "velocity_variance": 0.005822469480335712,
+              "pos_horiz_variance": 0.004261083900928497,
+              "pos_vert_variance": 0.0002307774848304689,
+              "compass_variance": 0.0011085267178714275,
+              "terrain_alt_variance": 0.0,
+              "airspeed_variance": 0.0
+            },
+            "nav2_action_status": "running",
+            "minimum_clearance_m": 5.730539201082662
+          },
+          {
+            "profile": "float",
+            "settings": {
+              "fix_type": 5,
+              "horizontal_sigma": 0.3,
+              "reported_accuracy": 0.3,
+              "delay_s": 0.1,
+              "drop": false
+            },
+            "position_rmse_m": 0.10598039699069406,
+            "position_error_max_m": 0.20882788955635984,
+            "last_gate": "CONTROL: ready",
+            "nonzero_preview_samples": 119,
+            "samples": 119,
+            "reported_fix_types": [
+              5,
+              6
+            ],
+            "last_ekf_status": {
+              "mavpackettype": "EKF_STATUS_REPORT",
+              "flags": 831,
+              "velocity_variance": 0.0035431277938187122,
+              "pos_horiz_variance": 0.11513268947601318,
+              "pos_vert_variance": 0.0067114923149347305,
+              "compass_variance": 0.004408647306263447,
+              "terrain_alt_variance": 0.0,
+              "airspeed_variance": 0.0
+            },
+            "nav2_action_status": "running",
+            "minimum_clearance_m": 5.738795010375816
+          },
+          {
+            "profile": "ordinary",
+            "settings": {
+              "fix_type": 3,
+              "horizontal_sigma": 1.5,
+              "reported_accuracy": 1.5,
+              "delay_s": 0.3,
+              "drop": false
+            },
+            "position_rmse_m": 0.23757197118099468,
+            "position_error_max_m": 0.48611803513656515,
+            "last_gate": "CONTROL: ready",
+            "nonzero_preview_samples": 149,
+            "samples": 149,
+            "reported_fix_types": [
+              3,
+              5
+            ],
+            "last_ekf_status": {
+              "mavpackettype": "EKF_STATUS_REPORT",
+              "flags": 831,
+              "velocity_variance": 0.014599326066672802,
+              "pos_horiz_variance": 0.16786283254623413,
+              "pos_vert_variance": 0.0027042152360081673,
+              "compass_variance": 0.006237868219614029,
+              "terrain_alt_variance": 0.0,
+              "airspeed_variance": 0.0
+            },
+            "nav2_action_status": "running",
+            "minimum_clearance_m": 7.866941176034953
+          },
+          {
+            "profile": "no_fix",
+            "settings": {
+              "fix_type": 1,
+              "horizontal_sigma": 1.5,
+              "reported_accuracy": 1.5,
+              "delay_s": 0.1,
+              "drop": false
+            },
+            "position_rmse_m": 1.1989542337754433,
+            "position_error_max_m": 1.8862453619713713,
+            "last_gate": "CONTROL: FCU must be connected, armed and in GUIDED",
+            "nonzero_preview_samples": 76,
+            "samples": 119,
+            "reported_fix_types": [
+              1,
+              3
+            ],
+            "last_ekf_status": {
+              "mavpackettype": "EKF_STATUS_REPORT",
+              "flags": 39,
+              "velocity_variance": 0.012426136061549187,
+              "pos_horiz_variance": 0.07408646494150162,
+              "pos_vert_variance": 0.012438865378499031,
+              "compass_variance": 0.0009446601616218686,
+              "terrain_alt_variance": 0.0,
+              "airspeed_variance": 0.0
+            },
+            "nav2_action_status": "running",
+            "minimum_clearance_m": 11.909549058870416
+          },
+          {
+            "profile": "lost",
+            "settings": {
+              "fix_type": 1,
+              "horizontal_sigma": 1.5,
+              "reported_accuracy": 1.5,
+              "delay_s": 0.3,
+              "drop": true
+            },
+            "position_rmse_m": 1.9807540420601322,
+            "position_error_max_m": 1.9984059989564589,
+            "last_gate": "CONTROL: FCU must be connected, armed and in GUIDED",
+            "nonzero_preview_samples": 0,
+            "samples": 149,
+            "reported_fix_types": [
+              1
+            ],
+            "last_ekf_status": {
+              "mavpackettype": "EKF_STATUS_REPORT",
+              "flags": 167,
+              "velocity_variance": 0.0,
+              "pos_horiz_variance": 0.007894572801887989,
+              "pos_vert_variance": 0.019443372264504433,
+              "compass_variance": 0.008428339846432209,
+              "terrain_alt_variance": 0.0,
+              "airspeed_variance": 0.0
+            },
+            "nav2_action_status": "running",
+            "minimum_clearance_m": 15.710959891330553
+          },
+          {
+            "profile": "recover",
+            "settings": {
+              "fix_type": 6,
+              "horizontal_sigma": 0.02,
+              "reported_accuracy": 0.02,
+              "delay_s": 0.1,
+              "drop": false
+            },
+            "position_rmse_m": 0.2533703577622159,
+            "position_error_max_m": 1.998443016088192,
+            "last_gate": "CONTROL: FCU must be connected, armed and in GUIDED",
+            "nonzero_preview_samples": 0,
+            "samples": 199,
+            "reported_fix_types": [
+              1,
+              6
+            ],
+            "last_ekf_status": {
+              "mavpackettype": "EKF_STATUS_REPORT",
+              "flags": 831,
+              "velocity_variance": 0.005479027982801199,
+              "pos_horiz_variance": 0.00417820131406188,
+              "pos_vert_variance": 0.0020671593956649303,
+              "compass_variance": 0.012979093007743359,
+              "terrain_alt_variance": 0.0,
+              "airspeed_variance": 0.0
+            },
+            "nav2_action_status": "running",
+            "minimum_clearance_m": 15.828027279103397
+          }
+        ],
+        "action_status_before_test_cleanup": "running",
+        "target": [
+          0,
+          -25,
+          -1.5707963267948966
+        ],
+        "final_true_position_error_m": 7.246607366619106,
+        "collision_messages": 0,
+        "endurance": {
+          "final_frame": 70000,
+          "new_controller_resets": 0,
+          "passed": true
+        },
+        "note": "No new RTK/EKF gate or automatic retry policy is implemented."
+      }
+    },
+    {
+      "case": {
+        "name": "dynamic_navigation",
+        "environment_case": "dynamic_navigation"
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_053027_dynamic_navigation",
+      "exit_code": 0,
+      "result": {
+        "status": 6,
+        "elapsed_wall_s": 32.19742739998037,
+        "true_position_error_m": 8.604236999637653,
+        "true_yaw_error_rad": 0.046424478935392234,
+        "at_goal": [
+          6.217082860075723,
+          1.6289118905242277,
+          -0.046424478935392234
+        ],
+        "drift_10s_m": 0.040681037765980255,
+        "zero_command_delay_s": 0.050642130023334175,
+        "min_planar_clearance_m": 0.0,
+        "expected_status": 4,
+        "contact_messages": 475,
+        "collision_messages": 475,
+        "via_points": [],
+        "passed": false,
+        "obstacle_inserted": true,
+        "obstacle_removed": true
+      }
+    },
+    {
+      "case": {
+        "name": "motors",
+        "environment_case": "motors"
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_053208_motors",
+      "exit_code": 0,
+      "result": [
+        {
+          "side": "left",
+          "pwm": 1600,
+          "expected_n": 60.0,
+          "actual_n": 59.999999999999986,
+          "other_n": 0.0,
+          "truth_yaw_rate": -0.06544820571434684,
+          "passed": true
+        },
+        {
+          "side": "left",
+          "pwm": 1400,
+          "expected_n": -60.0,
+          "actual_n": -59.999999999999986,
+          "other_n": 0.0,
+          "truth_yaw_rate": 0.06441644800361246,
+          "passed": true
+        },
+        {
+          "side": "left",
+          "pwm": 1500,
+          "expected_n": 0.0,
+          "actual_n": 0.0,
+          "other_n": 0.0,
+          "truth_yaw_rate": 0.00038874322285664675,
+          "passed": true
+        },
+        {
+          "side": "right",
+          "pwm": 1600,
+          "expected_n": 60.0,
+          "actual_n": 59.999999999999986,
+          "other_n": 0.0,
+          "truth_yaw_rate": 0.06560391484526917,
+          "passed": true
+        },
+        {
+          "side": "right",
+          "pwm": 1400,
+          "expected_n": -60.0,
+          "actual_n": -59.999999999999986,
+          "other_n": 0.0,
+          "truth_yaw_rate": -0.0635608252196107,
+          "passed": true
+        },
+        {
+          "side": "right",
+          "pwm": 1500,
+          "expected_n": 0.0,
+          "actual_n": 0.0,
+          "other_n": 0.0,
+          "truth_yaw_rate": -0.0004238656458710466,
+          "passed": true
+        },
+        {
+          "side": "both",
+          "rc_throttle_pwm": 1600,
+          "actual_n": [
+            53.99999999999998,
+            53.99999999999998
+          ],
+          "forward_velocity": 0.5364541876081816,
+          "servo_pwm": {
+            "mavpackettype": "SERVO_OUTPUT_RAW",
+            "time_usec": 80064798,
+            "port": 0,
+            "servo1_raw": 1590,
+            "servo2_raw": 0,
+            "servo3_raw": 1590,
+            "servo4_raw": 0,
+            "servo5_raw": 0,
+            "servo6_raw": 0,
+            "servo7_raw": 0,
+            "servo8_raw": 0,
+            "servo9_raw": 0,
+            "servo10_raw": 0,
+            "servo11_raw": 0,
+            "servo12_raw": 0,
+            "servo13_raw": 0,
+            "servo14_raw": 0,
+            "servo15_raw": 0,
+            "servo16_raw": 0
+          },
+          "passed": true
+        },
+        {
+          "side": "both",
+          "rc_throttle_pwm": 1400,
+          "actual_n": [
+            -54.000000000000014,
+            -54.000000000000014
+          ],
+          "forward_velocity": -0.4570057106213561,
+          "servo_pwm": {
+            "mavpackettype": "SERVO_OUTPUT_RAW",
+            "time_usec": 83064540,
+            "port": 0,
+            "servo1_raw": 1410,
+            "servo2_raw": 0,
+            "servo3_raw": 1410,
+            "servo4_raw": 0,
+            "servo5_raw": 0,
+            "servo6_raw": 0,
+            "servo7_raw": 0,
+            "servo8_raw": 0,
+            "servo9_raw": 0,
+            "servo10_raw": 0,
+            "servo11_raw": 0,
+            "servo12_raw": 0,
+            "servo13_raw": 0,
+            "servo14_raw": 0,
+            "servo15_raw": 0,
+            "servo16_raw": 0
+          },
+          "passed": true
+        },
+        {
+          "side": "both",
+          "rc_throttle_pwm": 1500,
+          "actual_n": [
+            0.0,
+            0.0
+          ],
+          "forward_velocity": -0.10698004850176716,
+          "servo_pwm": {
+            "mavpackettype": "SERVO_OUTPUT_RAW",
+            "time_usec": 86064282,
+            "port": 0,
+            "servo1_raw": 1500,
+            "servo2_raw": 0,
+            "servo3_raw": 1500,
+            "servo4_raw": 0,
+            "servo5_raw": 0,
+            "servo6_raw": 0,
+            "servo7_raw": 0,
+            "servo8_raw": 0,
+            "servo9_raw": 0,
+            "servo10_raw": 0,
+            "servo11_raw": 0,
+            "servo12_raw": 0,
+            "servo13_raw": 0,
+            "servo14_raw": 0,
+            "servo15_raw": 0,
+            "servo16_raw": 0
+          },
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case": {
+        "name": "protocol",
+        "environment_case": "protocol"
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_053349_protocol",
+      "exit_code": 0,
+      "result": [
+        {
+          "case": "out_of_range_pwm",
+          "maximum_total_absolute_thrust_n": 0.0,
+          "sim_advanced_s": 0.7159999999999975,
+          "passed": true
+        },
+        {
+          "case": "disabled_pwm",
+          "maximum_total_absolute_thrust_n": 0.0,
+          "sim_advanced_s": 0.759999999999998,
+          "passed": true
+        },
+        {
+          "case": "truncated",
+          "maximum_total_absolute_thrust_n": 0.0,
+          "sim_advanced_s": 1.8840000000000003,
+          "passed": true
+        },
+        {
+          "case": "bad_magic",
+          "maximum_total_absolute_thrust_n": 0.0,
+          "sim_advanced_s": 1.904,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case": {
+        "name": "mavros_exit",
+        "environment_case": "mavros_exit"
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_053434_mavros_exit",
+      "exit_code": 0,
+      "result": {
+        "thrust_zero_wall_s": 4.215700208034832,
+        "speed_below_002_wall_s": 7.8485725310165435,
+        "displacement_m": 1.1090881970893982,
+        "sim_advanced_s": 11.903999999999996,
+        "final_thrust_n": [
+          0.0,
+          0.0
+        ],
+        "final_native_mode": 4,
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "sitl_exit",
+        "environment_case": "sitl_exit"
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_053549_sitl_exit",
+      "exit_code": 0,
+      "result": {
+        "thrust_zero_wall_s": 0.13855092803714797,
+        "speed_below_002_wall_s": 5.884818962018471,
+        "displacement_m": 0.5572530916513121,
+        "sim_advanced_s": 11.872,
+        "final_thrust_n": [
+          0.0,
+          0.0
+        ],
+        "final_native_mode": 15,
+        "passed": true,
+        "note": "Tests plugin command clearing with continuing external physics."
+      }
+    },
+    {
+      "case": {
+        "name": "fault_inputs",
+        "script": "validate_faults.py"
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_053704_fault_inputs",
+      "exit_code": 0,
+      "result": [
+        {
+          "fault": "command",
+          "zero_output_wall_s": 0.46281073801219463,
+          "budget_s": 0.6,
+          "passed": true,
+          "yaw_rate_after_2s": 0.004413153146742843,
+          "thrust_after_2s": [
+            0.6000000000000005,
+            -0.6000000000000005
+          ]
+        },
+        {
+          "fault": "odom",
+          "zero_output_wall_s": 0.4864230150124058,
+          "budget_s": 0.6,
+          "passed": true,
+          "yaw_rate_after_2s": 0.004025168937005219,
+          "thrust_after_2s": [
+            0.6000000000000005,
+            -0.6000000000000005
+          ]
+        },
+        {
+          "fault": "scan",
+          "zero_output_wall_s": 0.44855589198414236,
+          "budget_s": 0.6,
+          "passed": true,
+          "yaw_rate_after_2s": 0.00346430063018488,
+          "thrust_after_2s": [
+            0.6000000000000005,
+            -0.6000000000000005
+          ]
+        },
+        {
+          "fault": "state",
+          "zero_output_wall_s": 1.3904281599679962,
+          "budget_s": 2.1,
+          "passed": true,
+          "yaw_rate_after_2s": 0.00433297386734921,
+          "thrust_after_2s": [
+            1.200000000000001,
+            -1.200000000000001
+          ]
+        },
+        {
+          "fault": "all_nan",
+          "zero_output_wall_s": 0.05482536897761747,
+          "budget_s": 0.6,
+          "passed": true,
+          "yaw_rate_after_2s": 0.0002072728321422801,
+          "thrust_after_2s": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "fault": "stale_scan",
+          "zero_output_wall_s": 0.09979275200748816,
+          "budget_s": 0.6,
+          "passed": true,
+          "yaw_rate_after_2s": 0.0003663124402919493,
+          "thrust_after_2s": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "fault": "tf_missing",
+          "zero_output_wall_s": 0.08443007298046723,
+          "budget_s": 0.6,
+          "passed": true,
+          "yaw_rate_after_2s": 0.00046943784468567173,
+          "thrust_after_2s": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "fault": "bridge_process_killed",
+          "observation_s": 10,
+          "physical_simulation_continued": true,
+          "drift_m": 0.048934810230360046,
+          "final_yaw_rate": 0.00047114568815231905,
+          "final_thrust": [
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "case": {
+        "name": "dynamic_navigation",
+        "environment_case": "dynamic_navigation"
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_053859_dynamic_navigation",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 77.78450688597513,
+        "true_position_error_m": 0.3995558069048268,
+        "true_yaw_error_rad": 0.20438218858177787,
+        "at_goal": [
+          12.12325554903376,
+          7.619930384713861,
+          0.20438218858177784
+        ],
+        "drift_10s_m": 0.05272858834692269,
+        "zero_command_delay_s": 0.05016708903713152,
+        "min_planar_clearance_m": 1.9558730572138454,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true,
+        "obstacle_inserted": true,
+        "obstacle_removed": true
+      }
+    },
+    {
+      "case": {
+        "name": "single_1",
+        "goals": [
+          [
+            5,
+            0,
+            0
+          ]
+        ]
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_054518_single_1",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 15.773412804002874,
+        "true_position_error_m": 0.36802051200271474,
+        "true_yaw_error_rad": 0.04586565593386982,
+        "at_goal": [
+          4.641298724241074,
+          0.08229515188429598,
+          -0.04586565593386982
+        ],
+        "drift_10s_m": 0.19910489732477324,
+        "zero_command_delay_s": 0.05026726599317044,
+        "min_planar_clearance_m": 1.557708601019047,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "single_2",
+        "goals": [
+          [
+            5,
+            0,
+            0
+          ]
+        ]
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_054642_single_2",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 15.921152964001521,
+        "true_position_error_m": 0.352261033911455,
+        "true_yaw_error_rad": 0.04565643054190046,
+        "at_goal": [
+          4.656315594595058,
+          0.07725843315663754,
+          -0.04565643054190046
+        ],
+        "drift_10s_m": 0.18599246111909717,
+        "zero_command_delay_s": 0.05033193196868524,
+        "min_planar_clearance_m": 1.5594985414080147,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "single_3",
+        "goals": [
+          [
+            5,
+            0,
+            0
+          ]
+        ]
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_054806_single_3",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 15.809409470995888,
+        "true_position_error_m": 0.3632982068285358,
+        "true_yaw_error_rad": 0.04722846853180701,
+        "at_goal": [
+          4.645241086892256,
+          0.07830517642813534,
+          -0.04722846853180701
+        ],
+        "drift_10s_m": 0.19720678682405168,
+        "zero_command_delay_s": 0.050256517017260194,
+        "min_planar_clearance_m": 1.5496562544339811,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "multi_1",
+        "goals": [
+          [
+            3,
+            -3,
+            -0.6
+          ],
+          [
+            6,
+            -4,
+            0
+          ]
+        ]
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_054930_multi_1",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 28.943348161003087,
+        "true_position_error_m": 0.3179277004211177,
+        "true_yaw_error_rad": 0.16107022473326332,
+        "at_goal": [
+          5.88703682655733,
+          -3.702817658430348,
+          -0.16107022473326332
+        ],
+        "drift_10s_m": 0.04288669857951175,
+        "zero_command_delay_s": 0.05018282699165866,
+        "min_planar_clearance_m": 1.9145029948746897,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [
+          {
+            "target": [
+              3,
+              -3,
+              -0.6
+            ],
+            "closest_position_error_m": 0.02281161777339254,
+            "yaw_error_at_closest_rad": 0.1609243576145873
+          }
+        ],
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "multi_2",
+        "goals": [
+          [
+            3,
+            -3,
+            -0.6
+          ],
+          [
+            6,
+            -4,
+            0
+          ]
+        ]
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_055107_multi_2",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 29.12575004500104,
+        "true_position_error_m": 0.34758675118386073,
+        "true_yaw_error_rad": 0.15661365029198418,
+        "at_goal": [
+          5.877898288532214,
+          -3.6745653342755435,
+          -0.15661365029198418
+        ],
+        "drift_10s_m": 0.03701459794689086,
+        "zero_command_delay_s": 0.05044262402225286,
+        "min_planar_clearance_m": 1.877883424645555,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [
+          {
+            "target": [
+              3,
+              -3,
+              -0.6
+            ],
+            "closest_position_error_m": 0.031644405391405284,
+            "yaw_error_at_closest_rad": 0.17959459110934384
+          }
+        ],
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "multi_3",
+        "goals": [
+          [
+            3,
+            -3,
+            -0.6
+          ],
+          [
+            6,
+            -4,
+            0
+          ]
+        ]
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_055244_multi_3",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 28.726389572024345,
+        "true_position_error_m": 0.3194299613021633,
+        "true_yaw_error_rad": 0.15672389655690655,
+        "at_goal": [
+          5.901211452710208,
+          -3.6962298186097358,
+          -0.15672389655690655
+        ],
+        "drift_10s_m": 0.045260076550100864,
+        "zero_command_delay_s": 0.05067874304950237,
+        "min_planar_clearance_m": 1.8948175524640654,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [
+          {
+            "target": [
+              3,
+              -3,
+              -0.6
+            ],
+            "closest_position_error_m": 0.02661353268132097,
+            "yaw_error_at_closest_rad": 0.17328077553237495
+          }
+        ],
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "static_obstacle",
+        "goals": [
+          [
+            18,
+            0,
+            0
+          ]
+        ]
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_055421_static_obstacle",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 75.84778577298857,
+        "true_position_error_m": 0.26420215503933286,
+        "true_yaw_error_rad": 0.1610277710079907,
+        "at_goal": [
+          17.89971798688228,
+          0.2444305557259261,
+          -0.1610277710079907
+        ],
+        "drift_10s_m": 0.09530180420233238,
+        "zero_command_delay_s": 0.05014165095053613,
+        "min_planar_clearance_m": 3.3545219103267083,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "cancel",
+        "goals": [
+          [
+            5,
+            0,
+            0
+          ]
+        ],
+        "cancel_after": 5,
+        "expected_status": 5
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_055645_cancel",
+      "exit_code": 0,
+      "result": {
+        "status": 5,
+        "elapsed_wall_s": 5.085622337006498,
+        "true_position_error_m": 3.636968807058342,
+        "true_yaw_error_rad": 0.024589412447306558,
+        "at_goal": [
+          1.3634437288219527,
+          0.054777642072252816,
+          0.024589412447306558
+        ],
+        "drift_10s_m": 0.5990519881352033,
+        "zero_command_delay_s": 0.05020861001685262,
+        "min_planar_clearance_m": 4.457380637892932,
+        "expected_status": 5,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "unreachable",
+        "goals": [
+          [
+            60,
+            0,
+            0
+          ]
+        ],
+        "expected_status": 6
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_055759_unreachable",
+      "exit_code": 0,
+      "result": {
+        "status": 6,
+        "elapsed_wall_s": 0.06716299301479012,
+        "true_position_error_m": 59.99879389544822,
+        "true_yaw_error_rad": 0.032109899104518114,
+        "at_goal": [
+          0.001206321217468155,
+          0.005098956735210597,
+          0.032109899104518114
+        ],
+        "drift_10s_m": 0.004340333768422774,
+        "zero_command_delay_s": 0.05022074800217524,
+        "min_planar_clearance_m": 6.4055946256063905,
+        "expected_status": 6,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "unreachable_obstacle",
+        "goals": [
+          [
+            10,
+            0,
+            0
+          ]
+        ],
+        "expected_status": 6
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_055907_unreachable_obstacle",
+      "exit_code": 0,
+      "result": {
+        "status": 6,
+        "elapsed_wall_s": 0.06522824300918728,
+        "true_position_error_m": 9.998820214155236,
+        "true_yaw_error_rad": 0.03524334993008458,
+        "at_goal": [
+          0.0011814065502315926,
+          0.005693002947297387,
+          0.03524334993008457
+        ],
+        "drift_10s_m": 0.004934410308166,
+        "zero_command_delay_s": 0.050284677010495216,
+        "min_planar_clearance_m": 6.402415053839361,
+        "expected_status": 6,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "wind",
+        "goals": [
+          [
+            5,
+            0,
+            0
+          ]
+        ],
+        "wind": 3
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_060015_wind",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 19.635952016047668,
+        "true_position_error_m": 0.2275379846341524,
+        "true_yaw_error_rad": 0.20903216854481127,
+        "at_goal": [
+          4.798988884142203,
+          -0.10662113183124122,
+          0.20903216854481127
+        ],
+        "drift_10s_m": 0.25232052987205983,
+        "zero_command_delay_s": 0.05016064504161477,
+        "min_planar_clearance_m": 1.471781179621738,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "waves",
+        "goals": [
+          [
+            5,
+            0,
+            0
+          ]
+        ],
+        "wave_gain": 0.3
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_060144_waves",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 15.925353420956526,
+        "true_position_error_m": 0.36764156458981034,
+        "true_yaw_error_rad": 0.04377347934135056,
+        "at_goal": [
+          4.642067623535171,
+          0.08393291304538178,
+          -0.04377347934135056
+        ],
+        "drift_10s_m": 0.1805784510464509,
+        "zero_command_delay_s": 0.050325853982940316,
+        "min_planar_clearance_m": 1.5706956393533371,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "wind_waves",
+        "goals": [
+          [
+            5,
+            0,
+            0
+          ]
+        ],
+        "wind": 3,
+        "wave_gain": 0.3
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_060308_wind_waves",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 18.21879174897913,
+        "true_position_error_m": 0.291042286984891,
+        "true_yaw_error_rad": 0.21254367920698286,
+        "at_goal": [
+          4.710432492686376,
+          -0.02926211751685142,
+          0.21254367920698286
+        ],
+        "drift_10s_m": 0.1404217422957559,
+        "zero_command_delay_s": 0.05144468502840027,
+        "min_planar_clearance_m": 1.5197153064380853,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "gps_input_fixed",
+        "goals": [
+          [
+            5,
+            0,
+            0
+          ]
+        ],
+        "gps_input": true
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_060434_gps_input_fixed",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 15.822627478977665,
+        "true_position_error_m": 0.3771846962578102,
+        "true_yaw_error_rad": 0.11555922217845659,
+        "at_goal": [
+          4.6421994628940135,
+          0.11936109390318163,
+          -0.11555922217845659
+        ],
+        "drift_10s_m": 0.20492789451717136,
+        "zero_command_delay_s": 0.050326874013990164,
+        "min_planar_clearance_m": 1.4891771706165766,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "dynamic_map",
+        "environment_case": "dynamic_map"
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_060600_dynamic_map",
+      "exit_code": 0,
+      "result": {
+        "baseline_lethal_cells": 0,
+        "marked_lethal_cells": 88,
+        "mark_delay_s": 1.1610804370138794,
+        "clear_delay_s": 1.2138928800122812,
+        "remaining_lethal_cells": 0,
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "dynamic_navigation",
+        "environment_case": "dynamic_navigation"
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_060645_dynamic_navigation",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 79.28885212499881,
+        "true_position_error_m": 0.39289478223879304,
+        "true_yaw_error_rad": 0.168747614680909,
+        "at_goal": [
+          12.091595096756462,
+          8.382068904990504,
+          -0.168747614680909
+        ],
+        "drift_10s_m": 0.055675579224157584,
+        "zero_command_delay_s": 0.05020283901831135,
+        "min_planar_clearance_m": 2.235318588802674,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true,
+        "target": [
+          12,
+          8,
+          0
+        ],
+        "obstacle_inserted": true,
+        "obstacle_removed": true,
+        "obstacle_profile": {
+          "clock": "Gazebo simulation time",
+          "appearance_s": 3,
+          "removal_s": 28,
+          "initial_xy_m": [
+            6,
+            7
+          ],
+          "velocity_xy_mps": [
+            0,
+            -0.14
+          ],
+          "pose_update_period_s": 0.5
+        }
+      }
+    },
+    {
+      "case": {
+        "name": "pause",
+        "environment_case": "pause"
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_060912_pause",
+      "exit_code": 0,
+      "result": {
+        "zero_output_wall_s": 0.22859376098494977,
+        "paused_sim_delta_s": 0.2680000000000007,
+        "resumed_sim_delta_s": 3.9080000000000013,
+        "replayed_old_command": false,
+        "passed": true,
+        "note": "Paused physics is not evidence of physical stopping."
+      }
+    },
+    {
+      "case": {
+        "name": "protocol",
+        "environment_case": "protocol"
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_061034_protocol",
+      "exit_code": 0,
+      "result": [
+        {
+          "case": "out_of_range_pwm",
+          "maximum_total_absolute_thrust_n": 0.0,
+          "sim_advanced_s": 0.7480000000000011,
+          "passed": true
+        },
+        {
+          "case": "disabled_pwm",
+          "maximum_total_absolute_thrust_n": 0.0,
+          "sim_advanced_s": 0.7640000000000029,
+          "passed": true
+        },
+        {
+          "case": "truncated",
+          "maximum_total_absolute_thrust_n": 0.0,
+          "sim_advanced_s": 1.879999999999999,
+          "passed": true
+        },
+        {
+          "case": "bad_magic",
+          "maximum_total_absolute_thrust_n": 0.0,
+          "sim_advanced_s": 1.904,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case": {
+        "name": "disarm",
+        "environment_case": "disarm"
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_061121_disarm",
+      "exit_code": 0,
+      "result": {
+        "initial_thrust_n": [
+          15.000000000000014,
+          16.200000000000014
+        ],
+        "zero_thrust_delay_s": 0.047019299992825836,
+        "speed_below_002_delay_s": 5.892806919990107,
+        "drift_m": 0.5348329370983426,
+        "sim_advanced_s": 7.900000000000006,
+        "final_thrust_n": [
+          0.0,
+          0.0
+        ],
+        "final_armed": false,
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "mavros_exit",
+        "environment_case": "mavros_exit"
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_061232_mavros_exit",
+      "exit_code": 0,
+      "result": {
+        "initial_thrust_n": [
+          15.000000000000014,
+          16.200000000000014
+        ],
+        "initial_forward_velocity_mps": 0.24326045366455035,
+        "initially_active": true,
+        "thrust_zero_wall_s": 4.086605835997034,
+        "speed_below_002_wall_s": 7.718906616966706,
+        "displacement_m": 1.101824691875688,
+        "sim_advanced_s": 11.904000000000003,
+        "final_thrust_n": [
+          0.0,
+          0.0
+        ],
+        "final_native_mode": 4,
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "sitl_exit",
+        "environment_case": "sitl_exit"
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_061347_sitl_exit",
+      "exit_code": 0,
+      "result": {
+        "initial_thrust_n": [
+          15.000000000000014,
+          16.200000000000014
+        ],
+        "initial_forward_velocity_mps": 0.24302398063759786,
+        "initially_active": true,
+        "thrust_measurement": "thruster_feedback",
+        "thrust_zero_wall_s": 0.0868599810055457,
+        "speed_below_002_wall_s": 5.93232323002303,
+        "displacement_m": 0.5449404414110707,
+        "sim_advanced_s": 11.86,
+        "final_thrust_n": [
+          0.0,
+          0.0
+        ],
+        "final_native_mode": 15,
+        "passed": true,
+        "note": "Tests plugin command clearing with continuing external physics."
+      }
+    },
+    {
+      "case": {
+        "name": "gnss",
+        "environment_case": "gnss",
+        "gps_input": true
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_061503_gnss",
+      "exit_code": 0,
+      "result": {
+        "profiles": [
+          {
+            "profile": "fixed",
+            "settings": {
+              "fix_type": 6,
+              "horizontal_sigma": 0.02,
+              "reported_accuracy": 0.02,
+              "delay_s": 0.1,
+              "drop": false
+            },
+            "position_rmse_m": 0.02319571180445709,
+            "position_error_max_m": 0.03337331628097121,
+            "last_gate": "CONTROL: ready",
+            "nonzero_preview_samples": 73,
+            "samples": 80,
+            "reported_fix_types": [
+              6
+            ],
+            "last_ekf_status": {
+              "mavpackettype": "EKF_STATUS_REPORT",
+              "flags": 831,
+              "velocity_variance": 0.004597540944814682,
+              "pos_horiz_variance": 0.0034424334298819304,
+              "pos_vert_variance": 0.00024474336532875896,
+              "compass_variance": 0.000987733481451869,
+              "terrain_alt_variance": 0.0,
+              "airspeed_variance": 0.0
+            },
+            "nav2_action_status": "running",
+            "minimum_clearance_m": 5.895660524773824
+          },
+          {
+            "profile": "float",
+            "settings": {
+              "fix_type": 5,
+              "horizontal_sigma": 0.3,
+              "reported_accuracy": 0.3,
+              "delay_s": 0.1,
+              "drop": false
+            },
+            "position_rmse_m": 0.10788714876455718,
+            "position_error_max_m": 0.2025827595451454,
+            "last_gate": "CONTROL: ready",
+            "nonzero_preview_samples": 120,
+            "samples": 120,
+            "reported_fix_types": [
+              5,
+              6
+            ],
+            "last_ekf_status": {
+              "mavpackettype": "EKF_STATUS_REPORT",
+              "flags": 831,
+              "velocity_variance": 0.0037957034073770046,
+              "pos_horiz_variance": 0.11278392374515533,
+              "pos_vert_variance": 0.0067009287886321545,
+              "compass_variance": 0.0038916270714253187,
+              "terrain_alt_variance": 0.0,
+              "airspeed_variance": 0.0
+            },
+            "nav2_action_status": "running",
+            "minimum_clearance_m": 5.8857199070316675
+          },
+          {
+            "profile": "ordinary",
+            "settings": {
+              "fix_type": 3,
+              "horizontal_sigma": 1.5,
+              "reported_accuracy": 1.5,
+              "delay_s": 0.3,
+              "drop": false
+            },
+            "position_rmse_m": 0.2294918562060211,
+            "position_error_max_m": 0.47744160098741295,
+            "last_gate": "CONTROL: ready",
+            "nonzero_preview_samples": 150,
+            "samples": 150,
+            "reported_fix_types": [
+              3,
+              5
+            ],
+            "last_ekf_status": {
+              "mavpackettype": "EKF_STATUS_REPORT",
+              "flags": 831,
+              "velocity_variance": 0.014640288427472115,
+              "pos_horiz_variance": 0.16818547248840332,
+              "pos_vert_variance": 0.002705686492845416,
+              "compass_variance": 0.006426815874874592,
+              "terrain_alt_variance": 0.0,
+              "airspeed_variance": 0.0
+            },
+            "nav2_action_status": "running",
+            "minimum_clearance_m": 7.454946948123796
+          },
+          {
+            "profile": "no_fix",
+            "settings": {
+              "fix_type": 1,
+              "horizontal_sigma": 1.5,
+              "reported_accuracy": 1.5,
+              "delay_s": 0.1,
+              "drop": false
+            },
+            "position_rmse_m": 1.5793580867119816,
+            "position_error_max_m": 2.476004573251083,
+            "last_gate": "CONTROL: FCU must be connected, armed and in GUIDED",
+            "nonzero_preview_samples": 77,
+            "samples": 120,
+            "reported_fix_types": [
+              1,
+              3
+            ],
+            "last_ekf_status": {
+              "mavpackettype": "EKF_STATUS_REPORT",
+              "flags": 39,
+              "velocity_variance": 0.01739763654768467,
+              "pos_horiz_variance": 0.080269455909729,
+              "pos_vert_variance": 0.012534522451460361,
+              "compass_variance": 0.0010942401131615043,
+              "terrain_alt_variance": 0.0,
+              "airspeed_variance": 0.0
+            },
+            "nav2_action_status": "running",
+            "minimum_clearance_m": 9.456148590499751
+          },
+          {
+            "profile": "lost",
+            "settings": {
+              "fix_type": 1,
+              "horizontal_sigma": 1.5,
+              "reported_accuracy": 1.5,
+              "delay_s": 0.3,
+              "drop": true
+            },
+            "position_rmse_m": 2.584082032815713,
+            "position_error_max_m": 2.605017650420818,
+            "last_gate": "CONTROL: FCU must be connected, armed and in GUIDED",
+            "nonzero_preview_samples": 0,
+            "samples": 150,
+            "reported_fix_types": [
+              1
+            ],
+            "last_ekf_status": {
+              "mavpackettype": "EKF_STATUS_REPORT",
+              "flags": 167,
+              "velocity_variance": 0.0,
+              "pos_horiz_variance": 0.007857664488255978,
+              "pos_vert_variance": 0.014581377618014812,
+              "compass_variance": 0.008839915506541729,
+              "terrain_alt_variance": 0.0,
+              "airspeed_variance": 0.0
+            },
+            "nav2_action_status": "running",
+            "minimum_clearance_m": 12.656943919455863
+          },
+          {
+            "profile": "recover",
+            "settings": {
+              "fix_type": 6,
+              "horizontal_sigma": 0.02,
+              "reported_accuracy": 0.02,
+              "delay_s": 0.1,
+              "drop": false
+            },
+            "position_rmse_m": 0.32436502739730094,
+            "position_error_max_m": 2.6050605196996957,
+            "last_gate": "CONTROL: FCU must be connected, armed and in GUIDED",
+            "nonzero_preview_samples": 0,
+            "samples": 199,
+            "reported_fix_types": [
+              1,
+              6
+            ],
+            "last_ekf_status": {
+              "mavpackettype": "EKF_STATUS_REPORT",
+              "flags": 831,
+              "velocity_variance": 0.004751259461045265,
+              "pos_horiz_variance": 0.007141019217669964,
+              "pos_vert_variance": 0.014566750265657902,
+              "compass_variance": 0.013010505586862564,
+              "terrain_alt_variance": 0.0,
+              "airspeed_variance": 0.0
+            },
+            "nav2_action_status": "running",
+            "minimum_clearance_m": 12.7653234450552
+          }
+        ],
+        "action_status_before_test_cleanup": "running",
+        "target": [
+          0,
+          -25,
+          -1.5707963267948966
+        ],
+        "final_true_position_error_m": 10.746571457003398,
+        "collision_messages": 0,
+        "endurance": {
+          "final_frame": 70000,
+          "new_controller_resets": 0,
+          "final_odom_age_s": 0.06095900800001908,
+          "final_scan_age_s": 0.10400000000001908,
+          "passed": true
+        },
+        "note": "No new RTK/EKF gate or automatic retry policy is implemented."
+      }
+    },
+    {
+      "case": {
+        "name": "fault_inputs",
+        "script": "validate_faults.py"
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_061959_fault_inputs",
+      "exit_code": 0,
+      "result": [
+        {
+          "fault": "command",
+          "zero_output_wall_s": 0.4850776929524727,
+          "budget_s": 0.6,
+          "passed": true,
+          "yaw_rate_after_2s": 0.0052095977480348665,
+          "thrust_after_2s": [
+            1.8000000000000016,
+            -1.8000000000000016
+          ],
+          "stopping": {
+            "observed_duration_s": 2.4109239889658056,
+            "thrust_measurement": "thruster_feedback",
+            "initial_velocity": [
+              -0.002390120196094214,
+              0.15440015122294426
+            ],
+            "zero_thrust_delay_s": null,
+            "physical_rest_delay_s": 1.8062072249595076,
+            "travel_distance_m": 0.03539592758529801,
+            "final_thrust_n": [
+              1.8000000000000016,
+              -1.8000000000000016
+            ]
+          }
+        },
+        {
+          "fault": "odom",
+          "zero_output_wall_s": 0.5396217489615083,
+          "budget_s": 0.6,
+          "passed": true,
+          "yaw_rate_after_2s": 0.003953562963943114,
+          "thrust_after_2s": [
+            1.8000000000000016,
+            -1.8000000000000016
+          ],
+          "stopping": {
+            "observed_duration_s": 2.4917043789755553,
+            "thrust_measurement": "thruster_feedback",
+            "initial_velocity": [
+              -0.004788611785018173,
+              0.1529744840809144
+            ],
+            "zero_thrust_delay_s": null,
+            "physical_rest_delay_s": 2.190150943992194,
+            "travel_distance_m": 0.03895512645514886,
+            "final_thrust_n": [
+              1.8000000000000016,
+              -1.8000000000000016
+            ]
+          }
+        },
+        {
+          "fault": "scan",
+          "zero_output_wall_s": 0.46680625795852393,
+          "budget_s": 0.6,
+          "passed": true,
+          "yaw_rate_after_2s": 0.0032995078754538554,
+          "thrust_after_2s": [
+            2.400000000000002,
+            -2.400000000000002
+          ],
+          "stopping": {
+            "observed_duration_s": 2.4084269519662485,
+            "thrust_measurement": "thruster_feedback",
+            "initial_velocity": [
+              -0.005524993931773299,
+              0.1523318118415773
+            ],
+            "zero_thrust_delay_s": null,
+            "physical_rest_delay_s": 2.207051758945454,
+            "travel_distance_m": 0.03749668651011501,
+            "final_thrust_n": [
+              2.400000000000002,
+              -2.400000000000002
+            ]
+          }
+        },
+        {
+          "fault": "state",
+          "zero_output_wall_s": 1.2850892359856516,
+          "budget_s": 2.1,
+          "passed": true,
+          "yaw_rate_after_2s": 0.0024094687887554755,
+          "thrust_after_2s": [
+            2.400000000000002,
+            -2.400000000000002
+          ],
+          "stopping": {
+            "observed_duration_s": 3.2627448519924656,
+            "thrust_measurement": "thruster_feedback",
+            "initial_velocity": [
+              -0.005535574748770618,
+              0.1516772244940512
+            ],
+            "zero_thrust_delay_s": null,
+            "physical_rest_delay_s": null,
+            "travel_distance_m": 0.05453888751890717,
+            "final_thrust_n": [
+              2.400000000000002,
+              -2.400000000000002
+            ]
+          }
+        },
+        {
+          "fault": "all_nan",
+          "zero_output_wall_s": 0.12913621199550107,
+          "budget_s": 0.6,
+          "passed": true,
+          "yaw_rate_after_2s": 0.0021913816908636363,
+          "thrust_after_2s": [
+            2.400000000000002,
+            -2.400000000000002
+          ],
+          "stopping": {
+            "observed_duration_s": 2.071906328026671,
+            "thrust_measurement": "thruster_feedback",
+            "initial_velocity": [
+              -0.004698385689026223,
+              0.15126048383535817
+            ],
+            "zero_thrust_delay_s": null,
+            "physical_rest_delay_s": 1.3673041189904325,
+            "travel_distance_m": 0.029653611380919744,
+            "final_thrust_n": [
+              2.400000000000002,
+              -2.400000000000002
+            ]
+          }
+        },
+        {
+          "fault": "stale_scan",
+          "zero_output_wall_s": 0.049694866000209004,
+          "budget_s": 0.6,
+          "passed": true,
+          "yaw_rate_after_2s": 0.0018935966977551288,
+          "thrust_after_2s": [
+            2.400000000000002,
+            -2.400000000000002
+          ],
+          "stopping": {
+            "observed_duration_s": 2.044586077972781,
+            "thrust_measurement": "thruster_feedback",
+            "initial_velocity": [
+              -0.004853691262581084,
+              0.15086325001902878
+            ],
+            "zero_thrust_delay_s": null,
+            "physical_rest_delay_s": 1.339629164955113,
+            "travel_distance_m": 0.03002737660702166,
+            "final_thrust_n": [
+              2.400000000000002,
+              -2.400000000000002
+            ]
+          }
+        },
+        {
+          "fault": "tf_missing",
+          "zero_output_wall_s": 0.07325041596777737,
+          "budget_s": 0.6,
+          "passed": true,
+          "yaw_rate_after_2s": 0.0017898064584187523,
+          "thrust_after_2s": [
+            2.400000000000002,
+            -2.400000000000002
+          ],
+          "stopping": {
+            "observed_duration_s": 2.0459591989638284,
+            "thrust_measurement": "thruster_feedback",
+            "initial_velocity": [
+              -0.004910537196132226,
+              0.15073825343279168
+            ],
+            "zero_thrust_delay_s": null,
+            "physical_rest_delay_s": 1.3404908509692177,
+            "travel_distance_m": 0.03029243513749636,
+            "final_thrust_n": [
+              2.400000000000002,
+              -2.400000000000002
+            ]
+          }
+        },
+        {
+          "fault": "bridge_process_killed",
+          "observation_s": 10,
+          "physical_simulation_continued": true,
+          "drift_m": 0.06184147330101663,
+          "final_yaw_rate": 0.0005739817311223305,
+          "final_thrust": [
+            0.0,
+            0.0
+          ],
+          "stopping": {
+            "observed_duration_s": 9.930392368987668,
+            "thrust_measurement": "thruster_feedback",
+            "initial_velocity": [
+              -0.005506090044064271,
+              0.1517907192464918
+            ],
+            "zero_thrust_delay_s": 6.4093406409956515,
+            "physical_rest_delay_s": 5.301129211031366,
+            "travel_distance_m": 0.133389935900764,
+            "final_thrust_n": [
+              0.0,
+              0.0
+            ]
+          },
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case": {
+        "name": "cancel",
+        "goals": [
+          [
+            5,
+            0,
+            0
+          ]
+        ],
+        "cancel_after": 5,
+        "expected_status": 5
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_062236_cancel",
+      "exit_code": 0,
+      "result": {
+        "status": 5,
+        "elapsed_wall_s": 5.078957702033222,
+        "true_position_error_m": 3.6375860750961984,
+        "true_yaw_error_rad": 0.028206763482901635,
+        "at_goal": [
+          1.362804722455073,
+          0.05331947804178617,
+          0.028206763482901635
+        ],
+        "drift_10s_m": 0.5746957441891472,
+        "zero_command_delay_s": 0.050933229038491845,
+        "min_planar_clearance_m": 4.479055057311331,
+        "expected_status": 5,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "feedback_goal",
+        "goals": [
+          [
+            5,
+            0,
+            0
+          ]
+        ]
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_062349_feedback_goal",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 15.69668840104714,
+        "true_position_error_m": 0.37140701773523593,
+        "true_yaw_error_rad": 0.038422298654662415,
+        "at_goal": [
+          4.63815462142572,
+          0.08373228067727381,
+          -0.038422298654662415
+        ],
+        "drift_10s_m": 0.2049531350690299,
+        "zero_command_delay_s": 0.050105728034395725,
+        "min_planar_clearance_m": 1.5696476053148787,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "motors",
+        "environment_case": "motors"
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_062514_motors",
+      "exit_code": 0,
+      "result": [
+        {
+          "side": "left",
+          "pwm": 1600,
+          "expected_n": 60.0,
+          "actual_n": 59.99999999999998,
+          "thrust_measurement": "thruster_feedback",
+          "other_n": 0.0,
+          "truth_yaw_rate": -0.06503706899820827,
+          "passed": true
+        },
+        {
+          "side": "left",
+          "pwm": 1400,
+          "expected_n": -60.0,
+          "actual_n": -59.99999999999998,
+          "thrust_measurement": "thruster_feedback",
+          "other_n": 0.0,
+          "truth_yaw_rate": 0.06390561902662739,
+          "passed": true
+        },
+        {
+          "side": "left",
+          "pwm": 1500,
+          "expected_n": 0.0,
+          "actual_n": 0.0,
+          "thrust_measurement": "thruster_feedback",
+          "other_n": 0.0,
+          "truth_yaw_rate": 0.0003615173255866466,
+          "passed": true
+        },
+        {
+          "side": "right",
+          "pwm": 1600,
+          "expected_n": 60.0,
+          "actual_n": 59.99999999999998,
+          "thrust_measurement": "thruster_feedback",
+          "other_n": 0.0,
+          "truth_yaw_rate": 0.06507810394396074,
+          "passed": true
+        },
+        {
+          "side": "right",
+          "pwm": 1400,
+          "expected_n": -60.0,
+          "actual_n": -59.99999999999998,
+          "thrust_measurement": "thruster_feedback",
+          "other_n": 0.0,
+          "truth_yaw_rate": -0.06394084048224613,
+          "passed": true
+        },
+        {
+          "side": "right",
+          "pwm": 1500,
+          "expected_n": 0.0,
+          "actual_n": 0.0,
+          "thrust_measurement": "thruster_feedback",
+          "other_n": 0.0,
+          "truth_yaw_rate": -0.00039379479801482375,
+          "passed": true
+        },
+        {
+          "side": "both",
+          "rc_throttle_pwm": 1600,
+          "actual_n": [
+            53.999999999999986,
+            53.999999999999986
+          ],
+          "forward_velocity": 0.5329731015834811,
+          "thrust_measurement": "thruster_feedback",
+          "servo_pwm": {
+            "mavpackettype": "SERVO_OUTPUT_RAW",
+            "time_usec": 81064712,
+            "port": 0,
+            "servo1_raw": 1590,
+            "servo2_raw": 0,
+            "servo3_raw": 1590,
+            "servo4_raw": 0,
+            "servo5_raw": 0,
+            "servo6_raw": 0,
+            "servo7_raw": 0,
+            "servo8_raw": 0,
+            "servo9_raw": 0,
+            "servo10_raw": 0,
+            "servo11_raw": 0,
+            "servo12_raw": 0,
+            "servo13_raw": 0,
+            "servo14_raw": 0,
+            "servo15_raw": 0,
+            "servo16_raw": 0
+          },
+          "passed": true
+        },
+        {
+          "side": "both",
+          "rc_throttle_pwm": 1400,
+          "actual_n": [
+            -54.00000000000001,
+            -54.00000000000001
+          ],
+          "forward_velocity": -0.44719683643537167,
+          "thrust_measurement": "thruster_feedback",
+          "servo_pwm": {
+            "mavpackettype": "SERVO_OUTPUT_RAW",
+            "time_usec": 84064454,
+            "port": 0,
+            "servo1_raw": 1410,
+            "servo2_raw": 0,
+            "servo3_raw": 1410,
+            "servo4_raw": 0,
+            "servo5_raw": 0,
+            "servo6_raw": 0,
+            "servo7_raw": 0,
+            "servo8_raw": 0,
+            "servo9_raw": 0,
+            "servo10_raw": 0,
+            "servo11_raw": 0,
+            "servo12_raw": 0,
+            "servo13_raw": 0,
+            "servo14_raw": 0,
+            "servo15_raw": 0,
+            "servo16_raw": 0
+          },
+          "passed": true
+        },
+        {
+          "side": "both",
+          "rc_throttle_pwm": 1500,
+          "actual_n": [
+            0.0,
+            0.0
+          ],
+          "forward_velocity": -0.11082505699525232,
+          "thrust_measurement": "thruster_feedback",
+          "servo_pwm": {
+            "mavpackettype": "SERVO_OUTPUT_RAW",
+            "time_usec": 87064196,
+            "port": 0,
+            "servo1_raw": 1500,
+            "servo2_raw": 0,
+            "servo3_raw": 1500,
+            "servo4_raw": 0,
+            "servo5_raw": 0,
+            "servo6_raw": 0,
+            "servo7_raw": 0,
+            "servo8_raw": 0,
+            "servo9_raw": 0,
+            "servo10_raw": 0,
+            "servo11_raw": 0,
+            "servo12_raw": 0,
+            "servo13_raw": 0,
+            "servo14_raw": 0,
+            "servo15_raw": 0,
+            "servo16_raw": 0
+          },
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case": {
+        "name": "protocol",
+        "environment_case": "protocol"
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_062656_protocol",
+      "exit_code": 0,
+      "result": [
+        {
+          "case": "out_of_range_pwm",
+          "maximum_total_absolute_thrust_n": 0.0,
+          "thrust_measurement": "thruster_feedback",
+          "sim_advanced_s": 0.759999999999998,
+          "passed": true
+        },
+        {
+          "case": "disabled_pwm",
+          "maximum_total_absolute_thrust_n": 0.0,
+          "thrust_measurement": "thruster_feedback",
+          "sim_advanced_s": 0.7200000000000024,
+          "passed": true
+        },
+        {
+          "case": "truncated",
+          "maximum_total_absolute_thrust_n": 0.0,
+          "thrust_measurement": "thruster_feedback",
+          "sim_advanced_s": 1.8520000000000003,
+          "passed": true
+        },
+        {
+          "case": "bad_magic",
+          "maximum_total_absolute_thrust_n": 0.0,
+          "thrust_measurement": "thruster_feedback",
+          "sim_advanced_s": 1.9000000000000021,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case": {
+        "name": "disarm",
+        "environment_case": "disarm"
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_062741_disarm",
+      "exit_code": 0,
+      "result": {
+        "initial_thrust_n": [
+          15.000000000000014,
+          16.200000000000014
+        ],
+        "zero_thrust_delay_s": 0.08091958297882229,
+        "speed_below_002_delay_s": 5.924880956998095,
+        "drift_m": 0.5286684767037583,
+        "sim_advanced_s": 7.899999999999999,
+        "final_thrust_n": [
+          0.0,
+          0.0
+        ],
+        "final_armed": false,
+        "thrust_measurement": "thruster_feedback",
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "mavros_exit",
+        "environment_case": "mavros_exit"
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_062853_mavros_exit",
+      "exit_code": 0,
+      "result": {
+        "initial_thrust_n": [
+          15.000000000000014,
+          16.200000000000014
+        ],
+        "initial_forward_velocity_mps": 0.2430242501888052,
+        "initially_active": true,
+        "thrust_measurement": "thruster_feedback",
+        "thrust_zero_wall_s": 4.202821469982155,
+        "speed_below_002_wall_s": 7.629138349962886,
+        "displacement_m": 1.0877352648848715,
+        "sim_advanced_s": 11.908000000000001,
+        "final_thrust_n": [
+          0.0,
+          0.0
+        ],
+        "final_native_mode": 4,
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "name": "dynamic_navigation",
+        "environment_case": "dynamic_navigation"
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_105554_dynamic_navigation",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 79.63418606703635,
+        "true_position_error_m": 0.38660981252142707,
+        "true_yaw_error_rad": 0.16653956867404163,
+        "at_goal": [
+          11.852379675702508,
+          8.357316927939548,
+          -0.16653956867404163
+        ],
+        "drift_10s_m": 0.01810214866376151,
+        "zero_command_delay_s": 0.05344865197548643,
+        "min_planar_clearance_m": 1.8467636591633914,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true,
+        "target": [
+          12,
+          8,
+          0
+        ],
+        "obstacle_inserted": true,
+        "obstacle_removed": true,
+        "obstacle_profile": {
+          "clock": "Gazebo simulation time",
+          "appearance_s": 3,
+          "removal_s": 28,
+          "initial_xy_m": [
+            6,
+            7
+          ],
+          "velocity_xy_mps": [
+            0,
+            -0.14
+          ],
+          "pose_update_period_s": 0.5
+        }
+      }
+    }
+  ],
+  "latest": {
+    "single_1": {
+      "case": {
+        "name": "single_1",
+        "goals": [
+          [
+            5,
+            0,
+            0
+          ]
+        ]
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_054518_single_1",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 15.773412804002874,
+        "true_position_error_m": 0.36802051200271474,
+        "true_yaw_error_rad": 0.04586565593386982,
+        "at_goal": [
+          4.641298724241074,
+          0.08229515188429598,
+          -0.04586565593386982
+        ],
+        "drift_10s_m": 0.19910489732477324,
+        "zero_command_delay_s": 0.05026726599317044,
+        "min_planar_clearance_m": 1.557708601019047,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true
+      },
+      "metrics": {
+        "samples": 157,
+        "ekf_position_rmse_m": 0.021104979889019413,
+        "peak_true_speed_mps": 0.3598168119679528,
+        "real_time_factor": 0.9937217022735371,
+        "true_heave_peak_to_peak_m": 0.0003843657798567185,
+        "max_scan_source_age_s": 0.10000000000000286,
+        "true_roll_pitch_peak_to_peak_rad": [
+          0.0004186060488731636,
+          0.0010444506777781224
+        ],
+        "post_goal": {
+          "thrust_measurement": [
+            "command_topic_only"
+          ],
+          "stable_exact_zero_thrust_delay_s": null,
+          "stable_speed_below_002_delay_s": 3.02344840898877,
+          "final_thrust_n": [
+            0.0,
+            0.0
+          ],
+          "travel_distance_m": 0.18791785341267264
+        }
+      },
+      "evidence_sha256": {
+        "single_1.jsonl": "5afd7884a0c3a1f91d361baea5e794ff5549fd909310f152a9f2219cbb5fe68e",
+        "single_1_result.json": "49f7358970647c2fd3740251c973cc22b5d4cbbe177af237f955500dbe2b90c2",
+        "generated/usv_nav.sdf": "9d7994325e2a6d73644427248b145c0339b188664f5444031497ed493a2dfc44",
+        "generated/nav2_wamv.yaml": "29871d7a729558ddb7b3bababe2d2b4ca0a1d32baede91a875efad1f56b5dbdf",
+        "provenance.json": "e56b40cf7b18496e15f178cb1a3d4848bfa6bdae08c7478564d1190b5fb8bd74",
+        "source_snapshot.tar.gz": "b60eb615b5828e9129c3cddfecdebb7086e38abf3b210c9721b29bcaec748366",
+        "map_alignment.json": "f2819f6d142bba8bd7df990a37ce0bc22ac13d84aa51adecdabdf6d7a9118f18",
+        "rover.parm": "16d5068f7cdf0257e1a37a5ba6a77a05b7c7ec2346b9a9769896364c8c43db56",
+        "generated/scene.json": "9218afb47b99f4a28486e015e1286d7b69edac86925f75ccbef4227ec588b8ea",
+        "generated/water.pgm": "c4df8c89a52a2682faf4d95ca95e55d148aa25dfa3154fa077f4c6e372382b72",
+        "generated/water.yaml": "3b738bcb77fe8a68f1971a5610ed5d2328034f4f26e06feabca323854fc98b31",
+        "trajectory.png": "90e531daffc639a8a285896a54e81bd503986d5b63f180f3abda544a91f66896"
+      }
+    },
+    "single_2": {
+      "case": {
+        "name": "single_2",
+        "goals": [
+          [
+            5,
+            0,
+            0
+          ]
+        ]
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_054642_single_2",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 15.921152964001521,
+        "true_position_error_m": 0.352261033911455,
+        "true_yaw_error_rad": 0.04565643054190046,
+        "at_goal": [
+          4.656315594595058,
+          0.07725843315663754,
+          -0.04565643054190046
+        ],
+        "drift_10s_m": 0.18599246111909717,
+        "zero_command_delay_s": 0.05033193196868524,
+        "min_planar_clearance_m": 1.5594985414080147,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true
+      },
+      "metrics": {
+        "samples": 158,
+        "ekf_position_rmse_m": 0.0282252801129899,
+        "peak_true_speed_mps": 0.36197410045381584,
+        "real_time_factor": 0.9936342050857819,
+        "true_heave_peak_to_peak_m": 0.0003543507992155859,
+        "max_scan_source_age_s": 0.14400000000000263,
+        "true_roll_pitch_peak_to_peak_rad": [
+          0.00032736812415600506,
+          0.0010113915406466667
+        ],
+        "post_goal": {
+          "thrust_measurement": [
+            "command_topic_only"
+          ],
+          "stable_exact_zero_thrust_delay_s": null,
+          "stable_speed_below_002_delay_s": 2.9244918249896728,
+          "final_thrust_n": [
+            -0.6000000000000005,
+            0.6000000000000005
+          ],
+          "travel_distance_m": 0.1808034574975213
+        }
+      },
+      "evidence_sha256": {
+        "single_2.jsonl": "555f9f65318f29c308ea29cb71060ebdff533c7a88de3cc3d11d6d2e09bbc43e",
+        "single_2_result.json": "765b642b119976f78fa59eae9926f4a0fbdeecb67348be547c6417c419ced74f",
+        "generated/usv_nav.sdf": "9d7994325e2a6d73644427248b145c0339b188664f5444031497ed493a2dfc44",
+        "generated/nav2_wamv.yaml": "29871d7a729558ddb7b3bababe2d2b4ca0a1d32baede91a875efad1f56b5dbdf",
+        "provenance.json": "b5cf19890adf167aabf7ec72753eccf2b911357234e08039f41efdef15c7c755",
+        "source_snapshot.tar.gz": "60298fe553f5496747cdcab901a9c890f56080ec12604deca496bb3e73b755e8",
+        "map_alignment.json": "f2819f6d142bba8bd7df990a37ce0bc22ac13d84aa51adecdabdf6d7a9118f18",
+        "rover.parm": "16d5068f7cdf0257e1a37a5ba6a77a05b7c7ec2346b9a9769896364c8c43db56",
+        "generated/scene.json": "9218afb47b99f4a28486e015e1286d7b69edac86925f75ccbef4227ec588b8ea",
+        "generated/water.pgm": "c4df8c89a52a2682faf4d95ca95e55d148aa25dfa3154fa077f4c6e372382b72",
+        "generated/water.yaml": "3b738bcb77fe8a68f1971a5610ed5d2328034f4f26e06feabca323854fc98b31",
+        "overview.png": "8a11723e6b40f1a0025e3ba73a43c0476fc8a416c33e74e633b06f111ce55ef0",
+        "overview.mp4": "6e3e3543c0a0b92d97c0d9181f385097a9a6173138f0fc060b9a910ecea80328",
+        "trajectory.png": "b2ca4b4c695764f52ad22493fe325b8b2f073bb4406f313c8bafeb3de4cd89f7"
+      }
+    },
+    "single_3": {
+      "case": {
+        "name": "single_3",
+        "goals": [
+          [
+            5,
+            0,
+            0
+          ]
+        ]
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_054806_single_3",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 15.809409470995888,
+        "true_position_error_m": 0.3632982068285358,
+        "true_yaw_error_rad": 0.04722846853180701,
+        "at_goal": [
+          4.645241086892256,
+          0.07830517642813534,
+          -0.04722846853180701
+        ],
+        "drift_10s_m": 0.19720678682405168,
+        "zero_command_delay_s": 0.050256517017260194,
+        "min_planar_clearance_m": 1.5496562544339811,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true
+      },
+      "metrics": {
+        "samples": 157,
+        "ekf_position_rmse_m": 0.022860309918956014,
+        "peak_true_speed_mps": 0.3645360959091537,
+        "real_time_factor": 0.9937570516601169,
+        "true_heave_peak_to_peak_m": 0.0003524677256259434,
+        "max_scan_source_age_s": 0.08800000000000241,
+        "true_roll_pitch_peak_to_peak_rad": [
+          0.0003245993878031239,
+          0.0009790733844203155
+        ],
+        "post_goal": {
+          "thrust_measurement": [
+            "command_topic_only"
+          ],
+          "stable_exact_zero_thrust_delay_s": null,
+          "stable_speed_below_002_delay_s": 3.021783376985695,
+          "final_thrust_n": [
+            -0.6000000000000005,
+            0.6000000000000005
+          ],
+          "travel_distance_m": 0.18914302814627393
+        }
+      },
+      "evidence_sha256": {
+        "single_3.jsonl": "f4686f3db07ef8117486a763e265fa64d7533d2d3f73aafc24b77f371bf1ecec",
+        "single_3_result.json": "5185a4553833bd67e35b57fc1ee0df292c751a7936871aed9860ea80d22c8794",
+        "generated/usv_nav.sdf": "9d7994325e2a6d73644427248b145c0339b188664f5444031497ed493a2dfc44",
+        "generated/nav2_wamv.yaml": "29871d7a729558ddb7b3bababe2d2b4ca0a1d32baede91a875efad1f56b5dbdf",
+        "provenance.json": "261bddf4d547aceffa7c5a4b43612cfbe3fb0c677b9a220c9d47f9b409e0d224",
+        "source_snapshot.tar.gz": "107e80570e5963f6ac8d4bfd92257ba24fdfcd5d56865c268bd0f05f29970bf6",
+        "map_alignment.json": "f2819f6d142bba8bd7df990a37ce0bc22ac13d84aa51adecdabdf6d7a9118f18",
+        "rover.parm": "16d5068f7cdf0257e1a37a5ba6a77a05b7c7ec2346b9a9769896364c8c43db56",
+        "generated/scene.json": "9218afb47b99f4a28486e015e1286d7b69edac86925f75ccbef4227ec588b8ea",
+        "generated/water.pgm": "c4df8c89a52a2682faf4d95ca95e55d148aa25dfa3154fa077f4c6e372382b72",
+        "generated/water.yaml": "3b738bcb77fe8a68f1971a5610ed5d2328034f4f26e06feabca323854fc98b31",
+        "trajectory.png": "20c2adf83cfc265832cb3ac1e93d31d8fce32dfd3c7c271e62178e7b95cd8721"
+      }
+    },
+    "multi_1": {
+      "case": {
+        "name": "multi_1",
+        "goals": [
+          [
+            3,
+            -3,
+            -0.6
+          ],
+          [
+            6,
+            -4,
+            0
+          ]
+        ]
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_054930_multi_1",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 28.943348161003087,
+        "true_position_error_m": 0.3179277004211177,
+        "true_yaw_error_rad": 0.16107022473326332,
+        "at_goal": [
+          5.88703682655733,
+          -3.702817658430348,
+          -0.16107022473326332
+        ],
+        "drift_10s_m": 0.04288669857951175,
+        "zero_command_delay_s": 0.05018282699165866,
+        "min_planar_clearance_m": 1.9145029948746897,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [
+          {
+            "target": [
+              3,
+              -3,
+              -0.6
+            ],
+            "closest_position_error_m": 0.02281161777339254,
+            "yaw_error_at_closest_rad": 0.1609243576145873
+          }
+        ],
+        "passed": true
+      },
+      "metrics": {
+        "samples": 288,
+        "ekf_position_rmse_m": 0.020091014284735215,
+        "peak_true_speed_mps": 0.3653009780791145,
+        "real_time_factor": 0.9937417138122037,
+        "true_heave_peak_to_peak_m": 0.00046843880793612236,
+        "max_scan_source_age_s": 0.1560000000000059,
+        "true_roll_pitch_peak_to_peak_rad": [
+          0.000702006781983112,
+          0.0012950729424380256
+        ],
+        "post_goal": {
+          "thrust_measurement": [
+            "command_topic_only"
+          ],
+          "stable_exact_zero_thrust_delay_s": 1.6124638470355421,
+          "stable_speed_below_002_delay_s": 0.8059581689885817,
+          "final_thrust_n": [
+            0.0,
+            0.0
+          ],
+          "travel_distance_m": 0.04464549529826065
+        }
+      },
+      "evidence_sha256": {
+        "multi_1.jsonl": "6668b081b4106472f02386dfc567aa59a660ced057163f77f89c8745910b49f9",
+        "multi_1_result.json": "32f7403fb0d3c0878b108149d59cbd402d8e29fbc9baa622b811bb6355f2aae9",
+        "generated/usv_nav.sdf": "9d7994325e2a6d73644427248b145c0339b188664f5444031497ed493a2dfc44",
+        "generated/nav2_wamv.yaml": "29871d7a729558ddb7b3bababe2d2b4ca0a1d32baede91a875efad1f56b5dbdf",
+        "provenance.json": "417771af4bc81813b85c69526915e708eca0bafa1d56ba2f201eb0766250fd22",
+        "source_snapshot.tar.gz": "b18dc74d899c1b02df2e4a9270e355e6b8c461071ce97a23b0b9974825fe5abc",
+        "map_alignment.json": "f2819f6d142bba8bd7df990a37ce0bc22ac13d84aa51adecdabdf6d7a9118f18",
+        "rover.parm": "16d5068f7cdf0257e1a37a5ba6a77a05b7c7ec2346b9a9769896364c8c43db56",
+        "generated/scene.json": "9218afb47b99f4a28486e015e1286d7b69edac86925f75ccbef4227ec588b8ea",
+        "generated/water.pgm": "c4df8c89a52a2682faf4d95ca95e55d148aa25dfa3154fa077f4c6e372382b72",
+        "generated/water.yaml": "3b738bcb77fe8a68f1971a5610ed5d2328034f4f26e06feabca323854fc98b31",
+        "trajectory.png": "c6407aee13a01d7558b4743b747214b64897c2e2367171f76f2a1d396eb792d9"
+      }
+    },
+    "multi_2": {
+      "case": {
+        "name": "multi_2",
+        "goals": [
+          [
+            3,
+            -3,
+            -0.6
+          ],
+          [
+            6,
+            -4,
+            0
+          ]
+        ]
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_055107_multi_2",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 29.12575004500104,
+        "true_position_error_m": 0.34758675118386073,
+        "true_yaw_error_rad": 0.15661365029198418,
+        "at_goal": [
+          5.877898288532214,
+          -3.6745653342755435,
+          -0.15661365029198418
+        ],
+        "drift_10s_m": 0.03701459794689086,
+        "zero_command_delay_s": 0.05044262402225286,
+        "min_planar_clearance_m": 1.877883424645555,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [
+          {
+            "target": [
+              3,
+              -3,
+              -0.6
+            ],
+            "closest_position_error_m": 0.031644405391405284,
+            "yaw_error_at_closest_rad": 0.17959459110934384
+          }
+        ],
+        "passed": true
+      },
+      "metrics": {
+        "samples": 290,
+        "ekf_position_rmse_m": 0.029138137006796693,
+        "peak_true_speed_mps": 0.3642038677477096,
+        "real_time_factor": 0.9939352811225716,
+        "true_heave_peak_to_peak_m": 0.0004939323361136116,
+        "max_scan_source_age_s": 0.14000000000000623,
+        "true_roll_pitch_peak_to_peak_rad": [
+          0.0008916107101472363,
+          0.0012669758798591578
+        ],
+        "post_goal": {
+          "thrust_measurement": [
+            "command_topic_only"
+          ],
+          "stable_exact_zero_thrust_delay_s": 1.6122564079705626,
+          "stable_speed_below_002_delay_s": 0.8070470370003022,
+          "final_thrust_n": [
+            0.0,
+            0.0
+          ],
+          "travel_distance_m": 0.039868948494723284
+        }
+      },
+      "evidence_sha256": {
+        "multi_2.jsonl": "2139eebcaa5dfd0441b17c7dbddbb7a0524ea74d1e5c49cdf9cc54816d531abf",
+        "multi_2_result.json": "97b8a364701777b8c539ba6156e8ca36586c87a6110d6f41fa08ded4b0a59eec",
+        "generated/usv_nav.sdf": "9d7994325e2a6d73644427248b145c0339b188664f5444031497ed493a2dfc44",
+        "generated/nav2_wamv.yaml": "29871d7a729558ddb7b3bababe2d2b4ca0a1d32baede91a875efad1f56b5dbdf",
+        "provenance.json": "c875f814379b9034721a469d24f5602edb4fdcaba3248a21de31165cac4146b4",
+        "source_snapshot.tar.gz": "450a419c94db0f0a8f8ef2df9bd874b94a77151d71a037b153a7cac1876ce049",
+        "map_alignment.json": "f2819f6d142bba8bd7df990a37ce0bc22ac13d84aa51adecdabdf6d7a9118f18",
+        "rover.parm": "16d5068f7cdf0257e1a37a5ba6a77a05b7c7ec2346b9a9769896364c8c43db56",
+        "generated/scene.json": "9218afb47b99f4a28486e015e1286d7b69edac86925f75ccbef4227ec588b8ea",
+        "generated/water.pgm": "c4df8c89a52a2682faf4d95ca95e55d148aa25dfa3154fa077f4c6e372382b72",
+        "generated/water.yaml": "3b738bcb77fe8a68f1971a5610ed5d2328034f4f26e06feabca323854fc98b31",
+        "trajectory.png": "6bb23c72c990df37231f4b97cb0d7d70b5f5998c31a3a770cbc649c0e5c213c7"
+      }
+    },
+    "multi_3": {
+      "case": {
+        "name": "multi_3",
+        "goals": [
+          [
+            3,
+            -3,
+            -0.6
+          ],
+          [
+            6,
+            -4,
+            0
+          ]
+        ]
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_055244_multi_3",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 28.726389572024345,
+        "true_position_error_m": 0.3194299613021633,
+        "true_yaw_error_rad": 0.15672389655690655,
+        "at_goal": [
+          5.901211452710208,
+          -3.6962298186097358,
+          -0.15672389655690655
+        ],
+        "drift_10s_m": 0.045260076550100864,
+        "zero_command_delay_s": 0.05067874304950237,
+        "min_planar_clearance_m": 1.8948175524640654,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [
+          {
+            "target": [
+              3,
+              -3,
+              -0.6
+            ],
+            "closest_position_error_m": 0.02661353268132097,
+            "yaw_error_at_closest_rad": 0.17328077553237495
+          }
+        ],
+        "passed": true
+      },
+      "metrics": {
+        "samples": 286,
+        "ekf_position_rmse_m": 0.029204653252570732,
+        "peak_true_speed_mps": 0.3650961590248285,
+        "real_time_factor": 0.9939293153545947,
+        "true_heave_peak_to_peak_m": 0.0004904443473809916,
+        "max_scan_source_age_s": 0.14400000000000257,
+        "true_roll_pitch_peak_to_peak_rad": [
+          0.0006201602615954918,
+          0.0013485353010702222
+        ],
+        "post_goal": {
+          "thrust_measurement": [
+            "command_topic_only"
+          ],
+          "stable_exact_zero_thrust_delay_s": 1.6117191859520972,
+          "stable_speed_below_002_delay_s": 0.8056098319939338,
+          "final_thrust_n": [
+            0.0,
+            0.0
+          ],
+          "travel_distance_m": 0.047108499267951714
+        }
+      },
+      "evidence_sha256": {
+        "multi_3.jsonl": "6203fd78b12ddd5ff58935d7b26b02a49be6954da7f3f8c2a5aa2db72038be37",
+        "multi_3_result.json": "67b27f6f7cae4dfa290c56c07f5c6e8a66c7694cdbe662e7d60c03402dfb2ab7",
+        "generated/usv_nav.sdf": "9d7994325e2a6d73644427248b145c0339b188664f5444031497ed493a2dfc44",
+        "generated/nav2_wamv.yaml": "29871d7a729558ddb7b3bababe2d2b4ca0a1d32baede91a875efad1f56b5dbdf",
+        "provenance.json": "ea6a866f1175161b09aa9dae76d43871937ded32eda555531ef0e867964a1a60",
+        "source_snapshot.tar.gz": "7b0231c1fbfadb8ea6b07e12b26e17b5101b4eb722400c5be4517a1a717326c3",
+        "map_alignment.json": "f2819f6d142bba8bd7df990a37ce0bc22ac13d84aa51adecdabdf6d7a9118f18",
+        "rover.parm": "16d5068f7cdf0257e1a37a5ba6a77a05b7c7ec2346b9a9769896364c8c43db56",
+        "generated/scene.json": "9218afb47b99f4a28486e015e1286d7b69edac86925f75ccbef4227ec588b8ea",
+        "generated/water.pgm": "c4df8c89a52a2682faf4d95ca95e55d148aa25dfa3154fa077f4c6e372382b72",
+        "generated/water.yaml": "3b738bcb77fe8a68f1971a5610ed5d2328034f4f26e06feabca323854fc98b31",
+        "trajectory.png": "7dae48fbb5addf7b9183ba1353474721bea2999a189b9be5d1090cdce5b5c559"
+      }
+    },
+    "static_obstacle": {
+      "case": {
+        "name": "static_obstacle",
+        "goals": [
+          [
+            18,
+            0,
+            0
+          ]
+        ]
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_055421_static_obstacle",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 75.84778577298857,
+        "true_position_error_m": 0.26420215503933286,
+        "true_yaw_error_rad": 0.1610277710079907,
+        "at_goal": [
+          17.89971798688228,
+          0.2444305557259261,
+          -0.1610277710079907
+        ],
+        "drift_10s_m": 0.09530180420233238,
+        "zero_command_delay_s": 0.05014165095053613,
+        "min_planar_clearance_m": 3.3545219103267083,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true
+      },
+      "metrics": {
+        "samples": 754,
+        "ekf_position_rmse_m": 0.029061240918854574,
+        "peak_true_speed_mps": 0.37616258670016844,
+        "real_time_factor": 0.9937497564346915,
+        "true_heave_peak_to_peak_m": 0.00045299807719517693,
+        "max_scan_source_age_s": 0.14000000000000623,
+        "true_roll_pitch_peak_to_peak_rad": [
+          0.0008016496191262391,
+          0.0013290771504357339
+        ],
+        "post_goal": {
+          "thrust_measurement": [
+            "command_topic_only"
+          ],
+          "stable_exact_zero_thrust_delay_s": 2.6205520370276645,
+          "stable_speed_below_002_delay_s": 2.0154788580257446,
+          "final_thrust_n": [
+            0.0,
+            0.0
+          ],
+          "travel_distance_m": 0.09486496301949934
+        }
+      },
+      "evidence_sha256": {
+        "static_obstacle.jsonl": "29c3f468a1bdb5e280d5ade550cee37be57eadc778cb14353f27e12c04a1a7fc",
+        "static_obstacle_result.json": "26f0d9bcc05736eeb7f32e3a90de95e1c57aac2747846e61f92bb615e77cc040",
+        "generated/usv_nav.sdf": "9d7994325e2a6d73644427248b145c0339b188664f5444031497ed493a2dfc44",
+        "generated/nav2_wamv.yaml": "29871d7a729558ddb7b3bababe2d2b4ca0a1d32baede91a875efad1f56b5dbdf",
+        "provenance.json": "cf247c3006fd64aa350de1d40c28766011e0eac367ae8609ffb2755786c081e2",
+        "source_snapshot.tar.gz": "62a7f340daf94bda1b8910771aebc348e2391648dc4d358cb850d6cced45d7d6",
+        "map_alignment.json": "f2819f6d142bba8bd7df990a37ce0bc22ac13d84aa51adecdabdf6d7a9118f18",
+        "rover.parm": "16d5068f7cdf0257e1a37a5ba6a77a05b7c7ec2346b9a9769896364c8c43db56",
+        "generated/scene.json": "9218afb47b99f4a28486e015e1286d7b69edac86925f75ccbef4227ec588b8ea",
+        "generated/water.pgm": "c4df8c89a52a2682faf4d95ca95e55d148aa25dfa3154fa077f4c6e372382b72",
+        "generated/water.yaml": "3b738bcb77fe8a68f1971a5610ed5d2328034f4f26e06feabca323854fc98b31",
+        "trajectory.png": "970f766196025c72b1e943531b75f1d2158b6582e62f03e239533b0c0c53fc5f"
+      }
+    },
+    "cancel": {
+      "case": {
+        "name": "cancel",
+        "goals": [
+          [
+            5,
+            0,
+            0
+          ]
+        ],
+        "cancel_after": 5,
+        "expected_status": 5
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_062236_cancel",
+      "exit_code": 0,
+      "result": {
+        "status": 5,
+        "elapsed_wall_s": 5.078957702033222,
+        "true_position_error_m": 3.6375860750961984,
+        "true_yaw_error_rad": 0.028206763482901635,
+        "at_goal": [
+          1.362804722455073,
+          0.05331947804178617,
+          0.028206763482901635
+        ],
+        "drift_10s_m": 0.5746957441891472,
+        "zero_command_delay_s": 0.050933229038491845,
+        "min_planar_clearance_m": 4.479055057311331,
+        "expected_status": 5,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true
+      },
+      "metrics": {
+        "samples": 51,
+        "ekf_position_rmse_m": 0.016463249215521093,
+        "peak_true_speed_mps": 0.36260515561427814,
+        "real_time_factor": 0.9939684078123079,
+        "true_heave_peak_to_peak_m": 0.00027000158405841856,
+        "max_scan_source_age_s": 0.17199999999999704,
+        "true_roll_pitch_peak_to_peak_rad": [
+          0.0002516774133284232,
+          0.00082845915159607
+        ],
+        "post_goal": {
+          "thrust_measurement": [
+            "thruster_feedback"
+          ],
+          "stable_exact_zero_thrust_delay_s": null,
+          "stable_speed_below_002_delay_s": 5.24076456297189,
+          "final_thrust_n": [
+            -0.6000000000000005,
+            0.6000000000000005
+          ],
+          "travel_distance_m": 0.5747261212781909
+        }
+      },
+      "evidence_sha256": {
+        "cancel.jsonl": "04eabc03ae08444a3271665ce690b7c2710493a0a7a068dc282a9ab11531f33e",
+        "cancel_result.json": "34f4b3c3985ef14296b767943cb7189177882da9b975a64f490ec8ddc7d11459",
+        "generated/usv_nav.sdf": "9d7994325e2a6d73644427248b145c0339b188664f5444031497ed493a2dfc44",
+        "generated/nav2_wamv.yaml": "29871d7a729558ddb7b3bababe2d2b4ca0a1d32baede91a875efad1f56b5dbdf",
+        "provenance.json": "f1cadb82d68ea5bf0f84674904e7d42ac4fdb366ebff573932b8df646329c3f4",
+        "source_snapshot.tar.gz": "2906038db65e751651de11ac206fb9dac6c199c4dc4f43f5f2fc9168bcdd0f12",
+        "map_alignment.json": "f2819f6d142bba8bd7df990a37ce0bc22ac13d84aa51adecdabdf6d7a9118f18",
+        "rover.parm": "16d5068f7cdf0257e1a37a5ba6a77a05b7c7ec2346b9a9769896364c8c43db56",
+        "thrust_observation.json": "c0b573de1ae6788be3fedd15a60aded4482dfd257fa7ad34cbb1b09c41e0f207",
+        "generated/scene.json": "9218afb47b99f4a28486e015e1286d7b69edac86925f75ccbef4227ec588b8ea",
+        "generated/water.pgm": "c4df8c89a52a2682faf4d95ca95e55d148aa25dfa3154fa077f4c6e372382b72",
+        "generated/water.yaml": "3b738bcb77fe8a68f1971a5610ed5d2328034f4f26e06feabca323854fc98b31",
+        "trajectory.png": "3b2ad4a2e275346be86ea60cedef43780cb760674851fb4920a9c8b4e031bb53"
+      }
+    },
+    "unreachable": {
+      "case": {
+        "name": "unreachable",
+        "goals": [
+          [
+            60,
+            0,
+            0
+          ]
+        ],
+        "expected_status": 6
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_055759_unreachable",
+      "exit_code": 0,
+      "result": {
+        "status": 6,
+        "elapsed_wall_s": 0.06716299301479012,
+        "true_position_error_m": 59.99879389544822,
+        "true_yaw_error_rad": 0.032109899104518114,
+        "at_goal": [
+          0.001206321217468155,
+          0.005098956735210597,
+          0.032109899104518114
+        ],
+        "drift_10s_m": 0.004340333768422774,
+        "zero_command_delay_s": 0.05022074800217524,
+        "min_planar_clearance_m": 6.4055946256063905,
+        "expected_status": 6,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true
+      },
+      "metrics": {
+        "samples": 1,
+        "ekf_position_rmse_m": 0.005333458307289005,
+        "peak_true_speed_mps": 0.001174303840609993,
+        "real_time_factor": null,
+        "true_heave_peak_to_peak_m": 0.0,
+        "max_scan_source_age_s": 0.10000000000000286,
+        "true_roll_pitch_peak_to_peak_rad": [
+          0.0,
+          0.0
+        ],
+        "post_goal": {
+          "thrust_measurement": [
+            "command_topic_only"
+          ],
+          "stable_exact_zero_thrust_delay_s": 0.0,
+          "stable_speed_below_002_delay_s": 0.0,
+          "final_thrust_n": [
+            0.0,
+            0.0
+          ],
+          "travel_distance_m": 0.004266896367385279
+        }
+      },
+      "evidence_sha256": {
+        "unreachable.jsonl": "d5522276d96a3b3f520dd8cca018fb737a4cd65bedcdcd12f3e70a90a3ad17e9",
+        "unreachable_result.json": "3317eb72eb9e8cb2e2b65ea8b2e340d3d118857fef7511f00152e7b678fe2415",
+        "generated/usv_nav.sdf": "9d7994325e2a6d73644427248b145c0339b188664f5444031497ed493a2dfc44",
+        "generated/nav2_wamv.yaml": "29871d7a729558ddb7b3bababe2d2b4ca0a1d32baede91a875efad1f56b5dbdf",
+        "provenance.json": "43b3e9339828bd3d6dfa119bb581129554bee035924b21eaa953d151817b9553",
+        "source_snapshot.tar.gz": "75e06e3d8ebaa583504788857c05cb320a28db726f455b460826c18b2d452b80",
+        "map_alignment.json": "f2819f6d142bba8bd7df990a37ce0bc22ac13d84aa51adecdabdf6d7a9118f18",
+        "rover.parm": "16d5068f7cdf0257e1a37a5ba6a77a05b7c7ec2346b9a9769896364c8c43db56",
+        "generated/scene.json": "9218afb47b99f4a28486e015e1286d7b69edac86925f75ccbef4227ec588b8ea",
+        "generated/water.pgm": "c4df8c89a52a2682faf4d95ca95e55d148aa25dfa3154fa077f4c6e372382b72",
+        "generated/water.yaml": "3b738bcb77fe8a68f1971a5610ed5d2328034f4f26e06feabca323854fc98b31",
+        "trajectory.png": "70c12536a8cbccdb77b1cd2d2d3771169b55d0c5123a30d599a7a0052a8763be"
+      }
+    },
+    "unreachable_obstacle": {
+      "case": {
+        "name": "unreachable_obstacle",
+        "goals": [
+          [
+            10,
+            0,
+            0
+          ]
+        ],
+        "expected_status": 6
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_055907_unreachable_obstacle",
+      "exit_code": 0,
+      "result": {
+        "status": 6,
+        "elapsed_wall_s": 0.06522824300918728,
+        "true_position_error_m": 9.998820214155236,
+        "true_yaw_error_rad": 0.03524334993008458,
+        "at_goal": [
+          0.0011814065502315926,
+          0.005693002947297387,
+          0.03524334993008457
+        ],
+        "drift_10s_m": 0.004934410308166,
+        "zero_command_delay_s": 0.050284677010495216,
+        "min_planar_clearance_m": 6.402415053839361,
+        "expected_status": 6,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true
+      },
+      "metrics": {
+        "samples": 1,
+        "ekf_position_rmse_m": 0.0050883162896910175,
+        "peak_true_speed_mps": 0.001263351903717479,
+        "real_time_factor": null,
+        "true_heave_peak_to_peak_m": 0.0,
+        "max_scan_source_age_s": 0.08800000000000097,
+        "true_roll_pitch_peak_to_peak_rad": [
+          0.0,
+          0.0
+        ],
+        "post_goal": {
+          "thrust_measurement": [
+            "command_topic_only"
+          ],
+          "stable_exact_zero_thrust_delay_s": 0.0,
+          "stable_speed_below_002_delay_s": 0.0,
+          "final_thrust_n": [
+            -0.6000000000000005,
+            0.6000000000000005
+          ],
+          "travel_distance_m": 0.004907538932361652
+        }
+      },
+      "evidence_sha256": {
+        "unreachable_obstacle.jsonl": "8b4530b01f7ab84ca2e6f2bf3c5e5395c7dc6688f4a09bcba99a740b235c6d6e",
+        "unreachable_obstacle_result.json": "ac141b6fe3f2b90b4801315b4ed50cb8f423a5e5cc8c718b0c5f981681c8317a",
+        "generated/usv_nav.sdf": "9d7994325e2a6d73644427248b145c0339b188664f5444031497ed493a2dfc44",
+        "generated/nav2_wamv.yaml": "29871d7a729558ddb7b3bababe2d2b4ca0a1d32baede91a875efad1f56b5dbdf",
+        "provenance.json": "7d23be6a6e5b57b1b61d3707c3b77df056ded4c5bfd9177dca9a893fab836ff8",
+        "source_snapshot.tar.gz": "5d125fb9c63ff62f509f45691e37121e07e8d725e89999618393cda82db29378",
+        "map_alignment.json": "f2819f6d142bba8bd7df990a37ce0bc22ac13d84aa51adecdabdf6d7a9118f18",
+        "rover.parm": "16d5068f7cdf0257e1a37a5ba6a77a05b7c7ec2346b9a9769896364c8c43db56",
+        "generated/scene.json": "9218afb47b99f4a28486e015e1286d7b69edac86925f75ccbef4227ec588b8ea",
+        "generated/water.pgm": "c4df8c89a52a2682faf4d95ca95e55d148aa25dfa3154fa077f4c6e372382b72",
+        "generated/water.yaml": "3b738bcb77fe8a68f1971a5610ed5d2328034f4f26e06feabca323854fc98b31",
+        "trajectory.png": "edf77f7ca90272e36a7ae1e32ad188ba92abcd1a880ffdf2e0269b26206f91d6"
+      }
+    },
+    "wind": {
+      "case": {
+        "name": "wind",
+        "goals": [
+          [
+            5,
+            0,
+            0
+          ]
+        ],
+        "wind": 3
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_060015_wind",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 19.635952016047668,
+        "true_position_error_m": 0.2275379846341524,
+        "true_yaw_error_rad": 0.20903216854481127,
+        "at_goal": [
+          4.798988884142203,
+          -0.10662113183124122,
+          0.20903216854481127
+        ],
+        "drift_10s_m": 0.25232052987205983,
+        "zero_command_delay_s": 0.05016064504161477,
+        "min_planar_clearance_m": 1.471781179621738,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true
+      },
+      "metrics": {
+        "samples": 195,
+        "ekf_position_rmse_m": 0.024658547941504606,
+        "peak_true_speed_mps": 0.3702462170989063,
+        "real_time_factor": 0.9938949301012404,
+        "true_heave_peak_to_peak_m": 0.00037883908800613597,
+        "max_scan_source_age_s": 0.18000000000000113,
+        "true_roll_pitch_peak_to_peak_rad": [
+          0.0007093840457173403,
+          0.0010702823016353067
+        ],
+        "post_goal": {
+          "thrust_measurement": [
+            "command_topic_only"
+          ],
+          "stable_exact_zero_thrust_delay_s": null,
+          "stable_speed_below_002_delay_s": 0.7061587669886649,
+          "final_thrust_n": [
+            -1.8000000000000016,
+            1.8000000000000016
+          ],
+          "travel_distance_m": 0.253263661659681
+        }
+      },
+      "evidence_sha256": {
+        "wind.jsonl": "1b86d42f98f9f2485057aa431eb9758315ed965dc13e5bef835bbfe693c97c39",
+        "wind_result.json": "0103bf2c9d5ca41441f4b157c7eb2fae4f8c3d773a59d5da0ec41ef26431bc07",
+        "generated/usv_nav.sdf": "235ac03af44785dfe9b8c995f97e4a078b8df9da305000a05f1a9a3da200e03b",
+        "generated/nav2_wamv.yaml": "29871d7a729558ddb7b3bababe2d2b4ca0a1d32baede91a875efad1f56b5dbdf",
+        "provenance.json": "c70197d8bede8782c8c102a751f938707b75c96c1cf4ab5f5a97127cc6f1c125",
+        "source_snapshot.tar.gz": "b2a6ee94a018946ce29ef3f7fc526241a3206233fe26f7bf48413e06712bd5a4",
+        "map_alignment.json": "c6a205955a55948c3dc7ae1814ae1a1ef5fe649f27488b4e5d62cf0c3fb38630",
+        "rover.parm": "16d5068f7cdf0257e1a37a5ba6a77a05b7c7ec2346b9a9769896364c8c43db56",
+        "generated/scene.json": "0f7b551a5eb138867c15610e57725398821612f1a344db170168011ff71eebd2",
+        "generated/water.pgm": "c4df8c89a52a2682faf4d95ca95e55d148aa25dfa3154fa077f4c6e372382b72",
+        "generated/water.yaml": "3b738bcb77fe8a68f1971a5610ed5d2328034f4f26e06feabca323854fc98b31",
+        "trajectory.png": "576864c8a800b1376a0b1c1d96fbbfb671b862c19fb9cb44ea59626952f7993a"
+      }
+    },
+    "waves": {
+      "case": {
+        "name": "waves",
+        "goals": [
+          [
+            5,
+            0,
+            0
+          ]
+        ],
+        "wave_gain": 0.3
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_060144_waves",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 15.925353420956526,
+        "true_position_error_m": 0.36764156458981034,
+        "true_yaw_error_rad": 0.04377347934135056,
+        "at_goal": [
+          4.642067623535171,
+          0.08393291304538178,
+          -0.04377347934135056
+        ],
+        "drift_10s_m": 0.1805784510464509,
+        "zero_command_delay_s": 0.050325853982940316,
+        "min_planar_clearance_m": 1.5706956393533371,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true
+      },
+      "metrics": {
+        "samples": 158,
+        "ekf_position_rmse_m": 0.02091758146494912,
+        "peak_true_speed_mps": 0.3667208472811425,
+        "real_time_factor": 0.9937303105832753,
+        "true_heave_peak_to_peak_m": 0.22233503415469652,
+        "max_scan_source_age_s": 0.16000000000000225,
+        "true_roll_pitch_peak_to_peak_rad": [
+          0.006398566881222541,
+          0.03703268320948206
+        ],
+        "post_goal": {
+          "thrust_measurement": [
+            "command_topic_only"
+          ],
+          "stable_exact_zero_thrust_delay_s": null,
+          "stable_speed_below_002_delay_s": 2.6194851199979894,
+          "final_thrust_n": [
+            -0.6000000000000005,
+            0.6000000000000005
+          ],
+          "travel_distance_m": 0.17656298318158634
+        }
+      },
+      "evidence_sha256": {
+        "waves.jsonl": "065866e62510fc1df4f68ae82f2ddc68224ed190346d0e0e2b936c9878ecc836",
+        "waves_result.json": "e541dea5ddda92ab9b60237a8112fb3daec0dd9051832ab5704fdc10a3cc8348",
+        "generated/usv_nav.sdf": "61f08a2cec77ba685f7a455a945a993690e411a488cfd724ca923c823a027e84",
+        "generated/nav2_wamv.yaml": "29871d7a729558ddb7b3bababe2d2b4ca0a1d32baede91a875efad1f56b5dbdf",
+        "provenance.json": "4917068160c3dde4d74f39f2c7c63d637213b924cbdefd09a647fa680be27d95",
+        "source_snapshot.tar.gz": "fe338fd381aa46cb3c76378c22810f6a81ed81299a25ae216cbac62e3387052b",
+        "map_alignment.json": "743e812db53e8f19c20f0282423090ee845d667a882ed14be6122e136f152634",
+        "rover.parm": "16d5068f7cdf0257e1a37a5ba6a77a05b7c7ec2346b9a9769896364c8c43db56",
+        "generated/scene.json": "82bd7dc77530ebfe8120b33fbd2693bf9f92ae95b4e1564e3db13f19f1c80a67",
+        "generated/water.pgm": "c4df8c89a52a2682faf4d95ca95e55d148aa25dfa3154fa077f4c6e372382b72",
+        "generated/water.yaml": "3b738bcb77fe8a68f1971a5610ed5d2328034f4f26e06feabca323854fc98b31",
+        "trajectory.png": "c50ff4fb4b46c17169b76d25b4921531864f1c84458698281e9674916400e917"
+      }
+    },
+    "wind_waves": {
+      "case": {
+        "name": "wind_waves",
+        "goals": [
+          [
+            5,
+            0,
+            0
+          ]
+        ],
+        "wind": 3,
+        "wave_gain": 0.3
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_060308_wind_waves",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 18.21879174897913,
+        "true_position_error_m": 0.291042286984891,
+        "true_yaw_error_rad": 0.21254367920698286,
+        "at_goal": [
+          4.710432492686376,
+          -0.02926211751685142,
+          0.21254367920698286
+        ],
+        "drift_10s_m": 0.1404217422957559,
+        "zero_command_delay_s": 0.05144468502840027,
+        "min_planar_clearance_m": 1.5197153064380853,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true
+      },
+      "metrics": {
+        "samples": 181,
+        "ekf_position_rmse_m": 0.023876337019729514,
+        "peak_true_speed_mps": 0.3692837003288228,
+        "real_time_factor": 0.9937671545302352,
+        "true_heave_peak_to_peak_m": 0.2226631542465287,
+        "max_scan_source_age_s": 0.16800000000000215,
+        "true_roll_pitch_peak_to_peak_rad": [
+          0.01806419213924739,
+          0.035359085524971426
+        ],
+        "post_goal": {
+          "thrust_measurement": [
+            "command_topic_only"
+          ],
+          "stable_exact_zero_thrust_delay_s": null,
+          "stable_speed_below_002_delay_s": 1.5124709410010837,
+          "final_thrust_n": [
+            -1.8000000000000016,
+            1.8000000000000016
+          ],
+          "travel_distance_m": 0.2515987040290862
+        }
+      },
+      "evidence_sha256": {
+        "wind_waves.jsonl": "4adcacb7444e2ac51d395fd175b88470f26d93748d14f92da687a9f6f6867915",
+        "wind_waves_result.json": "ff9afc27d7a953d3d64377e2dc0b8ad698136852767c07e05ec247828c1eae4b",
+        "generated/usv_nav.sdf": "665083fa7d1136fdc90421c776506f77d317be0198543a85b18822798d338ced",
+        "generated/nav2_wamv.yaml": "29871d7a729558ddb7b3bababe2d2b4ca0a1d32baede91a875efad1f56b5dbdf",
+        "provenance.json": "0aac3a9b81ad303f7bdc3d72d0adb223523c061921bfced7ac210ce0c9df6d69",
+        "source_snapshot.tar.gz": "4e4328eb4ba5a2ced3b459dab59e26ac1e64fefab7d5733a28e6ad0f99e32df8",
+        "map_alignment.json": "7497e8860a1e6fa22e207fcd80b66ffe11b7b692045784c8476be12ebf2ad237",
+        "rover.parm": "16d5068f7cdf0257e1a37a5ba6a77a05b7c7ec2346b9a9769896364c8c43db56",
+        "generated/scene.json": "ceca3c2914a27dc30851ecb54626acdee3aec23d14762774b5d108b78d179dcc",
+        "generated/water.pgm": "c4df8c89a52a2682faf4d95ca95e55d148aa25dfa3154fa077f4c6e372382b72",
+        "generated/water.yaml": "3b738bcb77fe8a68f1971a5610ed5d2328034f4f26e06feabca323854fc98b31",
+        "trajectory.png": "0c76bc381587160a5ebe2a51e82a82e28771af16ea78530d97468e1c5dd1756a"
+      }
+    },
+    "gps_input_fixed": {
+      "case": {
+        "name": "gps_input_fixed",
+        "goals": [
+          [
+            5,
+            0,
+            0
+          ]
+        ],
+        "gps_input": true
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_060434_gps_input_fixed",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 15.822627478977665,
+        "true_position_error_m": 0.3771846962578102,
+        "true_yaw_error_rad": 0.11555922217845659,
+        "at_goal": [
+          4.6421994628940135,
+          0.11936109390318163,
+          -0.11555922217845659
+        ],
+        "drift_10s_m": 0.20492789451717136,
+        "zero_command_delay_s": 0.050326874013990164,
+        "min_planar_clearance_m": 1.4891771706165766,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true
+      },
+      "metrics": {
+        "samples": 158,
+        "ekf_position_rmse_m": 0.02165496020817121,
+        "peak_true_speed_mps": 0.3618389258565744,
+        "real_time_factor": 0.9935996425492336,
+        "true_heave_peak_to_peak_m": 0.00035794423377308315,
+        "max_scan_source_age_s": 0.10400000000000348,
+        "true_roll_pitch_peak_to_peak_rad": [
+          0.00018351874199584592,
+          0.0010107107485317094
+        ],
+        "post_goal": {
+          "thrust_measurement": [
+            "command_topic_only"
+          ],
+          "stable_exact_zero_thrust_delay_s": null,
+          "stable_speed_below_002_delay_s": 3.3255184680456296,
+          "final_thrust_n": [
+            0.0,
+            0.0
+          ],
+          "travel_distance_m": 0.19572327884350163
+        }
+      },
+      "evidence_sha256": {
+        "gps_input_fixed.jsonl": "fd821e3c15d79ba24ba5de92c1557773c6ebacfa267f3ccc8b080fc2213d1b76",
+        "gps_input_fixed_result.json": "16b4e3e4e01ee5bcb07ba28cc04ee7e935a05223334bb5e18785823363f5ea4a",
+        "generated/usv_nav.sdf": "9d7994325e2a6d73644427248b145c0339b188664f5444031497ed493a2dfc44",
+        "generated/nav2_wamv.yaml": "29871d7a729558ddb7b3bababe2d2b4ca0a1d32baede91a875efad1f56b5dbdf",
+        "provenance.json": "194dbb2c9d617ce0a9123e59d81bb432360c975659848f2c27bd150bf9d01856",
+        "source_snapshot.tar.gz": "09f3141e4494e8a3f264d8becbaba6620f4db96be50629190b49be28ec21558f",
+        "map_alignment.json": "d39b857895c04353e63b43e57d8e4b34c2da3748560d42a5f9ebad3a33e297fc",
+        "rover.parm": "93917b0487a40e01b8acdb8745e778fc3eb26c341833a87375af02f19bc48317",
+        "generated/scene.json": "9218afb47b99f4a28486e015e1286d7b69edac86925f75ccbef4227ec588b8ea",
+        "generated/water.pgm": "c4df8c89a52a2682faf4d95ca95e55d148aa25dfa3154fa077f4c6e372382b72",
+        "generated/water.yaml": "3b738bcb77fe8a68f1971a5610ed5d2328034f4f26e06feabca323854fc98b31",
+        "trajectory.png": "a2396845d7c5bdbde1004b50d8364764ec8ddc44b4d27f4beb82ad17943a349a"
+      }
+    },
+    "dynamic_map": {
+      "case": {
+        "name": "dynamic_map",
+        "environment_case": "dynamic_map"
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_060600_dynamic_map",
+      "exit_code": 0,
+      "result": {
+        "baseline_lethal_cells": 0,
+        "marked_lethal_cells": 88,
+        "mark_delay_s": 1.1610804370138794,
+        "clear_delay_s": 1.2138928800122812,
+        "remaining_lethal_cells": 0,
+        "passed": true
+      },
+      "metrics": {},
+      "evidence_sha256": {
+        "dynamic_map.jsonl": "aa9f027402566699ef28d14a93d272cf1df9a2d9a37bc30958d97ee4a0eae82b",
+        "dynamic_map_result.json": "97e916be667897ca4c7ee581068816059711099807499b339591a9dea6c06eb7",
+        "generated/usv_nav.sdf": "9d7994325e2a6d73644427248b145c0339b188664f5444031497ed493a2dfc44",
+        "generated/nav2_wamv.yaml": "29871d7a729558ddb7b3bababe2d2b4ca0a1d32baede91a875efad1f56b5dbdf",
+        "provenance.json": "f8711ae98920d3188f178645c7e19ba423f375fb42386022f5a0ef873abfc9bb",
+        "source_snapshot.tar.gz": "83d75f597051912fa7ab25854a0ba0ef9544d241be0f4f862a20ae556bbaed83",
+        "map_alignment.json": "f2819f6d142bba8bd7df990a37ce0bc22ac13d84aa51adecdabdf6d7a9118f18",
+        "rover.parm": "16d5068f7cdf0257e1a37a5ba6a77a05b7c7ec2346b9a9769896364c8c43db56",
+        "generated/scene.json": "9218afb47b99f4a28486e015e1286d7b69edac86925f75ccbef4227ec588b8ea",
+        "generated/water.pgm": "c4df8c89a52a2682faf4d95ca95e55d148aa25dfa3154fa077f4c6e372382b72",
+        "generated/water.yaml": "3b738bcb77fe8a68f1971a5610ed5d2328034f4f26e06feabca323854fc98b31"
+      }
+    },
+    "dynamic_navigation": {
+      "case": {
+        "name": "dynamic_navigation",
+        "environment_case": "dynamic_navigation"
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_105554_dynamic_navigation",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 79.63418606703635,
+        "true_position_error_m": 0.38660981252142707,
+        "true_yaw_error_rad": 0.16653956867404163,
+        "at_goal": [
+          11.852379675702508,
+          8.357316927939548,
+          -0.16653956867404163
+        ],
+        "drift_10s_m": 0.01810214866376151,
+        "zero_command_delay_s": 0.05344865197548643,
+        "min_planar_clearance_m": 1.8467636591633914,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true,
+        "target": [
+          12,
+          8,
+          0
+        ],
+        "obstacle_inserted": true,
+        "obstacle_removed": true,
+        "obstacle_profile": {
+          "clock": "Gazebo simulation time",
+          "appearance_s": 3,
+          "removal_s": 28,
+          "initial_xy_m": [
+            6,
+            7
+          ],
+          "velocity_xy_mps": [
+            0,
+            -0.14
+          ],
+          "pose_update_period_s": 0.5
+        }
+      },
+      "metrics": {
+        "samples": 640,
+        "ekf_position_rmse_m": 0.023255538837314134,
+        "peak_true_speed_mps": 0.3788780417416775,
+        "real_time_factor": 0.8720469283678755,
+        "true_heave_peak_to_peak_m": 0.00041865658452053256,
+        "max_scan_source_age_s": 0.2560000000000059,
+        "true_roll_pitch_peak_to_peak_rad": [
+          0.0005621182221612496,
+          0.001204387897047167
+        ],
+        "post_goal": {
+          "thrust_measurement": [
+            "thruster_feedback"
+          ],
+          "stable_exact_zero_thrust_delay_s": 1.6250968890381046,
+          "stable_speed_below_002_delay_s": 1.0180986230261624,
+          "final_thrust_n": [
+            -0.6000000000000005,
+            0.6000000000000005
+          ],
+          "travel_distance_m": 0.02846437347390904
+        }
+      },
+      "evidence_sha256": {
+        "dynamic_navigation.jsonl": "72f852de86868e77d52b143935fd068377cc7c6fcba847af439ed0cbf11ff682",
+        "dynamic_navigation_result.json": "101a75c97c15cbc2bc10e8aaf53c7ee783b7cd38a9a2d81d530bff79d3bd42cd",
+        "generated/usv_nav.sdf": "9d7994325e2a6d73644427248b145c0339b188664f5444031497ed493a2dfc44",
+        "generated/nav2_wamv.yaml": "29871d7a729558ddb7b3bababe2d2b4ca0a1d32baede91a875efad1f56b5dbdf",
+        "provenance.json": "45bc8f40524409ad887b85e0af55997074bfbbbd6465349addbd0c81919b052c",
+        "source_snapshot.tar.gz": "8f54332fc3d803db0077c6f0e01be5adbbd5114dc51d34508ae761df8b4e5a34",
+        "map_alignment.json": "f2819f6d142bba8bd7df990a37ce0bc22ac13d84aa51adecdabdf6d7a9118f18",
+        "rover.parm": "16d5068f7cdf0257e1a37a5ba6a77a05b7c7ec2346b9a9769896364c8c43db56",
+        "thrust_observation.json": "c0b573de1ae6788be3fedd15a60aded4482dfd257fa7ad34cbb1b09c41e0f207",
+        "generated/scene.json": "9218afb47b99f4a28486e015e1286d7b69edac86925f75ccbef4227ec588b8ea",
+        "generated/water.pgm": "c4df8c89a52a2682faf4d95ca95e55d148aa25dfa3154fa077f4c6e372382b72",
+        "generated/water.yaml": "3b738bcb77fe8a68f1971a5610ed5d2328034f4f26e06feabca323854fc98b31",
+        "visualization/manifest.json": "d07505160f3e217eff1a5cbd1f58c4ebfad342edabe7ef758e15afb6080a3476",
+        "visualization/recording.json": "b6b9597f2335223708847d1a0d21e41c8080a2d1c90777ea9f9dd16f1df1ba0e",
+        "trajectory.png": "51a2965b301e8efee1d05a546c52fc6196c199c09e771e27117532e8ed1d6b01"
+      }
+    },
+    "pause": {
+      "case": {
+        "name": "pause",
+        "environment_case": "pause"
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_060912_pause",
+      "exit_code": 0,
+      "result": {
+        "zero_output_wall_s": 0.22859376098494977,
+        "paused_sim_delta_s": 0.2680000000000007,
+        "resumed_sim_delta_s": 3.9080000000000013,
+        "replayed_old_command": false,
+        "passed": true,
+        "note": "Paused physics is not evidence of physical stopping."
+      },
+      "metrics": {},
+      "evidence_sha256": {
+        "pause.jsonl": "4440e1c1b1d4fce181b3ae2a4fc6a80ccea4648e58d6b708bcb7a09b9e18738c",
+        "pause_result.json": "9c36d4cc5fb6b91a5a8d3d04c813f13f44cacb3ab7a4b30c3ed284575824469f",
+        "generated/usv_nav.sdf": "9d7994325e2a6d73644427248b145c0339b188664f5444031497ed493a2dfc44",
+        "generated/nav2_wamv.yaml": "29871d7a729558ddb7b3bababe2d2b4ca0a1d32baede91a875efad1f56b5dbdf",
+        "provenance.json": "861f7d1f3013608de1dbce90b19c7918c2116f28c778eef4e75c61f1f9051cf4",
+        "source_snapshot.tar.gz": "7d29e69cc98296d51a9d133c18f07ee9bbcadd9a3967b6a07ad61cea37f3865b",
+        "map_alignment.json": "f2819f6d142bba8bd7df990a37ce0bc22ac13d84aa51adecdabdf6d7a9118f18",
+        "rover.parm": "16d5068f7cdf0257e1a37a5ba6a77a05b7c7ec2346b9a9769896364c8c43db56",
+        "generated/scene.json": "9218afb47b99f4a28486e015e1286d7b69edac86925f75ccbef4227ec588b8ea",
+        "generated/water.pgm": "c4df8c89a52a2682faf4d95ca95e55d148aa25dfa3154fa077f4c6e372382b72",
+        "generated/water.yaml": "3b738bcb77fe8a68f1971a5610ed5d2328034f4f26e06feabca323854fc98b31"
+      }
+    },
+    "motors": {
+      "case": {
+        "name": "motors",
+        "environment_case": "motors"
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_062514_motors",
+      "exit_code": 0,
+      "result": [
+        {
+          "side": "left",
+          "pwm": 1600,
+          "expected_n": 60.0,
+          "actual_n": 59.99999999999998,
+          "thrust_measurement": "thruster_feedback",
+          "other_n": 0.0,
+          "truth_yaw_rate": -0.06503706899820827,
+          "passed": true
+        },
+        {
+          "side": "left",
+          "pwm": 1400,
+          "expected_n": -60.0,
+          "actual_n": -59.99999999999998,
+          "thrust_measurement": "thruster_feedback",
+          "other_n": 0.0,
+          "truth_yaw_rate": 0.06390561902662739,
+          "passed": true
+        },
+        {
+          "side": "left",
+          "pwm": 1500,
+          "expected_n": 0.0,
+          "actual_n": 0.0,
+          "thrust_measurement": "thruster_feedback",
+          "other_n": 0.0,
+          "truth_yaw_rate": 0.0003615173255866466,
+          "passed": true
+        },
+        {
+          "side": "right",
+          "pwm": 1600,
+          "expected_n": 60.0,
+          "actual_n": 59.99999999999998,
+          "thrust_measurement": "thruster_feedback",
+          "other_n": 0.0,
+          "truth_yaw_rate": 0.06507810394396074,
+          "passed": true
+        },
+        {
+          "side": "right",
+          "pwm": 1400,
+          "expected_n": -60.0,
+          "actual_n": -59.99999999999998,
+          "thrust_measurement": "thruster_feedback",
+          "other_n": 0.0,
+          "truth_yaw_rate": -0.06394084048224613,
+          "passed": true
+        },
+        {
+          "side": "right",
+          "pwm": 1500,
+          "expected_n": 0.0,
+          "actual_n": 0.0,
+          "thrust_measurement": "thruster_feedback",
+          "other_n": 0.0,
+          "truth_yaw_rate": -0.00039379479801482375,
+          "passed": true
+        },
+        {
+          "side": "both",
+          "rc_throttle_pwm": 1600,
+          "actual_n": [
+            53.999999999999986,
+            53.999999999999986
+          ],
+          "forward_velocity": 0.5329731015834811,
+          "thrust_measurement": "thruster_feedback",
+          "servo_pwm": {
+            "mavpackettype": "SERVO_OUTPUT_RAW",
+            "time_usec": 81064712,
+            "port": 0,
+            "servo1_raw": 1590,
+            "servo2_raw": 0,
+            "servo3_raw": 1590,
+            "servo4_raw": 0,
+            "servo5_raw": 0,
+            "servo6_raw": 0,
+            "servo7_raw": 0,
+            "servo8_raw": 0,
+            "servo9_raw": 0,
+            "servo10_raw": 0,
+            "servo11_raw": 0,
+            "servo12_raw": 0,
+            "servo13_raw": 0,
+            "servo14_raw": 0,
+            "servo15_raw": 0,
+            "servo16_raw": 0
+          },
+          "passed": true
+        },
+        {
+          "side": "both",
+          "rc_throttle_pwm": 1400,
+          "actual_n": [
+            -54.00000000000001,
+            -54.00000000000001
+          ],
+          "forward_velocity": -0.44719683643537167,
+          "thrust_measurement": "thruster_feedback",
+          "servo_pwm": {
+            "mavpackettype": "SERVO_OUTPUT_RAW",
+            "time_usec": 84064454,
+            "port": 0,
+            "servo1_raw": 1410,
+            "servo2_raw": 0,
+            "servo3_raw": 1410,
+            "servo4_raw": 0,
+            "servo5_raw": 0,
+            "servo6_raw": 0,
+            "servo7_raw": 0,
+            "servo8_raw": 0,
+            "servo9_raw": 0,
+            "servo10_raw": 0,
+            "servo11_raw": 0,
+            "servo12_raw": 0,
+            "servo13_raw": 0,
+            "servo14_raw": 0,
+            "servo15_raw": 0,
+            "servo16_raw": 0
+          },
+          "passed": true
+        },
+        {
+          "side": "both",
+          "rc_throttle_pwm": 1500,
+          "actual_n": [
+            0.0,
+            0.0
+          ],
+          "forward_velocity": -0.11082505699525232,
+          "thrust_measurement": "thruster_feedback",
+          "servo_pwm": {
+            "mavpackettype": "SERVO_OUTPUT_RAW",
+            "time_usec": 87064196,
+            "port": 0,
+            "servo1_raw": 1500,
+            "servo2_raw": 0,
+            "servo3_raw": 1500,
+            "servo4_raw": 0,
+            "servo5_raw": 0,
+            "servo6_raw": 0,
+            "servo7_raw": 0,
+            "servo8_raw": 0,
+            "servo9_raw": 0,
+            "servo10_raw": 0,
+            "servo11_raw": 0,
+            "servo12_raw": 0,
+            "servo13_raw": 0,
+            "servo14_raw": 0,
+            "servo15_raw": 0,
+            "servo16_raw": 0
+          },
+          "passed": true
+        }
+      ],
+      "metrics": {},
+      "evidence_sha256": {
+        "motors.jsonl": "13e6c98e7e91981cf4a093f61cb5e4c1bbdf664c8e7106c65e0f5f4d2a35e3c8",
+        "motors_result.json": "36dc48c5b79307b39b182616c6413a50a05821f2dc760452588ceae867133fa4",
+        "generated/usv_nav.sdf": "9d7994325e2a6d73644427248b145c0339b188664f5444031497ed493a2dfc44",
+        "generated/nav2_wamv.yaml": "29871d7a729558ddb7b3bababe2d2b4ca0a1d32baede91a875efad1f56b5dbdf",
+        "provenance.json": "4631d51f29a24e8d90ba7944020014e033c96ccef49f1cd4b36671c1ee23860d",
+        "source_snapshot.tar.gz": "c92a31ad2d54f95d273513f26794ed4c6d588f7eb6cdebd8abb3f6ae37f681c3",
+        "map_alignment.json": "f2819f6d142bba8bd7df990a37ce0bc22ac13d84aa51adecdabdf6d7a9118f18",
+        "rover.parm": "16d5068f7cdf0257e1a37a5ba6a77a05b7c7ec2346b9a9769896364c8c43db56",
+        "thrust_observation.json": "c0b573de1ae6788be3fedd15a60aded4482dfd257fa7ad34cbb1b09c41e0f207",
+        "generated/scene.json": "9218afb47b99f4a28486e015e1286d7b69edac86925f75ccbef4227ec588b8ea",
+        "generated/water.pgm": "c4df8c89a52a2682faf4d95ca95e55d148aa25dfa3154fa077f4c6e372382b72",
+        "generated/water.yaml": "3b738bcb77fe8a68f1971a5610ed5d2328034f4f26e06feabca323854fc98b31"
+      }
+    },
+    "collision_sensor": {
+      "case": {
+        "name": "collision_sensor",
+        "environment_case": "collision_sensor"
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_052209_collision_sensor",
+      "exit_code": 0,
+      "result": {
+        "collision_messages": 742,
+        "contact_messages": 742,
+        "passed": true,
+        "note": "Intentional overlap in an isolated disarmed scene validates contact detection."
+      },
+      "metrics": {},
+      "evidence_sha256": {
+        "collision_sensor.jsonl": "c1430d527b4e6f611d4a5ccecbf3e2572ae4ea7fe6de7c1d471e6666122b325f",
+        "collision_sensor_result.json": "35a2fad594e41175475f580462bbe20e80d6f0389b6f47baf8381a02e549d68d",
+        "generated/usv_nav.sdf": "9d7994325e2a6d73644427248b145c0339b188664f5444031497ed493a2dfc44",
+        "generated/nav2_wamv.yaml": "7d06ce85f96314b82756113e36c758cec5c9a14be91179ddcfd3ad56b243edfa",
+        "provenance.json": "9d45db93a109294b33ce97516bcb21dc2b0d9a443e45f1b91ed88b91a00a7b9c",
+        "map_alignment.json": "f2819f6d142bba8bd7df990a37ce0bc22ac13d84aa51adecdabdf6d7a9118f18",
+        "rover.parm": "b751faca76d07b48b7fa285a2554af7d6bdf02c27683eaec45729f1aeb244b95",
+        "generated/scene.json": "9218afb47b99f4a28486e015e1286d7b69edac86925f75ccbef4227ec588b8ea",
+        "generated/water.pgm": "c4df8c89a52a2682faf4d95ca95e55d148aa25dfa3154fa077f4c6e372382b72",
+        "generated/water.yaml": "3b738bcb77fe8a68f1971a5610ed5d2328034f4f26e06feabca323854fc98b31"
+      }
+    },
+    "reset": {
+      "case": {
+        "name": "reset",
+        "environment_case": "reset"
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_052248_reset",
+      "exit_code": 0,
+      "result": {
+        "before_sim_s": 23.18,
+        "minimum_sim_after_reset_s": 0.0,
+        "final_sim_s": 11.772,
+        "final_odom_age_s": -11.572,
+        "final_scan_age_s": -11.528,
+        "final_gate": "CONTROL: FCU must be connected, armed and in GUIDED",
+        "nonzero_preview_samples": 0,
+        "passed": false
+      },
+      "metrics": {},
+      "evidence_sha256": {
+        "reset.jsonl": "b37b54d8dee8cdf944176d952d43053c6d47f08a44b109454015c75c14d0ff32",
+        "reset_result.json": "5b5bb7e111fef395b829749cb423f041189bd7d1016a010f220c3bbe14bf1d5a",
+        "generated/usv_nav.sdf": "9d7994325e2a6d73644427248b145c0339b188664f5444031497ed493a2dfc44",
+        "generated/nav2_wamv.yaml": "7d06ce85f96314b82756113e36c758cec5c9a14be91179ddcfd3ad56b243edfa",
+        "provenance.json": "9d45db93a109294b33ce97516bcb21dc2b0d9a443e45f1b91ed88b91a00a7b9c",
+        "map_alignment.json": "f2819f6d142bba8bd7df990a37ce0bc22ac13d84aa51adecdabdf6d7a9118f18",
+        "rover.parm": "b751faca76d07b48b7fa285a2554af7d6bdf02c27683eaec45729f1aeb244b95",
+        "generated/scene.json": "9218afb47b99f4a28486e015e1286d7b69edac86925f75ccbef4227ec588b8ea",
+        "generated/water.pgm": "c4df8c89a52a2682faf4d95ca95e55d148aa25dfa3154fa077f4c6e372382b72",
+        "generated/water.yaml": "3b738bcb77fe8a68f1971a5610ed5d2328034f4f26e06feabca323854fc98b31"
+      }
+    },
+    "mavros_exit": {
+      "case": {
+        "name": "mavros_exit",
+        "environment_case": "mavros_exit"
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_062853_mavros_exit",
+      "exit_code": 0,
+      "result": {
+        "initial_thrust_n": [
+          15.000000000000014,
+          16.200000000000014
+        ],
+        "initial_forward_velocity_mps": 0.2430242501888052,
+        "initially_active": true,
+        "thrust_measurement": "thruster_feedback",
+        "thrust_zero_wall_s": 4.202821469982155,
+        "speed_below_002_wall_s": 7.629138349962886,
+        "displacement_m": 1.0877352648848715,
+        "sim_advanced_s": 11.908000000000001,
+        "final_thrust_n": [
+          0.0,
+          0.0
+        ],
+        "final_native_mode": 4,
+        "passed": true
+      },
+      "metrics": {},
+      "evidence_sha256": {
+        "mavros_exit.jsonl": "752a858241c5ad8a6608475216fe7d055d2eb77b18e1d816776e4a3353304952",
+        "mavros_exit_result.json": "68ed677b5c8f35fe896b434f73407c8fab521c4b544f581e2fe32c7e8f9948be",
+        "generated/usv_nav.sdf": "9d7994325e2a6d73644427248b145c0339b188664f5444031497ed493a2dfc44",
+        "generated/nav2_wamv.yaml": "29871d7a729558ddb7b3bababe2d2b4ca0a1d32baede91a875efad1f56b5dbdf",
+        "provenance.json": "34362ef48be0da7f77edb4b8b00e9acf8ed521a00bca9aaea4a6e058101f318e",
+        "source_snapshot.tar.gz": "f3fdff7b71bff956dfdf7c37495b5f3cea172150f4f9ad34d4ae03db6e035882",
+        "map_alignment.json": "f2819f6d142bba8bd7df990a37ce0bc22ac13d84aa51adecdabdf6d7a9118f18",
+        "rover.parm": "16d5068f7cdf0257e1a37a5ba6a77a05b7c7ec2346b9a9769896364c8c43db56",
+        "thrust_observation.json": "c0b573de1ae6788be3fedd15a60aded4482dfd257fa7ad34cbb1b09c41e0f207",
+        "generated/scene.json": "9218afb47b99f4a28486e015e1286d7b69edac86925f75ccbef4227ec588b8ea",
+        "generated/water.pgm": "c4df8c89a52a2682faf4d95ca95e55d148aa25dfa3154fa077f4c6e372382b72",
+        "generated/water.yaml": "3b738bcb77fe8a68f1971a5610ed5d2328034f4f26e06feabca323854fc98b31"
+      }
+    },
+    "gnss": {
+      "case": {
+        "name": "gnss",
+        "environment_case": "gnss",
+        "gps_input": true
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_061503_gnss",
+      "exit_code": 0,
+      "result": {
+        "profiles": [
+          {
+            "profile": "fixed",
+            "settings": {
+              "fix_type": 6,
+              "horizontal_sigma": 0.02,
+              "reported_accuracy": 0.02,
+              "delay_s": 0.1,
+              "drop": false
+            },
+            "position_rmse_m": 0.02319571180445709,
+            "position_error_max_m": 0.03337331628097121,
+            "last_gate": "CONTROL: ready",
+            "nonzero_preview_samples": 73,
+            "samples": 80,
+            "reported_fix_types": [
+              6
+            ],
+            "last_ekf_status": {
+              "mavpackettype": "EKF_STATUS_REPORT",
+              "flags": 831,
+              "velocity_variance": 0.004597540944814682,
+              "pos_horiz_variance": 0.0034424334298819304,
+              "pos_vert_variance": 0.00024474336532875896,
+              "compass_variance": 0.000987733481451869,
+              "terrain_alt_variance": 0.0,
+              "airspeed_variance": 0.0
+            },
+            "nav2_action_status": "running",
+            "minimum_clearance_m": 5.895660524773824
+          },
+          {
+            "profile": "float",
+            "settings": {
+              "fix_type": 5,
+              "horizontal_sigma": 0.3,
+              "reported_accuracy": 0.3,
+              "delay_s": 0.1,
+              "drop": false
+            },
+            "position_rmse_m": 0.10788714876455718,
+            "position_error_max_m": 0.2025827595451454,
+            "last_gate": "CONTROL: ready",
+            "nonzero_preview_samples": 120,
+            "samples": 120,
+            "reported_fix_types": [
+              5,
+              6
+            ],
+            "last_ekf_status": {
+              "mavpackettype": "EKF_STATUS_REPORT",
+              "flags": 831,
+              "velocity_variance": 0.0037957034073770046,
+              "pos_horiz_variance": 0.11278392374515533,
+              "pos_vert_variance": 0.0067009287886321545,
+              "compass_variance": 0.0038916270714253187,
+              "terrain_alt_variance": 0.0,
+              "airspeed_variance": 0.0
+            },
+            "nav2_action_status": "running",
+            "minimum_clearance_m": 5.8857199070316675
+          },
+          {
+            "profile": "ordinary",
+            "settings": {
+              "fix_type": 3,
+              "horizontal_sigma": 1.5,
+              "reported_accuracy": 1.5,
+              "delay_s": 0.3,
+              "drop": false
+            },
+            "position_rmse_m": 0.2294918562060211,
+            "position_error_max_m": 0.47744160098741295,
+            "last_gate": "CONTROL: ready",
+            "nonzero_preview_samples": 150,
+            "samples": 150,
+            "reported_fix_types": [
+              3,
+              5
+            ],
+            "last_ekf_status": {
+              "mavpackettype": "EKF_STATUS_REPORT",
+              "flags": 831,
+              "velocity_variance": 0.014640288427472115,
+              "pos_horiz_variance": 0.16818547248840332,
+              "pos_vert_variance": 0.002705686492845416,
+              "compass_variance": 0.006426815874874592,
+              "terrain_alt_variance": 0.0,
+              "airspeed_variance": 0.0
+            },
+            "nav2_action_status": "running",
+            "minimum_clearance_m": 7.454946948123796
+          },
+          {
+            "profile": "no_fix",
+            "settings": {
+              "fix_type": 1,
+              "horizontal_sigma": 1.5,
+              "reported_accuracy": 1.5,
+              "delay_s": 0.1,
+              "drop": false
+            },
+            "position_rmse_m": 1.5793580867119816,
+            "position_error_max_m": 2.476004573251083,
+            "last_gate": "CONTROL: FCU must be connected, armed and in GUIDED",
+            "nonzero_preview_samples": 77,
+            "samples": 120,
+            "reported_fix_types": [
+              1,
+              3
+            ],
+            "last_ekf_status": {
+              "mavpackettype": "EKF_STATUS_REPORT",
+              "flags": 39,
+              "velocity_variance": 0.01739763654768467,
+              "pos_horiz_variance": 0.080269455909729,
+              "pos_vert_variance": 0.012534522451460361,
+              "compass_variance": 0.0010942401131615043,
+              "terrain_alt_variance": 0.0,
+              "airspeed_variance": 0.0
+            },
+            "nav2_action_status": "running",
+            "minimum_clearance_m": 9.456148590499751
+          },
+          {
+            "profile": "lost",
+            "settings": {
+              "fix_type": 1,
+              "horizontal_sigma": 1.5,
+              "reported_accuracy": 1.5,
+              "delay_s": 0.3,
+              "drop": true
+            },
+            "position_rmse_m": 2.584082032815713,
+            "position_error_max_m": 2.605017650420818,
+            "last_gate": "CONTROL: FCU must be connected, armed and in GUIDED",
+            "nonzero_preview_samples": 0,
+            "samples": 150,
+            "reported_fix_types": [
+              1
+            ],
+            "last_ekf_status": {
+              "mavpackettype": "EKF_STATUS_REPORT",
+              "flags": 167,
+              "velocity_variance": 0.0,
+              "pos_horiz_variance": 0.007857664488255978,
+              "pos_vert_variance": 0.014581377618014812,
+              "compass_variance": 0.008839915506541729,
+              "terrain_alt_variance": 0.0,
+              "airspeed_variance": 0.0
+            },
+            "nav2_action_status": "running",
+            "minimum_clearance_m": 12.656943919455863
+          },
+          {
+            "profile": "recover",
+            "settings": {
+              "fix_type": 6,
+              "horizontal_sigma": 0.02,
+              "reported_accuracy": 0.02,
+              "delay_s": 0.1,
+              "drop": false
+            },
+            "position_rmse_m": 0.32436502739730094,
+            "position_error_max_m": 2.6050605196996957,
+            "last_gate": "CONTROL: FCU must be connected, armed and in GUIDED",
+            "nonzero_preview_samples": 0,
+            "samples": 199,
+            "reported_fix_types": [
+              1,
+              6
+            ],
+            "last_ekf_status": {
+              "mavpackettype": "EKF_STATUS_REPORT",
+              "flags": 831,
+              "velocity_variance": 0.004751259461045265,
+              "pos_horiz_variance": 0.007141019217669964,
+              "pos_vert_variance": 0.014566750265657902,
+              "compass_variance": 0.013010505586862564,
+              "terrain_alt_variance": 0.0,
+              "airspeed_variance": 0.0
+            },
+            "nav2_action_status": "running",
+            "minimum_clearance_m": 12.7653234450552
+          }
+        ],
+        "action_status_before_test_cleanup": "running",
+        "target": [
+          0,
+          -25,
+          -1.5707963267948966
+        ],
+        "final_true_position_error_m": 10.746571457003398,
+        "collision_messages": 0,
+        "endurance": {
+          "final_frame": 70000,
+          "new_controller_resets": 0,
+          "final_odom_age_s": 0.06095900800001908,
+          "final_scan_age_s": 0.10400000000001908,
+          "passed": true
+        },
+        "note": "No new RTK/EKF gate or automatic retry policy is implemented."
+      },
+      "metrics": {},
+      "evidence_sha256": {
+        "gnss.jsonl": "0a77ceee48215d8054e32d3584415ff0405c6ea904456949aa8a9e79f427e0aa",
+        "gnss_result.json": "2b6904146f26bd5ee0f5e4556a2fd16de0ebebfde596bac30ee707ff396cebb3",
+        "generated/usv_nav.sdf": "9d7994325e2a6d73644427248b145c0339b188664f5444031497ed493a2dfc44",
+        "generated/nav2_wamv.yaml": "29871d7a729558ddb7b3bababe2d2b4ca0a1d32baede91a875efad1f56b5dbdf",
+        "provenance.json": "5933123559fda80824072feb19782d543916055d64de7c96947e40212e8fab32",
+        "source_snapshot.tar.gz": "6287a1055390b483631769a26c16519162780eefefe77b989f0aa0007726b342",
+        "map_alignment.json": "d39b857895c04353e63b43e57d8e4b34c2da3748560d42a5f9ebad3a33e297fc",
+        "rover.parm": "93917b0487a40e01b8acdb8745e778fc3eb26c341833a87375af02f19bc48317",
+        "thrust_observation.json": "c0b573de1ae6788be3fedd15a60aded4482dfd257fa7ad34cbb1b09c41e0f207",
+        "generated/scene.json": "9218afb47b99f4a28486e015e1286d7b69edac86925f75ccbef4227ec588b8ea",
+        "generated/water.pgm": "c4df8c89a52a2682faf4d95ca95e55d148aa25dfa3154fa077f4c6e372382b72",
+        "generated/water.yaml": "3b738bcb77fe8a68f1971a5610ed5d2328034f4f26e06feabca323854fc98b31"
+      }
+    },
+    "protocol": {
+      "case": {
+        "name": "protocol",
+        "environment_case": "protocol"
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_062656_protocol",
+      "exit_code": 0,
+      "result": [
+        {
+          "case": "out_of_range_pwm",
+          "maximum_total_absolute_thrust_n": 0.0,
+          "thrust_measurement": "thruster_feedback",
+          "sim_advanced_s": 0.759999999999998,
+          "passed": true
+        },
+        {
+          "case": "disabled_pwm",
+          "maximum_total_absolute_thrust_n": 0.0,
+          "thrust_measurement": "thruster_feedback",
+          "sim_advanced_s": 0.7200000000000024,
+          "passed": true
+        },
+        {
+          "case": "truncated",
+          "maximum_total_absolute_thrust_n": 0.0,
+          "thrust_measurement": "thruster_feedback",
+          "sim_advanced_s": 1.8520000000000003,
+          "passed": true
+        },
+        {
+          "case": "bad_magic",
+          "maximum_total_absolute_thrust_n": 0.0,
+          "thrust_measurement": "thruster_feedback",
+          "sim_advanced_s": 1.9000000000000021,
+          "passed": true
+        }
+      ],
+      "metrics": {},
+      "evidence_sha256": {
+        "protocol.jsonl": "3e9882738e4b25382af128513bb3eb3699745cda8c5ae6a7ed1a7cd4447625a5",
+        "protocol_result.json": "40aef6e39f78382f6f66a5f07be6db5be04a413f55df57d1d52c86dbcab2103e",
+        "generated/usv_nav.sdf": "9d7994325e2a6d73644427248b145c0339b188664f5444031497ed493a2dfc44",
+        "generated/nav2_wamv.yaml": "29871d7a729558ddb7b3bababe2d2b4ca0a1d32baede91a875efad1f56b5dbdf",
+        "provenance.json": "b1c367d798ee994bc30a73eaf19de3e7fad027fccffcde9a8110a3a611c9895d",
+        "source_snapshot.tar.gz": "f9ec77766b7de3cbfa66a6d5bec5315df1ec9a361b918db4fa090740d4a780c1",
+        "map_alignment.json": "f2819f6d142bba8bd7df990a37ce0bc22ac13d84aa51adecdabdf6d7a9118f18",
+        "rover.parm": "16d5068f7cdf0257e1a37a5ba6a77a05b7c7ec2346b9a9769896364c8c43db56",
+        "thrust_observation.json": "c0b573de1ae6788be3fedd15a60aded4482dfd257fa7ad34cbb1b09c41e0f207",
+        "generated/scene.json": "9218afb47b99f4a28486e015e1286d7b69edac86925f75ccbef4227ec588b8ea",
+        "generated/water.pgm": "c4df8c89a52a2682faf4d95ca95e55d148aa25dfa3154fa077f4c6e372382b72",
+        "generated/water.yaml": "3b738bcb77fe8a68f1971a5610ed5d2328034f4f26e06feabca323854fc98b31"
+      }
+    },
+    "sitl_exit": {
+      "case": {
+        "name": "sitl_exit",
+        "environment_case": "sitl_exit"
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_061347_sitl_exit",
+      "exit_code": 0,
+      "result": {
+        "initial_thrust_n": [
+          15.000000000000014,
+          16.200000000000014
+        ],
+        "initial_forward_velocity_mps": 0.24302398063759786,
+        "initially_active": true,
+        "thrust_measurement": "thruster_feedback",
+        "thrust_zero_wall_s": 0.0868599810055457,
+        "speed_below_002_wall_s": 5.93232323002303,
+        "displacement_m": 0.5449404414110707,
+        "sim_advanced_s": 11.86,
+        "final_thrust_n": [
+          0.0,
+          0.0
+        ],
+        "final_native_mode": 15,
+        "passed": true,
+        "note": "Tests plugin command clearing with continuing external physics."
+      },
+      "metrics": {},
+      "evidence_sha256": {
+        "sitl_exit.jsonl": "ea31b6bd569c8c0b036901464530c1ccefdfae65748c74eb238e3623d6209dd6",
+        "sitl_exit_result.json": "4ff6a54bc9f4542951dfe4115f711e7da2e7f1174e6a8c93c6502bb32e2109e7",
+        "generated/usv_nav.sdf": "9d7994325e2a6d73644427248b145c0339b188664f5444031497ed493a2dfc44",
+        "generated/nav2_wamv.yaml": "29871d7a729558ddb7b3bababe2d2b4ca0a1d32baede91a875efad1f56b5dbdf",
+        "provenance.json": "c3f457b17cccb362fb4c384d6bf5030f56fe17f8d65a0b397cba4a869655ece8",
+        "source_snapshot.tar.gz": "740d340c560558df5c89195691e8cc15d7fb93ca8ac71ba6e67dc7ce52d18929",
+        "map_alignment.json": "f2819f6d142bba8bd7df990a37ce0bc22ac13d84aa51adecdabdf6d7a9118f18",
+        "rover.parm": "16d5068f7cdf0257e1a37a5ba6a77a05b7c7ec2346b9a9769896364c8c43db56",
+        "thrust_observation.json": "c0b573de1ae6788be3fedd15a60aded4482dfd257fa7ad34cbb1b09c41e0f207",
+        "generated/scene.json": "9218afb47b99f4a28486e015e1286d7b69edac86925f75ccbef4227ec588b8ea",
+        "generated/water.pgm": "c4df8c89a52a2682faf4d95ca95e55d148aa25dfa3154fa077f4c6e372382b72",
+        "generated/water.yaml": "3b738bcb77fe8a68f1971a5610ed5d2328034f4f26e06feabca323854fc98b31"
+      }
+    },
+    "fault_inputs": {
+      "case": {
+        "name": "fault_inputs",
+        "script": "validate_faults.py"
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_061959_fault_inputs",
+      "exit_code": 0,
+      "result": [
+        {
+          "fault": "command",
+          "zero_output_wall_s": 0.4850776929524727,
+          "budget_s": 0.6,
+          "passed": true,
+          "yaw_rate_after_2s": 0.0052095977480348665,
+          "thrust_after_2s": [
+            1.8000000000000016,
+            -1.8000000000000016
+          ],
+          "stopping": {
+            "observed_duration_s": 2.4109239889658056,
+            "thrust_measurement": "thruster_feedback",
+            "initial_velocity": [
+              -0.002390120196094214,
+              0.15440015122294426
+            ],
+            "zero_thrust_delay_s": null,
+            "physical_rest_delay_s": 1.8062072249595076,
+            "travel_distance_m": 0.03539592758529801,
+            "final_thrust_n": [
+              1.8000000000000016,
+              -1.8000000000000016
+            ]
+          }
+        },
+        {
+          "fault": "odom",
+          "zero_output_wall_s": 0.5396217489615083,
+          "budget_s": 0.6,
+          "passed": true,
+          "yaw_rate_after_2s": 0.003953562963943114,
+          "thrust_after_2s": [
+            1.8000000000000016,
+            -1.8000000000000016
+          ],
+          "stopping": {
+            "observed_duration_s": 2.4917043789755553,
+            "thrust_measurement": "thruster_feedback",
+            "initial_velocity": [
+              -0.004788611785018173,
+              0.1529744840809144
+            ],
+            "zero_thrust_delay_s": null,
+            "physical_rest_delay_s": 2.190150943992194,
+            "travel_distance_m": 0.03895512645514886,
+            "final_thrust_n": [
+              1.8000000000000016,
+              -1.8000000000000016
+            ]
+          }
+        },
+        {
+          "fault": "scan",
+          "zero_output_wall_s": 0.46680625795852393,
+          "budget_s": 0.6,
+          "passed": true,
+          "yaw_rate_after_2s": 0.0032995078754538554,
+          "thrust_after_2s": [
+            2.400000000000002,
+            -2.400000000000002
+          ],
+          "stopping": {
+            "observed_duration_s": 2.4084269519662485,
+            "thrust_measurement": "thruster_feedback",
+            "initial_velocity": [
+              -0.005524993931773299,
+              0.1523318118415773
+            ],
+            "zero_thrust_delay_s": null,
+            "physical_rest_delay_s": 2.207051758945454,
+            "travel_distance_m": 0.03749668651011501,
+            "final_thrust_n": [
+              2.400000000000002,
+              -2.400000000000002
+            ]
+          }
+        },
+        {
+          "fault": "state",
+          "zero_output_wall_s": 1.2850892359856516,
+          "budget_s": 2.1,
+          "passed": true,
+          "yaw_rate_after_2s": 0.0024094687887554755,
+          "thrust_after_2s": [
+            2.400000000000002,
+            -2.400000000000002
+          ],
+          "stopping": {
+            "observed_duration_s": 3.2627448519924656,
+            "thrust_measurement": "thruster_feedback",
+            "initial_velocity": [
+              -0.005535574748770618,
+              0.1516772244940512
+            ],
+            "zero_thrust_delay_s": null,
+            "physical_rest_delay_s": null,
+            "travel_distance_m": 0.05453888751890717,
+            "final_thrust_n": [
+              2.400000000000002,
+              -2.400000000000002
+            ]
+          }
+        },
+        {
+          "fault": "all_nan",
+          "zero_output_wall_s": 0.12913621199550107,
+          "budget_s": 0.6,
+          "passed": true,
+          "yaw_rate_after_2s": 0.0021913816908636363,
+          "thrust_after_2s": [
+            2.400000000000002,
+            -2.400000000000002
+          ],
+          "stopping": {
+            "observed_duration_s": 2.071906328026671,
+            "thrust_measurement": "thruster_feedback",
+            "initial_velocity": [
+              -0.004698385689026223,
+              0.15126048383535817
+            ],
+            "zero_thrust_delay_s": null,
+            "physical_rest_delay_s": 1.3673041189904325,
+            "travel_distance_m": 0.029653611380919744,
+            "final_thrust_n": [
+              2.400000000000002,
+              -2.400000000000002
+            ]
+          }
+        },
+        {
+          "fault": "stale_scan",
+          "zero_output_wall_s": 0.049694866000209004,
+          "budget_s": 0.6,
+          "passed": true,
+          "yaw_rate_after_2s": 0.0018935966977551288,
+          "thrust_after_2s": [
+            2.400000000000002,
+            -2.400000000000002
+          ],
+          "stopping": {
+            "observed_duration_s": 2.044586077972781,
+            "thrust_measurement": "thruster_feedback",
+            "initial_velocity": [
+              -0.004853691262581084,
+              0.15086325001902878
+            ],
+            "zero_thrust_delay_s": null,
+            "physical_rest_delay_s": 1.339629164955113,
+            "travel_distance_m": 0.03002737660702166,
+            "final_thrust_n": [
+              2.400000000000002,
+              -2.400000000000002
+            ]
+          }
+        },
+        {
+          "fault": "tf_missing",
+          "zero_output_wall_s": 0.07325041596777737,
+          "budget_s": 0.6,
+          "passed": true,
+          "yaw_rate_after_2s": 0.0017898064584187523,
+          "thrust_after_2s": [
+            2.400000000000002,
+            -2.400000000000002
+          ],
+          "stopping": {
+            "observed_duration_s": 2.0459591989638284,
+            "thrust_measurement": "thruster_feedback",
+            "initial_velocity": [
+              -0.004910537196132226,
+              0.15073825343279168
+            ],
+            "zero_thrust_delay_s": null,
+            "physical_rest_delay_s": 1.3404908509692177,
+            "travel_distance_m": 0.03029243513749636,
+            "final_thrust_n": [
+              2.400000000000002,
+              -2.400000000000002
+            ]
+          }
+        },
+        {
+          "fault": "bridge_process_killed",
+          "observation_s": 10,
+          "physical_simulation_continued": true,
+          "drift_m": 0.06184147330101663,
+          "final_yaw_rate": 0.0005739817311223305,
+          "final_thrust": [
+            0.0,
+            0.0
+          ],
+          "stopping": {
+            "observed_duration_s": 9.930392368987668,
+            "thrust_measurement": "thruster_feedback",
+            "initial_velocity": [
+              -0.005506090044064271,
+              0.1517907192464918
+            ],
+            "zero_thrust_delay_s": 6.4093406409956515,
+            "physical_rest_delay_s": 5.301129211031366,
+            "travel_distance_m": 0.133389935900764,
+            "final_thrust_n": [
+              0.0,
+              0.0
+            ]
+          },
+          "passed": true
+        }
+      ],
+      "metrics": {},
+      "evidence_sha256": {
+        "fault_inputs.jsonl": "82638da7c9e3a4c2cc3d2ecfdf99ae64f86323ae4283c9410f2d1fc98045b2bf",
+        "fault_inputs_result.json": "2bb4981c83a16838ed3ec7f592e35d328f428b426f4d01d05d1634aebae93e66",
+        "generated/usv_nav.sdf": "9d7994325e2a6d73644427248b145c0339b188664f5444031497ed493a2dfc44",
+        "generated/nav2_wamv.yaml": "29871d7a729558ddb7b3bababe2d2b4ca0a1d32baede91a875efad1f56b5dbdf",
+        "provenance.json": "f6fed8f76b13f817ff705ed652c71ec7b23c77055e1069f9a0c1a3c39bb8faf0",
+        "source_snapshot.tar.gz": "242eb1d1725ff14e216526869f9602a72065778f7ecfb8f63b685a282be39473",
+        "map_alignment.json": "f2819f6d142bba8bd7df990a37ce0bc22ac13d84aa51adecdabdf6d7a9118f18",
+        "rover.parm": "16d5068f7cdf0257e1a37a5ba6a77a05b7c7ec2346b9a9769896364c8c43db56",
+        "thrust_observation.json": "c0b573de1ae6788be3fedd15a60aded4482dfd257fa7ad34cbb1b09c41e0f207",
+        "generated/scene.json": "9218afb47b99f4a28486e015e1286d7b69edac86925f75ccbef4227ec588b8ea",
+        "generated/water.pgm": "c4df8c89a52a2682faf4d95ca95e55d148aa25dfa3154fa077f4c6e372382b72",
+        "generated/water.yaml": "3b738bcb77fe8a68f1971a5610ed5d2328034f4f26e06feabca323854fc98b31"
+      }
+    },
+    "disarm": {
+      "case": {
+        "name": "disarm",
+        "environment_case": "disarm"
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_062741_disarm",
+      "exit_code": 0,
+      "result": {
+        "initial_thrust_n": [
+          15.000000000000014,
+          16.200000000000014
+        ],
+        "zero_thrust_delay_s": 0.08091958297882229,
+        "speed_below_002_delay_s": 5.924880956998095,
+        "drift_m": 0.5286684767037583,
+        "sim_advanced_s": 7.899999999999999,
+        "final_thrust_n": [
+          0.0,
+          0.0
+        ],
+        "final_armed": false,
+        "thrust_measurement": "thruster_feedback",
+        "passed": true
+      },
+      "metrics": {},
+      "evidence_sha256": {
+        "disarm.jsonl": "35c3f989201d99f4c60d8e65a4587ce06fdbfc9cf8237b1f911d9cc3378669b1",
+        "disarm_result.json": "36e1fbb0179fdb220d65d4478e16960333abba30c79eedd2039b8c6e30bc24f1",
+        "generated/usv_nav.sdf": "9d7994325e2a6d73644427248b145c0339b188664f5444031497ed493a2dfc44",
+        "generated/nav2_wamv.yaml": "29871d7a729558ddb7b3bababe2d2b4ca0a1d32baede91a875efad1f56b5dbdf",
+        "provenance.json": "a33c1d7854b605beb682217d550dd627d8df97d53b6ef9c563bd1565b56e7efc",
+        "source_snapshot.tar.gz": "29325d68776426b377c13ca12568e0b82380c6e77a5aaba8fdf57023229ef460",
+        "map_alignment.json": "f2819f6d142bba8bd7df990a37ce0bc22ac13d84aa51adecdabdf6d7a9118f18",
+        "rover.parm": "16d5068f7cdf0257e1a37a5ba6a77a05b7c7ec2346b9a9769896364c8c43db56",
+        "thrust_observation.json": "c0b573de1ae6788be3fedd15a60aded4482dfd257fa7ad34cbb1b09c41e0f207",
+        "generated/scene.json": "9218afb47b99f4a28486e015e1286d7b69edac86925f75ccbef4227ec588b8ea",
+        "generated/water.pgm": "c4df8c89a52a2682faf4d95ca95e55d148aa25dfa3154fa077f4c6e372382b72",
+        "generated/water.yaml": "3b738bcb77fe8a68f1971a5610ed5d2328034f4f26e06feabca323854fc98b31"
+      }
+    },
+    "feedback_goal": {
+      "case": {
+        "name": "feedback_goal",
+        "goals": [
+          [
+            5,
+            0,
+            0
+          ]
+        ]
+      },
+      "run_dir": "/home/zjy/usv_nav/runs/20261029_062349_feedback_goal",
+      "exit_code": 0,
+      "result": {
+        "status": 4,
+        "elapsed_wall_s": 15.69668840104714,
+        "true_position_error_m": 0.37140701773523593,
+        "true_yaw_error_rad": 0.038422298654662415,
+        "at_goal": [
+          4.63815462142572,
+          0.08373228067727381,
+          -0.038422298654662415
+        ],
+        "drift_10s_m": 0.2049531350690299,
+        "zero_command_delay_s": 0.050105728034395725,
+        "min_planar_clearance_m": 1.5696476053148787,
+        "expected_status": 4,
+        "contact_messages": 0,
+        "collision_messages": 0,
+        "via_points": [],
+        "passed": true
+      },
+      "metrics": {
+        "samples": 156,
+        "ekf_position_rmse_m": 0.019838787382448417,
+        "peak_true_speed_mps": 0.36549252379367936,
+        "real_time_factor": 0.9937839120276972,
+        "true_heave_peak_to_peak_m": 0.00037777053068342725,
+        "max_scan_source_age_s": 0.15200000000000247,
+        "true_roll_pitch_peak_to_peak_rad": [
+          0.0004081337615991581,
+          0.0010367686007976369
+        ],
+        "post_goal": {
+          "thrust_measurement": [
+            "thruster_feedback"
+          ],
+          "stable_exact_zero_thrust_delay_s": null,
+          "stable_speed_below_002_delay_s": 3.1249801049707457,
+          "final_thrust_n": [
+            -0.6000000000000005,
+            0.6000000000000005
+          ],
+          "travel_distance_m": 0.1990085791689689
+        }
+      },
+      "evidence_sha256": {
+        "feedback_goal.jsonl": "653b1f3b4fe932615e056bc9757c2dc5b342ca972cb238f402da1b475970a3cf",
+        "feedback_goal_result.json": "b8eb4437b510d8647e7bcc0124a0376852e7b9127e1030da8f3d03639b8d8044",
+        "generated/usv_nav.sdf": "9d7994325e2a6d73644427248b145c0339b188664f5444031497ed493a2dfc44",
+        "generated/nav2_wamv.yaml": "29871d7a729558ddb7b3bababe2d2b4ca0a1d32baede91a875efad1f56b5dbdf",
+        "provenance.json": "5820177c24ca998ca39206323e9d270aa9867700f0188c03464e4ab0da92da28",
+        "source_snapshot.tar.gz": "6268757a63827e4c9600e694b5c3f0f0ad1cf95e4ce2c36baf665305f2708667",
+        "map_alignment.json": "f2819f6d142bba8bd7df990a37ce0bc22ac13d84aa51adecdabdf6d7a9118f18",
+        "rover.parm": "16d5068f7cdf0257e1a37a5ba6a77a05b7c7ec2346b9a9769896364c8c43db56",
+        "thrust_observation.json": "c0b573de1ae6788be3fedd15a60aded4482dfd257fa7ad34cbb1b09c41e0f207",
+        "generated/scene.json": "9218afb47b99f4a28486e015e1286d7b69edac86925f75ccbef4227ec588b8ea",
+        "generated/water.pgm": "c4df8c89a52a2682faf4d95ca95e55d148aa25dfa3154fa077f4c6e372382b72",
+        "generated/water.yaml": "3b738bcb77fe8a68f1971a5610ed5d2328034f4f26e06feabca323854fc98b31",
+        "trajectory.png": "7f96569af988fbf9a5cd51f007d31e43a02b96e67648a11b7ee7f1f85697f203"
+      }
+    }
+  }
+}

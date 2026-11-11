@@ -1,0 +1,24 @@
+--- a/vrx_gz/src/WaveVisual.cc
++++ b/vrx_gz/src/WaveVisual.cc
+@@ -58,6 +58,7 @@
+ 
+   /// \brief Connection to pre-render event callback
+   public: common::ConnectionPtr connection{nullptr};
++  public: common::ConnectionPtr teardown{nullptr};
+ 
+   /// \brief Name of visual this plugin is attached to
+   public: std::string visualName;
+@@ -224,6 +225,13 @@
+   this->dataPtr->connection =
+       _eventMgr.Connect<sim::events::SceneUpdate>(
+       std::bind(&WaveVisualPrivate::OnUpdate, this->dataPtr.get()));
++
++  this->dataPtr->teardown = _eventMgr.Connect<sim::events::RenderTeardown>([this] {
++    this->dataPtr->connection.reset();
++    this->dataPtr->material.reset();
++    this->dataPtr->visual.reset();
++    this->dataPtr->scene.reset();
++  });
+ 
+   // Subscribe to receive the wavefield parameters.
+   this->dataPtr->node.Subscribe(this->dataPtr->wavefield.Topic(),

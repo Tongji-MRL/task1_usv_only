@@ -1,0 +1,22 @@
+{
+  "bundle": "/home/zjy/usv_nav/runs/exports/20261102_034656_task1_harbor_s1_c1_cross.zip",
+  "passed": true,
+  "files_sha256_verified": 2108,
+  "exact_membership": true,
+  "crc_passed": true,
+  "sha256": "144ca763d2472ef28155b08050b72716dfda7ada6c5c15de318de66b5207ef64",
+  "external_rosbags": [
+    {
+      "path": "sensors/sensors_0.db3",
+      "bytes": 10253070336,
+      "sha256": "a81da0e340f306c6d6b281faba0dd56e9276fc802fb3e277b8fa66635131852a",
+      "absolute_path": "/home/zjy/usv_nav/runs/20261102_034656_task1_harbor_s1_c1_cross/sensors/sensors_0.db3"
+    },
+    {
+      "path": "sensors/task1_messages/task1_messages_0.db3",
+      "bytes": 15175680,
+      "sha256": "f9ef6acbd08beaa72c493ca4eb588bd44278d45187a64a942d33528b2ca5f828",
+      "absolute_path": "/home/zjy/usv_nav/runs/20261102_034656_task1_harbor_s1_c1_cross/sensors/task1_messages/task1_messages_0.db3"
+    }
+  ]
+}

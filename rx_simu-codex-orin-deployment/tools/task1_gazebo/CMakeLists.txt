@@ -1,0 +1,11 @@
+cmake_minimum_required(VERSION 3.16)
+project(task1_gazebo)
+set(CMAKE_CXX_STANDARD 17)
+find_package(gz-sim7 REQUIRED)
+find_package(gz-plugin2 REQUIRED COMPONENTS register)
+find_package(gz-transport12 REQUIRED)
+find_package(gz-msgs9 REQUIRED)
+find_package(gz-rendering7 REQUIRED)
+add_library(Task1Scene SHARED Task1Scene.cc)
+target_link_libraries(Task1Scene gz-sim7::core gz-plugin2::register
+  gz-transport12::gz-transport12 gz-msgs9::gz-msgs9 gz-rendering7::gz-rendering7)

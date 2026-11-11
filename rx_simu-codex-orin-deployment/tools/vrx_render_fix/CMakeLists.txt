@@ -1,0 +1,13 @@
+cmake_minimum_required(VERSION 3.16)
+project(usv_vrx_render_fix)
+set(CMAKE_CXX_STANDARD 17)
+find_package(gz-sim7 REQUIRED)
+find_package(gz-plugin2 REQUIRED COMPONENTS register)
+find_package(gz-rendering7 REQUIRED)
+find_package(gz-transport12 REQUIRED)
+find_package(gz-msgs9 REQUIRED)
+find_package(Eigen3 REQUIRED)
+find_library(VRX_WAVES Waves PATHS "$ENV{VRX_ROOT}/install/vrx_gz/lib" NO_DEFAULT_PATH REQUIRED)
+add_library(WaveVisual SHARED ../../external/vrx_render_fix/WaveVisual.cc)
+target_link_libraries(WaveVisual gz-sim7::core gz-plugin2::register gz-rendering7::gz-rendering7
+  gz-transport12::gz-transport12 gz-msgs9::gz-msgs9 Eigen3::Eigen ${VRX_WAVES})

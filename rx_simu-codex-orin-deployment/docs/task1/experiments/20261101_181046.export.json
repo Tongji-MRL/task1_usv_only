@@ -1,0 +1,15 @@
+{
+  "archive": "runs/exports/20261101_181046_task1_s1_c1_none.zip",
+  "bytes": 93068716,
+  "sha256": "6448f3578b2a603ec8fd39c2c0482892208f76966122099129cddbddeb67f963",
+  "manifest_files": 1359,
+  "zip_crc_passed": true,
+  "archived_file_sha256_passed": true,
+  "experiment_record": "docs/task1/experiments/20261101_181046.md",
+  "experiment_record_sha256": "e3c0f27e317f8f16a7c83a36b64ef58ebfd96567b2110040bc43973883700164",
+  "run_manifest_sha256": "1706f256a73e0ccdc25bed280d555bb0782ca88b823948fe38a242c322ccfe52",
+  "run_source_commit": "564a34d4dda2c5b7c4167a29ff5f7b05c9ba19da",
+  "semantic_changes": 1,
+  "dynamic_obstacles": false,
+  "raw_pointcloud_rosbag_recorded": false
+}

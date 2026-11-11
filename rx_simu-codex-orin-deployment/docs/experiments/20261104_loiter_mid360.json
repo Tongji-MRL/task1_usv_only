@@ -1,0 +1,584 @@
+{
+  "loiter_default": {
+    "run_dir": "/home/zjy/usv_nav/runs/20261104_021702_loiter_wind_verified_counter",
+    "files": {
+      "loiter_result.json": {
+        "sha256": "2a4b889fb200d53c6eb469e4f2148dd91eb2183d8b9d180f03f63fdb9d47c901",
+        "bytes": 1572
+      },
+      "loiter.jsonl": {
+        "sha256": "3adef434fb40da8604fd81db7cbdaf4ce75211ad21ce8c056560e372d29cb83b",
+        "bytes": 5948281
+      },
+      "loiter_targets.json": {
+        "sha256": "d475244281088d384e8a82ab7c096f71d1cdd5c979f1266a68f22e300dc6ea1c",
+        "bytes": 202250
+      },
+      "provenance.json": {
+        "sha256": "d152964ee0cf91e195bfb568b439ce8e9f3445a0ec8ea181e6727d59205385a2",
+        "bytes": 3549
+      },
+      "source_snapshot.tar.gz": {
+        "sha256": "f07d23df981c6b1a4f0cf5be7b41064562d1bbac2ff59b1da86928ae40a6d542",
+        "bytes": 759886
+      },
+      "loiter_measurement.png": {
+        "sha256": "86ff137f658065e4bbc07e5b224c0c3f126900213415d80c1aa20c2d6986607b",
+        "bytes": 160339
+      },
+      "gazebo.log": {
+        "sha256": "5fcd3d271c2db25540c4800b5810eb35eb029724d4f4e49bdbc4c88c195a6f2f",
+        "bytes": 19967
+      }
+    },
+    "loiter_result.json": {
+      "mode": "loiter",
+      "duration_sim_s": 179.996,
+      "sample_count": 1801,
+      "firmware_revision": "d0356316eb0fa34ed1c9f39f7b059b9ae7ba4664",
+      "parameters": {
+        "FRAME_CLASS": 2.0,
+        "LOIT_RADIUS": 2.0,
+        "LOIT_TYPE": 0.0,
+        "LOIT_SPEED_GAIN": 0.5,
+        "WP_SPEED": 2.0,
+        "BARO1_GND_PRESS": 101326.9453125,
+        "BARO2_GND_PRESS": 101325.109375,
+        "STAT_RUNTIME": 245.0,
+        "STAT_FLTTIME": 203.0
+      },
+      "moving_entry": false,
+      "wind_mps": 3.0,
+      "wave_gain": 0.0,
+      "anchor_source": "FCU POSITION_TARGET_GLOBAL_INT",
+      "anchor_map_xy_m": [
+        -0.5653617994606555,
+        -1.6415777379111025
+      ],
+      "target_change_max_m": 0.0,
+      "truth_error_rms_m": 1.7650652002271912,
+      "truth_error_p95_m": 2.018645546816228,
+      "truth_error_max_m": 2.025773172451703,
+      "truth_error_final_m": 1.9775417036690401,
+      "ekf_error_max_m": 2.0312760883647525,
+      "fraction_outside_loit_radius": 0.3076068850638534,
+      "min_clearance_m": 7.0213690570962815,
+      "collision_messages": 0,
+      "mode_events": [
+        {
+          "request": "LOITER",
+          "confirmed": true,
+          "wall": 1002174.918441429,
+          "latency_s": 0.10024057095870376
+        },
+        {
+          "request": "GUIDED",
+          "confirmed": true,
+          "wall": 1002356.021047968,
+          "latency_s": 0.10030199494212866
+        },
+        {
+          "request": "HOLD",
+          "confirmed": true,
+          "wall": 1002367.188070481,
+          "latency_s": 0.10034141095820814
+        }
+      ],
+      "measurement_completed": true,
+      "accuracy_budget_m": 3.0,
+      "accuracy_pass": true,
+      "task1_automatic_wait_integration": false,
+      "guided_resume_confirmed": true
+    },
+    "additional_metrics": {
+      "max_abs_thruster_force_n": 300.0,
+      "truth_yaw_rate_max_rad_s": 0.5010659631807357
+    }
+  },
+  "mid360_baseline": {
+    "run_dir": "/home/zjy/usv_nav/runs/20261104_022706_mid360_tf_queue",
+    "files": {
+      "mid360_result.json": {
+        "sha256": "1061a992d10c7acca563dff84d091a508ceeb9b4de3e3d5efde720b072e96623",
+        "bytes": 1532
+      },
+      "mid360_samples.json": {
+        "sha256": "ce5b7d6b05d3d61cc8bd6713c504a18f47c7556e587196ae2b176c9d1d40abaa",
+        "bytes": 21995
+      },
+      "mid360_goal_result.json": {
+        "sha256": "f0fc3fc0fc03fae49d2dd3785b816ea5d8e211e2f95155f11936ac06acf001ff",
+        "bytes": 491
+      },
+      "mid360_goal.jsonl": {
+        "sha256": "deef2cc42201f9615dd75b1f0d3e24ed32f1aabef4fcfea13f5c09c83f97b278",
+        "bytes": 729813
+      },
+      "mid360_pointcloud.png": {
+        "sha256": "b714e058b9ee700af7d6cda9038d702d7239e9fdf0f5284c79000c1848bb38ed",
+        "bytes": 498748
+      },
+      "overview.mp4": {
+        "sha256": "683ae01c1c3605bd6a4398d920dd07adf3f506ebc4397dba4619a7e1e875e97d",
+        "bytes": 39900
+      },
+      "provenance.json": {
+        "sha256": "6c9cb1ce64c5ef3751fc3ec74e6e1e08fe49031eac3c232eb2c9a75d5cffedf0",
+        "bytes": 3908
+      },
+      "source_snapshot.tar.gz": {
+        "sha256": "02339d411a3fc6a484bae2f973fdbd173f5cf5b14b6f287b1b4259405a87db74",
+        "bytes": 766535
+      },
+      "overview.png": {
+        "sha256": "677ae70f0028ccda53282cdc5cd36860fca9076ba0ca7e301ada6ef9dfbdc708",
+        "bytes": 276511
+      },
+      "mid360_snapshot.npz": {
+        "sha256": "31980d40030779b0368e2f3c4999d82afa2814d93243aecad1f18b1ccad478e4",
+        "bytes": 171690
+      },
+      "gazebo.log": {
+        "sha256": "eb2f0aa0c75f0b8ed037e23a5ecc77196879f3bc80980f0e88bb41edbb454251",
+        "bytes": 20379
+      }
+    },
+    "mid360_result.json": {
+      "passed": true,
+      "failures": [],
+      "frames": 120,
+      "filtered_frames": 120,
+      "scan_frames": 120,
+      "median_sim_hz": 10.000000000000568,
+      "effective_scan_hz": 9.999999999999995,
+      "max_scan_gap_s": 0.10000000000002274,
+      "max_frame_gap_s": 0.10000000000002274,
+      "valid_returns_per_frame": [
+        2519,
+        2594
+      ],
+      "max_frame_age_s": 0.088,
+      "slices_observed": [
+        3
+      ],
+      "max_point_time_span_s": 0.04,
+      "matched_source_stamps": 120,
+      "simulator": {
+        "method": "Recorded Livox scan pattern sampled from GPU range images",
+        "pattern_sha256": "aa1fc08b6a4400608dbd6ee832b7ea3a9c3c37197e734f60f58fe5abf762269a",
+        "emitted_rays_per_second": 200000,
+        "publish_hz": 10,
+        "slices_per_frame": 5,
+        "range_m": [
+          0.1,
+          40.0
+        ],
+        "nominal_fov_deg": [
+          360.0,
+          -7.0,
+          52.0
+        ],
+        "dense_image_shape": [
+          151,
+          901
+        ],
+        "range_noise_sigma_m": 0.02,
+        "angular_noise_sigma_deg": 0.15,
+        "seed": 42,
+        "output": "PointCloud2 x/y/z/intensity/tag/line/timestamp; height=1; valid returns only",
+        "limitations": [
+          "20 ms time slices, not individual-ray physics",
+          "Nearest angular pixel approximation",
+          "No calibrated water reflectivity, rain, spray, multipath or range-dependent detection",
+          "Existing WAM-V sensor mount/inertia retained; nominal housing visual replaced",
+          "MID-360 built-in IMU is not part of this lidar-only adapter"
+        ]
+      },
+      "navigation_closed_loop_validated": false,
+      "real_hardware_validated": false
+    },
+    "mid360_goal_result.json": {
+      "status": 4,
+      "elapsed_wall_s": 15.755457297898829,
+      "true_position_error_m": 0.3594230195948653,
+      "true_yaw_error_rad": 0.038004236198678695,
+      "at_goal": [
+        4.647885025919132,
+        0.07211069298461019,
+        -0.038004236198678695
+      ],
+      "drift_10s_m": 0.1904965109680349,
+      "zero_command_delay_s": 0.05059156799688935,
+      "min_planar_clearance_m": 1.5662600987311794,
+      "expected_status": 4,
+      "contact_messages": 0,
+      "collision_messages": 0,
+      "via_points": [],
+      "passed": true
+    }
+  },
+  "mid360_loiter_small": {
+    "run_dir": "/home/zjy/usv_nav/runs/20261104_023249_mid360_loiter_wind_small",
+    "files": {
+      "loiter_result.json": {
+        "sha256": "5a152b1205bdb1c5aead1b6ba1d2f35d2e7128cdd311ac467ed9ffb442c55469",
+        "bytes": 1856
+      },
+      "loiter.jsonl": {
+        "sha256": "68ee8b119458b1e2969954da30e81df2dc4714fac688212b1c61af149f92ecdf",
+        "bytes": 3978477
+      },
+      "loiter_targets.json": {
+        "sha256": "0d7213105346415f87fc0c3439be93a3ae0d1781beb2936e1bf0965e1fda0feb",
+        "bytes": 131766
+      },
+      "mid360_result.json": {
+        "sha256": "434838430c27b25ffd450db6458614c2f4549db00ad9a8fcd6aa33b4df1f3618",
+        "bytes": 1518
+      },
+      "mid360_samples.json": {
+        "sha256": "a07ace89f7cd7bcb35d37a330675265373b2287552097b8c481a2ea9c26fb362",
+        "bytes": 107675
+      },
+      "provenance.json": {
+        "sha256": "455228d29f0c5fa137d703611aae71912804f4130e8dc75a0ee73bc2673f45f4",
+        "bytes": 3908
+      },
+      "source_snapshot.tar.gz": {
+        "sha256": "734e54ffa747fb912a39f49487e0f96d81a5cac57c70a03aa904929b8c7bcfaa",
+        "bytes": 767512
+      },
+      "loiter_measurement.png": {
+        "sha256": "81d1af5eb97455ebb0728113af0b51e59ff79e8cb2d08cf628eb136bf7a8127d",
+        "bytes": 192422
+      },
+      "mid360_snapshot.npz": {
+        "sha256": "e571006197723985125a3be3c331c35232eee6cf207e7d61635df2eb6210b935",
+        "bytes": 130096
+      },
+      "gazebo.log": {
+        "sha256": "66298a1e40dc79e5da1b7e0f04d55573a7f8e96788ae8b346b6ca880b312c461",
+        "bytes": 20397
+      }
+    },
+    "loiter_result.json": {
+      "mode": "loiter",
+      "duration_sim_s": 119.89600000000002,
+      "sample_count": 1200,
+      "firmware_revision": "d0356316eb0fa34ed1c9f39f7b059b9ae7ba4664",
+      "parameters": {
+        "BARO1_GND_PRESS": 101324.8515625,
+        "BARO2_GND_PRESS": 101325.359375,
+        "FRAME_CLASS": 2.0,
+        "LOIT_RADIUS": 0.30000001192092896,
+        "LOIT_TYPE": 0.0,
+        "LOIT_SPEED_GAIN": 0.5,
+        "WP_SPEED": 2.0,
+        "STAT_FLTTIME": 140.0,
+        "STAT_RUNTIME": 183.0
+      },
+      "moving_entry": false,
+      "wind_mps": 3.0,
+      "wave_gain": 0.0,
+      "anchor_source": "FCU POSITION_TARGET_GLOBAL_INT",
+      "anchor_map_xy_m": [
+        -0.49121599120674314,
+        -1.6859447043331024
+      ],
+      "target_change_max_m": 0.0,
+      "truth_error_rms_m": 0.2973261424314267,
+      "truth_error_p95_m": 0.3219602115068484,
+      "truth_error_max_m": 0.3264734261930128,
+      "truth_error_final_m": 0.3177728102130685,
+      "ekf_error_max_m": 0.3241973321310867,
+      "fraction_outside_loit_radius": 0.6058333333333333,
+      "min_clearance_m": 6.914720981817151,
+      "truth_speed_max_mps": 0.09272824160784963,
+      "truth_yaw_rate_max_rad_s": 0.35219839483033866,
+      "max_abs_thruster_force_n": 271.2,
+      "thrust_saturation_samples": 0,
+      "collision_messages": 0,
+      "mode_events": [
+        {
+          "request": "LOITER",
+          "confirmed": true,
+          "phase": "mode_entry",
+          "wall": 1003123.566640548,
+          "latency_s": 0.10031803196761757
+        },
+        {
+          "request": "GUIDED",
+          "confirmed": true,
+          "phase": "resume_guided",
+          "wall": 1003244.348025824,
+          "latency_s": 0.10033378005027771
+        },
+        {
+          "request": "HOLD",
+          "confirmed": true,
+          "phase": "cleanup",
+          "wall": 1003255.554600738,
+          "latency_s": 0.10048035299405456
+        }
+      ],
+      "measurement_completed": true,
+      "accuracy_budget_m": 0.5,
+      "accuracy_pass": true,
+      "task1_automatic_wait_integration": false,
+      "guided_resume_confirmed": true
+    },
+    "mid360_result.json": {
+      "passed": true,
+      "failures": [],
+      "frames": 598,
+      "filtered_frames": 598,
+      "scan_frames": 598,
+      "median_sim_hz": 9.999999999999858,
+      "effective_scan_hz": 10.0,
+      "max_scan_gap_s": 0.10000000000000853,
+      "max_frame_gap_s": 0.10000000000000853,
+      "valid_returns_per_frame": [
+        1880,
+        2015
+      ],
+      "max_frame_age_s": 0.088,
+      "slices_observed": [
+        3
+      ],
+      "max_point_time_span_s": 0.04,
+      "matched_source_stamps": 597,
+      "simulator": {
+        "method": "Recorded Livox scan pattern sampled from GPU range images",
+        "pattern_sha256": "aa1fc08b6a4400608dbd6ee832b7ea3a9c3c37197e734f60f58fe5abf762269a",
+        "emitted_rays_per_second": 200000,
+        "publish_hz": 10,
+        "slices_per_frame": 5,
+        "range_m": [
+          0.1,
+          40.0
+        ],
+        "nominal_fov_deg": [
+          360.0,
+          -7.0,
+          52.0
+        ],
+        "dense_image_shape": [
+          151,
+          901
+        ],
+        "range_noise_sigma_m": 0.02,
+        "angular_noise_sigma_deg": 0.15,
+        "seed": 42,
+        "output": "PointCloud2 x/y/z/intensity/tag/line/timestamp; height=1; valid returns only",
+        "limitations": [
+          "20 ms time slices, not individual-ray physics",
+          "Nearest angular pixel approximation",
+          "No calibrated water reflectivity, rain, spray, multipath or range-dependent detection",
+          "Existing WAM-V sensor mount/inertia retained; nominal housing visual replaced",
+          "MID-360 built-in IMU is not part of this lidar-only adapter"
+        ]
+      },
+      "navigation_closed_loop_validated": false,
+      "real_hardware_validated": false
+    }
+  },
+  "mid360_harbor_preview": {
+    "run_dir": "/home/zjy/usv_nav/runs/20261104_023824_mid360_harbor_preview",
+    "mid360_result.json": {
+      "passed": true,
+      "failures": [],
+      "frames": 150,
+      "filtered_frames": 150,
+      "scan_frames": 150,
+      "median_sim_hz": 10.000000000000568,
+      "effective_scan_hz": 10.000000000000005,
+      "max_scan_gap_s": 0.10000000000000853,
+      "max_frame_gap_s": 0.10000000000000853,
+      "valid_returns_per_frame": [
+        1736,
+        1876
+      ],
+      "max_frame_age_s": 0.088,
+      "slices_observed": [
+        1
+      ],
+      "max_point_time_span_s": 0.0,
+      "matched_source_stamps": 150,
+      "simulator": {
+        "method": "Recorded Livox scan pattern sampled from GPU range images",
+        "pattern_sha256": "aa1fc08b6a4400608dbd6ee832b7ea3a9c3c37197e734f60f58fe5abf762269a",
+        "emitted_rays_per_second": 200000,
+        "publish_hz": 10,
+        "slices_per_frame": 5,
+        "range_m": [
+          0.1,
+          40.0
+        ],
+        "nominal_fov_deg": [
+          360.0,
+          -7.0,
+          52.0
+        ],
+        "dense_image_shape": [
+          151,
+          901
+        ],
+        "range_noise_sigma_m": 0.02,
+        "angular_noise_sigma_deg": 0.15,
+        "seed": 42,
+        "output": "PointCloud2 x/y/z/intensity/tag/line/timestamp; height=1; valid returns only",
+        "limitations": [
+          "20 ms time slices, not individual-ray physics",
+          "Nearest angular pixel approximation",
+          "No calibrated water reflectivity, rain, spray, multipath or range-dependent detection",
+          "Existing WAM-V sensor mount/inertia retained; nominal housing visual replaced",
+          "MID-360 built-in IMU is not part of this lidar-only adapter"
+        ]
+      },
+      "navigation_closed_loop_validated": false,
+      "real_hardware_validated": false
+    },
+    "files": {
+      "mid360_result.json": {
+        "sha256": "6febccf58dd3bf890b49b4ca84dbab87ce8498b46539ec273518c2b46bf43910",
+        "bytes": 1532
+      },
+      "mid360_samples.json": {
+        "sha256": "02cbaae9b15df9e9b1af0684fe434b78c52b64d8f6c126881030c0d48f044521",
+        "bytes": 26923
+      },
+      "mid360_pointcloud.png": {
+        "sha256": "3d9a171a2579c8000a6de4e99b52102c00ca91c535bb7d5b3a13d95590cd472c",
+        "bytes": 543571
+      },
+      "provenance.json": {
+        "sha256": "25eb4ad2396671dc3298c57df6fbade824c6642537335a2e629e2011859e9254",
+        "bytes": 4524
+      },
+      "source_snapshot.tar.gz": {
+        "sha256": "45422a505882382790b2faa84a26bbf7ddf297cf3bcf1e2c02bb656f9029bd49",
+        "bytes": 1409289
+      },
+      "overview.mp4": {
+        "sha256": "bac1b615e7346548a01eba5a56c82dd4897c365233c91106797d6f7284f289be",
+        "bytes": 375331
+      },
+      "overview.png": {
+        "sha256": "b725265d4c1b8876bae27f39f1bce02a9343bea01736f12e31eaeb21cc3df056",
+        "bytes": 763935
+      },
+      "mid360_snapshot.npz": {
+        "sha256": "f2170d625352dcc4fc0492628f85a8c87974b2b17a886ec48aeccfcc4dafbf15",
+        "bytes": 122188
+      },
+      "gazebo.log": {
+        "sha256": "8c2f99482f4fff4b32e525f3e62b13007f3b3e43a503c4fa1ab94c3db7d1c0d5",
+        "bytes": 18884
+      }
+    }
+  },
+  "retained_failures": [
+    {
+      "file": "/home/zjy/usv_nav/runs/20261104_020622_loiter_wind/loiter_result.json",
+      "sha256": "494469bc009951d47c1d7f4054162bac27f8e253c8a3a75f4281459a6fafeb43",
+      "result": {
+        "measurement_completed": false,
+        "error": "Fresh EKF / VRX / scan not ready"
+      }
+    },
+    {
+      "file": "/home/zjy/usv_nav/runs/20261104_021147_loiter_wind_loopback/loiter_result.json",
+      "sha256": "6b598d4a1a52422159664a4facd84cf9d12745508a7f1a1e45c2f81a2e80e0a4",
+      "result": {
+        "measurement_completed": false,
+        "error": "Insufficient advancing physics/FCU frames"
+      }
+    },
+    {
+      "file": "/home/zjy/usv_nav/runs/20261104_021419_loiter_wind_baseline/loiter_result.json",
+      "sha256": "6b598d4a1a52422159664a4facd84cf9d12745508a7f1a1e45c2f81a2e80e0a4",
+      "result": {
+        "measurement_completed": false,
+        "error": "Insufficient advancing physics/FCU frames"
+      }
+    },
+    {
+      "file": "/home/zjy/usv_nav/runs/20261104_022256_mid360_baseline/mid360_startup_failure.json",
+      "sha256": "a29decc0f244043ad501cf59eaaf139011ba802c7da1e302d88bf3e309f22949",
+      "result": {
+        "passed": false,
+        "error": "Garden loader could not find liblivox_gz_sim.so; direct CMake install has package-local setup only. Corrected explicit plugin path in env.sh.",
+        "evidence": "gazebo.log",
+        "vehicle_armed": false
+      }
+    },
+    {
+      "file": "/home/zjy/usv_nav/runs/20261104_022430_mid360_live/mid360_result.json",
+      "sha256": "9d97da0ac15478da6fbec11997ff84b7a1d97361b79ebad1d9ca5ab63a6d1a42",
+      "result": {
+        "passed": false,
+        "failures": [
+          "Guarded projected scan did not produce sufficient frames"
+        ],
+        "frames": 210,
+        "filtered_frames": 2,
+        "scan_frames": 2,
+        "median_sim_hz": 9.999999999999858,
+        "max_frame_gap_s": 0.10000000000000142,
+        "valid_returns_per_frame": [
+          1917,
+          2005
+        ],
+        "max_frame_age_s": 0.088,
+        "slices_observed": [
+          3
+        ],
+        "max_point_time_span_s": 0.04,
+        "matched_source_stamps": 2,
+        "simulator": {
+          "method": "Recorded Livox scan pattern sampled from GPU range images",
+          "pattern_sha256": "aa1fc08b6a4400608dbd6ee832b7ea3a9c3c37197e734f60f58fe5abf762269a",
+          "emitted_rays_per_second": 200000,
+          "publish_hz": 10,
+          "slices_per_frame": 5,
+          "range_m": [
+            0.1,
+            40.0
+          ],
+          "nominal_fov_deg": [
+            360.0,
+            -7.0,
+            52.0
+          ],
+          "dense_image_shape": [
+            151,
+            901
+          ],
+          "range_noise_sigma_m": 0.02,
+          "angular_noise_sigma_deg": 0.15,
+          "seed": 42,
+          "output": "PointCloud2 x/y/z/intensity/tag/line/timestamp; height=1; valid returns only",
+          "limitations": [
+            "20 ms time slices, not individual-ray physics",
+            "Nearest angular pixel approximation",
+            "No calibrated water reflectivity, rain, spray, multipath or range-dependent detection",
+            "Existing WAM-V sensor mount/inertia retained; nominal housing visual replaced",
+            "MID-360 built-in IMU is not part of this lidar-only adapter"
+          ]
+        },
+        "navigation_closed_loop_validated": false,
+        "real_hardware_validated": false
+      }
+    }
+  ],
+  "shutdown_limitations": {
+    "description": "Existing Gazebo plugin destruction segmentation faults remain; controlled runtime measurements and process termination are separate outcomes.",
+    "historical_log": "/home/zjy/usv_nav/runs/20261102_171813_task1_harbor_s1_c1_cross/gazebo.log",
+    "historical_log_sha256": "9375a1471dbb64d01d0a642886258ada3d084bd661f909cad6a83ca1b1a3a74d",
+    "managed_session_stopped": true
+  },
+  "implementation_commit": "513f66c2185fdefdb381e8968755bfae6c1a70ca",
+  "provenance_note": "Runs were recorded during implementation. Each provenance.json and source_snapshot.tar.gz identifies the exact code used; the implementation commit includes subsequent validator and session-cleanup refinements.",
+  "local_implementation_commit": "dc396409119538c40bd39e81b22d3c0f3f40a01d",
+  "publication_note": "GitHub CLI authentication expired. The connected GitHub app published identical Git trees with API-generated commit metadata; original local commits are retained separately."
+}

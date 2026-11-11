@@ -1,0 +1,63 @@
+{
+  "firmware_revision": "d0356316eb0fa34ed1c9f39f7b059b9ae7ba4664",
+  "firmware_binary_sha256": "303eb4e8edeb299b3f3d8c1ce498f76b898f0d8a34598ccc1e529651ab9259b8",
+  "submodules": [
+    " 17a50e3ae44c90a505ce04579625012c20b2bd44 modules/ChibiOS (17a50e3ae)",
+    " 599965086437137ec0fe66e185611f43f335f889 modules/CrashDebug (heads/master)",
+    " 4cf6e11df3a081b0f573a7834ed8e1e4000af73e modules/CrashDebug/CrashCatcher (4cf6e11)",
+    " 011f371fdb5d7e441fb023be67295783e053df4a modules/CrashDebug/CrashCatcher/CppUTest (011f371)",
+    " b35c89451b41a45b7f5b580acaff555315ac88e2 modules/CrashDebug/mri (heads/master)",
+    " 011f371fdb5d7e441fb023be67295783e053df4a modules/CrashDebug/mri/CppUTest (011f371)",
+    " f618adf88990829abd152b48a7bbdfd58881a5a6 modules/DroneCAN/DSDL (f618adf)",
+    " 01586259d5a8b11f9c4a034a976f886630ae4fb7 modules/DroneCAN/dronecan_dsdlc (0158625)",
+    " aec8028798e8485851644e85093c50b1bd6e8ade modules/DroneCAN/libcanard (aec8028)",
+    " 9c6bc9118de66d6edaf1b8539e2b9717ba26d123 modules/DroneCAN/libcanard/drivers/avr/avr-can-lib (heads/master)",
+    " 8fb1b18ab3250695d85fe2943dfc68e8b45024b7 modules/DroneCAN/libcanard/dsdl_compiler/pyuavcan (1.0.12-1-g8fb1b18)",
+    " 19fdf2e5b383243ccdb1094edae0603cf11469e8 modules/DroneCAN/pydronecan (1.0.16-2-g19fdf2e)",
+    " d572f4777349d43653b21d6c2fc63020ab326db2 modules/gbenchmark (v1.7.1)",
+    " e1f690585d4803402584962bfaa8240ecaf1db30 modules/gsoap (heads/master)",
+    " c5fed93f941865a0e912e9baf46ded713506590a modules/gtest (release-1.8.0-2268-gc5fed93f)",
+    " 806a3ba7499da677ded35226d6ff88e5a100c4c2 modules/mavlink (1.0.12-326-g806a3ba7)",
+    " f6c873a68af0ff4023db4902e2d3ee95ca398de2 modules/mavlink/pymavlink (2.4.34-9-gf6c873a6)",
+    " f845e02dcd2e97f6c4743c96f3b2380c4b03ab5f modules/uavcan (f845e02d)",
+    " 4d111911c1c0f2e00d46e8a9a79ca5ba85d6ef4b modules/uavcan/dsdl (4d11191)",
+    " 19fdf2e5b383243ccdb1094edae0603cf11469e8 modules/uavcan/libuavcan/dsdl_compiler/pyuavcan (1.0.16-2-g19fdf2e)",
+    " 51f1529bd20759642e9fd0a8db648da9ba380b18 modules/waf (waf-1.9.2-730-g51f1529b)"
+  ],
+  "plugin_revision": "80dc9664dda7efd6c5d1a71a79198d1d6b708c0e",
+  "plugin_patch_sha256": "c06588e5da0a1a200957e4b93030003832e46e61fe6216e45b5d2382a740adbc",
+  "plugin_binary_sha256": "bd1bf81c44e2cac162ceffd665aafe4d595ced5214114ffc794339830390571b",
+  "runtime_version_evidence": "runs/20261029_062853_mavros_exit/mavros.log: Flight software 040400ff (d0356316); MY ID 255.191, TARGET ID 1.1",
+  "tf_authorities": {
+    "base_link -> base_link_frd": 1,
+    "base_link -> wamv/wamv/base_link/lidar_wamv_sensor": 1,
+    "base_stabilized -> base_link": 1,
+    "map -> map_ned": 1,
+    "map -> odom": 1,
+    "odom -> base_stabilized": 1,
+    "odom -> odom_ned": 1
+  },
+  "graph_audit": "runs/20261029_055421_static_obstacle/graph_audit.json",
+  "tf_authority_evidence": "runs/tf_authority_final.json (observed during runs/20261029_060015_wind)",
+  "unit_checks": {
+    "navigation_tests": 22,
+    "simulation_tests": 7,
+    "passed": true
+  },
+  "source_snapshots": "Each late run includes source_snapshot.tar.gz and its SHA256 in provenance.json; raw artifacts are ignored by Git.",
+  "final_checks": {
+    "runs/final_build.log": "bca913a906ffe1080a7bc330feef929c3f112de850dc257012a33d9108331ba5",
+    "runs/final_unit_tests.log": "362f98763a000f6195a2aa6978693c91967f66cec30dce657db516da78951162",
+    "runs/tf_authority_final.json": "0934ca20ec5f061194a147440a9f41bff247fb55fd89cd8cb4a099cb4419935b",
+    "runs/20261029_055421_static_obstacle/graph_audit.json": "5c7eeb8cbb9acde7772eec741cc97c41ee9cb54d837fa2f3b63fc527ca8db5c4"
+  },
+  "final_validation": {
+    "retained_attempts": 67,
+    "latest_case_names": 27,
+    "endurance_frame": 70000,
+    "force_measurement": "Gazebo Thruster PreUpdate feedback, reconstructed using run-specific SDF coefficients",
+    "source_implementation_commit": "33e7566de0e9830cb1e2c973206bcca6f4e61a74",
+    "post_goal_observation": "Cleanup HOLD/disarm is excluded; legacy command-only records are labelled.",
+    "navigation_config_sha256": "29871d7a729558ddb7b3bababe2d2b4ca0a1d32baede91a875efad1f56b5dbdf"
+  }
+}

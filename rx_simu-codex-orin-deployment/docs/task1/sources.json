@@ -1,0 +1,27 @@
+{
+  "retrieved_utc": "2026-10-29T18:22:46.732208+00:00",
+  "handbook_version": "2026-10-23",
+  "files": [
+    {
+      "url": "https://robonation.org/app/uploads/sites/2/2026/10/RobotX-2026_Team-Handbook-20261023.pdf",
+      "path": "external/references/robotx2026/handbook_20261023.pdf",
+      "bytes": 9998161,
+      "sha256": "1ad26f53d7eed32049988409cc493137feed701f1badb8323a5ac11142141adb"
+    },
+    {
+      "url": "https://robonation.gitbook.io/robotx-2026-team-handbook/robotx-2026-or-task-build-guides/robobuoy-build-guide.md",
+      "path": "external/references/robotx2026/robobuoy.md",
+      "bytes": 9418,
+      "sha256": "5bf63cccc07a11aaadc022bbaa6a20348232bccdebccf2a1c5a54e0356b7efa1"
+    },
+    {
+      "url": "https://robonation.gitbook.io/robotx-2026-team-handbook/robotx-2026-or-task-build-guides/light-beacon-specifications.md",
+      "path": "external/references/robotx2026/beacon.md",
+      "bytes": 11434,
+      "sha256": "93a74fda034f5889cd26600e2966b461a593878ce7be29837787373a0bf93bde"
+    }
+  ],
+  "official_index_rechecked_utc": "2026-11-01T10:08:48.263794+00:00",
+  "official_index": "https://robotx.org/programs/2026/",
+  "official_index_handbook_label": "Updated 23 October 2026"
+}

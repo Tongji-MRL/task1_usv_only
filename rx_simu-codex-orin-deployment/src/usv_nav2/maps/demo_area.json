@@ -1,0 +1,7 @@
+{
+  "description": "Synthetic bench example only. Replace with measured map-frame coordinates before vessel use.",
+  "resolution": 0.2,
+  "padding": 1.0,
+  "navigable_boundary": [[-20.0, -20.0], [20.0, -20.0], [20.0, 20.0], [-20.0, 20.0]],
+  "exclusions": [[[4.0, -1.0], [6.0, -1.0], [6.0, 1.0], [4.0, 1.0]]]
+}

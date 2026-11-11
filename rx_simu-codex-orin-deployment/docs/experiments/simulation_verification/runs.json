@@ -1,0 +1,120 @@
+{
+  "status": "verification complete with explicit failures and limitations; not an all-pass acceptance",
+  "runs": [
+    {
+      "kind": "geometry",
+      "label": "mast 1.8 m",
+      "run": "20261104_032951_mid360_visibility_baseline"
+    },
+    {
+      "kind": "geometry",
+      "label": "bow 0.8 m",
+      "run": "20261104_033558_mid360_visibility_bow"
+    },
+    {
+      "kind": "geometry",
+      "label": "bow 0.6 m",
+      "run": "20261104_034702_mid360_visibility_low_bow"
+    },
+    {
+      "kind": "geometry",
+      "label": "bow 0.6 m + support",
+      "run": "20261104_040834_mid360_supported_geometry"
+    },
+    {
+      "kind": "station",
+      "label": "initial bridge contract (pause criterion failed)",
+      "run": "20261104_040044_stationkeeping_contract_mid360"
+    },
+    {
+      "kind": "task1",
+      "label": "unfiltered isolated-cell blockage, cancelled for diagnosis",
+      "run": "20261104_035023_task1_harbor_s1_c1_none_mid360_low_bow"
+    },
+    {
+      "kind": "task1",
+      "label": "MID-360 supported static harbor, one light change",
+      "run": "20261104_041321_task1_harbor_s1_c1_none_mid360_low_bow"
+    },
+    {
+      "kind": "station",
+      "label": "final bridge contract: 15 actual checks",
+      "run": "20261104_042435_stationkeeping_supported_mid360"
+    },
+    {
+      "kind": "loiter",
+      "label": "repeat1",
+      "run": "20261104_042950_mid360_hold_repeat1"
+    },
+    {
+      "kind": "loiter",
+      "label": "repeat2",
+      "run": "20261104_043311_mid360_hold_repeat2"
+    },
+    {
+      "kind": "loiter",
+      "label": "repeat3",
+      "run": "20261104_043632_mid360_hold_repeat3"
+    },
+    {
+      "kind": "loiter",
+      "label": "zero",
+      "run": "20261104_043953_mid360_hold_zero"
+    },
+    {
+      "kind": "loiter",
+      "label": "moving",
+      "run": "20261104_044316_mid360_hold_moving"
+    },
+    {
+      "kind": "loiter",
+      "label": "wind + waves startup failed: parameter acknowledgement missing before arm",
+      "run": "20261104_044636_mid360_hold_waves"
+    },
+    {
+      "kind": "gnss",
+      "label": "native LOITER with GPS_INPUT quality and slow bias",
+      "run": "20261104_044706_mid360_loiter_gnss"
+    },
+    {
+      "kind": "inputs",
+      "label": "final MID-360 guided_input_faults",
+      "run": "20261104_045157_mid360_guided_input_faults"
+    },
+    {
+      "kind": "pause",
+      "label": "final MID-360 pause",
+      "run": "20261104_045342_mid360_pause"
+    },
+    {
+      "kind": "reset",
+      "label": "final MID-360 reset",
+      "run": "20261104_045451_mid360_reset"
+    },
+    {
+      "kind": "task1",
+      "label": "MID-360 cross traffic: native handoffs passed, map clearing blocked completion",
+      "run": "20261104_045605_task1_harbor_s1_c1_cross_mid360_low_bow_loiter"
+    },
+    {
+      "kind": "loiter",
+      "label": "wind + waves (successful rerun)",
+      "run": "20261104_051025_mid360_hold_waves"
+    },
+    {
+      "kind": "station",
+      "label": "actual MID preprocessing process exit",
+      "run": "20261104_051347_stationkeeping_cloud_exit_mid360"
+    },
+    {
+      "kind": "task1",
+      "label": "block startup failed: lost FCU-origin service response; never armed",
+      "run": "20261104_051458_task1_harbor_s1_c1_block_mid360_low_bow_loiter"
+    },
+    {
+      "kind": "task1",
+      "label": "MID-360 blocked route: native handoffs passed, map clearing blocked completion",
+      "run": "20261104_051821_task1_harbor_s1_c1_block_mid360_low_bow_loiter"
+    }
+  ]
+}
