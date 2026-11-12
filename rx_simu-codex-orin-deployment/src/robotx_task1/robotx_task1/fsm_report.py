@@ -14,8 +14,8 @@ Its interface, as used by the Task 3 executor:
 
 Task 1 sends one SafePassageReport with every classified buoy when the
 mission ends, COMPLETE or ABORT (buoys reported after an abort still score),
-and only then progress: FINISHED after COMPLETE, TASK1_ABORT with the reason
-in `error` after ABORT, so the state machine does not move on by itself.
+and only then progress FINISHED, so the state machine moves on to the next
+task either way; after an ABORT the reason is in `error` (null after COMPLETE).
 """
 from datetime import datetime, timezone
 
@@ -23,8 +23,8 @@ TERMINAL = ('COMPLETE', 'ABORT')
 
 
 def progress(state, error=None):
-    """Progress message for a mission_core state name."""
-    name = 'FINISHED' if state == 'COMPLETE' else 'TASK1_'+state
+    """Progress message for a mission_core state name; both end states are FINISHED."""
+    name = 'FINISHED' if state in TERMINAL else 'TASK1_'+state
     return dict(vehicle='usv', task='TASK1', progress=name, error=error)
 
 
@@ -62,7 +62,7 @@ class StateMachineLink:
 
     def __init__(self, envelope, refresh=2.0, repeat=1.0, report_wait=5.0):
         self.envelope, self.refresh, self.repeat, self.report_wait = envelope, refresh, repeat, report_wait
-        self.state = self.sent_at = self.ended_at = None
+        self.state = self.sent_at = self.ended_at = self.finished_at = None
         self.reported = self.missing_report = False
         self.error = None
 
@@ -91,4 +91,6 @@ class StateMachineLink:
         if due:
             out.append(('progress', progress(state, error)))
             self.state, self.sent_at = state, now
+            if state in TERMINAL and self.finished_at is None:
+                self.finished_at = now
         return out

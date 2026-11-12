@@ -22,7 +22,11 @@ from .fsm_report import ReportEnvelope, StateMachineLink
 DEFAULTS = dict(team_id='TONG', vehicle_id='usv', report_seq_start=0,
                 progress_topic='/tongji_mrl/twave/progress', result_topic='/tongji_mrl/twave/result',
                 fix_topic='/mavros/global_position/global', odom_topic='/usv/odom', odom_frame='odom',
-                fix_timeout=5.0, report_wait=5.0, refresh=2.0, repeat=1.0, rate=5.0)
+                fix_timeout=5.0, report_wait=5.0, refresh=2.0, repeat=1.0, rate=5.0,
+                # > 0: exit this many seconds after FINISHED was first sent. The launch then shuts
+                # down every Task 1 node and the sensor drivers it started, also when the state
+                # machine does not stop it. 0: keep running until stopped.
+                exit_after_end=0.0)
 
 
 class FsmBridge(Node):
@@ -86,6 +90,10 @@ class FsmBridge(Node):
         if self.link.missing_report:
             self.get_logger().error('No fresh GNSS fix at the end of Task 1: SafePassageReport not sent',
                                     throttle_duration_sec=30.0)
+        wait = self.p['exit_after_end']
+        if wait > 0.0 and self.link.finished_at is not None and time.monotonic()-self.link.finished_at >= wait:
+            self.get_logger().info(f'Task 1 ended {wait:.0f} s ago: shutting down the Task 1 launch')
+            raise SystemExit(0)
 
 
 def main(args=None):
@@ -93,7 +101,7 @@ def main(args=None):
     node = FsmBridge()
     try:
         rclpy.spin(node)
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, SystemExit):
         pass
     finally:
         node.destroy_node()

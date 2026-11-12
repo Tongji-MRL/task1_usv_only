@@ -20,7 +20,9 @@ class ProgressTests(unittest.TestCase):
         # version2 ends Task 1 on exactly this message.
         finished = progress('COMPLETE')
         self.assertEqual((finished['vehicle'], finished['task'], finished['progress']), ('usv', 'TASK1', 'FINISHED'))
-        self.assertNotEqual(progress('ABORT', 'total time limit reached')['progress'], 'FINISHED')
+        # An abort also ends Task 1 for the state machine; the reason goes in `error`.
+        self.assertEqual(progress('ABORT', 'total time limit reached'),
+                         dict(vehicle='usv', task='TASK1', progress='FINISHED', error='total time limit reached'))
 
     def test_progress_on_change_and_refresh_only(self):
         bridge = link(refresh=2.0)
@@ -53,12 +55,17 @@ class EndTests(unittest.TestCase):
         again = bridge.update(2.0, dict(state='COMPLETE'), BODY, 0.0)
         self.assertEqual([(k, p['progress']) for k, p in again], [('progress', 'FINISHED')])  # Never a 2nd report.
 
-    def test_abort_reports_the_buoys_and_does_not_finish(self):
+    def test_abort_reports_the_buoys_then_finishes_with_the_reason(self):
         bridge = link()
-        out = bridge.update(0.0, dict(state='ABORT', detail='total time limit reached'), BODY, 0.0)
+        bridge.update(0.0, dict(state='THREAD'), BODY, 0.0)
+        self.assertIsNone(bridge.finished_at)
+        out = bridge.update(3.0, dict(state='ABORT', detail='total time limit reached'), BODY, 0.0)
         self.assertEqual([kind for kind, _ in out], ['result', 'progress'])
-        self.assertEqual(out[1][1], dict(vehicle='usv', task='TASK1', progress='TASK1_ABORT',
+        self.assertEqual(out[1][1], dict(vehicle='usv', task='TASK1', progress='FINISHED',
                                          error='total time limit reached'))
+        self.assertEqual(bridge.finished_at, 3.0)  # When the end was first reported (exit timer).
+        bridge.update(4.0, dict(state='ABORT'), BODY, 0.0)
+        self.assertEqual(bridge.finished_at, 3.0)
 
     def test_final_progress_waits_for_a_georeferenced_report(self):
         bridge = link(report_wait=5.0)

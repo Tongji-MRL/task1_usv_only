@@ -1,10 +1,11 @@
 """USV-only Task 1: FCU odometry relay, control bridge, buoy mapper, mission, reporting.
 
 Nav2 is deliberately not started: only one node may publish velocity commands.
-MAVROS, the LiDAR driver with its mounting TF and the camera driver come from
-the platform. With the default params_file (config/task1_usv_real.yaml, for
-the team's Orin stack started by the USV state machine) this launch also
-starts what that stack lacks, each only when its measured values are filled:
+MAVROS comes from the platform. With the default params_file
+(config/task1_usv_real.yaml, for the team's Orin, started by the USV state
+machine) this launch also starts the D435 and MID-360 drivers (start_d435,
+start_lidar) and ends with them, and starts, each only when its measured
+values are filled:
 map_origin (map -> odom), the camera mounting TF, livox_filter with
 pointcloud_to_laserscan (/usv/lidar/filtered, /scan), and the state-machine
 link (progress, final SafePassageReport). Any launch argument given on the
@@ -18,7 +19,11 @@ import os
 import yaml
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, LogInfo, OpaqueFunction
+from launch.actions import (DeclareLaunchArgument, EmitEvent, IncludeLaunchDescription, LogInfo, OpaqueFunction,
+                            RegisterEventHandler)
+from launch.event_handlers import OnProcessExit
+from launch.events import Shutdown
+from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
 
@@ -30,7 +35,9 @@ TASK = dict(
     boundary='', markers='', map_origin_latitude='', map_origin_longitude='', camera_frame='camera_link',
     camera_x='', camera_y='', camera_z='', camera_roll='', camera_pitch='', camera_yaw='',
     scan_range_max=20.0, enable_lidar_pipeline=True, enable_fsm_bridge=True, enable_robocommand=True,
-    vehicle_id='USV1', ocs_host='', ocs_port=47800)
+    vehicle_id='USV1', ocs_host='', ocs_port=47800,
+    start_d435=False, d435_color_profile='1280,720,15', start_lidar=False,
+    lidar_timeout=0.5, landmark_timeout=1.0, exit_after_end=0.0)
 HELP = dict(
     enable_control='rover_bridge publishes setpoints to the FCU',
     enable_motion='usv_mission publishes velocity commands to the bridge',
@@ -46,7 +53,14 @@ HELP = dict(
     camera_frame='camera body frame of the driver; camera_x..camera_yaw place it in base_link [m, rad]',
     enable_lidar_pipeline='start livox_filter and pointcloud_to_laserscan (needs the livox_filter section)',
     enable_fsm_bridge='send progress and the final SafePassageReport to the USV state machine',
-    ocs_host='OCS address for report datagrams; empty: local only')
+    ocs_host='OCS address for report datagrams; empty: local only',
+    start_d435='start the D435 driver (colour only, /camera/d435/color/*) with this launch',
+    d435_color_profile='D435 colour profile width,height,fps',
+    start_lidar='start the MID-360 driver and its base_link -> livox_frame TF '
+                '(robotx_perception_common task3_lidar_bringup) with this launch',
+    lidar_timeout='age limit of LiDAR-derived data (filter input, mapper input, /scan) [s]',
+    landmark_timeout='age limit of /task1/landmarks for the mission [s]',
+    exit_after_end='> 0: the launch shuts down (drivers included) this many seconds after FINISHED')
 CAMERA = ('x', 'y', 'z', 'roll', 'pitch', 'yaw')
 
 
@@ -85,10 +99,26 @@ def launch_nodes(context):
             task[name] = given
     notes = [LogInfo(msg=f'Task 1 parameters: {path}')]
 
+    lidar_timeout, landmark_timeout = float(task['lidar_timeout']), float(task['landmark_timeout'])
     adapter = dict(section(config, 'odom_tf'), use_sim_time=False)
     bridge = dict(section(config, 'rover_bridge'), use_sim_time=False, enable_control=flag(task['enable_control']),
-                  enable_stationkeeping=False, require_task_permission=False)
+                  enable_stationkeeping=False, require_task_permission=False, scan_timeout=lidar_timeout)
     color_range = float(task['color_range'])
+    drivers = []
+    if flag(task['start_d435']):
+        drivers.append(IncludeLaunchDescription(
+            PythonLaunchDescriptionSource(os.path.join(get_package_share_directory('realsense2_camera'),
+                                                       'launch', 'rs_launch.py')),
+            launch_arguments={'camera_name': 'd435', 'camera_namespace': 'camera', 'enable_color': 'true',
+                              'enable_depth': 'false', 'enable_infra1': 'false', 'enable_infra2': 'false',
+                              'rgb_camera.color_profile': text(task['d435_color_profile'])}.items()))
+    if flag(task['start_lidar']):
+        drivers.append(IncludeLaunchDescription(
+            PythonLaunchDescriptionSource(os.path.join(get_package_share_directory('robotx_perception_common'),
+                                                       'launch', 'task3_lidar_bringup.launch.py')),
+            launch_arguments={'start_driver': 'true'}.items()))
+    notes.append(LogInfo(msg=f"Sensor drivers started by this launch: D435 {flag(task['start_d435'])}, "
+                             f"MID-360 {flag(task['start_lidar'])}"))
     nodes = [
         Node(package='usv_nav2', executable='odom_tf', name='odom_tf', parameters=[adapter], output='screen'),
         Node(package='usv_nav2', executable='rover_bridge', name='rover_bridge', parameters=[bridge],
@@ -97,7 +127,8 @@ def launch_nodes(context):
              parameters=[dict(color_range=color_range, image_topic=text(task['image_topic']),
                               info_topic=text(task['info_topic']), min_z=float(task['min_z']),
                               max_z=float(task['max_z']), lamp_offset=float(task['lamp_offset']),
-                              boundary=text(task['boundary']), markers=text(task['markers']))]),
+                              boundary=text(task['boundary']), markers=text(task['markers']),
+                              input_timeout=lidar_timeout)]),
         Node(package='robotx_task1', executable='usv_mission', name='usv_mission', output='screen',
              parameters=[dict(enable_motion=flag(task['enable_motion']), autostart=flag(task['autostart']),
                               require_rtk_fixed=flag(task['require_rtk_fixed']),
@@ -105,15 +136,23 @@ def launch_nodes(context):
                                                else max(2.0, color_range-0.5)),
                               cruise_speed=float(task['cruise_speed']), thread_speed=float(task['thread_speed']),
                               circle_speed=float(task['thread_speed']), max_yaw_rate=float(task['max_yaw_rate']),
-                              boundary=text(task['boundary']))]),
+                              boundary=text(task['boundary']), scan_timeout=lidar_timeout,
+                              landmark_timeout=landmark_timeout)]),
     ]
     if flag(task['enable_robocommand']):
         nodes.append(Node(package='robotx_task1', executable='robocommand', name='robocommand', output='screen',
                           parameters=[dict(vehicle_id=text(task['vehicle_id']), ocs_host=text(task['ocs_host']),
                                            ocs_port=int(task['ocs_port']))]))
     if flag(task['enable_fsm_bridge']):
-        nodes.append(Node(package='robotx_task1', executable='fsm_bridge', name='task1_fsm_bridge',
-                          output='screen', parameters=[section(config, 'task1_fsm_bridge')]))
+        link = Node(package='robotx_task1', executable='fsm_bridge', name='task1_fsm_bridge', output='screen',
+                    parameters=[dict(section(config, 'task1_fsm_bridge'),
+                                     exit_after_end=float(task['exit_after_end']))])
+        nodes.append(link)
+        # The link exits exit_after_end seconds after FINISHED (or if it fails): end the whole
+        # launch, sensor drivers included, so nothing of Task 1 keeps running.
+        nodes.append(RegisterEventHandler(OnProcessExit(target_action=link, on_exit=[
+            LogInfo(msg='task1_fsm_bridge exited: shutting down Task 1 and its sensor drivers'),
+            EmitEvent(event=Shutdown(reason='Task 1 ended'))])))
 
     latitude, longitude = task['map_origin_latitude'], task['map_origin_longitude']
     if blank(latitude) or blank(longitude):
@@ -144,7 +183,8 @@ def launch_nodes(context):
             notes.append(LogInfo(msg='LiDAR filter and /scan not started: livox_filter footprint and '
                                      'marking heights are not set in the parameters file'))
         else:
-            lidar.update(use_sim_time=False, marking_min_height=low, marking_max_height=high)
+            lidar.update(use_sim_time=False, marking_min_height=low, marking_max_height=high,
+                         input_timeout=lidar_timeout)
             nodes.append(Node(package='usv_sim', executable='livox_filter', name='livox_filter',
                               output='screen', parameters=[lidar]))
             # Projection of the filtered cloud; livox_filter checks it and publishes /scan.
@@ -158,7 +198,7 @@ def launch_nodes(context):
                                                angle_increment=0.008726646259972, scan_time=0.1, range_min=0.3,
                                                range_max=float(task['scan_range_max']), use_inf=True,
                                                inf_epsilon=1.0)]))
-    return notes+nodes
+    return notes+drivers+nodes
 
 
 def generate_launch_description():

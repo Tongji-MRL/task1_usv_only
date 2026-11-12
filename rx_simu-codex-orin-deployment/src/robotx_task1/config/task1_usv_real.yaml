@@ -1,8 +1,9 @@
 # Task 1 (USV-only) on the T-Wave Orin, as started by the USV state machine
 # (usv_orin_state_machine version2):
 #     ros2 launch robotx_task1 task1_usv.launch.py
-# The launch inherits the state machine's environment (ROS_DOMAIN_ID=62,
-# ROS_LOCALHOST_ONLY=0); do not source scripts/hardware_env.sh for this path.
+# The launch inherits the state machine's environment, so start the state machine with
+# ROS_DOMAIN_ID=62 and ROS_LOCALHOST_ONLY=0 (the OCS gateway and the heartbeat node use
+# them); do not source scripts/hardware_env.sh for this path.
 # A launch argument given on the command line overrides the task1 section.
 #
 # Entries marked ESTIMATE are first guesses for the first water test; replace
@@ -96,6 +97,18 @@ task1:
   camera_pitch: 0.0
   camera_yaw: 0.0
   scan_range_max: 20.0
+  # 2026-11-12: the USV state machine starts no sensors any more; Task 1 starts the two it
+  # needs and stops them when it ends. MAVROS is started separately (shared by all tasks).
+  start_d435: true             # colour only, /camera/d435/color/* (no depth, no infrared)
+  d435_color_profile: '1280,720,15'
+  start_lidar: true            # MID-360 driver + base_link -> livox_frame (task3_lidar_bringup)
+  # Measured on the Orin: a LiDAR frame arrives ~0.105 s after its header stamp and spans
+  # 100 ms; FCU odometry is 10 Hz with gaps up to ~0.55 s. A 0.5 s limit discarded most
+  # frames under load (the filter must wait for odometry to de-skew), leaving no /scan and
+  # stale landmarks, so the mission never left WAIT_START.
+  lidar_timeout: 1.0           # filter input, mapper input and /scan age limit [s]
+  landmark_timeout: 2.0        # /task1/landmarks age limit for the mission [s]
+  exit_after_end: 10.0         # end the launch (drivers included) 10 s after FINISHED
   enable_lidar_pipeline: true  # livox_filter + pointcloud_to_laserscan (team stack has neither)
   enable_fsm_bridge: true      # progress and the final SafePassageReport to the state machine
   enable_robocommand: true     # local /task1/robocommand record only; nothing is sent (ocs_host empty)
