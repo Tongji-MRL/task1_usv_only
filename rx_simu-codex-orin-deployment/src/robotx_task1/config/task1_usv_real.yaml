@@ -63,8 +63,11 @@ task1_fsm_bridge:
     report_seq_start: 0
 
 task1:
-  enable_control: false        # rover_bridge -> FCU setpoints; enable only stage by stage
-  enable_motion: false         # usv_mission -> /usv/cmd_vel
+  # On for the 2026-11-12 water test, at the team's request: once the state machine
+  # starts Task 1, the boat drives itself as soon as the operator arms and selects
+  # GUIDED. Leaving GUIDED aborts Task 1 (it does not resume). Keep the RC in hand.
+  enable_control: true         # rover_bridge -> FCU setpoints
+  enable_motion: true          # usv_mission -> /usv/cmd_vel
   autostart: true              # the state machine starting this launch is the start request
   color_range: 4.5             # ESTIMATE until the survey: reliable colour range [m]; 0 disables colour
   look_range: ''
