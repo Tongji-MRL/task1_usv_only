@@ -170,5 +170,68 @@ class MapTests(unittest.TestCase):
         self.assertTrue(all(abs(b['y']) < 5 for b in world.snapshot()))
 
 
+BUOYS = [(4.0, 1.0), (6.0, -2.0), (9.0, 2.5), (11.0, -0.5)]
+
+
+def mapped(buoys=BUOYS, windows=6):
+    world = lm.LandmarkMap()
+    for k in range(windows):
+        world.update_lidar(0.5*k, (0.0, 0.0), [cluster(x, y) for x, y in buoys])
+    assert len(world.snapshot()) == len(buoys)
+    return world
+
+
+class RealignTests(unittest.TestCase):
+    """The FCU position follows RTK when corrections arrive and plain GPS otherwise; a change
+    of solution moves the vessel estimate in one step while the buoys stay put."""
+
+    def test_position_jump_moves_the_map_instead_of_duplicating_buoys(self):
+        world = mapped()
+        before = {b['id']: (b['x'], b['y']) for b in world.snapshot()}
+        jump = np.array([1.2, -0.8])  # e.g. RTK fixed gained after minutes of plain GPS.
+        world.update_lidar(3.5, (0.0, 0.0), [cluster(x+jump[0], y+jump[1]) for x, y in BUOYS])
+        self.assertEqual(world.last_shift is not None, True)
+        np.testing.assert_allclose(world.last_shift, jump, atol=1e-6)
+        after = {b['id']: (b['x'], b['y']) for b in world.snapshot()}
+        self.assertEqual(sorted(after), sorted(before))  # Same names, no new tentative tracks.
+        for name in before:
+            np.testing.assert_allclose(np.subtract(after[name], before[name]), jump, atol=0.05)
+        self.assertEqual(len(world.tracks), len(BUOYS))
+
+    def test_small_or_disagreeing_offsets_leave_the_map_alone(self):
+        world = mapped()
+        world.update_lidar(3.5, (0.0, 0.0), [cluster(x+0.2, y) for x, y in BUOYS])  # Noise-sized.
+        self.assertIsNone(world.last_shift)
+        world = mapped()
+        scattered = [(1.0, 0.0), (-1.0, 0.5), (0.0, -1.2), (0.8, 0.9)]  # No common offset.
+        world.update_lidar(3.5, (0.0, 0.0), [cluster(x+d[0], y+d[1]) for (x, y), d in zip(BUOYS, scattered)])
+        self.assertIsNone(world.last_shift)
+        world = mapped(BUOYS[:2])  # Fewer than three landmarks: never realigned.
+        world.update_lidar(3.5, (0.0, 0.0), [cluster(x+1.0, y) for x, y in BUOYS[:2]])
+        self.assertIsNone(world.last_shift)
+
+    def test_obstacle_cells_move_with_the_map(self):
+        grid = lm.ObstacleGrid()
+        wall = np.array([[5.0+0.1*i, 3.0] for i in range(10)])
+        for _ in range(3):
+            grid.update(wall)
+        before = np.array(grid.points())
+        grid.shift(1.0, -0.5)
+        np.testing.assert_allclose(np.array(grid.points()), before+(1.0, -0.5), atol=0.26)
+
+    def test_late_boundary_purges_outside_landmarks_without_reusing_names(self):
+        world = mapped(BUOYS+[(30.0, 0.0)])  # A buoy of another course, seen before the boundary.
+        names = {b['id'] for b in world.snapshot()}
+        world.boundary = np.array([[0.0, -5.0], [20.0, -5.0], [20.0, 5.0], [0.0, 5.0]])
+        world.purge_outside()
+        kept = {b['id'] for b in world.snapshot()}
+        self.assertEqual(len(kept), len(BUOYS))
+        for k in range(6):
+            world.update_lidar(4.0+0.5*k, (0.0, 0.0), [cluster(x, y) for x, y in BUOYS+[(15.0, 4.0)]])
+        new = {b['id'] for b in world.snapshot()}-kept
+        self.assertEqual(len(new), 1)
+        self.assertFalse(new & names)  # The purged buoy's name is not given to the new one.
+
+
 if __name__ == '__main__':
     unittest.main()

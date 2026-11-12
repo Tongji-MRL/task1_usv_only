@@ -211,27 +211,98 @@ class ObstacleGrid:
         """Centers of confirmed cells, sorted."""
         return [((k[0]+0.5)*self.cell, (k[1]+0.5)*self.cell) for k in sorted(self.confirmed)]
 
+    def shift(self, dx, dy):
+        """Move every confirmed cell by (dx, dy) (see LandmarkMap.realign); pending hits restart."""
+        moved = {tuple(np.floor((np.array(p)+(dx, dy))/self.cell).astype(np.int64)) for p in self.points()}
+        self.confirmed, self.hits = moved, {}
+        self.revision += 1
+
+    def purge_outside(self):
+        """Drop confirmed cells outside the course (the boundary arrived after they were seen)."""
+        keep = {k for k in self.confirmed
+                if inside_course(((k[0]+0.5)*self.cell, (k[1]+0.5)*self.cell), self.boundary,
+                                 self.corner_radius, markers=self.markers)}
+        if keep != self.confirmed:
+            self.confirmed = keep
+            self.revision += 1
+
 
 class LandmarkMap:
     """At most max_landmarks confirmed buoys, tracked by nearest-neighbor association."""
 
     def __init__(self, gate=0.5, confirm_hits=4, confirm_windows=8, tentative_timeout=5.0,
-                 max_landmarks=10, boundary=None, weight_cap=20.0, corner_radius=1.0, **lamp):
+                 max_landmarks=10, boundary=None, weight_cap=20.0, corner_radius=1.0,
+                 realign_gate=2.5, realign_min=0.3, realign_matches=3, realign_spread=0.25, **lamp):
         self.gate, self.confirm_hits, self.confirm_windows = gate, confirm_hits, confirm_windows
         self.tentative_timeout, self.max_landmarks, self.weight_cap = tentative_timeout, max_landmarks, weight_cap
         self.boundary = None if boundary is None else np.asarray(boundary, float)
         self.corner_radius = corner_radius
+        self.realign_gate, self.realign_min = realign_gate, realign_min
+        self.realign_matches, self.realign_spread = realign_matches, realign_spread
         self.markers = []  # Known non-task buoys (see inside_course).
         self.lamp = lamp
         self.tracks, self.windows, self.revision, self.rejected = [], 0, 0, 0
+        self.named, self.last_shift, self.shifts = 0, None, []
 
     def inside(self, point):
         return inside_course(point, self.boundary, self.corner_radius, markers=self.markers)
 
+    def purge_outside(self):
+        """Drop landmarks outside the course: the boundary can arrive after the first windows
+        (it comes from the state machine's course_config). Names are never reused."""
+        kept = [t for t in self.tracks if self.inside(t['xy'])]
+        if len(kept) != len(self.tracks):
+            self.tracks = kept
+            self.revision += 1
+
+    def realign(self, clusters):
+        """Common shift of the whole map when the vessel position estimate jumped.
+
+        The buoys are mapped from the FCU pose, which follows the best GNSS solution:
+        RTK when corrections arrive, plain GPS otherwise. A change of solution (RTK fix
+        gained or lost, a glitch) moves the estimate by up to metres while the buoys stay
+        put, so new detections land beside their landmarks. If at least realign_matches
+        confirmed landmarks each have their own nearest detection within realign_gate and
+        those offsets agree (within realign_spread of their median) on more than
+        realign_min, every landmark moves by the mean of the agreeing offsets. Returns the
+        applied (dx, dy) or None; the obstacle cells must be moved the same way.
+        """
+        confirmed = [t for t in self.tracks if t['id'] is not None]
+        if len(confirmed) < self.realign_matches or len(clusters) < self.realign_matches:
+            return None
+        centers = np.array([c.center[:2] for c in clusters], float)
+        matches = []
+        for track in confirmed:
+            distance = np.linalg.norm(centers-track['xy'], axis=1)
+            j = int(np.argmin(distance))
+            if distance[j] <= self.realign_gate:
+                matches.append((j, centers[j]-track['xy']))
+        used = [j for j, _ in matches]
+        offsets = np.array([o for j, o in matches if used.count(j) == 1]).reshape(-1, 2)
+        if len(offsets) < self.realign_matches:
+            return None
+        median = np.median(offsets, axis=0)
+        if np.linalg.norm(median) <= self.realign_min:
+            return None
+        inliers = np.linalg.norm(offsets-median, axis=1) <= self.realign_spread
+        if inliers.sum() < self.realign_matches or inliers.mean() < 0.75:
+            return None  # Disagreeing offsets: not a common jump, leave the map alone.
+        shift = offsets[inliers].mean(axis=0)
+        for track in self.tracks:
+            track['xy'] = track['xy']+shift
+        self.revision += 1
+        self.shifts.append((float(shift[0]), float(shift[1])))
+        return float(shift[0]), float(shift[1])
+
     def update_lidar(self, time, boat, clusters):
-        """Associate one window of buoy-sized clusters (survey_core.Cluster)."""
+        """Associate one window of buoy-sized clusters (survey_core.Cluster).
+
+        The map is first realigned if the vessel position jumped (see realign); the shift
+        applied, or None, is kept in last_shift for the obstacle grid.
+        """
         self.windows += 1
         clusters = [c for c in clusters if self.inside(c.center)]
+        self.last_shift = self.realign(clusters)
         pairs = sorted((math.dist(t['xy'], c.center), i, j) for i, t in enumerate(self.tracks)
                        for j, c in enumerate(clusters) if math.dist(t['xy'], c.center) <= self.gate)
         used_tracks, used_clusters = set(), set()
@@ -255,7 +326,8 @@ class LandmarkMap:
                     self.rejected += 1  # More objects than buoys: needs the operator's attention.
                     continue
                 confirmed += 1
-                track['id'] = f'B{confirmed}'
+                self.named += 1  # Not the count: a purged landmark's name is never given again.
+                track['id'] = f'B{self.named}'
                 self.revision += 1
         self.tracks = [t for t in self.tracks
                        if t['id'] is not None or time-t['seen'] <= self.tentative_timeout]

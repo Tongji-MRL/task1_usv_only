@@ -154,5 +154,62 @@ class GatingTests(unittest.TestCase):
             Mission(crusie_speed=0.3)
 
 
+class Task4Tests(unittest.TestCase):
+    """Task 4 from the state machine: a keep-out zone pauses Task 1, "resume" continues it."""
+
+    def test_keep_out_zone_around_the_vessel_is_left_then_task1_completes(self):
+        sim = ms.Simulation()
+        sim.mission.start()
+        sim.run(900, until=lambda s, out: 'circle_entry_done' in [e['type'] for e in s.events])
+        here = tuple(sim.pose[:2])
+        zone = dict(x=here[0], y=here[1], radius=2.0)
+        sim.mission.set_incident(zone)
+        out = sim.run(120, until=lambda s, o: o['state'] == 'TASK4_PAUSE' and s.speed < 0.01 and
+                      math.dist(s.pose[:2], here) > 2.0+1.5)
+        self.assertEqual(out['state'], 'TASK4_PAUSE')
+        self.assertGreater(math.dist(sim.pose[:2], here), zone['radius'], 'still inside the keep-out zone')
+        waited = sim.time
+        out = sim.run(30)  # Outside: waits, zero commands.
+        self.assertEqual(out['state'], 'TASK4_PAUSE')
+        self.assertTrue(all(v == 0.0 and w == 0.0 for v, w in sim.commands[-200:]))
+        self.assertGreater(sim.time-waited, 25.0)
+        sim.mission.set_incident(None)
+        out = sim.run(1200, until=finished)
+        self.assertEqual(out['state'], 'COMPLETE', sim.events[-5:])
+        types = [e['type'] for e in sim.events]
+        self.assertLess(types.index('task4_begin'), types.index('task4_resume'))
+        verdict = sim.judge()
+        self.assertTrue(all(e['legal'] for e in verdict['passages']), verdict['passages'])
+        self.assertGreater(verdict['clearance'], 0.1)
+
+    def test_zone_elsewhere_stops_the_vessel_and_pause_time_is_not_task1_time(self):
+        sim = ms.Simulation(total_timeout=120.0)
+        sim.mission.start()
+        sim.run(20)
+        sim.mission.set_incident(dict(x=sim.pose[0]+50.0, y=sim.pose[1], radius=5.0))
+        sim.run(5)  # The hull slows down.
+        out = sim.run(100)  # Together with the next 100 s longer than the Task 1 time limit.
+        sim.inputs_ok = False  # An input stalls during Task 4: HOLD, then back to the pause.
+        self.assertEqual(sim.run(5)['state'], 'HOLD')
+        sim.inputs_ok = True
+        out = sim.run(100)
+        self.assertEqual(out['state'], 'TASK4_PAUSE')
+        self.assertTrue(all(v == 0.0 and w == 0.0 for v, w in sim.commands[-1000:]))
+        sim.mission.set_incident(None)
+        out = sim.run(1.0)
+        self.assertNotIn(out['state'], ('TASK4_PAUSE', 'ABORT', 'COMPLETE'))  # Resumed, not timed out.
+        self.assertLess(sim.mission.elapsed(sim.time), 40.0)
+
+    def test_unplaced_zone_centre_only_stops(self):
+        sim = ms.Simulation()
+        sim.mission.start()
+        sim.run(20)
+        sim.mission.set_incident(dict(x=None, y=None, radius=10.0))  # No GNSS fix for the centre.
+        sim.run(5)
+        out = sim.run(10)
+        self.assertEqual(out['state'], 'TASK4_PAUSE')
+        self.assertTrue(all(v == 0.0 and w == 0.0 for v, w in sim.commands[-100:]))
+
+
 if __name__ == '__main__':
     unittest.main()

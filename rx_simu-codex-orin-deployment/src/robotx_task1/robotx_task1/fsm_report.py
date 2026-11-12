@@ -16,10 +16,25 @@ Task 1 sends one SafePassageReport with every classified buoy when the
 mission ends, COMPLETE or ABORT (buoys reported after an abort still score),
 and only then progress FINISHED, so the state machine moves on to the next
 task either way; after an ABORT the reason is in `error` (null after COMPLETE).
+
+From the state machine Task 1 takes:
+
+* /tongji_mrl/twave/course_config (published when Task 1 starts): the course
+  corners, as in the official RxCourse (`corners`: latitude/longitude), used as
+  the course boundary;
+* /tongji_mrl/twave/task_cmd, Task 4 (the state machine keeps Task 1 running):
+  {"task": "TASK4", "command": {"type": "TASK4_BEGIN", "command_seq": n,
+  "center": {latitude, longitude}, "radius_m": r, ...}} is a keep-out zone and
+  {"task": "TASK4", "command": "resume"} ends it. Both are acknowledged with an
+  IncidentAck {"incident_ack": {"command_seq": n}} (the resume with the seq of
+  the TASK4_BEGIN it ends) on the result topic, in the same envelope.
 """
+import json
+import math
 from datetime import datetime, timezone
 
 TERMINAL = ('COMPLETE', 'ABORT')
+EARTH_RADIUS = 6378137.0  # Same small-offset model as robocommand_core.offset_latlon.
 
 
 def progress(state, error=None):
@@ -42,10 +57,120 @@ class ReportEnvelope:
             raise ValueError('initial_seq must be a nonnegative integer')
         self.team_id, self.vehicle_id, self.seq = str(team_id).strip(), str(vehicle_id).strip(), initial_seq
 
-    def safe_passage(self, body, unix_seconds):
+    def envelope(self, name, body, unix_seconds):
         self.seq += 1
-        return dict(team_id=self.team_id, vehicle_id=self.vehicle_id, seq=self.seq,
-                    sent_at=timestamp(unix_seconds), safe_passage=body)
+        return {'team_id': self.team_id, 'vehicle_id': self.vehicle_id, 'seq': self.seq,
+                'sent_at': timestamp(unix_seconds), name: body}
+
+    def safe_passage(self, body, unix_seconds):
+        return self.envelope('safe_passage', body, unix_seconds)
+
+    def incident_ack(self, command_seq, unix_seconds):
+        return self.envelope('incident_ack', {'command_seq': command_seq}, unix_seconds)
+
+
+def local_xy(latitude, longitude, ref_latitude, ref_longitude, ref_xy=(0.0, 0.0)):
+    """East/north position [m] of a WGS84 point, given a reference point's WGS84 and local
+    position (e.g. the vessel's fused fix and its odometry position): the inverse of
+    robocommand_core.offset_latlon, so reports and inputs use one model."""
+    east = math.radians(longitude-ref_longitude)*EARTH_RADIUS*math.cos(math.radians(ref_latitude))
+    north = math.radians(latitude-ref_latitude)*EARTH_RADIUS
+    return ref_xy[0]+east, ref_xy[1]+north
+
+
+def _latlon(value):
+    """(latitude, longitude) from {latitude, longitude} / {lat, lon} / {latitude_deg, ...} / [lat, lon]."""
+    if isinstance(value, dict):
+        for la, lo in (('latitude', 'longitude'), ('lat', 'lon'), ('latitude_deg', 'longitude_deg')):
+            if la in value and lo in value:
+                value = (value[la], value[lo])
+                break
+        else:
+            return None
+    if isinstance(value, (list, tuple)) and len(value) >= 2:
+        try:
+            latitude, longitude = float(value[0]), float(value[1])
+        except (TypeError, ValueError):
+            return None
+        if math.isfinite(latitude) and math.isfinite(longitude) and abs(latitude) <= 90 and abs(longitude) <= 180:
+            return latitude, longitude
+    return None
+
+
+def course_corners(payload):
+    """Course corners [(lat, lon), ...] from a course_config payload (dict or JSON text), or None.
+
+    The `corners` list of the official RxCourse is searched for at any depth, so an
+    envelope around it ({"course_config": {...}}, {"payload": {...}}) does not matter.
+    At least three valid corners are needed.
+    """
+    if isinstance(payload, str):
+        try:
+            payload = json.loads(payload)
+        except ValueError:
+            return None
+    stack = [payload]
+    while stack:
+        item = stack.pop()
+        if isinstance(item, dict):
+            if isinstance(item.get('corners'), list):
+                corners = [_latlon(c) for c in item['corners']]
+                if len(corners) >= 3 and all(c is not None for c in corners):
+                    return corners
+            stack.extend(item.values())
+        elif isinstance(item, list):
+            stack.extend(item)
+    return None
+
+
+def task4_command(payload):
+    """('begin', seq, (lat, lon) or None, radius) | ('resume',) | None for a task_cmd payload."""
+    if isinstance(payload, str):
+        try:
+            payload = json.loads(payload)
+        except ValueError:
+            return None
+    if not isinstance(payload, dict) or payload.get('task') != 'TASK4' or payload.get('vehicle', 'usv') != 'usv':
+        return None
+    command = payload.get('command')
+    if isinstance(command, str) and command.strip().lower() == 'resume':
+        return ('resume',)
+    if isinstance(command, dict):
+        kind = str(command.get('type', '')).upper()
+        if kind in ('RESUME', 'ALL_CLEAR'):
+            return ('resume',)
+        if kind in ('TASK4_BEGIN', 'KEEP_OUT_ZONE'):
+            try:
+                radius = float(command.get('radius_m'))
+            except (TypeError, ValueError):
+                radius = float('nan')
+            return ('begin', command.get('command_seq'), _latlon(command.get('center')),
+                    radius if math.isfinite(radius) and radius >= 0.0 else None)
+    return None
+
+
+class IncidentLink:
+    """Task 4 seen from Task 1: which IncidentAck to send and whether Task 1 is paused.
+
+    handle() returns (ack command_seq or None, changed). A repeated TASK4_BEGIN with the
+    same seq is acknowledged again but changes nothing; a resume without an active Task 4
+    is acknowledged with the last seq (or not at all if there never was one).
+    """
+
+    def __init__(self):
+        self.active, self.seq, self.center, self.radius = False, None, None, None
+
+    def handle(self, command):
+        if command is None:
+            return None, False
+        if command[0] == 'begin':
+            _, seq, center, radius = command
+            changed = not self.active or seq != self.seq or center != self.center or radius != self.radius
+            self.active, self.seq, self.center, self.radius = True, seq, center, radius
+            return seq, changed
+        changed = self.active
+        self.active = False
+        return self.seq, changed
 
 
 class StateMachineWatch:

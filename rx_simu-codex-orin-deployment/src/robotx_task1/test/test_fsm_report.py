@@ -3,7 +3,8 @@ import json
 import unittest
 
 from robotx_task1 import robocommand_core as rc
-from robotx_task1.fsm_report import ReportEnvelope, StateMachineLink, StateMachineWatch, progress
+from robotx_task1.fsm_report import (IncidentLink, ReportEnvelope, StateMachineLink, StateMachineWatch,
+                                     course_corners, local_xy, progress, task4_command)
 
 BODY = rc.safe_passage([dict(id='B1', x=1.0, y=0.0, state=rc.RED), dict(id='B2', x=0.0, y=1.0, state=rc.GREEN),
                         dict(id='B3', x=2.0, y=2.0, state=rc.FLASH_BLUE),
@@ -94,6 +95,75 @@ class EndTests(unittest.TestCase):
         self.assertEqual(envelope.safe_passage({}, 0.0)['seq'], 8)
         with self.assertRaises(ValueError):
             ReportEnvelope('', 'usv')
+
+
+CORNERS = [{'latitude': 1.2810, 'longitude': 103.8540}, {'latitude': 1.2810, 'longitude': 103.8543},
+           {'latitude': 1.2813, 'longitude': 103.8543}, {'latitude': 1.2813, 'longitude': 103.8540}]
+# The two Task 4 messages of the main state machine (interface sheet of 2026-11-13).
+BEGIN = {'vehicle': 'usv', 'task': 'TASK4', 'progress': None, 'error': None,
+         'command': {'type': 'TASK4_BEGIN', 'command_seq': 100,
+                     'center': {'latitude': 31.000001, 'longitude': 121.000001},
+                     'radius_m': 500.0, 'vehicle_type': 'USV'}}
+RESUME = {'vehicle': 'usv', 'task': 'TASK4', 'progress': None, 'error': None, 'command': 'resume'}
+
+
+class CourseConfigTests(unittest.TestCase):
+    def test_rxcourse_corners_in_any_envelope(self):
+        expected = [(c['latitude'], c['longitude']) for c in CORNERS]
+        for payload in ({'course_id': 'A', 'pinger_freq_hz': 0, 'corners': CORNERS},
+                        {'payload': {'course': {'corners': CORNERS}}},
+                        {'corners': [[c['latitude'], c['longitude']] for c in CORNERS]},
+                        {'corners': [{'lat': c['latitude'], 'lon': c['longitude']} for c in CORNERS]}):
+            with self.subTest(payload=payload):
+                self.assertEqual(course_corners(json.dumps(payload)), expected)
+                self.assertEqual(course_corners(payload), expected)
+
+    def test_unusable_course_config(self):
+        for payload in ('not json', '{}', json.dumps({'corners': CORNERS[:2]}),
+                        json.dumps({'corners': CORNERS[:3]+[{'latitude': 'x', 'longitude': 0}]}),
+                        json.dumps({'corners': CORNERS[:3]+[{'latitude': 95.0, 'longitude': 0}]})):
+            with self.subTest(payload=payload):
+                self.assertIsNone(course_corners(payload))
+
+    def test_wgs84_to_local_is_the_inverse_of_the_report_model(self):
+        ref, xy = (1.2811, 103.8541), (12.0, -3.0)
+        for east, north in ((0.0, 0.0), (25.0, -40.0), (-7.5, 3.25)):
+            lat, lon = rc.offset_latlon(ref[0], ref[1], east, north)
+            x, y = local_xy(lat, lon, ref[0], ref[1], xy)
+            self.assertAlmostEqual(x, xy[0]+east, places=3)
+            self.assertAlmostEqual(y, xy[1]+north, places=3)
+
+
+class Task4Tests(unittest.TestCase):
+    def test_the_state_machine_commands(self):
+        self.assertEqual(task4_command(json.dumps(BEGIN)), ('begin', 100, (31.000001, 121.000001), 500.0))
+        self.assertEqual(task4_command(json.dumps(RESUME)), ('resume',))
+        self.assertEqual(task4_command(dict(RESUME, command={'type': 'ALL_CLEAR'})), ('resume',))
+        for other in (dict(BEGIN, task='TASK3'), dict(BEGIN, vehicle='uav'), dict(RESUME, command='end'),
+                      'not json', json.dumps([1, 2])):
+            with self.subTest(other=other):
+                self.assertIsNone(task4_command(json.dumps(other) if isinstance(other, dict) else other))
+        no_centre = task4_command(dict(BEGIN, command=dict(BEGIN['command'], center=None, radius_m='x')))
+        self.assertEqual(no_centre, ('begin', 100, None, None))
+
+    def test_begin_and_resume_are_both_acknowledged_with_the_begin_seq(self):
+        link = IncidentLink()
+        self.assertEqual(link.handle(task4_command(BEGIN)), (100, True))
+        self.assertTrue(link.active)
+        self.assertEqual(link.handle(task4_command(BEGIN)), (100, False))  # Repeated: acked, no change.
+        self.assertEqual(link.handle(task4_command(RESUME)), (100, True))  # "resume" carries no seq.
+        self.assertFalse(link.active)
+        self.assertEqual(link.handle(task4_command(RESUME)), (100, False))
+        self.assertEqual(IncidentLink().handle(task4_command(RESUME)), (None, False))  # Nothing to ack.
+        self.assertEqual(link.handle(None), (None, False))
+
+    def test_incident_ack_body_and_shared_sequence(self):
+        envelope = ReportEnvelope('TONG', 'usv', 0)
+        envelope.safe_passage({}, 0.0)
+        ack = envelope.incident_ack(100, 1794450001.0)
+        self.assertEqual(ack['incident_ack'], {'command_seq': 100})  # As in the interface sheet.
+        self.assertEqual((ack['team_id'], ack['vehicle_id'], ack['seq']), ('TONG', 'usv', 2))
+        self.assertEqual(ack['sent_at'], '2026-11-12T02:20:01Z')
 
 
 if __name__ == '__main__':

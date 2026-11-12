@@ -40,6 +40,7 @@ DEFAULTS = dict(
     gate_align=2.0, gate_through=1.5,  # Alignment and pass-through distances of a scoring gate [m].
     survey_until=0.75,  # Share of total_timeout after which classifying the rest is skipped.
     patrol_inset=2.0,   # Distance of the entry-search patrol from the boundary [m].
+    task4_margin=2.0,   # Task 4 keep-out zone: the vessel waits this far outside its edge [m].
     boundary=None)  # Course boundary polygon (the lettered buoys) in the mission frame.
 
 TERMINAL = ('COMPLETE', 'ABORT')
@@ -70,7 +71,19 @@ class Mission:
         self.tried_gates, self.no_gate_signature, self.prev_pose = set(), None, None
         self.patrol, self.patrolled, self.field_entered = None, set(), False
         self.patrol_retry_at = -float('inf')
+        # Task 4: keep-out zone dict(x, y, radius) in the mission frame (x, y None when the
+        # centre could not be placed), set by the state machine through set_incident().
+        self.incident, self.paused_since, self.paused_total, self.exit_path = None, None, 0.0, None
         self.reset_motion()
+
+    def set_incident(self, zone):
+        """Task 4 keep-out zone dict(x, y, radius), or None when Task 4 is over."""
+        self.incident = zone
+
+    def elapsed(self, now):
+        """Task 1 time, without the time paused for Task 4."""
+        paused = self.paused_total+(now-self.paused_since if self.paused_since is not None else 0.0)
+        return now-self.started_at-paused
 
     def reset_motion(self):
         self.leg = self.gap = self.look = self.ring = self.look_target = self.gate_target = None
@@ -102,7 +115,7 @@ class Mission:
         elif self.state not in TERMINAL:
             if not guided:
                 self.abort(f'FCU mode {mode}, armed={armed}: operator has control')
-            elif now-self.started_at > self.p['total_timeout']:
+            elif self.elapsed(now) > self.p['total_timeout']:
                 self.abort('total time limit reached')
             elif not inputs_ok:
                 if self.state != 'HOLD':
@@ -124,6 +137,7 @@ class Mission:
                         self.announced.add(event)
                         self.emit(event, id=seen['id'])
                 self.track_credit(pose)
+                self.task4_transition(now)
                 rate = self.yaw_rate(now, pose)
                 v, w = getattr(self, 'do_'+self.state.lower())(now, pose)
                 if self.last_yaw is not None:
@@ -161,6 +175,54 @@ class Mission:
         if self.state in TERMINAL or self.state in ('HOLD', 'WAIT_START'):
             v = w = 0.0
         return dict(v=float(v), w=float(w), state=self.state, detail=self.detail, events=self.events)
+
+    # ------------------------------------------------------------------ Task 4
+    def task4_transition(self, now):
+        """Pause for a Task 4 keep-out zone and resume when it is over (state TASK4_PAUSE)."""
+        if self.incident is not None and self.state != 'TASK4_PAUSE':
+            # Also after an input HOLD within the same Task 4: the pause clock keeps running.
+            self.paused_from = self.state
+            if self.paused_since is None:
+                self.paused_since = now
+            self.reset_motion()
+            self.exit_path = None
+            self.set('TASK4_PAUSE', f'Task 4 keep-out zone; Task 1 paused (was {self.paused_from})')
+            self.emit('task4_begin', paused_from=self.paused_from)
+        elif self.incident is None and self.paused_since is not None:
+            self.paused_total += now-self.paused_since
+            self.paused_since, self.exit_path = None, None
+            self.emit('task4_resume')
+            if self.state == 'TASK4_PAUSE':
+                self.reset_motion()
+                # Re-planned from where the vessel is now: legs, gaps and circles in progress
+                # are dropped (an unfinished circle is driven again).
+                self.set('PLAN' if self.entry_done else 'SEARCH_ENTRY', 'Task 4 over; Task 1 resumed')
+
+    def do_task4_pause(self, now, pose):
+        """Leave the keep-out zone if inside it (to its edge plus task4_margin), else wait."""
+        zone = self.incident
+        if zone is None or zone.get('x') is None:
+            return 0.0, 0.0  # Centre unknown (no GNSS fix): wait where the vessel is.
+        centre = np.array([zone['x'], zone['y']], float)
+        here = np.asarray(pose[:2], float)
+        out = float(zone['radius'])+self.p['task4_margin']
+        away = here-centre
+        if np.linalg.norm(away) >= out:
+            self.exit_path = None
+            return 0.0, 0.0
+        if self.exit_path is None:
+            direction = away/np.linalg.norm(away) if np.linalg.norm(away) > 1e-3 else \
+                np.array([math.cos(pose[2]), math.sin(pose[2])])
+            target = centre+direction*(out+0.5)
+            route = self.plan_route(tuple(here), tuple(target))
+            self.exit_path = ([tuple(here)]+[(w['x'], w['y']) for w in route['waypoints']]
+                              if route is not None else [tuple(here), tuple(target)])
+            self.emit('task4_exit', legal_route=route is not None)
+        while len(self.exit_path) > 2 and math.dist(pose[:2], self.exit_path[1]) <= self.p['arrive_tolerance']:
+            self.exit_path.pop(0)
+        v, w, _, _, _ = tc.follow(pose, self.exit_path[0], self.exit_path[1], self.p['cruise_speed'],
+                                  self.p['max_yaw_rate'])
+        return v, w
 
     def track_credit(self, pose):
         """Score items earned by the vessel's own motion since the last cycle (map buoys)."""

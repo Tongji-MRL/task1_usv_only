@@ -72,6 +72,15 @@ task1_fsm_bridge:
     # whole launch and its sensor drivers, when the node is gone for 5 s.
     state_machine_node: usv_state_machine_v2
     state_machine_timeout: 5.0
+    # version2 publishes the saved course_config here as it starts Task 1 (RxCourse
+    # `corners`, latitude/longitude): the course boundary. It is sent once, before this
+    # launch is up, so its publisher must be TRANSIENT_LOCAL to reach Task 1.
+    course_config_topic: /tongji_mrl/twave/course_config
+    # Fallback when no course_config arrives: JSON [[lat, lon], ...] of the corners, in order.
+    course_corners: ''
+    # Task 4 from the state machine: TASK4_BEGIN (keep-out zone) and "resume"; both are
+    # answered with an IncidentAck on the result topic.
+    task_cmd_topic: /tongji_mrl/twave/task_cmd
 
 task1:
   # On for the 2026-11-12 water test, at the team's request: once the state machine

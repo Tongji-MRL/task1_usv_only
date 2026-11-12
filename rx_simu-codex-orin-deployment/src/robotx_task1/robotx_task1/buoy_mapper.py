@@ -61,7 +61,7 @@ class BuoyMapper(Node):
         self.tree, self.poses, self.camera, self.info = core.StaticTree(), deque(maxlen=400), None, None
         self.origin_ns, self.window_index, self.pending = None, None, []
         self.lidar_stamp = self.image_stamp = None
-        self.counts = dict(clouds=0, clouds_without_pose=0, images=0, images_without_pose=0, labels=0)
+        self.counts = dict(clouds=0, clouds_without_pose=0, images=0, images_without_pose=0, labels=0, realigned=0)
         if self.p['color_range'] <= 0.0:
             self.get_logger().warning('color_range is 0: camera classification is disabled, all buoys stay UNKNOWN')
         latched = QoSProfile(depth=100, reliability=ReliabilityPolicy.RELIABLE,
@@ -70,6 +70,8 @@ class BuoyMapper(Node):
         self.obstacle_publisher = self.create_publisher(PointCloud2, '/task1/obstacles', 10)
         self.status = self.create_publisher(String, '/task1/mapper_status', 10)
         self.create_subscription(TFMessage, '/tf_static', self.on_static, latched)
+        # Course corners from the state machine's course_config (task1_fsm_bridge), latched.
+        self.create_subscription(String, '/task1/course_boundary', self.on_course_boundary, latched)
         self.create_subscription(Odometry, self.p['odom_topic'], self.on_odom, 50)
         self.create_subscription(PointCloud2, self.p['lidar_topic'], self.on_cloud, qos_profile_sensor_data)
         self.create_subscription(CameraInfo, self.p['info_topic'], self.on_info, qos_profile_sensor_data)
@@ -125,8 +127,25 @@ class BuoyMapper(Node):
         self.markers = moved[count:]
         self.map.boundary, self.grid.boundary, self.boundary_ready = polygon, polygon, True
         self.map.markers = self.grid.markers = self.markers
+        # A boundary from course_config can arrive after the first windows were mapped.
+        self.map.purge_outside()
+        self.grid.purge_outside()
         self.get_logger().info(f'Course boundary in {self.p["odom_frame"]}: {polygon}; markers: {self.markers}')
         return True
+
+    def on_course_boundary(self, message):
+        """Course corners from the state machine's course_config; a configured boundary wins."""
+        if self.p['boundary']:
+            return
+        try:
+            value = json.loads(message.data)
+            polygon = [[float(x), float(y)] for x, y in value['polygon']]
+        except (ValueError, KeyError, TypeError):
+            return
+        if len(polygon) >= 3:
+            self.boundary, self.p['boundary_frame'] = polygon, value.get('frame', self.p['odom_frame'])
+            self.boundary_ready = False  # Applied with the next LiDAR frame.
+            self.get_logger().info(f"Course boundary from course_config ({self.p['boundary_frame']}): {polygon}")
 
     def on_cloud(self, message):
         ns = stamp_ns(message.header.stamp)
@@ -158,6 +177,13 @@ class BuoyMapper(Node):
             clusters, groups = core.cluster(np.vstack(self.pending), self.p['tolerance'], members=True)
             found = core.candidates(clusters, self.p['min_points'], self.p['max_extent'])
             self.map.update_lidar(time, pose[0][:2], found)
+            if self.map.last_shift is not None:
+                # The vessel position jumped (GNSS solution change, e.g. RTK gained or lost):
+                # the obstacle cells were mapped from the same pose and move with the buoys.
+                self.grid.shift(*self.map.last_shift)
+                self.counts['realigned'] += 1
+                self.get_logger().warning('Vessel position jumped: map moved by (%.2f, %.2f) m'
+                                          % self.map.last_shift)
             # Too large for a buoy: platform, dock. Kept as obstacle cells for the planner.
             large = [g[:, :2] for c, g in zip(clusters, groups)
                      if c.extent > self.p['max_extent'] and c.count >= self.p['min_points']]

@@ -5,6 +5,23 @@
 本代码是 Orin 上**任务主状态机调用的一个任务模块**。它不连 RoboCommand，也不连地面站（OCS）：需要上报的内容以 ROS 话题发布，由主状态机订阅后转发给 OCS。
 
 > **当前状态（2026-11-11）**：逻辑在开发电脑上完成。离线测试 153 项中 148 项通过、1 项跳过，另外 4 项是旧仿真节点的测试，需要 ROS 才能运行。闭环仿真（Delta 5 种比例尺、现场照片、Alpha 共 84 个场景）全部完成，并按 handbook 估分满分。**ROS 节点还没在 Orin 上运行过，也没接过真实雷达、相机和飞控。** 部署和分阶段上船验证见 [docs/task1/orin_deployment.md](docs/task1/orin_deployment.md)。
+>
+> **2026-11-12/13 更新**：已在 Orin 上由 USV 状态机 version2 启动并端到端测试（不解锁）；与 version2 的实际接口以下面第 0 节为准，第 3–5 节中由主状态机转发 `/task1/robocommand`、调用 `/task1/start` 的旧设想已不再使用。
+
+## 0. 与 USV 状态机 version2 的接口（2026-11-13，以此为准）
+
+version2 进入 TASK1 时执行 `ros2 launch robotx_task1 task1_usv.launch.py`（无参数，配置在 `config/task1_usv_real.yaml`），并以独立会话运行；Task 1 自己启动 D435、MID-360，结束时一起关闭。Task 1 只和状态机通信，不直接连 OCS。全部为 `std_msgs/String` JSON，由 `task1_fsm_bridge` 收发：
+
+| 方向 | 话题 | 内容 |
+|---|---|---|
+| 状态机 → Task 1 | `/tongji_mrl/twave/course_config` | Task 1 启动时发一次保存的 course_config；取其中官方 RxCourse 的 `corners`（经纬度）作场地边界。**状态机这个发布者必须是 `TRANSIENT_LOCAL`**，否则 Task 1 节点还没起来就发完了 |
+| 状态机 → Task 1 | `/tongji_mrl/twave/task_cmd` | Task 4：`{"task":"TASK4","command":{"type":"TASK4_BEGIN","command_seq":n,"center":{latitude,longitude},"radius_m":r}}` 为禁入区，`{"task":"TASK4","command":"resume"}` 为结束 |
+| Task 1 → 状态机 | `/tongji_mrl/twave/progress` | `{"vehicle":"usv","task":"TASK1","progress":...,"error":...}`；状态变化时及每 2 s 一次；结束（COMPLETE 或 ABORT）发 `FINISHED`，ABORT 原因在 `error`；Task 4 暂停时为 `TASK1_TASK4_PAUSE` |
+| Task 1 → 状态机 | `/tongji_mrl/twave/result` | 任务结束时一次 SafePassageReport（全部已识别浮标的颜色和经纬度，入口、出口位置），**之后**才发 `FINISHED`；收到 Task 4 开始和恢复时各回一次 IncidentAck `{"incident_ack":{"command_seq":n}}`（恢复用开始时的 seq）。外层与 Task 3 相同：`team_id`、`vehicle_id`、`seq`、`sent_at` |
+
+- **Task 4 期间**：状态机不停 Task 1。Task 1 收到 TASK4_BEGIN 后暂停（`TASK4_PAUSE`）：在禁入区内就沿合法路线驶出到区边缘外 2 m，在区外就停船等待；收到 resume 后从当前位置重新规划继续。暂停时间不计入 Task 1 的 1200 s 时限。状态机在 Task 4 期间忽略 `FINISHED`，Task 1 会持续每秒重发，且 Task 4 期间不自行退出。
+- **定位**：建图、规划都在飞控 EKF 的 `odom`（ENU）里。飞控有 RTK 改正时用 RTK，没有就用普通 GPS，无需切换代码；RTK 获得/丢失造成的位置跳变由建图自动整体平移校正（至少 3 个浮标偏移一致且大于 0.3 m）。GNSS 解类型在 `/task1/mission_status` 的 `gnss_fix_type`（6 RTK 固定、5 浮点、3 普通 3D）。
+- **退出保护**：状态机节点消失 5 s 后 Task 1 自行退出（含传感器驱动），避免无人管理时仍在控制。
 
 ---
 

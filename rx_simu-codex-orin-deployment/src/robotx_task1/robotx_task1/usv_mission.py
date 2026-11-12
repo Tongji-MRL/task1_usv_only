@@ -74,11 +74,18 @@ class UsvMission(Node):
         self.create_subscription(TFMessage, '/tf_static', self.on_static, latched)
         self.create_subscription(State, self.p['state_topic'], self.on_state, qos_profile_sensor_data)
         self.create_subscription(LaserScan, self.p['scan_topic'], self.on_scan, qos_profile_sensor_data)
-        if self.p['require_rtk_fixed']:
+        # GNSS solution, always watched and reported (fix_type 6 RTK fixed, 5 RTK float, 3 3D):
+        # the FCU uses RTK whenever corrections arrive and falls back to plain GPS otherwise.
+        try:
             from mavros_msgs.msg import GPSRAW
             self.create_subscription(GPSRAW, self.p['gps_topic'], self.on_gps, qos_profile_sensor_data)
-        else:
+        except ImportError:
+            self.get_logger().warning('mavros_msgs GPSRAW unavailable: GNSS fix type not reported')
+        if not self.p['require_rtk_fixed']:
             self.get_logger().warning('require_rtk_fixed is false: gaps are threaded without an RTK check')
+        # From task1_fsm_bridge: the Task 4 keep-out zone and the course boundary (latched).
+        self.create_subscription(String, '/task1/incident', self.on_incident, latched)
+        self.create_subscription(String, '/task1/course_boundary', self.on_course_boundary, latched)
         self.create_service(Trigger, '/task1/start', self.on_start)
         if self.p['autostart']:
             self.mission.start()
@@ -132,6 +139,33 @@ class UsvMission(Node):
 
     def on_gps(self, message):
         self.gps, self.gps_at = message, self.now()
+
+    def on_incident(self, message):
+        """{"active": bool, "x", "y" (odom, null if unplaced), "radius"} from task1_fsm_bridge."""
+        try:
+            value = json.loads(message.data)
+        except ValueError:
+            return
+        if not isinstance(value, dict):
+            return
+        zone = (dict(x=value.get('x'), y=value.get('y'), radius=float(value.get('radius') or 0.0))
+                if value.get('active') else None)
+        self.mission.set_incident(zone)
+        self.get_logger().info('Task 4 keep-out zone: '+json.dumps(zone) if zone else 'Task 4 over')
+
+    def on_course_boundary(self, message):
+        """Course corners from the state machine's course_config; a configured boundary wins."""
+        if self.p['boundary']:
+            return
+        try:
+            value = json.loads(message.data)
+            polygon = [[float(x), float(y)] for x, y in value['polygon']]
+        except (ValueError, KeyError, TypeError):
+            return
+        if len(polygon) >= 3:
+            self.boundary, self.p['boundary_frame'] = polygon, value.get('frame', self.p['odom_frame'])
+            self.boundary_ready = False  # Applied by inputs() once the frame is known.
+            self.get_logger().info(f"Course boundary from course_config ({self.p['boundary_frame']}): {polygon}")
 
     def on_start(self, _request, response):
         self.mission.start()
@@ -188,7 +222,10 @@ class UsvMission(Node):
         self.status.publish(String(data=json.dumps(dict(
             state=result['state'], detail=result['detail'], v=result['v'], w=result['w'], inputs_ok=ok,
             input_problem=reason, blocked=blocked, rtk_ok=rtk_ok, motion_enabled=self.command is not None,
-            passed=self.mission.passed, assumed_off=sorted(self.mission.assumed_off), events=result['events']))))
+            passed=self.mission.passed, assumed_off=sorted(self.mission.assumed_off), events=result['events'],
+            gnss_fix_type=(int(self.gps.fix_type) if self.gps is not None and
+                           (self.now()-self.gps_at)/1e9 <= self.p['gps_timeout'] else None),
+            task4=self.mission.incident is not None))))
 
     def stop(self):
         if self.command is not None:
