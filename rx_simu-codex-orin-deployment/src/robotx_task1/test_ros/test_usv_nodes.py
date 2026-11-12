@@ -34,12 +34,14 @@ def odometry(node, x=0.0, age=0.0):
     return message
 
 
-def cloud(node, centers, extra=(), frame='livox_frame'):
+def cloud(node, centers, extra=(), frame='livox_frame', age=0.05):
+    """A cloud stamped `age` seconds ago, like a filtered LiDAR frame: the mapper only
+    interpolates odometry, so a frame newer than the latest odometry sample is dropped."""
     points = np.array([[cx+0.15*math.cos(a), cy+0.15*math.sin(a), 0.2+0.05*i]
                        for cx, cy in centers for i, a in enumerate(np.linspace(0, 6, 12))]+list(extra),
                       dtype='<f4').reshape(-1, 3)
     message = PointCloud2()
-    message.header.stamp = node.get_clock().now().to_msg()
+    message.header.stamp = rclpy.time.Time(nanoseconds=node.get_clock().now().nanoseconds-int(age*1e9)).to_msg()
     message.header.frame_id = frame
     message.height, message.width, message.point_step = 1, len(points), 12
     message.row_step = 12*len(points)
