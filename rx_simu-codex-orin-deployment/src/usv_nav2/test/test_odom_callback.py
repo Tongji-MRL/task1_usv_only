@@ -49,6 +49,7 @@ class OdometryCallbackTests(unittest.TestCase):
     def setUp(self):
         self.node = self.node_class.__new__(self.node_class)
         self.node.parent, self.node.body, self.node.stabilized = 'map', 'base_link', 'base_stabilized'
+        self.node.output_parent = 'map'
         self.node.max_age = 0.5
         self.node.tf = Mock()
         self.node.odom_pub = Mock()
@@ -80,6 +81,16 @@ class OdometryCallbackTests(unittest.TestCase):
         self.assertIs(level.header.stamp, msg.header.stamp)
         self.assertIs(body.header.stamp, msg.header.stamp)
         self.assertEqual((level.transform.translation.x, level.transform.translation.y), (3., -2.))
+
+    def test_renamed_parent_frame_is_used_for_odometry_and_tf(self):
+        # Default MAVROS calls its EKF local frame 'map'; the Task 1 nodes call it 'odom'.
+        self.node.output_parent = 'odom'
+        msg = self.message()
+        self.node.on_odom(msg)
+        relayed = self.node.odom_pub.publish.call_args.args[0]
+        self.assertEqual((relayed.header.frame_id, relayed.child_frame_id), ('odom', 'base_link'))
+        level, _ = self.node.tf.sendTransform.call_args.args[0]
+        self.assertEqual((level.header.frame_id, level.child_frame_id), ('odom', 'base_stabilized'))
 
     def test_invalid_input_neither_relays_nor_publishes_tf(self):
         bad_messages = [self.message() for _ in range(5)]

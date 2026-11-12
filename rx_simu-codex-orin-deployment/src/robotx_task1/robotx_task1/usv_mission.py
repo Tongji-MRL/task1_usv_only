@@ -4,7 +4,7 @@ Reads /task1/landmarks, /task1/obstacles, /usv/odom, /mavros/state and /scan, ru
 publishes Twist on /usv/cmd_vel for rover_bridge, which keeps all of its own
 gates. This node never arms and never changes the FCU mode.
 
-Motion needs all of: enable_motion:=true at start-up, a /task1/start request,
+Motion needs all of: enable_motion:=true at start-up, a /task1/start request (or autostart),
 fresh inputs, an armed FCU in GUIDED and no other publisher on the command
 topic. With enable_motion false it only publishes the status (preview).
 """
@@ -37,7 +37,10 @@ DEFAULTS = dict(
     # True: threading a gap needs GPS_RAW_INT fix_type 6 (RTK fixed) from the gps_status plugin.
     require_rtk_fixed=False, stop_box_length=1.0, stop_box_half_width=0.45, rate=10.0,
     # Course boundary (same parameter as buoy_mapper): the route keeps clear of it.
-    boundary='', boundary_frame='map')
+    boundary='', boundary_frame='map',
+    # True: the start request is made at start-up (the USV state machine starting this
+    # launch is the start). Motion still needs every other gate below.
+    autostart=False)
 TUNABLE = ('cruise_speed', 'thread_speed', 'circle_speed', 'max_yaw_rate', 'search_yaw_rate', 'look_range',
            'look_min_range', 'look_timeout', 'align_tolerance', 'arrive_tolerance', 'search_step', 'total_timeout')
 
@@ -77,6 +80,9 @@ class UsvMission(Node):
         else:
             self.get_logger().warning('require_rtk_fixed is false: gaps are threaded without an RTK check')
         self.create_service(Trigger, '/task1/start', self.on_start)
+        if self.p['autostart']:
+            self.mission.start()
+            self.get_logger().info('autostart: start requested at start-up')
         self.create_timer(1.0/self.p['rate'], self.tick)
         self.get_logger().info('Motion output ' + ('ENABLED' if self.command else 'disabled (preview)'))
 

@@ -1,0 +1,101 @@
+# Task 1 (USV-only) on the T-Wave Orin, as started by the USV state machine
+# (usv_orin_state_machine version2):
+#     ros2 launch robotx_task1 task1_usv.launch.py
+# The launch inherits the state machine's environment (ROS_DOMAIN_ID=62,
+# ROS_LOCALHOST_ONLY=0); do not source scripts/hardware_env.sh for this path.
+# A launch argument given on the command line overrides the task1 section.
+#
+# Entries marked ESTIMATE are first guesses for the first water test; replace
+# them with measured values. Entries marked MEASURE are empty on purpose. What depends on them is not
+# started, or stays disabled, and the launch log says so:
+#   map origin       -> no map -> odom, so `boundary` / `markers` cannot be used
+#   camera mount     -> no base_link -> camera TF, so no colour classification
+#   hull + heights   -> no LiDAR filter and /scan, so no map and the mission HOLDs
+
+odom_tf:
+  ros__parameters:
+    odom_topic: /mavros/local_position/odom
+    output_odom_topic: /usv/odom
+    publish_tf: true
+    # The team's MAVROS (default apm config) reports its EKF local frame as "map";
+    # the Task 1 nodes call that frame "odom" (their "map" is the georeferenced course).
+    expected_parent_frame: map
+    output_parent_frame: odom
+    body_frame: base_link
+    stabilized_frame: base_stabilized
+    max_message_age: 0.5
+
+rover_bridge:
+  ros__parameters:
+    command_topic: /usv/cmd_vel
+    odom_topic: /mavros/local_position/odom
+    scan_topic: /scan
+    state_topic: /mavros/state
+    setpoint_topic: /mavros/setpoint_raw/local
+    expected_parent_frame: map
+    body_frame: base_link
+    max_speed: 0.2
+    max_yaw_rate: 0.2
+    command_timeout: 0.5
+    odom_timeout: 0.5
+    scan_timeout: 0.5
+    state_timeout: 2.0
+    publish_rate: 20.0
+
+livox_filter:
+  ros__parameters:
+    input_topic: /livox/lidar      # raw MID-360 driver output (team sensor stack)
+    # ESTIMATE 2026-11-12, to measure: the 1.2 m x 0.7 m hull with 5 cm margin, base_link
+    # assumed at the hull centre. JSON [[x, y], ...] in base_link, propellers included.
+    footprint: '[[0.65, 0.40], [-0.65, 0.40], [-0.65, -0.40], [0.65, -0.40]]'
+    marking_min_height: -0.3       # ESTIMATE: obstacle height window in base_stabilized [m]
+    marking_max_height: 1.5
+    body_frame: base_link
+    stabilized_frame: base_stabilized
+    fixed_frame: odom
+    input_timeout: 0.5
+
+task1_fsm_bridge:
+  ros__parameters:
+    # Same envelope values as the Task 3 executor; confirm with the communication owner.
+    team_id: TONG
+    vehicle_id: usv
+    report_seq_start: 0
+
+task1:
+  enable_control: false        # rover_bridge -> FCU setpoints; enable only stage by stage
+  enable_motion: false         # usv_mission -> /usv/cmd_vel
+  autostart: true              # the state machine starting this launch is the start request
+  color_range: 4.5             # ESTIMATE until the survey: reliable colour range [m]; 0 disables colour
+  look_range: ''
+  require_rtk_fixed: false
+  image_topic: /camera/d435/color/image_raw
+  info_topic: /camera/d435/color/camera_info
+  min_z: -1.0                  # MEASURE: buoy points above base_link [m]
+  max_z: 2.5
+  lamp_offset: 0.0
+  cruise_speed: 0.2
+  thread_speed: 0.2
+  max_yaw_rate: 0.2
+  boundary: ''                 # JSON [[x, y], ...] lettered corner buoys in the map frame [m]
+  markers: ''
+  map_origin_latitude: ''      # MEASURE: origin of the map frame (WGS84)
+  map_origin_longitude: ''
+  camera_frame: d435_link      # D435 body frame published by the team's realsense driver
+  # Camera body in base_link (x forward, y left, z up) [m, rad]. 2026-11-12, from the
+  # team: same lateral position as the MID-360, 4 cm ahead of it and 5 cm below it.
+  # MID-360 mount on the Orin: base_link -> livox_frame (0.15, 0.10, 0.22), no rotation.
+  # Assumed level and facing forward (roll = pitch = yaw = 0); check the pitch.
+  camera_x: 0.19
+  camera_y: 0.10
+  camera_z: 0.17
+  camera_roll: 0.0
+  camera_pitch: 0.0
+  camera_yaw: 0.0
+  scan_range_max: 20.0
+  enable_lidar_pipeline: true  # livox_filter + pointcloud_to_laserscan (team stack has neither)
+  enable_fsm_bridge: true      # progress and the final SafePassageReport to the state machine
+  enable_robocommand: true     # local /task1/robocommand record only; nothing is sent (ocs_host empty)
+  vehicle_id: USV1
+  ocs_host: ''
+  ocs_port: 47800

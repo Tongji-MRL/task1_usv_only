@@ -20,19 +20,25 @@ class OdomTF(Node):
             'output_odom_topic': '/usv/odom',
             'publish_tf': True,
             'expected_parent_frame': 'map',
+            # Name for that frame in the relayed odometry and TF; empty keeps it.
+            # A default MAVROS reports its EKF local frame as 'map', which the
+            # Task 1 nodes call 'odom' (their 'map' is the georeferenced course).
+            'output_parent_frame': '',
             'body_frame': 'base_link',
             'stabilized_frame': 'base_stabilized',
             'max_message_age': 0.5,
         }.items():
             self.declare_parameter(name, value)
         self.parent = self.get_parameter('expected_parent_frame').value
+        self.output_parent = self.get_parameter('output_parent_frame').value or self.parent
         self.body = self.get_parameter('body_frame').value
         self.stabilized = self.get_parameter('stabilized_frame').value
         self.max_age = self.get_parameter('max_message_age').value
         if not math.isfinite(self.max_age) or self.max_age <= 0.0:
             raise ValueError('max_message_age must be positive')
         if not all((self.parent, self.body, self.stabilized)) or len(
-                {self.parent, self.body, self.stabilized}) != 3:
+                {self.parent, self.body, self.stabilized}) != 3 or len(
+                {self.output_parent, self.body, self.stabilized}) != 3:
             raise ValueError('TF frame names must be nonempty and distinct')
         input_topic = self.get_parameter('odom_topic').value
         output_topic = self.get_parameter('output_odom_topic').value
@@ -69,8 +75,10 @@ class OdomTF(Node):
         except ValueError as error:
             self.get_logger().error(str(error), throttle_duration_sec=5.0)
             return
-        # Preserve the source message, including stamp, frames and covariance.
+        # Preserve the source message, including stamp, child frame and covariance;
+        # only the parent frame is renamed when output_parent_frame is set.
         # Humble Nav2 uses SystemDefaultsQoS for odometry subscriptions.
+        msg.header.frame_id = self.output_parent
         self.odom_pub.publish(msg)
         if self.tf is None:
             return
