@@ -48,6 +48,24 @@ class ReportEnvelope:
                     sent_at=timestamp(unix_seconds), safe_passage=body)
 
 
+class StateMachineWatch:
+    """True once the state machine was seen and has then been absent for `timeout` seconds.
+
+    The state machine starts Task 1 in its own session, so if the state machine dies
+    without cleaning up (killed, crashed, terminal closed), nothing else would stop
+    Task 1, which may hold the controls. Never expires before the first sighting, so
+    Task 1 can still be run on its own for tests; timeout <= 0 disables the watch.
+    """
+
+    def __init__(self, timeout):
+        self.timeout, self.seen_at = timeout, None
+
+    def update(self, now, present):
+        if present:
+            self.seen_at = now
+        return self.timeout > 0.0 and self.seen_at is not None and now-self.seen_at > self.timeout
+
+
 class StateMachineLink:
     """Decides what to send to the state machine for each mission status.
 

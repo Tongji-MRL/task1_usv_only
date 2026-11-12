@@ -3,7 +3,7 @@ import json
 import unittest
 
 from robotx_task1 import robocommand_core as rc
-from robotx_task1.fsm_report import ReportEnvelope, StateMachineLink, progress
+from robotx_task1.fsm_report import ReportEnvelope, StateMachineLink, StateMachineWatch, progress
 
 BODY = rc.safe_passage([dict(id='B1', x=1.0, y=0.0, state=rc.RED), dict(id='B2', x=0.0, y=1.0, state=rc.GREEN),
                         dict(id='B3', x=2.0, y=2.0, state=rc.FLASH_BLUE),
@@ -78,6 +78,16 @@ class EndTests(unittest.TestCase):
         out = bridge.update(5.0, dict(state='COMPLETE'), None, 5.0)  # Gave up: finish without it.
         self.assertEqual([(k, p['progress']) for k, p in out], [('progress', 'FINISHED')])
         self.assertTrue(bridge.missing_report)
+
+    def test_lost_state_machine_ends_task1_only_after_it_was_seen(self):
+        watch = StateMachineWatch(5.0)
+        self.assertFalse(watch.update(0.0, False))
+        self.assertFalse(watch.update(100.0, False))  # Never seen (run on its own): never expires.
+        self.assertFalse(watch.update(101.0, True))
+        self.assertFalse(watch.update(105.0, False))
+        self.assertFalse(watch.update(106.0, True))   # Back in time.
+        self.assertTrue(watch.update(111.5, False))   # Gone for more than 5 s.
+        self.assertFalse(StateMachineWatch(0.0).update(1e6, False))  # Disabled.
 
     def test_sequence_continues_from_the_configured_start(self):
         envelope = ReportEnvelope('TONG', 'usv', 7)

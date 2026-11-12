@@ -65,6 +65,11 @@ task1_fsm_bridge:
     team_id: TONG
     vehicle_id: usv
     report_seq_start: 0
+    # The state machine starts Task 1 in its own session; if the state machine node dies
+    # without cleaning up, Task 1 (controls on) would keep running. Exit, and with it the
+    # whole launch and its sensor drivers, when the node is gone for 5 s.
+    state_machine_node: usv_state_machine_v2
+    state_machine_timeout: 5.0
 
 task1:
   # On for the 2026-11-12 water test, at the team's request: once the state machine

@@ -17,7 +17,7 @@ from sensor_msgs.msg import NavSatFix
 from std_msgs.msg import String
 
 from . import robocommand_core as rc
-from .fsm_report import ReportEnvelope, StateMachineLink
+from .fsm_report import ReportEnvelope, StateMachineLink, StateMachineWatch
 
 DEFAULTS = dict(team_id='TONG', vehicle_id='usv', report_seq_start=0,
                 progress_topic='/tongji_mrl/twave/progress', result_topic='/tongji_mrl/twave/result',
@@ -26,7 +26,9 @@ DEFAULTS = dict(team_id='TONG', vehicle_id='usv', report_seq_start=0,
                 # > 0: exit this many seconds after FINISHED was first sent. The launch then shuts
                 # down every Task 1 node and the sensor drivers it started, also when the state
                 # machine does not stop it. 0: keep running until stopped.
-                exit_after_end=0.0)
+                exit_after_end=0.0,
+                # > 0: exit when the state machine node, once seen, is absent this long [s].
+                state_machine_node='usv_state_machine_v2', state_machine_timeout=0.0)
 
 
 class FsmBridge(Node):
@@ -40,6 +42,7 @@ class FsmBridge(Node):
                                      refresh=self.p['refresh'], repeat=self.p['repeat'],
                                      report_wait=self.p['report_wait'])
         self.status, self.buoys, self.fix, self.fix_at, self.xy = None, [], None, None, None
+        self.watch, self.graph_checked = StateMachineWatch(self.p['state_machine_timeout']), 0.0
         self.progress_pub = self.create_publisher(String, self.p['progress_topic'], 10)
         self.result_pub = self.create_publisher(String, self.p['result_topic'], 10)
         self.create_subscription(String, '/task1/mission_status', self.on_status, 10)
@@ -78,6 +81,14 @@ class FsmBridge(Node):
         return rc.safe_passage(self.buoys, self.xy, self.fix)
 
     def tick(self):
+        now = time.monotonic()
+        if self.p['state_machine_timeout'] > 0.0 and now-self.graph_checked >= 1.0:
+            self.graph_checked = now
+            present = self.p['state_machine_node'] in self.get_node_names()
+            if self.watch.update(now, present):
+                self.get_logger().error(f"State machine node {self.p['state_machine_node']} has been gone for "
+                                        f"{self.p['state_machine_timeout']:.0f} s: shutting down Task 1")
+                raise SystemExit(1)
         if self.status is None:
             return
         for kind, payload in self.link.update(time.monotonic(), self.status, self.report_body(), time.time()):
