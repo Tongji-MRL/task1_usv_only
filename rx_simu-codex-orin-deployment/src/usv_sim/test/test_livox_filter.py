@@ -65,5 +65,16 @@ class LivoxFormatTests(unittest.TestCase):
         self.assertEqual(len(node.pending),0)
         self.assertEqual(node.process_cloud.call_count,1)
 
+    def test_backlog_limit_keeps_only_the_newest_frames(self):
+        old,new=self.cloud([10e9]),self.cloud([10.1e9])
+        node=LivoxFilter.__new__(LivoxFilter)
+        node.p={'input_timeout':.5,'max_backlog':1};node.pending=deque([(old,100.),(new,100.1)])
+        node.fresh=Mock(return_value=True)
+        node.process_cloud=Mock(return_value=True)
+        with patch('usv_sim.livox_filter.time.monotonic',return_value=100.15):
+            node.process_pending()
+        self.assertEqual(node.process_cloud.call_args_list,[((new,),{})])  # The stale frame is skipped.
+        self.assertEqual(len(node.pending),0)
+
 
 if __name__=='__main__':unittest.main()

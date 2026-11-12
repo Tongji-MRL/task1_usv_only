@@ -55,7 +55,11 @@ class LivoxFilter(Node):
         super().__init__('livox_filter')
         defaults = dict(footprint='[]', body_frame='base_link', stabilized_frame='base_stabilized',
                         fixed_frame='odom', marking_min_height=.25, marking_max_height=3.,
-                        input_timeout=.5, input_topic='/livox/lidar')
+                        input_timeout=.5, input_topic='/livox/lidar',
+                        # Frames kept waiting; older ones are dropped first. On the Orin one
+                        # frame takes ~0.2 s, so a deep queue only adds latency (8 frames:
+                        # ~1 s, and everything downstream went stale); 1 keeps the newest.
+                        max_backlog=8)
         for k,v in defaults.items():
             self.declare_parameter(k,v)
         self.p = {k:self.get_parameter(k).value for k in defaults}
@@ -93,6 +97,8 @@ class LivoxFilter(Node):
         self.pending.append((msg,time.monotonic()))
 
     def process_pending(self):
+        while len(self.pending) > max(1, int(self.p.get('max_backlog', 8))):
+            self.pending.popleft()  # Superseded by a newer frame before it could be processed.
         while self.pending:
             msg,received=self.pending[0]
             if not self.fresh(msg.header) or time.monotonic()-received>self.p['input_timeout']:

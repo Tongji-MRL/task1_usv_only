@@ -54,7 +54,10 @@ livox_filter:
     body_frame: base_link
     stabilized_frame: base_stabilized
     fixed_frame: odom
-    input_timeout: 0.5
+    input_timeout: 0.5             # replaced by task1.lidar_timeout in the launch
+    # 2026-11-12 on the Orin: ~0.2 s per frame, so the default queue of 8 put the
+    # output ~1 s behind; keep only the newest frame (~5 Hz, ~0.3 s old).
+    max_backlog: 1
 
 task1_fsm_bridge:
   ros__parameters:
