@@ -6,6 +6,7 @@ remains the driver's first-point stamp. This does not implement LiDAR odometry.
 import copy
 import json
 import time
+from array import array
 from collections import OrderedDict, deque
 
 import numpy as np
@@ -90,7 +91,9 @@ class LivoxFilter(Node):
         out.height=1;out.width=len(points);out.point_step=12;out.row_step=12*len(points)
         out.fields=[PointField(name=k,offset=4*i,datatype=PointField.FLOAT32,count=1)
                     for i,k in enumerate(('x','y','z'))]
-        out.data=np.asarray(points,dtype='<f4').tobytes();out.is_dense=True
+        # array('B') takes the message's fast path; assigning bytes makes the generated
+        # setter type-check every byte (~290 ms of a ~350 ms MID-360 frame on the Orin).
+        out.data=array('B',np.asarray(points,dtype='<f4').tobytes());out.is_dense=True
         return out
 
     def on_cloud(self, msg):

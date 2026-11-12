@@ -40,6 +40,15 @@ class LivoxFormatTests(unittest.TestCase):
         self.assertEqual(out.width,0);self.assertEqual(len(out.data),0)
         self.assertEqual(out.header.stamp.sec,10)
 
+    def test_output_cloud_takes_the_fast_array_path_with_the_same_bytes(self):
+        # Assigning bytes to PointCloud2.data type-checks every byte in Python; on the
+        # Orin that was ~290 ms of a ~350 ms frame. array('B') is stored directly.
+        points=np.array([[1.,2.,3.],[4.,5.,6.]])
+        out=LivoxFilter.cloud(self.cloud([10e9]).header,points)
+        self.assertEqual(out.data.typecode,'B')
+        self.assertEqual(bytes(out.data),points.astype('<f4').tobytes())
+        self.assertEqual((out.width,out.point_step,out.row_step),(2,12,24))
+
     def test_empty_angles_remain_unknown(self):
         result=unknown_empty_bins([2.,math.inf,math.nan,-math.inf])
         self.assertEqual(result[0],2.)

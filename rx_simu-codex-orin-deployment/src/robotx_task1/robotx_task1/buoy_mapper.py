@@ -9,6 +9,7 @@ stops, the message ages and the mission holds. Nothing is restamped.
 """
 import json
 import math
+from array import array
 from collections import deque
 
 import numpy as np
@@ -234,7 +235,8 @@ class BuoyMapper(Node):
         obstacles.point_step, obstacles.row_step = 12, 12*len(cells)
         obstacles.fields = [PointField(name=n, offset=4*i, datatype=PointField.FLOAT32, count=1)
                             for i, n in enumerate('xyz')]
-        obstacles.data = np.column_stack([cells, np.zeros(len(cells), '<f4')]).astype('<f4').tobytes()
+        # array('B'): the message's fast path; assigning bytes type-checks every byte.
+        obstacles.data = array('B', np.column_stack([cells, np.zeros(len(cells), '<f4')]).astype('<f4').tobytes())
         obstacles.is_dense = True
         self.obstacle_publisher.publish(obstacles)
         self.status.publish(String(data=json.dumps(dict(
