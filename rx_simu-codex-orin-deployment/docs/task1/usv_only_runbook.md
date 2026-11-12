@@ -94,7 +94,7 @@ ros2 topic echo /task1/mission_status --once
 ros2 topic echo /task1/robocommand --once
 ```
 
-通过标志：`/task1/mapper_status` 里 `obstacle_cells` 在靠近 Task 3 平台后大于 0，四个字母浮标不在路标里；路标数量、位置与现场一致，相邻浮标没有被合并；靠近到 `C` 以内并让船头对着浮标 2–4 秒后，`state` 从 5 变成正确的灯态（0 灭、1 闪红、2 闪绿、3 闪蓝、4 常蓝）；`mission_status` 为 `WAIT_START` 且 `motion_enabled=false`。全程录 bag，带上 `/task1/landmarks`、`/task1/mapper_status`、`/task1/mission_status`。
+通过标志：`/task1/mapper_status` 里 `obstacle_cells` 在靠近 Task 3 平台后大于 0，四个字母浮标不在路标里；路标数量、位置与现场一致，相邻浮标没有被合并；靠近到 `C` 以内并让船头对着浮标 4–6 秒后，`state` 从 5 变成正确的灯态（0 灭、1 闪红、2 闪绿、3 闪蓝、4 常蓝）；`mission_status` 为 `WAIT_START` 且 `motion_enabled=false`。全程录 bag，带上 `/task1/landmarks`、`/task1/mapper_status`、`/task1/mission_status`。
 
 到这一步就具备方案第 4 步的上报能力（配合第 6 节的中继）。
 
@@ -142,7 +142,7 @@ python3 scripts/ocs_relay.py --gen robocommand/RobotX_2026/gen/python \
 - 三次近距离观察都没看到亮灯的浮标按灭灯处理（事件 `assumed_off`）。如果实际是相机问题，会把亮灯浮标当成灭灯。
 - 雷达停车框只阻止前进，不做绕行；雷达近距离盲区内的障碍看不到。
 - 没有风流补偿：对准门限（横偏 0.15 m、航向 5°）在有流时可能长时间达不到。
-- 相机时间戳、曝光、识色阈值全部没有见过真实数据。
+- 识色阈值只在一段岸上手机视频上检验过（第 10 节）；D435 的曝光、色相和相机时间戳没有见过真实数据。
 
 ## 8. 现场地图回放（2026-11-11）
 
@@ -252,3 +252,41 @@ python3 scripts/visualize_task1_field.py --field delta --scale 32   # 比例尺�
 **Alpha 场地**：`python3 scripts/visualize_task1_field.py --field alpha --video`，输出 `runs/task1_alpha_viz/`（`index.html`、`field.json`、`videos/run_XX.mp4`）。按 RoboCommand 截图取像素坐标，比例由 RoboNation 测试服务器里 Course Alpha 的四个角点经纬度换算（25 m × 30 m，25.9 像素/米，相邻浮标 4–6 m）。红 4、8、9，绿 2、6、7，灭 3、5，蓝 1、10；右上是 Task 3 码头；起点在南侧两个起点门浮标之间、船头向北。现场确认上方 1 号是闪蓝入口；面板上写的是“entry buoy-10、exit buoy-1”，两种都跑。视频由 `scripts/task1_video.py` 生成（matplotlib + ffmpeg，10 倍速）。
 
 **结果**（全部修复后）：Delta 五个比例尺 60/60、照片场地 20/20、Alpha 4/4，全部完成且按 handbook 估分满分，无错侧、无碰撞。离线测试新增 `test/test_rule_guard.py`（6 项）；`test_ros/test_usv_nodes.py` 新增 `markers` 的节点测试，只能在 Orin 上跑。
+
+## 12. 现场视频识色检验与修正（2026-11-12）
+
+用一段岸上手机拍的现场视频（960×544、30 fps、12.4 s；与第 8 节照片是同一场地，2、6、9 闪绿，4、7 闪红，8 闪蓝，另有码头边的橙色系泊球）检验识色。脚本 `scripts/test_lamp_video.py` 代替雷达在图像里找出亮斑并跟踪，再按指定帧率把框交给 `classify_roi` 和 `LampClassifier`：
+
+```bash
+python3 scripts/test_lamp_video.py <视频> --fps 10   # 输出 runs/lamp_video_<名>_<帧率>fps/
+```
+
+`timeline.png` 每行一个候选灯（框内小图 + 单帧标签色条），`report.json` 有每个候选的实测色相和每次判定时刻。
+
+**修正前发现的问题**
+
+1. **闪红判成灭灯**。亮着的红灯色相 328–346°（中位 333–337°），原红色区间从 340° 开始，九成帧标成“无灯”；3 s 无灯即锁存为灭灯，船会把红灯浮标当成两侧都能过的障碍。
+2. **橙色系泊球判成红灯**。原规则红绿只看 2 s 内的色相占比，不要求闪烁；系泊球的饱和度贴着阈值，时有时无，2 s 就判红。
+3. 抽帧 2 fps 时帧间隔 0.501 s 超过 `max_gap`（0.5 s），每帧都清零，全部判不出。
+
+**修正**（`survey_core.HUES`、`landmark_map.LampClassifier`）
+
+- 红色区间下限 340° 改为 320°；300° 的紫色仍不算。
+- 红、绿与闪蓝用同一判据：4 s 窗口内至少三段完整的亮 / 暗相位，每段 0.6–1.4 s。短于 0.3 s 的单帧闪动并入相邻相位，不打断计时。红绿判定从约 2 s 变为约 4 s。
+- 2 fps 不处理：抽帧至少 5 fps。
+
+**修正后**（10 fps 与 5 fps 结果相同）
+
+| 灯 | 修正前 | 修正后 |
+|---|---|---|
+| 8 号闪蓝 | 闪蓝 5.1 s | 闪蓝 5.3 s |
+| 2、9 号闪绿 | 绿 2.0 / 2.3 s | 绿 4.0 s |
+| 6 号闪绿（只在画面里 5 s） | 绿 8.0 s | 未判定：连续可见不足 4 s |
+| 4 号闪红 | 灭 3.0 s → 红 12.1 s | 红 4.0 s |
+| 7 号闪红（灯小、断续） | 灭 5.5 s → 红 12.1 s | 红 8.4 s |
+| 橙色系泊球 | 红 2.0 s | 未判定 |
+
+**回归**：离线测试 158 项中除 4 个需要 ROS 消息包、在 Windows 上无法导入的文件外全部通过（新增 6 项识色测试，其中系泊球用视频里的真实标签序列）。`test_obstacles` 的平台位置原来取自无障碍航线，红绿判定变慢后航线改变、取不到点，改为固定在原来那个点。现场地图回放与第 11 节相同：Delta 五个比例尺 60/60、照片场地 20/20、Alpha 4/4，全部完成、无错侧。
+
+**边界**：手机自动曝光，色相不等于 D435 的；没有雷达，框由脚本对准灯，是投影的最好情况；灭灯浮标不发光、脚本找不到，灭灯判定没有检验；视频里只有一盏蓝灯且在闪，常蓝没有检验。上船前仍需用 D435 录包，按 [usv_only_survey.md](usv_only_survey.md) 复核色相。
+

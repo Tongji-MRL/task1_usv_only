@@ -128,11 +128,12 @@ class ClosedLoopTests(unittest.TestCase):
         sim = ms.Simulation()
         sim.mission.start()
         sim.run(900, until=tm.finished)
-        # Put a 2 m platform where the unobstructed run went, away from every buoy.
-        start = sim.track[0][:2]
-        free = [p for p in sim.track if min(math.dist(p[:2], (b['x'], b['y'])) for b in sim.truth) > 2.6
-                and math.dist(p[:2], start) > 3.0]
-        center = free[len(free)//2][:2]
+        # A 2 m platform beside the unobstructed route, 2.8 m from the nearest buoy. The spot was
+        # once taken from that route; it is fixed now because the route shifts whenever the lamp
+        # timing does (with 4 s lamp decisions the run never gets 2.6 m clear of every buoy).
+        center = (2.74, 0.43)
+        self.assertGreater(min(math.dist(center, (b['x'], b['y'])) for b in sim.truth), 2.6)
+        self.assertLess(min(math.dist(p[:2], center) for p in sim.track), 2.0)  # In the way.
         sim = ms.Simulation(platforms=[(center, 2.0)])
         sim.mission.start()
         out = sim.run(1200, until=tm.finished)

@@ -20,8 +20,10 @@ BODY_FROM_OPTICAL = np.array([[0., 0., 1.], [-1., 0., 0.], [0., -1., 0.]])
 Cluster = namedtuple('Cluster', 'center count extent z_min z_max')
 Window = namedtuple('Window', 'time boat clusters')
 
-# Hue intervals in degrees. Yellow / orange and cyan stay unclassified.
-HUES = dict(red=((340., 360.), (0., 20.)), green=((90., 170.),), blue=((200., 265.),))
+# Hue intervals in degrees. Yellow / orange, cyan and purple stay unclassified.
+# Red starts at 320: the lit red lamps in the 2026-11 field video measured 328-346
+# (median 333-337), below the earlier 340 limit, and were all labelled 'none'.
+HUES = dict(red=((320., 360.), (0., 20.)), green=((90., 170.),), blue=((200., 265.),))
 # Operator truth label -> (expected camera label, lamp flashes at 50 % duty).
 TRUTH = dict(red=('red', True), green=('green', True), blue_flash=('blue', True),
              blue_steady=('blue', False), off=('none', False))

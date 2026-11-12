@@ -190,6 +190,16 @@ class ColorTests(unittest.TestCase):
         self.assertEqual(core.classify_roi(self.roi((70, 80, 90)))['label'], 'none')
         self.assertEqual(core.classify_roi(np.empty((0, 0, 3), np.uint8))['label'], 'none')
 
+    def test_red_lamp_hue_from_the_field_video(self):
+        # Lit red lamps in the 2026-11 field video measured hue 328-346, median 333-337.
+        for rgb in ((225, 25, 125), (230, 40, 110), (220, 30, 140)):
+            hue = core.hue_saturation_value(np.array([[rgb]], np.uint8))[0][0, 0]
+            with self.subTest(rgb=rgb, hue=round(float(hue))):
+                self.assertGreaterEqual(hue, 320.)
+                self.assertEqual(core.classify_roi(self.roi(rgb))['label'], 'red')
+        # Purple (hue 300) stays unclassified.
+        self.assertEqual(core.classify_roi(self.roi((200, 40, 200)))['label'], 'none')
+
     def test_overexposed_or_tiny_or_mixed_lamp_is_not_classified(self):
         white = core.classify_roi(self.roi((255, 255, 250)))
         self.assertEqual((white['label'], white['white']), ('none', 16))

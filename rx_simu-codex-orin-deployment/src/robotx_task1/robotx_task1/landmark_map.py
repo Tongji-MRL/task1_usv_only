@@ -16,16 +16,23 @@ NAMES = {OFF: 'off', RED: 'red', GREEN: 'green', FLASH_BLUE: 'blue_flash',
 class LampClassifier:
     """Decide one buoy's lamp state from timed labels red / green / blue / none.
 
-    Lamps flash 1 s on, 1 s off. Red and green need red_green_time of
-    observation; telling flashing from steady blue needs blue_time (two
-    periods); OFF needs off_time without any lit frame. Labels must only be
-    added while the buoy is inside the reliable color range and unobstructed.
+    Lamps flash 1 s on, 1 s off. Red and green only ever flash, so like
+    flashing blue they must show min_phases complete lit / dark phases of
+    about 1 s inside their window: a steady red or green object, or one that
+    flickers at the color threshold (the orange mooring ball in the 2026-11
+    field video), is never taken for a lamp. Both windows are 4 s, the
+    shortest that always holds three complete phases. OFF needs off_time
+    without any lit frame. Labels must only be added while the buoy is inside
+    the reliable color range and unobstructed.
     """
 
-    def __init__(self, red_green_time=2.0, blue_time=4.0, off_time=3.0, max_gap=0.5,
-                 correction_time=3.0):
+    def __init__(self, red_green_time=4.0, blue_time=4.0, off_time=3.0, max_gap=0.5,
+                 correction_time=3.0, min_phase=0.3, min_phases=3):
+        """min_phase: label runs shorter than this are single-frame flicker and do not end a phase.
+        min_phases: complete phases a flashing lamp must show inside its window."""
         self.red_green_time, self.blue_time, self.off_time = red_green_time, blue_time, off_time
         self.max_gap, self.correction_time = max_gap, correction_time
+        self.min_phase, self.min_phases = min_phase, min_phases
         self.samples = []
         self.state = UNKNOWN
         self.pending = None  # (different decision, time it was first made)
@@ -69,31 +76,43 @@ class LampClassifier:
         if recent:
             for label, state in (('red', RED), ('green', GREEN)):
                 others = sum(share(recent, k) for k in ('red', 'green', 'blue') if k != label)
-                if share(recent, label) >= 0.25 and others <= 0.05:
+                if share(recent, label) >= 0.25 and others <= 0.05 and self.flashing(recent, label):
                     return state
         long = self.window(self.blue_time)
         if long and share(long, 'red')+share(long, 'green') <= 0.05:
             blue = share(long, 'blue')
             if blue >= 0.85:
                 return STEADY_BLUE
-            if 0.25 <= blue <= 0.75 and self.flashing(long):
+            if 0.25 <= blue <= 0.75 and self.flashing(long, 'blue'):
                 return FLASH_BLUE
         quiet = self.window(self.off_time)
         if quiet and share(quiet, 'none') >= 0.97:
             return OFF
         return None
 
-    @staticmethod
-    def flashing(samples):
-        """True if the complete on / off phases inside the window last about 1 s."""
-        runs, start = [], 0
-        for i in range(1, len(samples)+1):
-            if i == len(samples) or (samples[i][1] == 'blue') != (samples[start][1] == 'blue'):
-                end = samples[i][0] if i < len(samples) else samples[-1][0]
-                runs.append(end-samples[start][0])
-                start = i
-        inner = runs[1:-1]  # The first and last phase are cut by the window.
-        return len(inner) >= 2 and all(0.6 <= r <= 1.4 for r in inner)
+    def flashing(self, samples, label):
+        """True if the complete lit / dark phases of `label` inside the window last about 1 s.
+
+        Runs shorter than min_phase between two longer ones are flicker of a
+        single frame or two (a missed lit frame, a wave crest) and are merged
+        into their neighbours before the phases are measured.
+        """
+        starts = []  # [lit, start time] of each run of equal lit / dark labels.
+        for time, found in samples:
+            lit = found == label
+            if not starts or starts[-1][0] != lit:
+                starts.append([lit, time])
+        merged = True
+        while merged:
+            merged = False
+            for i in range(1, len(starts)-1):
+                if starts[i+1][1]-starts[i][1] < self.min_phase:
+                    del starts[i:i+2]  # Runs i-1 and i+1 have the same state: one run.
+                    merged = True
+                    break
+        # The first and last phase are cut by the window; the inner ones are complete.
+        inner = [starts[i+1][1]-starts[i][1] for i in range(1, len(starts)-1)]
+        return len(inner) >= self.min_phases and all(0.6 <= r <= 1.4 for r in inner)
 
 
 def inside_polygon(point, polygon):

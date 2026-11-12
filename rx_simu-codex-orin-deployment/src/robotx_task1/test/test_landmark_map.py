@@ -27,12 +27,47 @@ def cluster(x, y, extent=0.4, top=0.9):
 
 
 class LampTests(unittest.TestCase):
-    def test_flashing_red_and_green_after_two_seconds(self):
+    def test_flashing_red_and_green_after_four_seconds(self):
+        # Four seconds always hold three complete phases, as for flashing blue.
         for color, state in (('red', lm.RED), ('green', lm.GREEN)):
             for phase in (0.0, 0.5, 1.0):
                 with self.subTest(color=color, phase=phase):
                     changes = feed(lm.LampClassifier(), flashing(color, phase))
-                    self.assertEqual(changes, [(2.0, state)])
+                    self.assertEqual(changes, [(4.0, state)])
+
+    def test_steady_or_irregular_red_and_green_are_not_lamps(self):
+        # A mooring ball or a sticker: lit in every frame, or flickering at the colour threshold.
+        for color in ('red', 'green'):
+            with self.subTest(color=color):
+                self.assertEqual(feed(lm.LampClassifier(), lambda t: color, duration=10.0), [])
+                ripple = feed(lm.LampClassifier(), lambda t: color if round(t*10) % 5 < 2 else 'none',
+                              duration=10.0)
+                self.assertEqual(ripple, [])
+                slow = feed(lm.LampClassifier(), lambda t: color if int(t/3) % 2 == 0 else 'none',
+                            duration=12.0)
+                self.assertNotIn(lm.RED if color == 'red' else lm.GREEN, [s for _, s in slow])
+
+    def test_mooring_ball_from_the_field_video_is_not_a_red_lamp(self):
+        # 10 fps labels of the orange mooring ball in the 2026-11 field video (R red, . none):
+        # its saturation sits at the threshold, and one 3 s stretch looks like a flash.
+        ball = 'RRRR.RRRRRRRRRRRRRRRR.........RRRRRRRR....RRRR...R..R.RR..................'
+        lamp = lm.LampClassifier()
+        for i, code in enumerate(ball):
+            lamp.add(i/10, 'red' if code == 'R' else 'none')
+        self.assertNotEqual(lamp.state, lm.RED)
+
+    def test_single_frame_flicker_does_not_break_a_flashing_lamp(self):
+        def noisy(color):
+            def label(t):
+                tick = round(t*30)
+                if tick % 30 == 12:  # One frame of every second shows the other phase.
+                    return 'none' if int(t) % 2 == 0 else color
+                return color if int(t) % 2 == 0 else 'none'
+            return label
+        for color, state in (('red', lm.RED), ('green', lm.GREEN)):
+            with self.subTest(color=color):
+                self.assertEqual(feed(lm.LampClassifier(), noisy(color), rate=30.0), [(4.0, state)])
+        self.assertEqual(feed(lm.LampClassifier(), noisy('blue'), rate=30.0), [(4.0, lm.FLASH_BLUE)])
 
     def test_blue_needs_two_periods_to_separate_entry_from_exit(self):
         for phase in (0.0, 0.3, 1.0):
@@ -55,15 +90,15 @@ class LampTests(unittest.TestCase):
     def test_interrupted_observation_does_not_accumulate(self):
         lamp = lm.LampClassifier()
         for start in (0.0, 5.0, 10.0):
-            feed(lamp, flashing('red'), start=start, duration=1.5)
+            feed(lamp, flashing('red'), start=start, duration=2.5)
         self.assertEqual(lamp.state, lm.UNKNOWN)
-        feed(lamp, flashing('red'), start=20.0, duration=2.0)
+        feed(lamp, flashing('red'), start=20.0, duration=4.0)
         self.assertEqual(lamp.state, lm.RED)
 
     def test_state_is_latched_and_only_persistent_evidence_corrects_it(self):
         lamp = lm.LampClassifier()
-        feed(lamp, flashing('red'), duration=3.0)
-        feed(lamp, lambda t: 'none', start=3.1, duration=10.0)  # Now hidden or looked away.
+        feed(lamp, flashing('red'), duration=4.0)
+        feed(lamp, lambda t: 'none', start=4.1, duration=10.0)  # Now hidden or looked away.
         self.assertEqual(lamp.state, lm.RED)
         self.assertEqual(feed(lamp, flashing('green'), start=20.0, duration=4.0), [])
         self.assertEqual(lamp.state, lm.RED)
@@ -106,7 +141,7 @@ class MapTests(unittest.TestCase):
         for i in range(5):
             world.update_lidar(0.5*i, (0.0, 0.0), [cluster(6.0, 0.0), cluster(6.0, 1.9)])
         revision = world.revision
-        for i in range(25):
+        for i in range(45):
             world.observe_color('B2', i/10, 'red' if i % 20 < 10 else 'none')
         self.assertFalse(world.observe_color('B9', 3.0, 'red'))
         self.assertEqual([b['state'] for b in world.snapshot()], [lm.UNKNOWN, lm.RED])
